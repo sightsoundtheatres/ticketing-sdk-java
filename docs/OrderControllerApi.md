@@ -22,7 +22,7 @@ import com.sightsound.sdk.ticketing.ApiClient;
 import com.sightsound.sdk.ticketing.ApiException;
 import com.sightsound.sdk.ticketing.Configuration;
 import com.sightsound.sdk.ticketing.models.*;
-import org.openapitools.client.api.OrderControllerApi;
+import com.sightsound.sdk.ticketing.api.OrderControllerApi;
 
 public class Example {
   public static void main(String[] args) {
