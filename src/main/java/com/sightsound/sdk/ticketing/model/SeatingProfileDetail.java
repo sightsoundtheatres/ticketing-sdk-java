@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.SeatType;
 import com.sightsound.sdk.ticketing.model.SeatingProfile;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -49,76 +50,11 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * SeatingProfileDetail
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class SeatingProfileDetail {
-  /**
-   * Gets or Sets seatTypeCode
-   */
-  @JsonAdapter(SeatTypeCodeEnum.Adapter.class)
-  public enum SeatTypeCodeEnum {
-    A("A"),
-    
-    C("C"),
-    
-    D("D"),
-    
-    F("F"),
-    
-    H("H"),
-    
-    I("I"),
-    
-    M("M"),
-    
-    S("S"),
-    
-    T("T"),
-    
-    V("V"),
-    
-    W("W");
-
-    private String value;
-
-    SeatTypeCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SeatTypeCodeEnum fromValue(String value) {
-      for (SeatTypeCodeEnum b : SeatTypeCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SeatTypeCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SeatTypeCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SeatTypeCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SeatTypeCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SEAT_TYPE_CODE = "seatTypeCode";
   @SerializedName(SERIALIZED_NAME_SEAT_TYPE_CODE)
-  private SeatTypeCodeEnum seatTypeCode;
+  private SeatType seatTypeCode;
 
   public static final String SERIALIZED_NAME_DOLLARS_OFF = "dollarsOff";
   @SerializedName(SERIALIZED_NAME_DOLLARS_OFF)
@@ -151,7 +87,7 @@ public class SeatingProfileDetail {
   public SeatingProfileDetail() { 
   }
 
-  public SeatingProfileDetail seatTypeCode(SeatTypeCodeEnum seatTypeCode) {
+  public SeatingProfileDetail seatTypeCode(SeatType seatTypeCode) {
     
     this.seatTypeCode = seatTypeCode;
     return this;
@@ -164,12 +100,12 @@ public class SeatingProfileDetail {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public SeatTypeCodeEnum getSeatTypeCode() {
+  public SeatType getSeatTypeCode() {
     return seatTypeCode;
   }
 
 
-  public void setSeatTypeCode(SeatTypeCodeEnum seatTypeCode) {
+  public void setSeatTypeCode(SeatType seatTypeCode) {
     this.seatTypeCode = seatTypeCode;
   }
 
@@ -441,9 +377,6 @@ public class SeatingProfileDetail {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
-      }
-      if (jsonObj.get("seatTypeCode") != null && !jsonObj.get("seatTypeCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `seatTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("seatTypeCode").toString()));
       }
       if (jsonObj.get("dayOfShow") != null && !jsonObj.get("dayOfShow").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dayOfShow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dayOfShow").toString()));

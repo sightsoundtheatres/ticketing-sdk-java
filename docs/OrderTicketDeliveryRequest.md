@@ -7,18 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**method** | [**MethodEnum**](#MethodEnum) |  |  |
+|**method** | **TicketBatch** |  |  |
 |**target** | **String** |  |  |
-
-
-
-## Enum: MethodEnum
-
-| Name | Value |
-|---- | -----|
-| AGENT | &quot;AGENT&quot; |
-| ETICKET | &quot;ETICKET&quot; |
-| HELD | &quot;HELD&quot; |
 
 
 

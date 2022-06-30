@@ -21,9 +21,15 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.Customer;
+import com.sightsound.sdk.ticketing.model.ImpSSIInvoiceCategory;
+import com.sightsound.sdk.ticketing.model.InvoiceCompany;
 import com.sightsound.sdk.ticketing.model.InvoiceDetail;
+import com.sightsound.sdk.ticketing.model.InvoiceStatus;
+import com.sightsound.sdk.ticketing.model.InvoiceType;
 import com.sightsound.sdk.ticketing.model.Order;
+import com.sightsound.sdk.ticketing.model.PaymentTerms;
 import com.sightsound.sdk.ticketing.model.ReceiptDetail;
+import com.sightsound.sdk.ticketing.model.SyncSource;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -55,62 +61,15 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Invoice
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class Invoice {
   public static final String SERIALIZED_NAME_INVOICE_NUMBER = "invoiceNumber";
   @SerializedName(SERIALIZED_NAME_INVOICE_NUMBER)
   private Long invoiceNumber;
 
-  /**
-   * Gets or Sets company
-   */
-  @JsonAdapter(CompanyEnum.Adapter.class)
-  public enum CompanyEnum {
-    SS("SS"),
-    
-    BR("BR");
-
-    private String value;
-
-    CompanyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CompanyEnum fromValue(String value) {
-      for (CompanyEnum b : CompanyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<CompanyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CompanyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CompanyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CompanyEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_COMPANY = "company";
   @SerializedName(SERIALIZED_NAME_COMPANY)
-  private CompanyEnum company;
+  private InvoiceCompany company;
 
   public static final String SERIALIZED_NAME_INVOICE_DATE = "invoiceDate";
   @SerializedName(SERIALIZED_NAME_INVOICE_DATE)
@@ -132,190 +91,25 @@ public class Invoice {
   @SerializedName(SERIALIZED_NAME_CUSTOMER_NUMBER)
   private Long customerNumber;
 
-  /**
-   * Gets or Sets status
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    O("O"),
-    
-    P("P"),
-    
-    V("V");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
+  private InvoiceStatus status;
 
   public static final String SERIALIZED_NAME_DUE_DATE = "dueDate";
   @SerializedName(SERIALIZED_NAME_DUE_DATE)
   private OffsetDateTime dueDate;
 
-  /**
-   * Gets or Sets type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    I("I"),
-    
-    C("C"),
-    
-    R("R");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  private InvoiceType type;
 
   public static final String SERIALIZED_NAME_BATCH_NUMBER = "batchNumber";
   @SerializedName(SERIALIZED_NAME_BATCH_NUMBER)
   private String batchNumber;
 
-  /**
-   * Gets or Sets category
-   */
-  @JsonAdapter(CategoryEnum.Adapter.class)
-  public enum CategoryEnum {
-    CONSUMER("CONSUMER"),
-    
-    EMPLOYEE("EMPLOYEE"),
-    
-    PARTNER("PARTNER"),
-    
-    GROUP("GROUP"),
-    
-    LEVEL1("LEVEL1"),
-    
-    LEVEL2("LEVEL2"),
-    
-    LEVEL3("LEVEL3"),
-    
-    TIER1("TIER1"),
-    
-    TIER2("TIER2"),
-    
-    POSTPAY("POSTPAY"),
-    
-    POS("POS"),
-    
-    MOA("MOA");
-
-    private String value;
-
-    CategoryEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CategoryEnum fromValue(String value) {
-      for (CategoryEnum b : CategoryEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<CategoryEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CategoryEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CategoryEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CategoryEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
-  private CategoryEnum category;
+  private ImpSSIInvoiceCategory category;
 
   public static final String SERIALIZED_NAME_BASE_AMOUNT = "baseAmount";
   @SerializedName(SERIALIZED_NAME_BASE_AMOUNT)
@@ -341,56 +135,9 @@ public class Invoice {
   @SerializedName(SERIALIZED_NAME_AR_SEGMENT5)
   private String arSegment5;
 
-  /**
-   * Gets or Sets paymentTerms
-   */
-  @JsonAdapter(PaymentTermsEnum.Adapter.class)
-  public enum PaymentTermsEnum {
-    NET30("NET30"),
-    
-    RECEIPT("RECEIPT");
-
-    private String value;
-
-    PaymentTermsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PaymentTermsEnum fromValue(String value) {
-      for (PaymentTermsEnum b : PaymentTermsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PaymentTermsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PaymentTermsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PaymentTermsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PaymentTermsEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_PAYMENT_TERMS = "paymentTerms";
   @SerializedName(SERIALIZED_NAME_PAYMENT_TERMS)
-  private PaymentTermsEnum paymentTerms;
+  private PaymentTerms paymentTerms;
 
   public static final String SERIALIZED_NAME_POST_FLAG = "postFlag";
   @SerializedName(SERIALIZED_NAME_POST_FLAG)
@@ -448,56 +195,9 @@ public class Invoice {
   @SerializedName(SERIALIZED_NAME_MODIFY_DATE)
   private OffsetDateTime modifyDate;
 
-  /**
-   * Gets or Sets syncSource
-   */
-  @JsonAdapter(SyncSourceEnum.Adapter.class)
-  public enum SyncSourceEnum {
-    H("H"),
-    
-    A("A");
-
-    private String value;
-
-    SyncSourceEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SyncSourceEnum fromValue(String value) {
-      for (SyncSourceEnum b : SyncSourceEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SyncSourceEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SyncSourceEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SyncSourceEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SyncSourceEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SYNC_SOURCE = "syncSource";
   @SerializedName(SERIALIZED_NAME_SYNC_SOURCE)
-  private SyncSourceEnum syncSource;
+  private SyncSource syncSource;
 
   public static final String SERIALIZED_NAME_RECEIPT_DETAILS = "receiptDetails";
   @SerializedName(SERIALIZED_NAME_RECEIPT_DETAILS)
@@ -533,7 +233,7 @@ public class Invoice {
   }
 
 
-  public Invoice company(CompanyEnum company) {
+  public Invoice company(InvoiceCompany company) {
     
     this.company = company;
     return this;
@@ -546,12 +246,12 @@ public class Invoice {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public CompanyEnum getCompany() {
+  public InvoiceCompany getCompany() {
     return company;
   }
 
 
-  public void setCompany(CompanyEnum company) {
+  public void setCompany(InvoiceCompany company) {
     this.company = company;
   }
 
@@ -671,7 +371,7 @@ public class Invoice {
   }
 
 
-  public Invoice status(StatusEnum status) {
+  public Invoice status(InvoiceStatus status) {
     
     this.status = status;
     return this;
@@ -684,12 +384,12 @@ public class Invoice {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public StatusEnum getStatus() {
+  public InvoiceStatus getStatus() {
     return status;
   }
 
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(InvoiceStatus status) {
     this.status = status;
   }
 
@@ -717,7 +417,7 @@ public class Invoice {
   }
 
 
-  public Invoice type(TypeEnum type) {
+  public Invoice type(InvoiceType type) {
     
     this.type = type;
     return this;
@@ -730,12 +430,12 @@ public class Invoice {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TypeEnum getType() {
+  public InvoiceType getType() {
     return type;
   }
 
 
-  public void setType(TypeEnum type) {
+  public void setType(InvoiceType type) {
     this.type = type;
   }
 
@@ -763,7 +463,7 @@ public class Invoice {
   }
 
 
-  public Invoice category(CategoryEnum category) {
+  public Invoice category(ImpSSIInvoiceCategory category) {
     
     this.category = category;
     return this;
@@ -776,12 +476,12 @@ public class Invoice {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public CategoryEnum getCategory() {
+  public ImpSSIInvoiceCategory getCategory() {
     return category;
   }
 
 
-  public void setCategory(CategoryEnum category) {
+  public void setCategory(ImpSSIInvoiceCategory category) {
     this.category = category;
   }
 
@@ -924,7 +624,7 @@ public class Invoice {
   }
 
 
-  public Invoice paymentTerms(PaymentTermsEnum paymentTerms) {
+  public Invoice paymentTerms(PaymentTerms paymentTerms) {
     
     this.paymentTerms = paymentTerms;
     return this;
@@ -937,12 +637,12 @@ public class Invoice {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PaymentTermsEnum getPaymentTerms() {
+  public PaymentTerms getPaymentTerms() {
     return paymentTerms;
   }
 
 
-  public void setPaymentTerms(PaymentTermsEnum paymentTerms) {
+  public void setPaymentTerms(PaymentTerms paymentTerms) {
     this.paymentTerms = paymentTerms;
   }
 
@@ -1277,7 +977,7 @@ public class Invoice {
   }
 
 
-  public Invoice syncSource(SyncSourceEnum syncSource) {
+  public Invoice syncSource(SyncSource syncSource) {
     
     this.syncSource = syncSource;
     return this;
@@ -1290,12 +990,12 @@ public class Invoice {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public SyncSourceEnum getSyncSource() {
+  public SyncSource getSyncSource() {
     return syncSource;
   }
 
 
-  public void setSyncSource(SyncSourceEnum syncSource) {
+  public void setSyncSource(SyncSource syncSource) {
     this.syncSource = syncSource;
   }
 
@@ -1541,20 +1241,8 @@ public class Invoice {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (jsonObj.get("company") != null && !jsonObj.get("company").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `company` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company").toString()));
-      }
-      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       if (jsonObj.get("batchNumber") != null && !jsonObj.get("batchNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `batchNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("batchNumber").toString()));
-      }
-      if (jsonObj.get("category") != null && !jsonObj.get("category").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
       }
       if (jsonObj.get("arSegment1") != null && !jsonObj.get("arSegment1").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `arSegment1` to be a primitive type in the JSON string but got `%s`", jsonObj.get("arSegment1").toString()));
@@ -1570,9 +1258,6 @@ public class Invoice {
       }
       if (jsonObj.get("arSegment5") != null && !jsonObj.get("arSegment5").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `arSegment5` to be a primitive type in the JSON string but got `%s`", jsonObj.get("arSegment5").toString()));
-      }
-      if (jsonObj.get("paymentTerms") != null && !jsonObj.get("paymentTerms").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `paymentTerms` to be a primitive type in the JSON string but got `%s`", jsonObj.get("paymentTerms").toString()));
       }
       if (jsonObj.get("postFlag") != null && !jsonObj.get("postFlag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `postFlag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postFlag").toString()));
@@ -1604,9 +1289,6 @@ public class Invoice {
         for (int i = 0; i < jsonArrayinvoiceDetails.size(); i++) {
           InvoiceDetail.validateJsonObject(jsonArrayinvoiceDetails.get(i).getAsJsonObject());
         };
-      }
-      if (jsonObj.get("syncSource") != null && !jsonObj.get("syncSource").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `syncSource` to be a primitive type in the JSON string but got `%s`", jsonObj.get("syncSource").toString()));
       }
       JsonArray jsonArrayreceiptDetails = jsonObj.getAsJsonArray("receiptDetails");
       if (jsonArrayreceiptDetails != null) {

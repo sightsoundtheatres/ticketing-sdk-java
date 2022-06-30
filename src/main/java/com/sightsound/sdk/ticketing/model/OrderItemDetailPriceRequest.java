@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.Designation;
 import com.sightsound.sdk.ticketing.model.OrderItemDetail;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -48,66 +49,11 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderItemDetailPriceRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class OrderItemDetailPriceRequest {
-  /**
-   * Gets or Sets designation
-   */
-  @JsonAdapter(DesignationEnum.Adapter.class)
-  public enum DesignationEnum {
-    ADULT("ADULT"),
-    
-    CHILD("CHILD"),
-    
-    ESCORT("ESCORT"),
-    
-    DRIVER("DRIVER"),
-    
-    TEEN("TEEN"),
-    
-    ANY("ANY");
-
-    private String value;
-
-    DesignationEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DesignationEnum fromValue(String value) {
-      for (DesignationEnum b : DesignationEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DesignationEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DesignationEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DesignationEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DesignationEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_DESIGNATION = "designation";
   @SerializedName(SERIALIZED_NAME_DESIGNATION)
-  private DesignationEnum designation;
+  private Designation designation;
 
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
@@ -120,7 +66,7 @@ public class OrderItemDetailPriceRequest {
   public OrderItemDetailPriceRequest() { 
   }
 
-  public OrderItemDetailPriceRequest designation(DesignationEnum designation) {
+  public OrderItemDetailPriceRequest designation(Designation designation) {
     
     this.designation = designation;
     return this;
@@ -133,12 +79,12 @@ public class OrderItemDetailPriceRequest {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public DesignationEnum getDesignation() {
+  public Designation getDesignation() {
     return designation;
   }
 
 
-  public void setDesignation(DesignationEnum designation) {
+  public void setDesignation(Designation designation) {
     this.designation = designation;
   }
 
@@ -276,9 +222,6 @@ public class OrderItemDetailPriceRequest {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
-      }
-      if (jsonObj.get("designation") != null && !jsonObj.get("designation").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `designation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("designation").toString()));
       }
       // validate the optional field `orderItemDetail`
       if (jsonObj.getAsJsonObject("orderItemDetail") != null) {

@@ -20,6 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.AuthenticationResponseEnum;
+import com.sightsound.sdk.ticketing.model.DirectoryResponseEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -47,59 +49,8 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * ThreeDSecureData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class ThreeDSecureData {
-  /**
-   * Gets or Sets authenticationResponse
-   */
-  @JsonAdapter(AuthenticationResponseEnum.Adapter.class)
-  public enum AuthenticationResponseEnum {
-    Y("Y"),
-    
-    N("N"),
-    
-    U("U"),
-    
-    A("A");
-
-    private String value;
-
-    AuthenticationResponseEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static AuthenticationResponseEnum fromValue(String value) {
-      for (AuthenticationResponseEnum b : AuthenticationResponseEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<AuthenticationResponseEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final AuthenticationResponseEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public AuthenticationResponseEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return AuthenticationResponseEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_AUTHENTICATION_RESPONSE = "authenticationResponse";
   @SerializedName(SERIALIZED_NAME_AUTHENTICATION_RESPONSE)
   private AuthenticationResponseEnum authenticationResponse;
@@ -111,67 +62,6 @@ public class ThreeDSecureData {
   public static final String SERIALIZED_NAME_CAVV_ALGORITHM = "cavvAlgorithm";
   @SerializedName(SERIALIZED_NAME_CAVV_ALGORITHM)
   private String cavvAlgorithm;
-
-  /**
-   * Gets or Sets directoryResponse
-   */
-  @JsonAdapter(DirectoryResponseEnum.Adapter.class)
-  public enum DirectoryResponseEnum {
-    Y("Y"),
-    
-    U("U"),
-    
-    N("N"),
-    
-    A("A"),
-    
-    C("C"),
-    
-    D("D"),
-    
-    R("R"),
-    
-    I("I"),
-    
-    E("E");
-
-    private String value;
-
-    DirectoryResponseEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DirectoryResponseEnum fromValue(String value) {
-      for (DirectoryResponseEnum b : DirectoryResponseEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DirectoryResponseEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DirectoryResponseEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DirectoryResponseEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DirectoryResponseEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_DIRECTORY_RESPONSE = "directoryResponse";
   @SerializedName(SERIALIZED_NAME_DIRECTORY_RESPONSE)
@@ -474,17 +364,11 @@ public class ThreeDSecureData {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ThreeDSecureData` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if (jsonObj.get("authenticationResponse") != null && !jsonObj.get("authenticationResponse").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `authenticationResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("authenticationResponse").toString()));
-      }
       if (jsonObj.get("cavv") != null && !jsonObj.get("cavv").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cavv` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cavv").toString()));
       }
       if (jsonObj.get("cavvAlgorithm") != null && !jsonObj.get("cavvAlgorithm").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cavvAlgorithm` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cavvAlgorithm").toString()));
-      }
-      if (jsonObj.get("directoryResponse") != null && !jsonObj.get("directoryResponse").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `directoryResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("directoryResponse").toString()));
       }
       if (jsonObj.get("eci") != null && !jsonObj.get("eci").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `eci` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eci").toString()));

@@ -20,7 +20,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.BookingLocation;
 import com.sightsound.sdk.ticketing.model.Customer;
+import com.sightsound.sdk.ticketing.model.PricingLevel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -49,84 +51,15 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * CustomerPricingLevel
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class CustomerPricingLevel {
   public static final String SERIALIZED_NAME_CUSTOMER_NUMBER = "customerNumber";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_NUMBER)
   private Long customerNumber;
 
-  /**
-   * Gets or Sets pricingLevel
-   */
-  @JsonAdapter(PricingLevelEnum.Adapter.class)
-  public enum PricingLevelEnum {
-    NOLEVEL("NOLEVEL"),
-    
-    POSTPAY("POSTPAY"),
-    
-    LEVEL1("LEVEL1"),
-    
-    LEVEL2("LEVEL2"),
-    
-    LEVEL3("LEVEL3"),
-    
-    HOT("HOT"),
-    
-    RECEPTOR("RECEPTOR"),
-    
-    RECEPTIVE("RECEPTIVE"),
-    
-    NOTIER("NOTIER"),
-    
-    TIER1("TIER1"),
-    
-    TIER2("TIER2"),
-    
-    TIER3("TIER3"),
-    
-    TIER4("TIER4");
-
-    private String value;
-
-    PricingLevelEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PricingLevelEnum fromValue(String value) {
-      for (PricingLevelEnum b : PricingLevelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PricingLevelEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PricingLevelEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PricingLevelEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PricingLevelEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_PRICING_LEVEL = "pricingLevel";
   @SerializedName(SERIALIZED_NAME_PRICING_LEVEL)
-  private PricingLevelEnum pricingLevel;
+  private PricingLevel pricingLevel;
 
   public static final String SERIALIZED_NAME_TIER_YEAR = "tierYear";
   @SerializedName(SERIALIZED_NAME_TIER_YEAR)
@@ -192,58 +125,9 @@ public class CustomerPricingLevel {
   @SerializedName(SERIALIZED_NAME_SALES_REP_ID)
   private String salesRepId;
 
-  /**
-   * Gets or Sets bookingLocation
-   */
-  @JsonAdapter(BookingLocationEnum.Adapter.class)
-  public enum BookingLocationEnum {
-    STRASBURG_PA("STRASBURG_PA"),
-    
-    BRANSON_MO("BRANSON_MO"),
-    
-    ALL("ALL");
-
-    private String value;
-
-    BookingLocationEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static BookingLocationEnum fromValue(String value) {
-      for (BookingLocationEnum b : BookingLocationEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<BookingLocationEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final BookingLocationEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public BookingLocationEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return BookingLocationEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_BOOKING_LOCATION = "bookingLocation";
   @SerializedName(SERIALIZED_NAME_BOOKING_LOCATION)
-  private BookingLocationEnum bookingLocation;
+  private BookingLocation bookingLocation;
 
   public static final String SERIALIZED_NAME_POST_PAY = "postPay";
   @SerializedName(SERIALIZED_NAME_POST_PAY)
@@ -291,7 +175,7 @@ public class CustomerPricingLevel {
   }
 
 
-  public CustomerPricingLevel pricingLevel(PricingLevelEnum pricingLevel) {
+  public CustomerPricingLevel pricingLevel(PricingLevel pricingLevel) {
     
     this.pricingLevel = pricingLevel;
     return this;
@@ -304,12 +188,12 @@ public class CustomerPricingLevel {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingLevelEnum getPricingLevel() {
+  public PricingLevel getPricingLevel() {
     return pricingLevel;
   }
 
 
-  public void setPricingLevel(PricingLevelEnum pricingLevel) {
+  public void setPricingLevel(PricingLevel pricingLevel) {
     this.pricingLevel = pricingLevel;
   }
 
@@ -682,7 +566,7 @@ public class CustomerPricingLevel {
   }
 
 
-  public CustomerPricingLevel bookingLocation(BookingLocationEnum bookingLocation) {
+  public CustomerPricingLevel bookingLocation(BookingLocation bookingLocation) {
     
     this.bookingLocation = bookingLocation;
     return this;
@@ -695,12 +579,12 @@ public class CustomerPricingLevel {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BookingLocationEnum getBookingLocation() {
+  public BookingLocation getBookingLocation() {
     return bookingLocation;
   }
 
 
-  public void setBookingLocation(BookingLocationEnum bookingLocation) {
+  public void setBookingLocation(BookingLocation bookingLocation) {
     this.bookingLocation = bookingLocation;
   }
 
@@ -962,14 +846,8 @@ public class CustomerPricingLevel {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CustomerPricingLevel` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if (jsonObj.get("pricingLevel") != null && !jsonObj.get("pricingLevel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pricingLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricingLevel").toString()));
-      }
       if (jsonObj.get("salesRepId") != null && !jsonObj.get("salesRepId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `salesRepId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salesRepId").toString()));
-      }
-      if (jsonObj.get("bookingLocation") != null && !jsonObj.get("bookingLocation").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bookingLocation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bookingLocation").toString()));
       }
       // validate the optional field `customer`
       if (jsonObj.getAsJsonObject("customer") != null) {

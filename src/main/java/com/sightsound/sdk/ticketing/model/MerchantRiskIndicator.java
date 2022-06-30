@@ -21,6 +21,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.Amount;
+import com.sightsound.sdk.ticketing.model.DeliveryAddressIndicatorEnum;
+import com.sightsound.sdk.ticketing.model.DeliveryTimeframeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -49,68 +51,11 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * MerchantRiskIndicator
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class MerchantRiskIndicator {
   public static final String SERIALIZED_NAME_ADDRESS_MATCH = "addressMatch";
   @SerializedName(SERIALIZED_NAME_ADDRESS_MATCH)
   private Boolean addressMatch;
-
-  /**
-   * Gets or Sets deliveryAddressIndicator
-   */
-  @JsonAdapter(DeliveryAddressIndicatorEnum.Adapter.class)
-  public enum DeliveryAddressIndicatorEnum {
-    DIGITALGOODS("digitalGoods"),
-    
-    GOODSNOTSHIPPED("goodsNotShipped"),
-    
-    OTHER("other"),
-    
-    SHIPTOBILLINGADDRESS("shipToBillingAddress"),
-    
-    SHIPTONEWADDRESS("shipToNewAddress"),
-    
-    SHIPTOSTORE("shipToStore"),
-    
-    SHIPTOVERIFIEDADDRESS("shipToVerifiedAddress");
-
-    private String value;
-
-    DeliveryAddressIndicatorEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DeliveryAddressIndicatorEnum fromValue(String value) {
-      for (DeliveryAddressIndicatorEnum b : DeliveryAddressIndicatorEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DeliveryAddressIndicatorEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DeliveryAddressIndicatorEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DeliveryAddressIndicatorEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DeliveryAddressIndicatorEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_DELIVERY_ADDRESS_INDICATOR = "deliveryAddressIndicator";
   @SerializedName(SERIALIZED_NAME_DELIVERY_ADDRESS_INDICATOR)
@@ -119,57 +64,6 @@ public class MerchantRiskIndicator {
   public static final String SERIALIZED_NAME_DELIVERY_EMAIL = "deliveryEmail";
   @SerializedName(SERIALIZED_NAME_DELIVERY_EMAIL)
   private String deliveryEmail;
-
-  /**
-   * Gets or Sets deliveryTimeframe
-   */
-  @JsonAdapter(DeliveryTimeframeEnum.Adapter.class)
-  public enum DeliveryTimeframeEnum {
-    ELECTRONICDELIVERY("electronicDelivery"),
-    
-    OVERNIGHTSHIPPING("overnightShipping"),
-    
-    SAMEDAYSHIPPING("sameDayShipping"),
-    
-    TWOORMOREDAYSSHIPPING("twoOrMoreDaysShipping");
-
-    private String value;
-
-    DeliveryTimeframeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DeliveryTimeframeEnum fromValue(String value) {
-      for (DeliveryTimeframeEnum b : DeliveryTimeframeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DeliveryTimeframeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DeliveryTimeframeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DeliveryTimeframeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DeliveryTimeframeEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_DELIVERY_TIMEFRAME = "deliveryTimeframe";
   @SerializedName(SERIALIZED_NAME_DELIVERY_TIMEFRAME)
@@ -502,14 +396,8 @@ public class MerchantRiskIndicator {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MerchantRiskIndicator` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if (jsonObj.get("deliveryAddressIndicator") != null && !jsonObj.get("deliveryAddressIndicator").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `deliveryAddressIndicator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deliveryAddressIndicator").toString()));
-      }
       if (jsonObj.get("deliveryEmail") != null && !jsonObj.get("deliveryEmail").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `deliveryEmail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deliveryEmail").toString()));
-      }
-      if (jsonObj.get("deliveryTimeframe") != null && !jsonObj.get("deliveryTimeframe").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `deliveryTimeframe` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deliveryTimeframe").toString()));
       }
       // validate the optional field `giftCardAmount`
       if (jsonObj.getAsJsonObject("giftCardAmount") != null) {

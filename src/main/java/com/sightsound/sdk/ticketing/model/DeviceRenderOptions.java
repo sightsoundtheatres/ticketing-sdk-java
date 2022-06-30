@@ -20,6 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.SdkInterfaceEnum;
+import com.sightsound.sdk.ticketing.model.SdkUiTypeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -49,113 +51,11 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * DeviceRenderOptions
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class DeviceRenderOptions {
-  /**
-   * Gets or Sets sdkInterface
-   */
-  @JsonAdapter(SdkInterfaceEnum.Adapter.class)
-  public enum SdkInterfaceEnum {
-    HTML("html"),
-    
-    NATIVE("native"),
-    
-    BOTH("both");
-
-    private String value;
-
-    SdkInterfaceEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SdkInterfaceEnum fromValue(String value) {
-      for (SdkInterfaceEnum b : SdkInterfaceEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SdkInterfaceEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SdkInterfaceEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SdkInterfaceEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SdkInterfaceEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SDK_INTERFACE = "sdkInterface";
   @SerializedName(SERIALIZED_NAME_SDK_INTERFACE)
   private SdkInterfaceEnum sdkInterface;
-
-  /**
-   * Gets or Sets sdkUiType
-   */
-  @JsonAdapter(SdkUiTypeEnum.Adapter.class)
-  public enum SdkUiTypeEnum {
-    MULTISELECT("multiSelect"),
-    
-    OTHERHTML("otherHtml"),
-    
-    OUTOFBAND("outOfBand"),
-    
-    SINGLESELECT("singleSelect"),
-    
-    TEXT("text");
-
-    private String value;
-
-    SdkUiTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SdkUiTypeEnum fromValue(String value) {
-      for (SdkUiTypeEnum b : SdkUiTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SdkUiTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SdkUiTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SdkUiTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SdkUiTypeEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_SDK_UI_TYPE = "sdkUiType";
   @SerializedName(SERIALIZED_NAME_SDK_UI_TYPE)
@@ -293,9 +193,6 @@ public class DeviceRenderOptions {
         if (!DeviceRenderOptions.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeviceRenderOptions` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
-      }
-      if (jsonObj.get("sdkInterface") != null && !jsonObj.get("sdkInterface").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sdkInterface` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sdkInterface").toString()));
       }
       // ensure the json data is an array
       if (jsonObj.get("sdkUiType") != null && !jsonObj.get("sdkUiType").isJsonArray()) {

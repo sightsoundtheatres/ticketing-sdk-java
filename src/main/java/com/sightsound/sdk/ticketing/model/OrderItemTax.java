@@ -21,6 +21,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.OrderItem;
+import com.sightsound.sdk.ticketing.model.TaxJurisdictionType;
+import com.sightsound.sdk.ticketing.model.TaxType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -50,123 +52,19 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderItemTax
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class OrderItemTax {
   public static final String SERIALIZED_NAME_ORDER_ITEM = "orderItem";
   @SerializedName(SERIALIZED_NAME_ORDER_ITEM)
   private OrderItem orderItem;
 
-  /**
-   * Gets or Sets taxType
-   */
-  @JsonAdapter(TaxTypeEnum.Adapter.class)
-  public enum TaxTypeEnum {
-    EN("EN"),
-    
-    XC("XC"),
-    
-    SC("SC"),
-    
-    SP("SP"),
-    
-    SH("SH"),
-    
-    PT("PT");
-
-    private String value;
-
-    TaxTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TaxTypeEnum fromValue(String value) {
-      for (TaxTypeEnum b : TaxTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TaxTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TaxTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TaxTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TaxTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TAX_TYPE = "taxType";
   @SerializedName(SERIALIZED_NAME_TAX_TYPE)
-  private TaxTypeEnum taxType;
-
-  /**
-   * Gets or Sets jurisdiction
-   */
-  @JsonAdapter(JurisdictionEnum.Adapter.class)
-  public enum JurisdictionEnum {
-    ET("ET"),
-    
-    MO("MO"),
-    
-    PA("PA");
-
-    private String value;
-
-    JurisdictionEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static JurisdictionEnum fromValue(String value) {
-      for (JurisdictionEnum b : JurisdictionEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<JurisdictionEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final JurisdictionEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public JurisdictionEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return JurisdictionEnum.fromValue(value);
-      }
-    }
-  }
+  private TaxType taxType;
 
   public static final String SERIALIZED_NAME_JURISDICTION = "jurisdiction";
   @SerializedName(SERIALIZED_NAME_JURISDICTION)
-  private JurisdictionEnum jurisdiction;
+  private TaxJurisdictionType jurisdiction;
 
   public static final String SERIALIZED_NAME_TAX_DESCRIPTION = "taxDescription";
   @SerializedName(SERIALIZED_NAME_TAX_DESCRIPTION)
@@ -214,7 +112,7 @@ public class OrderItemTax {
   }
 
 
-  public OrderItemTax taxType(TaxTypeEnum taxType) {
+  public OrderItemTax taxType(TaxType taxType) {
     
     this.taxType = taxType;
     return this;
@@ -227,17 +125,17 @@ public class OrderItemTax {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public TaxTypeEnum getTaxType() {
+  public TaxType getTaxType() {
     return taxType;
   }
 
 
-  public void setTaxType(TaxTypeEnum taxType) {
+  public void setTaxType(TaxType taxType) {
     this.taxType = taxType;
   }
 
 
-  public OrderItemTax jurisdiction(JurisdictionEnum jurisdiction) {
+  public OrderItemTax jurisdiction(TaxJurisdictionType jurisdiction) {
     
     this.jurisdiction = jurisdiction;
     return this;
@@ -250,12 +148,12 @@ public class OrderItemTax {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public JurisdictionEnum getJurisdiction() {
+  public TaxJurisdictionType getJurisdiction() {
     return jurisdiction;
   }
 
 
-  public void setJurisdiction(JurisdictionEnum jurisdiction) {
+  public void setJurisdiction(TaxJurisdictionType jurisdiction) {
     this.jurisdiction = jurisdiction;
   }
 
@@ -481,12 +379,6 @@ public class OrderItemTax {
       // validate the optional field `orderItem`
       if (jsonObj.getAsJsonObject("orderItem") != null) {
         OrderItem.validateJsonObject(jsonObj.getAsJsonObject("orderItem"));
-      }
-      if (jsonObj.get("taxType") != null && !jsonObj.get("taxType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `taxType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxType").toString()));
-      }
-      if (jsonObj.get("jurisdiction") != null && !jsonObj.get("jurisdiction").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `jurisdiction` to be a primitive type in the JSON string but got `%s`", jsonObj.get("jurisdiction").toString()));
       }
       if (jsonObj.get("taxDescription") != null && !jsonObj.get("taxDescription").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxDescription").toString()));

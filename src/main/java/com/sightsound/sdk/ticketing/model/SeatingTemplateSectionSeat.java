@@ -20,8 +20,10 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.SeatType;
 import com.sightsound.sdk.ticketing.model.SeatingTemplate;
 import com.sightsound.sdk.ticketing.model.SeatingTemplateSection;
+import com.sightsound.sdk.ticketing.model.TheaterEntrance;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -49,7 +51,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * SeatingTemplateSectionSeat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class SeatingTemplateSectionSeat {
   public static final String SERIALIZED_NAME_SECTION_CODE = "sectionCode";
   @SerializedName(SERIALIZED_NAME_SECTION_CODE)
@@ -71,74 +73,9 @@ public class SeatingTemplateSectionSeat {
   @SerializedName(SERIALIZED_NAME_SEATING_TEMPLATE_CODE)
   private String seatingTemplateCode;
 
-  /**
-   * Gets or Sets seatType
-   */
-  @JsonAdapter(SeatTypeEnum.Adapter.class)
-  public enum SeatTypeEnum {
-    A("A"),
-    
-    C("C"),
-    
-    D("D"),
-    
-    F("F"),
-    
-    H("H"),
-    
-    I("I"),
-    
-    M("M"),
-    
-    S("S"),
-    
-    T("T"),
-    
-    V("V"),
-    
-    W("W");
-
-    private String value;
-
-    SeatTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SeatTypeEnum fromValue(String value) {
-      for (SeatTypeEnum b : SeatTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SeatTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SeatTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SeatTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SeatTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SEAT_TYPE = "seatType";
   @SerializedName(SERIALIZED_NAME_SEAT_TYPE)
-  private SeatTypeEnum seatType;
+  private SeatType seatType;
 
   public static final String SERIALIZED_NAME_SEAT_DESIREABILITY = "seatDesireability";
   @SerializedName(SERIALIZED_NAME_SEAT_DESIREABILITY)
@@ -160,68 +97,9 @@ public class SeatingTemplateSectionSeat {
   @SerializedName(SERIALIZED_NAME_SECTOR_CODE)
   private String sectorCode;
 
-  /**
-   * Gets or Sets entranceCode
-   */
-  @JsonAdapter(EntranceCodeEnum.Adapter.class)
-  public enum EntranceCodeEnum {
-    BR_ECS("BR_ECS"),
-    
-    BR_EBS("BR_EBS"),
-    
-    BR_EB("BR_EB"),
-    
-    BR_EC("BR_EC"),
-    
-    SS_EB("SS_EB"),
-    
-    SS_EC("SS_EC"),
-    
-    SS_EAS("SS_EAS"),
-    
-    SS_EDS("SS_EDS");
-
-    private String value;
-
-    EntranceCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static EntranceCodeEnum fromValue(String value) {
-      for (EntranceCodeEnum b : EntranceCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<EntranceCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final EntranceCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public EntranceCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return EntranceCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ENTRANCE_CODE = "entranceCode";
   @SerializedName(SERIALIZED_NAME_ENTRANCE_CODE)
-  private EntranceCodeEnum entranceCode;
+  private TheaterEntrance entranceCode;
 
   public static final String SERIALIZED_NAME_TEMPLATE = "template";
   @SerializedName(SERIALIZED_NAME_TEMPLATE)
@@ -231,6 +109,10 @@ public class SeatingTemplateSectionSeat {
   @SerializedName(SERIALIZED_NAME_SECTION)
   private SeatingTemplateSection section;
 
+  public static final String SERIALIZED_NAME_ZROTATION = "zrotation";
+  @SerializedName(SERIALIZED_NAME_ZROTATION)
+  private Integer zrotation;
+
   public static final String SERIALIZED_NAME_XCOORDINATE = "xcoordinate";
   @SerializedName(SERIALIZED_NAME_XCOORDINATE)
   private Integer xcoordinate;
@@ -238,10 +120,6 @@ public class SeatingTemplateSectionSeat {
   public static final String SERIALIZED_NAME_YCOORDINATE = "ycoordinate";
   @SerializedName(SERIALIZED_NAME_YCOORDINATE)
   private Integer ycoordinate;
-
-  public static final String SERIALIZED_NAME_ZROTATION = "zrotation";
-  @SerializedName(SERIALIZED_NAME_ZROTATION)
-  private Integer zrotation;
 
   public SeatingTemplateSectionSeat() { 
   }
@@ -361,7 +239,7 @@ public class SeatingTemplateSectionSeat {
   }
 
 
-  public SeatingTemplateSectionSeat seatType(SeatTypeEnum seatType) {
+  public SeatingTemplateSectionSeat seatType(SeatType seatType) {
     
     this.seatType = seatType;
     return this;
@@ -374,12 +252,12 @@ public class SeatingTemplateSectionSeat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public SeatTypeEnum getSeatType() {
+  public SeatType getSeatType() {
     return seatType;
   }
 
 
-  public void setSeatType(SeatTypeEnum seatType) {
+  public void setSeatType(SeatType seatType) {
     this.seatType = seatType;
   }
 
@@ -499,7 +377,7 @@ public class SeatingTemplateSectionSeat {
   }
 
 
-  public SeatingTemplateSectionSeat entranceCode(EntranceCodeEnum entranceCode) {
+  public SeatingTemplateSectionSeat entranceCode(TheaterEntrance entranceCode) {
     
     this.entranceCode = entranceCode;
     return this;
@@ -512,12 +390,12 @@ public class SeatingTemplateSectionSeat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public EntranceCodeEnum getEntranceCode() {
+  public TheaterEntrance getEntranceCode() {
     return entranceCode;
   }
 
 
-  public void setEntranceCode(EntranceCodeEnum entranceCode) {
+  public void setEntranceCode(TheaterEntrance entranceCode) {
     this.entranceCode = entranceCode;
   }
 
@@ -568,6 +446,29 @@ public class SeatingTemplateSectionSeat {
   }
 
 
+  public SeatingTemplateSectionSeat zrotation(Integer zrotation) {
+    
+    this.zrotation = zrotation;
+    return this;
+  }
+
+   /**
+   * Get zrotation
+   * @return zrotation
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getZrotation() {
+    return zrotation;
+  }
+
+
+  public void setZrotation(Integer zrotation) {
+    this.zrotation = zrotation;
+  }
+
+
   public SeatingTemplateSectionSeat xcoordinate(Integer xcoordinate) {
     
     this.xcoordinate = xcoordinate;
@@ -614,29 +515,6 @@ public class SeatingTemplateSectionSeat {
   }
 
 
-  public SeatingTemplateSectionSeat zrotation(Integer zrotation) {
-    
-    this.zrotation = zrotation;
-    return this;
-  }
-
-   /**
-   * Get zrotation
-   * @return zrotation
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getZrotation() {
-    return zrotation;
-  }
-
-
-  public void setZrotation(Integer zrotation) {
-    this.zrotation = zrotation;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -661,14 +539,14 @@ public class SeatingTemplateSectionSeat {
         Objects.equals(this.entranceCode, seatingTemplateSectionSeat.entranceCode) &&
         Objects.equals(this.template, seatingTemplateSectionSeat.template) &&
         Objects.equals(this.section, seatingTemplateSectionSeat.section) &&
+        Objects.equals(this.zrotation, seatingTemplateSectionSeat.zrotation) &&
         Objects.equals(this.xcoordinate, seatingTemplateSectionSeat.xcoordinate) &&
-        Objects.equals(this.ycoordinate, seatingTemplateSectionSeat.ycoordinate) &&
-        Objects.equals(this.zrotation, seatingTemplateSectionSeat.zrotation);
+        Objects.equals(this.ycoordinate, seatingTemplateSectionSeat.ycoordinate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sectionCode, rowNumber, seatNumber, priceGrade, seatingTemplateCode, seatType, seatDesireability, sectionDesireability, orderTix, bookingPhase, sectorCode, entranceCode, template, section, xcoordinate, ycoordinate, zrotation);
+    return Objects.hash(sectionCode, rowNumber, seatNumber, priceGrade, seatingTemplateCode, seatType, seatDesireability, sectionDesireability, orderTix, bookingPhase, sectorCode, entranceCode, template, section, zrotation, xcoordinate, ycoordinate);
   }
 
   @Override
@@ -689,9 +567,9 @@ public class SeatingTemplateSectionSeat {
     sb.append("    entranceCode: ").append(toIndentedString(entranceCode)).append("\n");
     sb.append("    template: ").append(toIndentedString(template)).append("\n");
     sb.append("    section: ").append(toIndentedString(section)).append("\n");
+    sb.append("    zrotation: ").append(toIndentedString(zrotation)).append("\n");
     sb.append("    xcoordinate: ").append(toIndentedString(xcoordinate)).append("\n");
     sb.append("    ycoordinate: ").append(toIndentedString(ycoordinate)).append("\n");
-    sb.append("    zrotation: ").append(toIndentedString(zrotation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -728,9 +606,9 @@ public class SeatingTemplateSectionSeat {
     openapiFields.add("entranceCode");
     openapiFields.add("template");
     openapiFields.add("section");
+    openapiFields.add("zrotation");
     openapiFields.add("xcoordinate");
     openapiFields.add("ycoordinate");
-    openapiFields.add("zrotation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -781,14 +659,8 @@ public class SeatingTemplateSectionSeat {
       if (jsonObj.get("seatingTemplateCode") != null && !jsonObj.get("seatingTemplateCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `seatingTemplateCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("seatingTemplateCode").toString()));
       }
-      if (jsonObj.get("seatType") != null && !jsonObj.get("seatType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `seatType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("seatType").toString()));
-      }
       if (jsonObj.get("sectorCode") != null && !jsonObj.get("sectorCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sectorCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sectorCode").toString()));
-      }
-      if (jsonObj.get("entranceCode") != null && !jsonObj.get("entranceCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `entranceCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entranceCode").toString()));
       }
       // validate the optional field `template`
       if (jsonObj.getAsJsonObject("template") != null) {

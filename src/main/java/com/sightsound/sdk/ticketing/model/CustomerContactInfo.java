@@ -20,8 +20,10 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.AdditionalContactRole;
 import com.sightsound.sdk.ticketing.model.Customer;
 import com.sightsound.sdk.ticketing.model.CustomerContactInfoCommunicationTag;
+import com.sightsound.sdk.ticketing.model.PhoneType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -52,7 +54,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * CustomerContactInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class CustomerContactInfo {
   public static final String SERIALIZED_NAME_CONTACT_ID = "contactId";
   @SerializedName(SERIALIZED_NAME_CONTACT_ID)
@@ -98,70 +100,9 @@ public class CustomerContactInfo {
   @SerializedName(SERIALIZED_NAME_ADD_USER_ID)
   private String addUserId;
 
-  /**
-   * Gets or Sets phoneType
-   */
-  @JsonAdapter(PhoneTypeEnum.Adapter.class)
-  public enum PhoneTypeEnum {
-    FAX("FAX"),
-    
-    WORK("WORK"),
-    
-    DAYTIME("DAYTIME"),
-    
-    HOME("HOME"),
-    
-    CHURCH("CHURCH"),
-    
-    EVENING("EVENING"),
-    
-    CELL("CELL"),
-    
-    MOBILE("MOBILE"),
-    
-    AUTH_USER("AUTH_USER");
-
-    private String value;
-
-    PhoneTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PhoneTypeEnum fromValue(String value) {
-      for (PhoneTypeEnum b : PhoneTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PhoneTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PhoneTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PhoneTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PhoneTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_PHONE_TYPE = "phoneType";
   @SerializedName(SERIALIZED_NAME_PHONE_TYPE)
-  private PhoneTypeEnum phoneType;
+  private PhoneType phoneType;
 
   public static final String SERIALIZED_NAME_EMAIL_LIST = "emailList";
   @SerializedName(SERIALIZED_NAME_EMAIL_LIST)
@@ -175,60 +116,9 @@ public class CustomerContactInfo {
   @SerializedName(SERIALIZED_NAME_TEXT_LIST)
   private Boolean textList;
 
-  /**
-   * Gets or Sets role
-   */
-  @JsonAdapter(RoleEnum.Adapter.class)
-  public enum RoleEnum {
-    MANAGER("MANAGER"),
-    
-    ACCOUNTING("ACCOUNTING"),
-    
-    MARKETING("MARKETING"),
-    
-    GENERAL("GENERAL");
-
-    private String value;
-
-    RoleEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static RoleEnum fromValue(String value) {
-      for (RoleEnum b : RoleEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<RoleEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final RoleEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public RoleEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return RoleEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ROLE = "role";
   @SerializedName(SERIALIZED_NAME_ROLE)
-  private RoleEnum role;
+  private AdditionalContactRole role;
 
   public static final String SERIALIZED_NAME_PRIMARY = "primary";
   @SerializedName(SERIALIZED_NAME_PRIMARY)
@@ -502,7 +392,7 @@ public class CustomerContactInfo {
   }
 
 
-  public CustomerContactInfo phoneType(PhoneTypeEnum phoneType) {
+  public CustomerContactInfo phoneType(PhoneType phoneType) {
     
     this.phoneType = phoneType;
     return this;
@@ -515,12 +405,12 @@ public class CustomerContactInfo {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PhoneTypeEnum getPhoneType() {
+  public PhoneType getPhoneType() {
     return phoneType;
   }
 
 
-  public void setPhoneType(PhoneTypeEnum phoneType) {
+  public void setPhoneType(PhoneType phoneType) {
     this.phoneType = phoneType;
   }
 
@@ -594,7 +484,7 @@ public class CustomerContactInfo {
   }
 
 
-  public CustomerContactInfo role(RoleEnum role) {
+  public CustomerContactInfo role(AdditionalContactRole role) {
     
     this.role = role;
     return this;
@@ -607,12 +497,12 @@ public class CustomerContactInfo {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public RoleEnum getRole() {
+  public AdditionalContactRole getRole() {
     return role;
   }
 
 
-  public void setRole(RoleEnum role) {
+  public void setRole(AdditionalContactRole role) {
     this.role = role;
   }
 
@@ -871,12 +761,6 @@ public class CustomerContactInfo {
       }
       if (jsonObj.get("addUserId") != null && !jsonObj.get("addUserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `addUserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("addUserId").toString()));
-      }
-      if (jsonObj.get("phoneType") != null && !jsonObj.get("phoneType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `phoneType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneType").toString()));
-      }
-      if (jsonObj.get("role") != null && !jsonObj.get("role").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("role").toString()));
       }
       if (jsonObj.get("modifyUserId") != null && !jsonObj.get("modifyUserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `modifyUserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("modifyUserId").toString()));

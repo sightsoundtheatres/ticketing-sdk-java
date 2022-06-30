@@ -26,10 +26,10 @@
 |**finalPaymentExtDueDate** | **OffsetDateTime** |  |  [optional] |
 |**orderTotalPrice** | **BigDecimal** |  |  |
 |**companyName** | **String** |  |  [optional] |
-|**status** | [**StatusEnum**](#StatusEnum) |  |  |
+|**status** | **OrderStatus** |  |  |
 |**editUserId** | **String** |  |  [optional] |
 |**editDate** | **OffsetDateTime** |  |  [optional] |
-|**orderOrigin** | [**OrderOriginEnum**](#OrderOriginEnum) |  |  |
+|**orderOrigin** | **OrderOrigin** |  |  |
 |**printUserId** | **String** |  |  [optional] |
 |**sourceCodeComments** | **String** |  |  [optional] |
 |**depositDueAmount** | **BigDecimal** |  |  [optional] |
@@ -40,10 +40,10 @@
 |**bypassAutoSpecial** | **Boolean** |  |  [optional] |
 |**orderTypeCode** | **String** |  |  [optional] |
 |**waiveDepositDue** | **Boolean** |  |  [optional] |
-|**pricingLevel** | [**PricingLevelEnum**](#PricingLevelEnum) |  |  [optional] |
+|**pricingLevel** | **PricingLevel** |  |  [optional] |
 |**tierYear** | **Integer** |  |  [optional] |
 |**depositDueDate** | **OffsetDateTime** |  |  [optional] |
-|**theaterLocationCode** | [**TheaterLocationCodeEnum**](#TheaterLocationCodeEnum) |  |  [optional] |
+|**theaterLocationCode** | **LocationDescription** |  |  [optional] |
 |**depositAmount** | **BigDecimal** |  |  [optional] |
 |**cancelReminderSent** | **Boolean** |  |  [optional] |
 |**emailTicketsProcessed** | **Boolean** |  |  [optional] |
@@ -65,9 +65,9 @@
 |**trackingNumber** | **String** |  |  [optional] |
 |**shipFromLocation** | **String** |  |  [optional] |
 |**mailToAddressVerified** | **Boolean** |  |  [optional] |
-|**ticketBatch** | [**TicketBatchEnum**](#TicketBatchEnum) |  |  [optional] |
+|**ticketBatch** | **TicketBatch** |  |  [optional] |
 |**ticketBatchAgent** | **String** |  |  [optional] |
-|**invoiceType** | [**InvoiceTypeEnum**](#InvoiceTypeEnum) |  |  [optional] |
+|**invoiceType** | **InvoiceType** |  |  [optional] |
 |**returnOrderNumber** | **Long** |  |  [optional] |
 |**contactPhone** | **String** |  |  [optional] |
 |**inventoryMoved** | **Boolean** |  |  [optional] |
@@ -102,23 +102,36 @@
 |**specialRemoved** | **Boolean** |  |  [optional] |
 |**promoCode** | **String** |  |  [optional] |
 |**discountAutoApplied** | **Boolean** |  |  [optional] |
-|**logActivity** | [**LogActivityEnum**](#LogActivityEnum) |  |  [optional] |
+|**logActivity** | **ActivityType** |  |  [optional] |
 |**persisted** | **Boolean** |  |  [optional] |
 |**alreadyLoggedActivity** | **Boolean** |  |  [optional] |
 |**ticketDeliveryMessage** | **String** |  |  [optional] |
 |**cancelled** | **Boolean** |  |  [optional] |
+|**allShowTourItem** | [**List&lt;OrderItem&gt;**](OrderItem.md) |  |  [optional] |
+|**grandTotalSaving** | **BigDecimal** |  |  [optional] |
+|**autoApplyDiscounts** | **Boolean** |  |  [optional] |
 |**_new** | **Boolean** |  |  [optional] |
 |**group** | **Boolean** |  |  [optional] |
+|**activeShowTourItemCount** | **Integer** |  |  [optional] |
+|**invoiceCompany** | **InvoiceCompany** |  |  [optional] |
+|**dueAmount** | **BigDecimal** |  |  [optional] |
+|**totalPaidAmount** | **BigDecimal** |  |  [optional] |
+|**companyCode** | **String** |  |  [optional] |
+|**groupCount** | **Integer** |  |  [optional] |
+|**activeShowTourItem** | [**List&lt;OrderItem&gt;**](OrderItem.md) |  |  [optional] |
+|**totalFee** | **BigDecimal** |  |  [optional] |
 |**firstOccurringShowItem** | [**OrderItem**](OrderItem.md) |  |  [optional] |
 |**firstOccurringTourItem** | [**OrderItem**](OrderItem.md) |  |  [optional] |
 |**activeWithOrder** | [**List&lt;OrderItem&gt;**](OrderItem.md) |  |  [optional] |
-|**postPayPricingLevel** | [**PostPayPricingLevelEnum**](#PostPayPricingLevelEnum) |  |  [optional] |
+|**postPayPricingLevel** | **PricingLevel** |  |  [optional] |
 |**allItemsTotalPrice** | **BigDecimal** |  |  [optional] |
 |**totalTax** | **BigDecimal** |  |  [optional] |
 |**totalGratuity** | **BigDecimal** |  |  [optional] |
 |**totalDiscount** | **BigDecimal** |  |  [optional] |
+|**seatsOverAssigned** | **Boolean** |  |  [optional] |
+|**allSeatAssigned** | **Boolean** |  |  [optional] |
 |**activeOrderItemList** | [**List&lt;OrderItem&gt;**](OrderItem.md) |  |  [optional] |
-|**calculatedPricingLevel** | [**CalculatedPricingLevelEnum**](#CalculatedPricingLevelEnum) |  |  [optional] |
+|**calculatedPricingLevel** | **PricingLevel** |  |  [optional] |
 |**paymentPast** | **Boolean** |  |  [optional] |
 |**finalPaymentDueDays** | **Long** |  |  [optional] |
 |**maxItemNumber** | **Integer** |  |  [optional] |
@@ -130,172 +143,17 @@
 |**totalTransactionCharge** | **BigDecimal** |  |  [optional] |
 |**showsDaysSpan** | **Long** |  |  [optional] |
 |**highCountByOrderItem** | **Integer** |  |  [optional] |
+|**totalCustomerDiscount** | **BigDecimal** |  |  [optional] |
 |**readyForPrinting** | **Boolean** |  |  [optional] |
 |**activeShowItems** | [**List&lt;OrderItem&gt;**](OrderItem.md) |  |  [optional] |
 |**mailToName** | **String** |  |  [optional] |
 |**shipMethod** | **String** |  |  [optional] |
-|**totalCustomerDiscount** | **BigDecimal** |  |  [optional] |
-|**invoiceCompany** | [**InvoiceCompanyEnum**](#InvoiceCompanyEnum) |  |  [optional] |
-|**dueAmount** | **BigDecimal** |  |  [optional] |
-|**totalPaidAmount** | **BigDecimal** |  |  [optional] |
-|**companyCode** | **String** |  |  [optional] |
-|**groupCount** | **Integer** |  |  [optional] |
-|**activeShowTourItem** | [**List&lt;OrderItem&gt;**](OrderItem.md) |  |  [optional] |
-|**totalFee** | **BigDecimal** |  |  [optional] |
-|**seatsOverAssigned** | **Boolean** |  |  [optional] |
-|**allSeatAssigned** | **Boolean** |  |  [optional] |
-|**activeShowTourItemCount** | **Integer** |  |  [optional] |
-|**allShowTourItem** | [**List&lt;OrderItem&gt;**](OrderItem.md) |  |  [optional] |
-|**grandTotalSaving** | **BigDecimal** |  |  [optional] |
-|**autoApplyDiscounts** | **Boolean** |  |  [optional] |
 |**lastShowDate** | **OffsetDateTime** |  |  [optional] |
 |**firstOccurringShowItemWithValidCount** | [**OrderItem**](OrderItem.md) |  |  [optional] |
 |**lastOccurringShowTourItem** | [**OrderItem**](OrderItem.md) |  |  [optional] |
 |**firstOccurringShowTourItem** | [**OrderItem**](OrderItem.md) |  |  [optional] |
 |**cancelledShowTourItemList** | [**List&lt;OrderItem&gt;**](OrderItem.md) |  |  [optional] |
 |**allPartnerEventsConfirmed** | **Boolean** |  |  [optional] |
-
-
-
-## Enum: StatusEnum
-
-| Name | Value |
-|---- | -----|
-| CANCELLED | &quot;CANCELLED&quot; |
-| COMPLETED | &quot;COMPLETED&quot; |
-| OPEN | &quot;OPEN&quot; |
-
-
-
-## Enum: OrderOriginEnum
-
-| Name | Value |
-|---- | -----|
-| FAST_SALE | &quot;FAST_SALE&quot; |
-| POS | &quot;POS&quot; |
-| INTERNET | &quot;INTERNET&quot; |
-| SHOWTIX | &quot;SHOWTIX&quot; |
-
-
-
-## Enum: PricingLevelEnum
-
-| Name | Value |
-|---- | -----|
-| NOLEVEL | &quot;NOLEVEL&quot; |
-| POSTPAY | &quot;POSTPAY&quot; |
-| LEVEL1 | &quot;LEVEL1&quot; |
-| LEVEL2 | &quot;LEVEL2&quot; |
-| LEVEL3 | &quot;LEVEL3&quot; |
-| HOT | &quot;HOT&quot; |
-| RECEPTOR | &quot;RECEPTOR&quot; |
-| RECEPTIVE | &quot;RECEPTIVE&quot; |
-| NOTIER | &quot;NOTIER&quot; |
-| TIER1 | &quot;TIER1&quot; |
-| TIER2 | &quot;TIER2&quot; |
-| TIER3 | &quot;TIER3&quot; |
-| TIER4 | &quot;TIER4&quot; |
-
-
-
-## Enum: TheaterLocationCodeEnum
-
-| Name | Value |
-|---- | -----|
-| STRASBURG_PA | &quot;STRASBURG_PA&quot; |
-| BRANSON_MO | &quot;BRANSON_MO&quot; |
-
-
-
-## Enum: TicketBatchEnum
-
-| Name | Value |
-|---- | -----|
-| AGENT | &quot;AGENT&quot; |
-| ETICKET | &quot;ETICKET&quot; |
-| HELD | &quot;HELD&quot; |
-
-
-
-## Enum: InvoiceTypeEnum
-
-| Name | Value |
-|---- | -----|
-| I | &quot;I&quot; |
-| C | &quot;C&quot; |
-| R | &quot;R&quot; |
-
-
-
-## Enum: LogActivityEnum
-
-| Name | Value |
-|---- | -----|
-| ADD | &quot;ADD&quot; |
-| CHANGE | &quot;CHANGE&quot; |
-| ADD | &quot;ADD&quot; |
-| CHANGE | &quot;CHANGE&quot; |
-| CANCEL | &quot;CANCEL&quot; |
-| SPL_DISC_REMOVED | &quot;SPL DISC REMOVED&quot; |
-| SPL_DISC_APPLIED | &quot;SPL DISC APPLIED&quot; |
-| RESERVED | &quot;RESERVED&quot; |
-| COUNT_INCREASED | &quot;COUNT INCREASED&quot; |
-| COUNT_DECREASED | &quot;COUNT DECREASED&quot; |
-| AMOUNT_INCREASED | &quot;AMOUNT INCREASED&quot; |
-| AMOUNT_DECREASED | &quot;AMOUNT DECREASED&quot; |
-| DESIGNATION_CHANGE | &quot;DESIGNATION CHANGE&quot; |
-| TRANS_IN | &quot;TRANS IN&quot; |
-| CANCELLED | &quot;CANCELLED&quot; |
-| SPL_STN_MODIFIED | &quot;SPL STN MODIFIED&quot; |
-
-
-
-## Enum: PostPayPricingLevelEnum
-
-| Name | Value |
-|---- | -----|
-| NOLEVEL | &quot;NOLEVEL&quot; |
-| POSTPAY | &quot;POSTPAY&quot; |
-| LEVEL1 | &quot;LEVEL1&quot; |
-| LEVEL2 | &quot;LEVEL2&quot; |
-| LEVEL3 | &quot;LEVEL3&quot; |
-| HOT | &quot;HOT&quot; |
-| RECEPTOR | &quot;RECEPTOR&quot; |
-| RECEPTIVE | &quot;RECEPTIVE&quot; |
-| NOTIER | &quot;NOTIER&quot; |
-| TIER1 | &quot;TIER1&quot; |
-| TIER2 | &quot;TIER2&quot; |
-| TIER3 | &quot;TIER3&quot; |
-| TIER4 | &quot;TIER4&quot; |
-
-
-
-## Enum: CalculatedPricingLevelEnum
-
-| Name | Value |
-|---- | -----|
-| NOLEVEL | &quot;NOLEVEL&quot; |
-| POSTPAY | &quot;POSTPAY&quot; |
-| LEVEL1 | &quot;LEVEL1&quot; |
-| LEVEL2 | &quot;LEVEL2&quot; |
-| LEVEL3 | &quot;LEVEL3&quot; |
-| HOT | &quot;HOT&quot; |
-| RECEPTOR | &quot;RECEPTOR&quot; |
-| RECEPTIVE | &quot;RECEPTIVE&quot; |
-| NOTIER | &quot;NOTIER&quot; |
-| TIER1 | &quot;TIER1&quot; |
-| TIER2 | &quot;TIER2&quot; |
-| TIER3 | &quot;TIER3&quot; |
-| TIER4 | &quot;TIER4&quot; |
-
-
-
-## Enum: InvoiceCompanyEnum
-
-| Name | Value |
-|---- | -----|
-| SS | &quot;SS&quot; |
-| BR | &quot;BR&quot; |
 
 
 

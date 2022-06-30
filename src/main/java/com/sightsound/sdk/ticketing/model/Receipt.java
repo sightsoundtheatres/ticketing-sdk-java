@@ -21,7 +21,13 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.Customer;
+import com.sightsound.sdk.ticketing.model.InvoiceCompany;
 import com.sightsound.sdk.ticketing.model.ReceiptDetail;
+import com.sightsound.sdk.ticketing.model.ReceiptPaymentType;
+import com.sightsound.sdk.ticketing.model.ReceiptReasonCode;
+import com.sightsound.sdk.ticketing.model.ReceiptStatus;
+import com.sightsound.sdk.ticketing.model.ReceiptType;
+import com.sightsound.sdk.ticketing.model.SyncSource;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -53,62 +59,15 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Receipt
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class Receipt {
   public static final String SERIALIZED_NAME_RECEIPT_NUMBER = "receiptNumber";
   @SerializedName(SERIALIZED_NAME_RECEIPT_NUMBER)
   private Long receiptNumber;
 
-  /**
-   * Gets or Sets company
-   */
-  @JsonAdapter(CompanyEnum.Adapter.class)
-  public enum CompanyEnum {
-    SS("SS"),
-    
-    BR("BR");
-
-    private String value;
-
-    CompanyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CompanyEnum fromValue(String value) {
-      for (CompanyEnum b : CompanyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<CompanyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CompanyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CompanyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CompanyEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_COMPANY = "company";
   @SerializedName(SERIALIZED_NAME_COMPANY)
-  private CompanyEnum company;
+  private InvoiceCompany company;
 
   public static final String SERIALIZED_NAME_CHECK_NUMBER = "checkNumber";
   @SerializedName(SERIALIZED_NAME_CHECK_NUMBER)
@@ -130,56 +89,9 @@ public class Receipt {
   @SerializedName(SERIALIZED_NAME_RECEIPT_AMOUNT)
   private BigDecimal receiptAmount;
 
-  /**
-   * Gets or Sets receiptStatus
-   */
-  @JsonAdapter(ReceiptStatusEnum.Adapter.class)
-  public enum ReceiptStatusEnum {
-    A("A"),
-    
-    V("V");
-
-    private String value;
-
-    ReceiptStatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ReceiptStatusEnum fromValue(String value) {
-      for (ReceiptStatusEnum b : ReceiptStatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ReceiptStatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ReceiptStatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ReceiptStatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ReceiptStatusEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_RECEIPT_STATUS = "receiptStatus";
   @SerializedName(SERIALIZED_NAME_RECEIPT_STATUS)
-  private ReceiptStatusEnum receiptStatus;
+  private ReceiptStatus receiptStatus;
 
   public static final String SERIALIZED_NAME_PAID_AMOUNT = "paidAmount";
   @SerializedName(SERIALIZED_NAME_PAID_AMOUNT)
@@ -193,186 +105,21 @@ public class Receipt {
   @SerializedName(SERIALIZED_NAME_BANK_CODE)
   private String bankCode;
 
-  /**
-   * Gets or Sets paymentType
-   */
-  @JsonAdapter(PaymentTypeEnum.Adapter.class)
-  public enum PaymentTypeEnum {
-    W("W"),
-    
-    CH("CH"),
-    
-    AC("AC"),
-    
-    CS("CS"),
-    
-    RF("RF"),
-    
-    CV("CV"),
-    
-    GV("GV"),
-    
-    NF("NF"),
-    
-    CR("CR"),
-    
-    GC("GC"),
-    
-    MX("MX");
-
-    private String value;
-
-    PaymentTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PaymentTypeEnum fromValue(String value) {
-      for (PaymentTypeEnum b : PaymentTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PaymentTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PaymentTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PaymentTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PaymentTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_PAYMENT_TYPE = "paymentType";
   @SerializedName(SERIALIZED_NAME_PAYMENT_TYPE)
-  private PaymentTypeEnum paymentType;
-
-  /**
-   * Gets or Sets receiptType
-   */
-  @JsonAdapter(ReceiptTypeEnum.Adapter.class)
-  public enum ReceiptTypeEnum {
-    NA("NA"),
-    
-    C("C");
-
-    private String value;
-
-    ReceiptTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ReceiptTypeEnum fromValue(String value) {
-      for (ReceiptTypeEnum b : ReceiptTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ReceiptTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ReceiptTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ReceiptTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ReceiptTypeEnum.fromValue(value);
-      }
-    }
-  }
+  private ReceiptPaymentType paymentType;
 
   public static final String SERIALIZED_NAME_RECEIPT_TYPE = "receiptType";
   @SerializedName(SERIALIZED_NAME_RECEIPT_TYPE)
-  private ReceiptTypeEnum receiptType;
+  private ReceiptType receiptType;
 
   public static final String SERIALIZED_NAME_CONTROL_NUMBER = "controlNumber";
   @SerializedName(SERIALIZED_NAME_CONTROL_NUMBER)
   private Long controlNumber;
 
-  /**
-   * Gets or Sets reasonCode
-   */
-  @JsonAdapter(ReasonCodeEnum.Adapter.class)
-  public enum ReasonCodeEnum {
-    RECEIPTADJ("RECEIPTADJ"),
-    
-    CLOSED("CLOSED"),
-    
-    NSF("NSF"),
-    
-    INVALIDPMT("INVALIDPMT"),
-    
-    STOPPYMT("STOPPYMT");
-
-    private String value;
-
-    ReasonCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ReasonCodeEnum fromValue(String value) {
-      for (ReasonCodeEnum b : ReasonCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ReasonCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ReasonCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ReasonCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ReasonCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_REASON_CODE = "reasonCode";
   @SerializedName(SERIALIZED_NAME_REASON_CODE)
-  private ReasonCodeEnum reasonCode;
+  private ReceiptReasonCode reasonCode;
 
   public static final String SERIALIZED_NAME_BASE_AMOUNT = "baseAmount";
   @SerializedName(SERIALIZED_NAME_BASE_AMOUNT)
@@ -394,56 +141,9 @@ public class Receipt {
   @SerializedName(SERIALIZED_NAME_EXECUTIVE_SERIES_RECEIPT_NUMBER)
   private Long executiveSeriesReceiptNumber;
 
-  /**
-   * Gets or Sets syncSource
-   */
-  @JsonAdapter(SyncSourceEnum.Adapter.class)
-  public enum SyncSourceEnum {
-    H("H"),
-    
-    A("A");
-
-    private String value;
-
-    SyncSourceEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SyncSourceEnum fromValue(String value) {
-      for (SyncSourceEnum b : SyncSourceEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SyncSourceEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SyncSourceEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SyncSourceEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SyncSourceEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SYNC_SOURCE = "syncSource";
   @SerializedName(SERIALIZED_NAME_SYNC_SOURCE)
-  private SyncSourceEnum syncSource;
+  private SyncSource syncSource;
 
   public static final String SERIALIZED_NAME_ADD_USER_ID = "addUserId";
   @SerializedName(SERIALIZED_NAME_ADD_USER_ID)
@@ -487,7 +187,7 @@ public class Receipt {
   }
 
 
-  public Receipt company(CompanyEnum company) {
+  public Receipt company(InvoiceCompany company) {
     
     this.company = company;
     return this;
@@ -500,12 +200,12 @@ public class Receipt {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public CompanyEnum getCompany() {
+  public InvoiceCompany getCompany() {
     return company;
   }
 
 
-  public void setCompany(CompanyEnum company) {
+  public void setCompany(InvoiceCompany company) {
     this.company = company;
   }
 
@@ -625,7 +325,7 @@ public class Receipt {
   }
 
 
-  public Receipt receiptStatus(ReceiptStatusEnum receiptStatus) {
+  public Receipt receiptStatus(ReceiptStatus receiptStatus) {
     
     this.receiptStatus = receiptStatus;
     return this;
@@ -638,12 +338,12 @@ public class Receipt {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ReceiptStatusEnum getReceiptStatus() {
+  public ReceiptStatus getReceiptStatus() {
     return receiptStatus;
   }
 
 
-  public void setReceiptStatus(ReceiptStatusEnum receiptStatus) {
+  public void setReceiptStatus(ReceiptStatus receiptStatus) {
     this.receiptStatus = receiptStatus;
   }
 
@@ -717,7 +417,7 @@ public class Receipt {
   }
 
 
-  public Receipt paymentType(PaymentTypeEnum paymentType) {
+  public Receipt paymentType(ReceiptPaymentType paymentType) {
     
     this.paymentType = paymentType;
     return this;
@@ -730,17 +430,17 @@ public class Receipt {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PaymentTypeEnum getPaymentType() {
+  public ReceiptPaymentType getPaymentType() {
     return paymentType;
   }
 
 
-  public void setPaymentType(PaymentTypeEnum paymentType) {
+  public void setPaymentType(ReceiptPaymentType paymentType) {
     this.paymentType = paymentType;
   }
 
 
-  public Receipt receiptType(ReceiptTypeEnum receiptType) {
+  public Receipt receiptType(ReceiptType receiptType) {
     
     this.receiptType = receiptType;
     return this;
@@ -753,12 +453,12 @@ public class Receipt {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ReceiptTypeEnum getReceiptType() {
+  public ReceiptType getReceiptType() {
     return receiptType;
   }
 
 
-  public void setReceiptType(ReceiptTypeEnum receiptType) {
+  public void setReceiptType(ReceiptType receiptType) {
     this.receiptType = receiptType;
   }
 
@@ -786,7 +486,7 @@ public class Receipt {
   }
 
 
-  public Receipt reasonCode(ReasonCodeEnum reasonCode) {
+  public Receipt reasonCode(ReceiptReasonCode reasonCode) {
     
     this.reasonCode = reasonCode;
     return this;
@@ -799,12 +499,12 @@ public class Receipt {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ReasonCodeEnum getReasonCode() {
+  public ReceiptReasonCode getReasonCode() {
     return reasonCode;
   }
 
 
-  public void setReasonCode(ReasonCodeEnum reasonCode) {
+  public void setReasonCode(ReceiptReasonCode reasonCode) {
     this.reasonCode = reasonCode;
   }
 
@@ -924,7 +624,7 @@ public class Receipt {
   }
 
 
-  public Receipt syncSource(SyncSourceEnum syncSource) {
+  public Receipt syncSource(SyncSource syncSource) {
     
     this.syncSource = syncSource;
     return this;
@@ -937,12 +637,12 @@ public class Receipt {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public SyncSourceEnum getSyncSource() {
+  public SyncSource getSyncSource() {
     return syncSource;
   }
 
 
-  public void setSyncSource(SyncSourceEnum syncSource) {
+  public void setSyncSource(SyncSource syncSource) {
     this.syncSource = syncSource;
   }
 
@@ -1201,35 +901,17 @@ public class Receipt {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (jsonObj.get("company") != null && !jsonObj.get("company").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `company` to be a primitive type in the JSON string but got `%s`", jsonObj.get("company").toString()));
-      }
       if (jsonObj.get("checkNumber") != null && !jsonObj.get("checkNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `checkNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkNumber").toString()));
       }
       if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if (jsonObj.get("receiptStatus") != null && !jsonObj.get("receiptStatus").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `receiptStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("receiptStatus").toString()));
-      }
       if (jsonObj.get("bankCode") != null && !jsonObj.get("bankCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bankCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bankCode").toString()));
       }
-      if (jsonObj.get("paymentType") != null && !jsonObj.get("paymentType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `paymentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("paymentType").toString()));
-      }
-      if (jsonObj.get("receiptType") != null && !jsonObj.get("receiptType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `receiptType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("receiptType").toString()));
-      }
-      if (jsonObj.get("reasonCode") != null && !jsonObj.get("reasonCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reasonCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reasonCode").toString()));
-      }
       if (jsonObj.get("location") != null && !jsonObj.get("location").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
-      }
-      if (jsonObj.get("syncSource") != null && !jsonObj.get("syncSource").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `syncSource` to be a primitive type in the JSON string but got `%s`", jsonObj.get("syncSource").toString()));
       }
       if (jsonObj.get("addUserId") != null && !jsonObj.get("addUserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `addUserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("addUserId").toString()));

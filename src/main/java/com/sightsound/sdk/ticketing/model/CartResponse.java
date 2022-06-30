@@ -20,7 +20,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.LocationDescription;
 import com.sightsound.sdk.ticketing.model.OrderItemPriceResponse;
+import com.sightsound.sdk.ticketing.model.TicketBatch;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -52,7 +54,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * CartResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class CartResponse {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -86,109 +88,13 @@ public class CartResponse {
   @SerializedName(SERIALIZED_NAME_REFUND_POLICY)
   private String refundPolicy;
 
-  /**
-   * Gets or Sets location
-   */
-  @JsonAdapter(LocationEnum.Adapter.class)
-  public enum LocationEnum {
-    STRASBURG_PA("STRASBURG_PA"),
-    
-    BRANSON_MO("BRANSON_MO");
-
-    private String value;
-
-    LocationEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static LocationEnum fromValue(String value) {
-      for (LocationEnum b : LocationEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<LocationEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final LocationEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public LocationEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return LocationEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
-  private LocationEnum location;
-
-  /**
-   * Gets or Sets ticketBatch
-   */
-  @JsonAdapter(TicketBatchEnum.Adapter.class)
-  public enum TicketBatchEnum {
-    AGENT("AGENT"),
-    
-    ETICKET("ETICKET"),
-    
-    HELD("HELD");
-
-    private String value;
-
-    TicketBatchEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TicketBatchEnum fromValue(String value) {
-      for (TicketBatchEnum b : TicketBatchEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TicketBatchEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TicketBatchEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TicketBatchEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TicketBatchEnum.fromValue(value);
-      }
-    }
-  }
+  private LocationDescription location;
 
   public static final String SERIALIZED_NAME_TICKET_BATCH = "ticketBatch";
   @SerializedName(SERIALIZED_NAME_TICKET_BATCH)
-  private TicketBatchEnum ticketBatch;
+  private TicketBatch ticketBatch;
 
   public static final String SERIALIZED_NAME_HELD_NAME = "heldName";
   @SerializedName(SERIALIZED_NAME_HELD_NAME)
@@ -429,7 +335,7 @@ public class CartResponse {
   }
 
 
-  public CartResponse location(LocationEnum location) {
+  public CartResponse location(LocationDescription location) {
     
     this.location = location;
     return this;
@@ -442,17 +348,17 @@ public class CartResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public LocationEnum getLocation() {
+  public LocationDescription getLocation() {
     return location;
   }
 
 
-  public void setLocation(LocationEnum location) {
+  public void setLocation(LocationDescription location) {
     this.location = location;
   }
 
 
-  public CartResponse ticketBatch(TicketBatchEnum ticketBatch) {
+  public CartResponse ticketBatch(TicketBatch ticketBatch) {
     
     this.ticketBatch = ticketBatch;
     return this;
@@ -465,12 +371,12 @@ public class CartResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TicketBatchEnum getTicketBatch() {
+  public TicketBatch getTicketBatch() {
     return ticketBatch;
   }
 
 
-  public void setTicketBatch(TicketBatchEnum ticketBatch) {
+  public void setTicketBatch(TicketBatch ticketBatch) {
     this.ticketBatch = ticketBatch;
   }
 
@@ -923,12 +829,6 @@ public class CartResponse {
       }
       if (jsonObj.get("refundPolicy") != null && !jsonObj.get("refundPolicy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `refundPolicy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("refundPolicy").toString()));
-      }
-      if (jsonObj.get("location") != null && !jsonObj.get("location").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
-      }
-      if (jsonObj.get("ticketBatch") != null && !jsonObj.get("ticketBatch").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ticketBatch` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketBatch").toString()));
       }
       if (jsonObj.get("heldName") != null && !jsonObj.get("heldName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `heldName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("heldName").toString()));

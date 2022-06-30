@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.CompCodeType;
 import com.sightsound.sdk.ticketing.model.OrderItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -50,7 +51,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderItemComp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class OrderItemComp {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -68,68 +69,9 @@ public class OrderItemComp {
   @SerializedName(SERIALIZED_NAME_EVENT_CODE)
   private String eventCode;
 
-  /**
-   * Gets or Sets compType
-   */
-  @JsonAdapter(CompTypeEnum.Adapter.class)
-  public enum CompTypeEnum {
-    ADMINISTRATION("ADMINISTRATION"),
-    
-    MARKETING("MARKETING"),
-    
-    SALES("SALES"),
-    
-    SALESREP("SALESREP"),
-    
-    PARTNERSHIP("PARTNERSHIP"),
-    
-    CHARITY("CHARITY"),
-    
-    MANUAL("MANUAL"),
-    
-    LEADERSHIP("LEADERSHIP");
-
-    private String value;
-
-    CompTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CompTypeEnum fromValue(String value) {
-      for (CompTypeEnum b : CompTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<CompTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CompTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CompTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CompTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_COMP_TYPE = "compType";
   @SerializedName(SERIALIZED_NAME_COMP_TYPE)
-  private CompTypeEnum compType;
+  private CompCodeType compType;
 
   public static final String SERIALIZED_NAME_UNIQUE_CODE = "uniqueCode";
   @SerializedName(SERIALIZED_NAME_UNIQUE_CODE)
@@ -262,7 +204,7 @@ public class OrderItemComp {
   }
 
 
-  public OrderItemComp compType(CompTypeEnum compType) {
+  public OrderItemComp compType(CompCodeType compType) {
     
     this.compType = compType;
     return this;
@@ -275,12 +217,12 @@ public class OrderItemComp {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public CompTypeEnum getCompType() {
+  public CompCodeType getCompType() {
     return compType;
   }
 
 
-  public void setCompType(CompTypeEnum compType) {
+  public void setCompType(CompCodeType compType) {
     this.compType = compType;
   }
 
@@ -617,9 +559,6 @@ public class OrderItemComp {
       }
       if (jsonObj.get("eventCode") != null && !jsonObj.get("eventCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `eventCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventCode").toString()));
-      }
-      if (jsonObj.get("compType") != null && !jsonObj.get("compType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `compType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("compType").toString()));
       }
       if (jsonObj.get("uniqueCode") != null && !jsonObj.get("uniqueCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uniqueCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uniqueCode").toString()));

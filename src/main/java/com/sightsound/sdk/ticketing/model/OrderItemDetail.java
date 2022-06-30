@@ -20,6 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.Designation;
+import com.sightsound.sdk.ticketing.model.DiscountType;
 import com.sightsound.sdk.ticketing.model.OrderItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -49,7 +51,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderItemDetail
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class OrderItemDetail {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -71,64 +73,9 @@ public class OrderItemDetail {
   @SerializedName(SERIALIZED_NAME_SPECIAL_DISCOUNT_COUNT)
   private Integer specialDiscountCount;
 
-  /**
-   * Gets or Sets designationCode
-   */
-  @JsonAdapter(DesignationCodeEnum.Adapter.class)
-  public enum DesignationCodeEnum {
-    ADULT("ADULT"),
-    
-    CHILD("CHILD"),
-    
-    ESCORT("ESCORT"),
-    
-    DRIVER("DRIVER"),
-    
-    TEEN("TEEN"),
-    
-    ANY("ANY");
-
-    private String value;
-
-    DesignationCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DesignationCodeEnum fromValue(String value) {
-      for (DesignationCodeEnum b : DesignationCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DesignationCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DesignationCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DesignationCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DesignationCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_DESIGNATION_CODE = "designationCode";
   @SerializedName(SERIALIZED_NAME_DESIGNATION_CODE)
-  private DesignationCodeEnum designationCode;
+  private Designation designationCode;
 
   public static final String SERIALIZED_NAME_SEAT_DISCOUNT_COUNT = "seatDiscountCount";
   @SerializedName(SERIALIZED_NAME_SEAT_DISCOUNT_COUNT)
@@ -138,178 +85,25 @@ public class OrderItemDetail {
   @SerializedName(SERIALIZED_NAME_SEAT_DISCOUNT_AMOUNT)
   private BigDecimal seatDiscountAmount;
 
-  /**
-   * Gets or Sets custDiscountTypeCode
-   */
-  @JsonAdapter(CustDiscountTypeCodeEnum.Adapter.class)
-  public enum CustDiscountTypeCodeEnum {
-    A("A"),
-    
-    N("N"),
-    
-    E("E"),
-    
-    P("P");
-
-    private String value;
-
-    CustDiscountTypeCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CustDiscountTypeCodeEnum fromValue(String value) {
-      for (CustDiscountTypeCodeEnum b : CustDiscountTypeCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<CustDiscountTypeCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CustDiscountTypeCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CustDiscountTypeCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CustDiscountTypeCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_CUST_DISCOUNT_TYPE_CODE = "custDiscountTypeCode";
   @SerializedName(SERIALIZED_NAME_CUST_DISCOUNT_TYPE_CODE)
-  private CustDiscountTypeCodeEnum custDiscountTypeCode;
+  private DiscountType custDiscountTypeCode;
 
   public static final String SERIALIZED_NAME_CUST_DISCOUNT_VALUE = "custDiscountValue";
   @SerializedName(SERIALIZED_NAME_CUST_DISCOUNT_VALUE)
   private BigDecimal custDiscountValue;
 
-  /**
-   * Gets or Sets specialTypeCode
-   */
-  @JsonAdapter(SpecialTypeCodeEnum.Adapter.class)
-  public enum SpecialTypeCodeEnum {
-    A("A"),
-    
-    N("N"),
-    
-    E("E"),
-    
-    P("P");
-
-    private String value;
-
-    SpecialTypeCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SpecialTypeCodeEnum fromValue(String value) {
-      for (SpecialTypeCodeEnum b : SpecialTypeCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SpecialTypeCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SpecialTypeCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SpecialTypeCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SpecialTypeCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SPECIAL_TYPE_CODE = "specialTypeCode";
   @SerializedName(SERIALIZED_NAME_SPECIAL_TYPE_CODE)
-  private SpecialTypeCodeEnum specialTypeCode;
+  private DiscountType specialTypeCode;
 
   public static final String SERIALIZED_NAME_SPECIAL_DISCOUNT_VALUE = "specialDiscountValue";
   @SerializedName(SERIALIZED_NAME_SPECIAL_DISCOUNT_VALUE)
   private BigDecimal specialDiscountValue;
 
-  /**
-   * Gets or Sets manDiscountTypeCode
-   */
-  @JsonAdapter(ManDiscountTypeCodeEnum.Adapter.class)
-  public enum ManDiscountTypeCodeEnum {
-    A("A"),
-    
-    N("N"),
-    
-    E("E"),
-    
-    P("P");
-
-    private String value;
-
-    ManDiscountTypeCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ManDiscountTypeCodeEnum fromValue(String value) {
-      for (ManDiscountTypeCodeEnum b : ManDiscountTypeCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ManDiscountTypeCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ManDiscountTypeCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ManDiscountTypeCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ManDiscountTypeCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_MAN_DISCOUNT_TYPE_CODE = "manDiscountTypeCode";
   @SerializedName(SERIALIZED_NAME_MAN_DISCOUNT_TYPE_CODE)
-  private ManDiscountTypeCodeEnum manDiscountTypeCode;
+  private DiscountType manDiscountTypeCode;
 
   public static final String SERIALIZED_NAME_MAN_DISCOUNT_VALUE = "manDiscountValue";
   @SerializedName(SERIALIZED_NAME_MAN_DISCOUNT_VALUE)
@@ -391,6 +185,10 @@ public class OrderItemDetail {
   @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNT)
   private BigDecimal totalDiscount;
 
+  public static final String SERIALIZED_NAME_LIST_PRICE_WITH_DISCOUNTS = "listPriceWithDiscounts";
+  @SerializedName(SERIALIZED_NAME_LIST_PRICE_WITH_DISCOUNTS)
+  private BigDecimal listPriceWithDiscounts;
+
   public static final String SERIALIZED_NAME_MAN_DISCOUNT_DOLLAR_AMOUNT = "manDiscountDollarAmount";
   @SerializedName(SERIALIZED_NAME_MAN_DISCOUNT_DOLLAR_AMOUNT)
   private BigDecimal manDiscountDollarAmount;
@@ -398,10 +196,6 @@ public class OrderItemDetail {
   public static final String SERIALIZED_NAME_UNPRINTED_COUNT = "unprintedCount";
   @SerializedName(SERIALIZED_NAME_UNPRINTED_COUNT)
   private Integer unprintedCount;
-
-  public static final String SERIALIZED_NAME_LIST_PRICE_WITH_DISCOUNTS = "listPriceWithDiscounts";
-  @SerializedName(SERIALIZED_NAME_LIST_PRICE_WITH_DISCOUNTS)
-  private BigDecimal listPriceWithDiscounts;
 
   public static final String SERIALIZED_NAME_TOTAL_SAVINGS = "totalSavings";
   @SerializedName(SERIALIZED_NAME_TOTAL_SAVINGS)
@@ -525,7 +319,7 @@ public class OrderItemDetail {
   }
 
 
-  public OrderItemDetail designationCode(DesignationCodeEnum designationCode) {
+  public OrderItemDetail designationCode(Designation designationCode) {
     
     this.designationCode = designationCode;
     return this;
@@ -538,12 +332,12 @@ public class OrderItemDetail {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public DesignationCodeEnum getDesignationCode() {
+  public Designation getDesignationCode() {
     return designationCode;
   }
 
 
-  public void setDesignationCode(DesignationCodeEnum designationCode) {
+  public void setDesignationCode(Designation designationCode) {
     this.designationCode = designationCode;
   }
 
@@ -594,7 +388,7 @@ public class OrderItemDetail {
   }
 
 
-  public OrderItemDetail custDiscountTypeCode(CustDiscountTypeCodeEnum custDiscountTypeCode) {
+  public OrderItemDetail custDiscountTypeCode(DiscountType custDiscountTypeCode) {
     
     this.custDiscountTypeCode = custDiscountTypeCode;
     return this;
@@ -607,12 +401,12 @@ public class OrderItemDetail {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public CustDiscountTypeCodeEnum getCustDiscountTypeCode() {
+  public DiscountType getCustDiscountTypeCode() {
     return custDiscountTypeCode;
   }
 
 
-  public void setCustDiscountTypeCode(CustDiscountTypeCodeEnum custDiscountTypeCode) {
+  public void setCustDiscountTypeCode(DiscountType custDiscountTypeCode) {
     this.custDiscountTypeCode = custDiscountTypeCode;
   }
 
@@ -640,7 +434,7 @@ public class OrderItemDetail {
   }
 
 
-  public OrderItemDetail specialTypeCode(SpecialTypeCodeEnum specialTypeCode) {
+  public OrderItemDetail specialTypeCode(DiscountType specialTypeCode) {
     
     this.specialTypeCode = specialTypeCode;
     return this;
@@ -653,12 +447,12 @@ public class OrderItemDetail {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public SpecialTypeCodeEnum getSpecialTypeCode() {
+  public DiscountType getSpecialTypeCode() {
     return specialTypeCode;
   }
 
 
-  public void setSpecialTypeCode(SpecialTypeCodeEnum specialTypeCode) {
+  public void setSpecialTypeCode(DiscountType specialTypeCode) {
     this.specialTypeCode = specialTypeCode;
   }
 
@@ -686,7 +480,7 @@ public class OrderItemDetail {
   }
 
 
-  public OrderItemDetail manDiscountTypeCode(ManDiscountTypeCodeEnum manDiscountTypeCode) {
+  public OrderItemDetail manDiscountTypeCode(DiscountType manDiscountTypeCode) {
     
     this.manDiscountTypeCode = manDiscountTypeCode;
     return this;
@@ -699,12 +493,12 @@ public class OrderItemDetail {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ManDiscountTypeCodeEnum getManDiscountTypeCode() {
+  public DiscountType getManDiscountTypeCode() {
     return manDiscountTypeCode;
   }
 
 
-  public void setManDiscountTypeCode(ManDiscountTypeCodeEnum manDiscountTypeCode) {
+  public void setManDiscountTypeCode(DiscountType manDiscountTypeCode) {
     this.manDiscountTypeCode = manDiscountTypeCode;
   }
 
@@ -1169,6 +963,29 @@ public class OrderItemDetail {
   }
 
 
+  public OrderItemDetail listPriceWithDiscounts(BigDecimal listPriceWithDiscounts) {
+    
+    this.listPriceWithDiscounts = listPriceWithDiscounts;
+    return this;
+  }
+
+   /**
+   * Get listPriceWithDiscounts
+   * @return listPriceWithDiscounts
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getListPriceWithDiscounts() {
+    return listPriceWithDiscounts;
+  }
+
+
+  public void setListPriceWithDiscounts(BigDecimal listPriceWithDiscounts) {
+    this.listPriceWithDiscounts = listPriceWithDiscounts;
+  }
+
+
   public OrderItemDetail manDiscountDollarAmount(BigDecimal manDiscountDollarAmount) {
     
     this.manDiscountDollarAmount = manDiscountDollarAmount;
@@ -1212,29 +1029,6 @@ public class OrderItemDetail {
 
   public void setUnprintedCount(Integer unprintedCount) {
     this.unprintedCount = unprintedCount;
-  }
-
-
-  public OrderItemDetail listPriceWithDiscounts(BigDecimal listPriceWithDiscounts) {
-    
-    this.listPriceWithDiscounts = listPriceWithDiscounts;
-    return this;
-  }
-
-   /**
-   * Get listPriceWithDiscounts
-   * @return listPriceWithDiscounts
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getListPriceWithDiscounts() {
-    return listPriceWithDiscounts;
-  }
-
-
-  public void setListPriceWithDiscounts(BigDecimal listPriceWithDiscounts) {
-    this.listPriceWithDiscounts = listPriceWithDiscounts;
   }
 
 
@@ -1304,15 +1098,15 @@ public class OrderItemDetail {
         Objects.equals(this._new, orderItemDetail._new) &&
         Objects.equals(this.savings, orderItemDetail.savings) &&
         Objects.equals(this.totalDiscount, orderItemDetail.totalDiscount) &&
+        Objects.equals(this.listPriceWithDiscounts, orderItemDetail.listPriceWithDiscounts) &&
         Objects.equals(this.manDiscountDollarAmount, orderItemDetail.manDiscountDollarAmount) &&
         Objects.equals(this.unprintedCount, orderItemDetail.unprintedCount) &&
-        Objects.equals(this.listPriceWithDiscounts, orderItemDetail.listPriceWithDiscounts) &&
         Objects.equals(this.totalSavings, orderItemDetail.totalSavings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderNumber, itemNumber, count, manDiscountCount, specialDiscountCount, designationCode, seatDiscountCount, seatDiscountAmount, custDiscountTypeCode, custDiscountValue, specialTypeCode, specialDiscountValue, manDiscountTypeCode, manDiscountValue, confirmedCount, totalPrice, specialDiscountTotalAmount, manDiscountTotalAmount, seatDiscountTotalAmount, custDiscountTotalAmount, printedCount, priceValue, price, compCount, gratuity, ssMargin, custDiscountCount, orderItem, deltaCount, persisted, _new, savings, totalDiscount, manDiscountDollarAmount, unprintedCount, listPriceWithDiscounts, totalSavings);
+    return Objects.hash(orderNumber, itemNumber, count, manDiscountCount, specialDiscountCount, designationCode, seatDiscountCount, seatDiscountAmount, custDiscountTypeCode, custDiscountValue, specialTypeCode, specialDiscountValue, manDiscountTypeCode, manDiscountValue, confirmedCount, totalPrice, specialDiscountTotalAmount, manDiscountTotalAmount, seatDiscountTotalAmount, custDiscountTotalAmount, printedCount, priceValue, price, compCount, gratuity, ssMargin, custDiscountCount, orderItem, deltaCount, persisted, _new, savings, totalDiscount, listPriceWithDiscounts, manDiscountDollarAmount, unprintedCount, totalSavings);
   }
 
   @Override
@@ -1352,9 +1146,9 @@ public class OrderItemDetail {
     sb.append("    _new: ").append(toIndentedString(_new)).append("\n");
     sb.append("    savings: ").append(toIndentedString(savings)).append("\n");
     sb.append("    totalDiscount: ").append(toIndentedString(totalDiscount)).append("\n");
+    sb.append("    listPriceWithDiscounts: ").append(toIndentedString(listPriceWithDiscounts)).append("\n");
     sb.append("    manDiscountDollarAmount: ").append(toIndentedString(manDiscountDollarAmount)).append("\n");
     sb.append("    unprintedCount: ").append(toIndentedString(unprintedCount)).append("\n");
-    sb.append("    listPriceWithDiscounts: ").append(toIndentedString(listPriceWithDiscounts)).append("\n");
     sb.append("    totalSavings: ").append(toIndentedString(totalSavings)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1411,9 +1205,9 @@ public class OrderItemDetail {
     openapiFields.add("new");
     openapiFields.add("savings");
     openapiFields.add("totalDiscount");
+    openapiFields.add("listPriceWithDiscounts");
     openapiFields.add("manDiscountDollarAmount");
     openapiFields.add("unprintedCount");
-    openapiFields.add("listPriceWithDiscounts");
     openapiFields.add("totalSavings");
 
     // a set of required properties/fields (JSON key names)
@@ -1457,18 +1251,6 @@ public class OrderItemDetail {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
-      }
-      if (jsonObj.get("designationCode") != null && !jsonObj.get("designationCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `designationCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("designationCode").toString()));
-      }
-      if (jsonObj.get("custDiscountTypeCode") != null && !jsonObj.get("custDiscountTypeCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custDiscountTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custDiscountTypeCode").toString()));
-      }
-      if (jsonObj.get("specialTypeCode") != null && !jsonObj.get("specialTypeCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `specialTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("specialTypeCode").toString()));
-      }
-      if (jsonObj.get("manDiscountTypeCode") != null && !jsonObj.get("manDiscountTypeCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `manDiscountTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("manDiscountTypeCode").toString()));
       }
       // validate the optional field `orderItem`
       if (jsonObj.getAsJsonObject("orderItem") != null) {

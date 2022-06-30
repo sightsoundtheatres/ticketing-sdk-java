@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.GenderEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -47,60 +48,11 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Name
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class Name {
   public static final String SERIALIZED_NAME_INFIX = "infix";
   @SerializedName(SERIALIZED_NAME_INFIX)
   private String infix;
-
-  /**
-   * Gets or Sets gender
-   */
-  @JsonAdapter(GenderEnum.Adapter.class)
-  public enum GenderEnum {
-    MALE("MALE"),
-    
-    FEMALE("FEMALE"),
-    
-    UNKNOWN("UNKNOWN");
-
-    private String value;
-
-    GenderEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static GenderEnum fromValue(String value) {
-      for (GenderEnum b : GenderEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<GenderEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final GenderEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public GenderEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return GenderEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_GENDER = "gender";
   @SerializedName(SERIALIZED_NAME_GENDER)
@@ -293,9 +245,6 @@ public class Name {
       }
       if (jsonObj.get("infix") != null && !jsonObj.get("infix").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `infix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("infix").toString()));
-      }
-      if (jsonObj.get("gender") != null && !jsonObj.get("gender").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `gender` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gender").toString()));
       }
       if (jsonObj.get("lastName") != null && !jsonObj.get("lastName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lastName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastName").toString()));

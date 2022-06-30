@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.Customer;
+import com.sightsound.sdk.ticketing.model.DocumentType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -49,7 +50,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * CustomerDocument
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class CustomerDocument {
   public static final String SERIALIZED_NAME_RECORD_ID = "recordId";
   @SerializedName(SERIALIZED_NAME_RECORD_ID)
@@ -59,54 +60,9 @@ public class CustomerDocument {
   @SerializedName(SERIALIZED_NAME_CUSTOMER_NUMBER)
   private Long customerNumber;
 
-  /**
-   * Gets or Sets documentType
-   */
-  @JsonAdapter(DocumentTypeEnum.Adapter.class)
-  public enum DocumentTypeEnum {
-    TAXEXEMPT("TAXEXEMPT");
-
-    private String value;
-
-    DocumentTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DocumentTypeEnum fromValue(String value) {
-      for (DocumentTypeEnum b : DocumentTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DocumentTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DocumentTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DocumentTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DocumentTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_DOCUMENT_TYPE = "documentType";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_TYPE)
-  private DocumentTypeEnum documentType;
+  private DocumentType documentType;
 
   public static final String SERIALIZED_NAME_FILE_URL = "fileUrl";
   @SerializedName(SERIALIZED_NAME_FILE_URL)
@@ -177,7 +133,7 @@ public class CustomerDocument {
   }
 
 
-  public CustomerDocument documentType(DocumentTypeEnum documentType) {
+  public CustomerDocument documentType(DocumentType documentType) {
     
     this.documentType = documentType;
     return this;
@@ -190,12 +146,12 @@ public class CustomerDocument {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public DocumentTypeEnum getDocumentType() {
+  public DocumentType getDocumentType() {
     return documentType;
   }
 
 
-  public void setDocumentType(DocumentTypeEnum documentType) {
+  public void setDocumentType(DocumentType documentType) {
     this.documentType = documentType;
   }
 
@@ -408,9 +364,6 @@ public class CustomerDocument {
         if (!CustomerDocument.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CustomerDocument` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
-      }
-      if (jsonObj.get("documentType") != null && !jsonObj.get("documentType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `documentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("documentType").toString()));
       }
       if (jsonObj.get("fileUrl") != null && !jsonObj.get("fileUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fileUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fileUrl").toString()));

@@ -20,6 +20,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.AccountAgeIndicatorEnum;
+import com.sightsound.sdk.ticketing.model.AccountChangeIndicatorEnum;
+import com.sightsound.sdk.ticketing.model.AccountTypeEnum;
+import com.sightsound.sdk.ticketing.model.DeliveryAddressUsageIndicatorEnum;
+import com.sightsound.sdk.ticketing.model.PasswordChangeIndicatorEnum;
+import com.sightsound.sdk.ticketing.model.PaymentAccountIndicatorEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -48,61 +54,8 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * AccountInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class AccountInfo {
-  /**
-   * Gets or Sets accountAgeIndicator
-   */
-  @JsonAdapter(AccountAgeIndicatorEnum.Adapter.class)
-  public enum AccountAgeIndicatorEnum {
-    NOTAPPLICABLE("notApplicable"),
-    
-    THISTRANSACTION("thisTransaction"),
-    
-    LESSTHAN30DAYS("lessThan30Days"),
-    
-    FROM30TO60DAYS("from30To60Days"),
-    
-    MORETHAN60DAYS("moreThan60Days");
-
-    private String value;
-
-    AccountAgeIndicatorEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static AccountAgeIndicatorEnum fromValue(String value) {
-      for (AccountAgeIndicatorEnum b : AccountAgeIndicatorEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<AccountAgeIndicatorEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final AccountAgeIndicatorEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public AccountAgeIndicatorEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return AccountAgeIndicatorEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ACCOUNT_AGE_INDICATOR = "accountAgeIndicator";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_AGE_INDICATOR)
   private AccountAgeIndicatorEnum accountAgeIndicator;
@@ -111,57 +64,6 @@ public class AccountInfo {
   @SerializedName(SERIALIZED_NAME_ACCOUNT_CHANGE_DATE)
   private OffsetDateTime accountChangeDate;
 
-  /**
-   * Gets or Sets accountChangeIndicator
-   */
-  @JsonAdapter(AccountChangeIndicatorEnum.Adapter.class)
-  public enum AccountChangeIndicatorEnum {
-    THISTRANSACTION("thisTransaction"),
-    
-    LESSTHAN30DAYS("lessThan30Days"),
-    
-    FROM30TO60DAYS("from30To60Days"),
-    
-    MORETHAN60DAYS("moreThan60Days");
-
-    private String value;
-
-    AccountChangeIndicatorEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static AccountChangeIndicatorEnum fromValue(String value) {
-      for (AccountChangeIndicatorEnum b : AccountChangeIndicatorEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<AccountChangeIndicatorEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final AccountChangeIndicatorEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public AccountChangeIndicatorEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return AccountChangeIndicatorEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ACCOUNT_CHANGE_INDICATOR = "accountChangeIndicator";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_CHANGE_INDICATOR)
   private AccountChangeIndicatorEnum accountChangeIndicator;
@@ -169,55 +71,6 @@ public class AccountInfo {
   public static final String SERIALIZED_NAME_ACCOUNT_CREATION_DATE = "accountCreationDate";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_CREATION_DATE)
   private OffsetDateTime accountCreationDate;
-
-  /**
-   * Gets or Sets accountType
-   */
-  @JsonAdapter(AccountTypeEnum.Adapter.class)
-  public enum AccountTypeEnum {
-    NOTAPPLICABLE("notApplicable"),
-    
-    CREDIT("credit"),
-    
-    DEBIT("debit");
-
-    private String value;
-
-    AccountTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static AccountTypeEnum fromValue(String value) {
-      for (AccountTypeEnum b : AccountTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<AccountTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final AccountTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public AccountTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return AccountTypeEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_ACCOUNT_TYPE = "accountType";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_TYPE)
@@ -230,57 +83,6 @@ public class AccountInfo {
   public static final String SERIALIZED_NAME_DELIVERY_ADDRESS_USAGE_DATE = "deliveryAddressUsageDate";
   @SerializedName(SERIALIZED_NAME_DELIVERY_ADDRESS_USAGE_DATE)
   private OffsetDateTime deliveryAddressUsageDate;
-
-  /**
-   * Gets or Sets deliveryAddressUsageIndicator
-   */
-  @JsonAdapter(DeliveryAddressUsageIndicatorEnum.Adapter.class)
-  public enum DeliveryAddressUsageIndicatorEnum {
-    THISTRANSACTION("thisTransaction"),
-    
-    LESSTHAN30DAYS("lessThan30Days"),
-    
-    FROM30TO60DAYS("from30To60Days"),
-    
-    MORETHAN60DAYS("moreThan60Days");
-
-    private String value;
-
-    DeliveryAddressUsageIndicatorEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DeliveryAddressUsageIndicatorEnum fromValue(String value) {
-      for (DeliveryAddressUsageIndicatorEnum b : DeliveryAddressUsageIndicatorEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DeliveryAddressUsageIndicatorEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DeliveryAddressUsageIndicatorEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DeliveryAddressUsageIndicatorEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DeliveryAddressUsageIndicatorEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_DELIVERY_ADDRESS_USAGE_INDICATOR = "deliveryAddressUsageIndicator";
   @SerializedName(SERIALIZED_NAME_DELIVERY_ADDRESS_USAGE_INDICATOR)
@@ -298,59 +100,6 @@ public class AccountInfo {
   @SerializedName(SERIALIZED_NAME_PASSWORD_CHANGE_DATE)
   private OffsetDateTime passwordChangeDate;
 
-  /**
-   * Gets or Sets passwordChangeIndicator
-   */
-  @JsonAdapter(PasswordChangeIndicatorEnum.Adapter.class)
-  public enum PasswordChangeIndicatorEnum {
-    NOTAPPLICABLE("notApplicable"),
-    
-    THISTRANSACTION("thisTransaction"),
-    
-    LESSTHAN30DAYS("lessThan30Days"),
-    
-    FROM30TO60DAYS("from30To60Days"),
-    
-    MORETHAN60DAYS("moreThan60Days");
-
-    private String value;
-
-    PasswordChangeIndicatorEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PasswordChangeIndicatorEnum fromValue(String value) {
-      for (PasswordChangeIndicatorEnum b : PasswordChangeIndicatorEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PasswordChangeIndicatorEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PasswordChangeIndicatorEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PasswordChangeIndicatorEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PasswordChangeIndicatorEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_PASSWORD_CHANGE_INDICATOR = "passwordChangeIndicator";
   @SerializedName(SERIALIZED_NAME_PASSWORD_CHANGE_INDICATOR)
   private PasswordChangeIndicatorEnum passwordChangeIndicator;
@@ -366,59 +115,6 @@ public class AccountInfo {
   public static final String SERIALIZED_NAME_PAYMENT_ACCOUNT_AGE = "paymentAccountAge";
   @SerializedName(SERIALIZED_NAME_PAYMENT_ACCOUNT_AGE)
   private OffsetDateTime paymentAccountAge;
-
-  /**
-   * Gets or Sets paymentAccountIndicator
-   */
-  @JsonAdapter(PaymentAccountIndicatorEnum.Adapter.class)
-  public enum PaymentAccountIndicatorEnum {
-    NOTAPPLICABLE("notApplicable"),
-    
-    THISTRANSACTION("thisTransaction"),
-    
-    LESSTHAN30DAYS("lessThan30Days"),
-    
-    FROM30TO60DAYS("from30To60Days"),
-    
-    MORETHAN60DAYS("moreThan60Days");
-
-    private String value;
-
-    PaymentAccountIndicatorEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PaymentAccountIndicatorEnum fromValue(String value) {
-      for (PaymentAccountIndicatorEnum b : PaymentAccountIndicatorEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PaymentAccountIndicatorEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PaymentAccountIndicatorEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PaymentAccountIndicatorEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PaymentAccountIndicatorEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_PAYMENT_ACCOUNT_INDICATOR = "paymentAccountIndicator";
   @SerializedName(SERIALIZED_NAME_PAYMENT_ACCOUNT_INDICATOR)
@@ -1003,29 +699,11 @@ public class AccountInfo {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AccountInfo` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if (jsonObj.get("accountAgeIndicator") != null && !jsonObj.get("accountAgeIndicator").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accountAgeIndicator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountAgeIndicator").toString()));
-      }
-      if (jsonObj.get("accountChangeIndicator") != null && !jsonObj.get("accountChangeIndicator").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accountChangeIndicator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountChangeIndicator").toString()));
-      }
-      if (jsonObj.get("accountType") != null && !jsonObj.get("accountType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accountType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountType").toString()));
-      }
-      if (jsonObj.get("deliveryAddressUsageIndicator") != null && !jsonObj.get("deliveryAddressUsageIndicator").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `deliveryAddressUsageIndicator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deliveryAddressUsageIndicator").toString()));
-      }
       if (jsonObj.get("homePhone") != null && !jsonObj.get("homePhone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `homePhone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("homePhone").toString()));
       }
       if (jsonObj.get("mobilePhone") != null && !jsonObj.get("mobilePhone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mobilePhone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mobilePhone").toString()));
-      }
-      if (jsonObj.get("passwordChangeIndicator") != null && !jsonObj.get("passwordChangeIndicator").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `passwordChangeIndicator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("passwordChangeIndicator").toString()));
-      }
-      if (jsonObj.get("paymentAccountIndicator") != null && !jsonObj.get("paymentAccountIndicator").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `paymentAccountIndicator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("paymentAccountIndicator").toString()));
       }
       if (jsonObj.get("workPhone") != null && !jsonObj.get("workPhone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `workPhone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("workPhone").toString()));

@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.TaxCategoryEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -47,7 +48,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * LineItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class LineItem {
   public static final String SERIALIZED_NAME_AMOUNT_EXCLUDING_TAX = "amountExcludingTax";
   @SerializedName(SERIALIZED_NAME_AMOUNT_EXCLUDING_TAX)
@@ -72,57 +73,6 @@ public class LineItem {
   public static final String SERIALIZED_NAME_TAX_AMOUNT = "taxAmount";
   @SerializedName(SERIALIZED_NAME_TAX_AMOUNT)
   private Long taxAmount;
-
-  /**
-   * Gets or Sets taxCategory
-   */
-  @JsonAdapter(TaxCategoryEnum.Adapter.class)
-  public enum TaxCategoryEnum {
-    HIGH("High"),
-    
-    LOW("Low"),
-    
-    NONE("None"),
-    
-    ZERO("Zero");
-
-    private String value;
-
-    TaxCategoryEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TaxCategoryEnum fromValue(String value) {
-      for (TaxCategoryEnum b : TaxCategoryEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TaxCategoryEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TaxCategoryEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TaxCategoryEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TaxCategoryEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_TAX_CATEGORY = "taxCategory";
   @SerializedName(SERIALIZED_NAME_TAX_CATEGORY)
@@ -478,9 +428,6 @@ public class LineItem {
       }
       if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if (jsonObj.get("taxCategory") != null && !jsonObj.get("taxCategory").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `taxCategory` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxCategory").toString()));
       }
       if (jsonObj.get("productUrl") != null && !jsonObj.get("productUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `productUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productUrl").toString()));

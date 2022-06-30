@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**invoiceNumber** | **Long** |  |  |
 |**invoiceSeqNumber** | **Integer** |  |  |
-|**company** | [**CompanyEnum**](#CompanyEnum) |  |  |
+|**company** | **InvoiceCompany** |  |  |
 |**description** | **String** |  |  [optional] |
 |**skuCode** | **String** |  |  [optional] |
 |**glPeriod** | **Integer** |  |  [optional] |
@@ -21,7 +21,7 @@
 |**crSegment3** | **String** |  |  [optional] |
 |**crSegment4** | **String** |  |  [optional] |
 |**crSegment5** | **String** |  |  [optional] |
-|**gltCompany** | [**GltCompanyEnum**](#GltCompanyEnum) |  |  [optional] |
+|**gltCompany** | **InvoiceCompany** |  |  [optional] |
 |**gltNumber** | **Integer** |  |  [optional] |
 |**baseAmount** | **BigDecimal** |  |  [optional] |
 |**comments** | **String** |  |  [optional] |
@@ -29,40 +29,12 @@
 |**lineType** | **String** |  |  [optional] |
 |**inventoryCost** | **BigDecimal** |  |  [optional] |
 |**averageCost** | **BigDecimal** |  |  [optional] |
-|**voidStatus** | [**VoidStatusEnum**](#VoidStatusEnum) |  |  [optional] |
+|**voidStatus** | **InvoiceStatus** |  |  [optional] |
 |**eventDate** | **OffsetDateTime** |  |  [optional] |
 |**processDate** | **OffsetDateTime** |  |  [optional] |
 |**itemNumber** | **Integer** |  |  [optional] |
 |**modifyDate** | **OffsetDateTime** |  |  [optional] |
 |**invoice** | [**Invoice**](Invoice.md) |  |  [optional] |
-
-
-
-## Enum: CompanyEnum
-
-| Name | Value |
-|---- | -----|
-| SS | &quot;SS&quot; |
-| BR | &quot;BR&quot; |
-
-
-
-## Enum: GltCompanyEnum
-
-| Name | Value |
-|---- | -----|
-| SS | &quot;SS&quot; |
-| BR | &quot;BR&quot; |
-
-
-
-## Enum: VoidStatusEnum
-
-| Name | Value |
-|---- | -----|
-| O | &quot;O&quot; |
-| P | &quot;P&quot; |
-| V | &quot;V&quot; |
 
 
 

@@ -20,6 +20,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.ActivityType;
+import com.sightsound.sdk.ticketing.model.FeeKind;
+import com.sightsound.sdk.ticketing.model.FeeType;
 import com.sightsound.sdk.ticketing.model.OrderItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -50,7 +53,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * FeeItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class FeeItem {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -60,58 +63,9 @@ public class FeeItem {
   @SerializedName(SERIALIZED_NAME_ITEM_NUMBER)
   private Integer itemNumber;
 
-  /**
-   * Gets or Sets feeKindCode
-   */
-  @JsonAdapter(FeeKindCodeEnum.Adapter.class)
-  public enum FeeKindCodeEnum {
-    C("C"),
-    
-    P("P"),
-    
-    F("F");
-
-    private String value;
-
-    FeeKindCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static FeeKindCodeEnum fromValue(String value) {
-      for (FeeKindCodeEnum b : FeeKindCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<FeeKindCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final FeeKindCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public FeeKindCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return FeeKindCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_FEE_KIND_CODE = "feeKindCode";
   @SerializedName(SERIALIZED_NAME_FEE_KIND_CODE)
-  private FeeKindCodeEnum feeKindCode;
+  private FeeKind feeKindCode;
 
   public static final String SERIALIZED_NAME_FEE_COUNT = "feeCount";
   @SerializedName(SERIALIZED_NAME_FEE_COUNT)
@@ -133,68 +87,9 @@ public class FeeItem {
   @SerializedName(SERIALIZED_NAME_FEE_ID)
   private Long feeId;
 
-  /**
-   * Gets or Sets feeTypeCode
-   */
-  @JsonAdapter(FeeTypeCodeEnum.Adapter.class)
-  public enum FeeTypeCodeEnum {
-    UG("UG"),
-    
-    DC("DC"),
-    
-    DG("DG"),
-    
-    CE("CE"),
-    
-    BC("BC"),
-    
-    SA("SA"),
-    
-    MF("MF"),
-    
-    TE("TE");
-
-    private String value;
-
-    FeeTypeCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static FeeTypeCodeEnum fromValue(String value) {
-      for (FeeTypeCodeEnum b : FeeTypeCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<FeeTypeCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final FeeTypeCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public FeeTypeCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return FeeTypeCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_FEE_TYPE_CODE = "feeTypeCode";
   @SerializedName(SERIALIZED_NAME_FEE_TYPE_CODE)
-  private FeeTypeCodeEnum feeTypeCode;
+  private FeeType feeTypeCode;
 
   public static final String SERIALIZED_NAME_FEE_DATE = "feeDate";
   @SerializedName(SERIALIZED_NAME_FEE_DATE)
@@ -228,84 +123,9 @@ public class FeeItem {
   @SerializedName(SERIALIZED_NAME_LOG_CHANGES)
   private Boolean logChanges;
 
-  /**
-   * Gets or Sets logActivity
-   */
-  @JsonAdapter(LogActivityEnum.Adapter.class)
-  public enum LogActivityEnum {
-    ADD("ADD"),
-    
-    CHANGE("CHANGE"),
-    
-    ADD("ADD"),
-    
-    CHANGE("CHANGE"),
-    
-    CANCEL("CANCEL"),
-    
-    SPL_DISC_REMOVED("SPL DISC REMOVED"),
-    
-    SPL_DISC_APPLIED("SPL DISC APPLIED"),
-    
-    RESERVED("RESERVED"),
-    
-    COUNT_INCREASED("COUNT INCREASED"),
-    
-    COUNT_DECREASED("COUNT DECREASED"),
-    
-    AMOUNT_INCREASED("AMOUNT INCREASED"),
-    
-    AMOUNT_DECREASED("AMOUNT DECREASED"),
-    
-    DESIGNATION_CHANGE("DESIGNATION CHANGE"),
-    
-    TRANS_IN("TRANS IN"),
-    
-    CANCELLED("CANCELLED"),
-    
-    SPL_STN_MODIFIED("SPL STN MODIFIED");
-
-    private String value;
-
-    LogActivityEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static LogActivityEnum fromValue(String value) {
-      for (LogActivityEnum b : LogActivityEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<LogActivityEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final LogActivityEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public LogActivityEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return LogActivityEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_LOG_ACTIVITY = "logActivity";
   @SerializedName(SERIALIZED_NAME_LOG_ACTIVITY)
-  private LogActivityEnum logActivity;
+  private ActivityType logActivity;
 
   public FeeItem() { 
   }
@@ -356,7 +176,7 @@ public class FeeItem {
   }
 
 
-  public FeeItem feeKindCode(FeeKindCodeEnum feeKindCode) {
+  public FeeItem feeKindCode(FeeKind feeKindCode) {
     
     this.feeKindCode = feeKindCode;
     return this;
@@ -369,12 +189,12 @@ public class FeeItem {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public FeeKindCodeEnum getFeeKindCode() {
+  public FeeKind getFeeKindCode() {
     return feeKindCode;
   }
 
 
-  public void setFeeKindCode(FeeKindCodeEnum feeKindCode) {
+  public void setFeeKindCode(FeeKind feeKindCode) {
     this.feeKindCode = feeKindCode;
   }
 
@@ -494,7 +314,7 @@ public class FeeItem {
   }
 
 
-  public FeeItem feeTypeCode(FeeTypeCodeEnum feeTypeCode) {
+  public FeeItem feeTypeCode(FeeType feeTypeCode) {
     
     this.feeTypeCode = feeTypeCode;
     return this;
@@ -507,12 +327,12 @@ public class FeeItem {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public FeeTypeCodeEnum getFeeTypeCode() {
+  public FeeType getFeeTypeCode() {
     return feeTypeCode;
   }
 
 
-  public void setFeeTypeCode(FeeTypeCodeEnum feeTypeCode) {
+  public void setFeeTypeCode(FeeType feeTypeCode) {
     this.feeTypeCode = feeTypeCode;
   }
 
@@ -706,7 +526,7 @@ public class FeeItem {
   }
 
 
-  public FeeItem logActivity(LogActivityEnum logActivity) {
+  public FeeItem logActivity(ActivityType logActivity) {
     
     this.logActivity = logActivity;
     return this;
@@ -719,12 +539,12 @@ public class FeeItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public LogActivityEnum getLogActivity() {
+  public ActivityType getLogActivity() {
     return logActivity;
   }
 
 
-  public void setLogActivity(LogActivityEnum logActivity) {
+  public void setLogActivity(ActivityType logActivity) {
     this.logActivity = logActivity;
   }
 
@@ -864,21 +684,12 @@ public class FeeItem {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (jsonObj.get("feeKindCode") != null && !jsonObj.get("feeKindCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `feeKindCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("feeKindCode").toString()));
-      }
-      if (jsonObj.get("feeTypeCode") != null && !jsonObj.get("feeTypeCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `feeTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("feeTypeCode").toString()));
-      }
       if (jsonObj.get("addUserId") != null && !jsonObj.get("addUserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `addUserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("addUserId").toString()));
       }
       // validate the optional field `orderItem`
       if (jsonObj.getAsJsonObject("orderItem") != null) {
         OrderItem.validateJsonObject(jsonObj.getAsJsonObject("orderItem"));
-      }
-      if (jsonObj.get("logActivity") != null && !jsonObj.get("logActivity").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `logActivity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logActivity").toString()));
       }
   }
 

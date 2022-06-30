@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.OrderCustomerRequest;
 import com.sightsound.sdk.ticketing.model.OrderItemPriceRequest;
+import com.sightsound.sdk.ticketing.model.TicketBatch;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -51,7 +52,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * CartRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class CartRequest {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -77,58 +78,9 @@ public class CartRequest {
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
   private OrderCustomerRequest customer;
 
-  /**
-   * Gets or Sets ticketBatch
-   */
-  @JsonAdapter(TicketBatchEnum.Adapter.class)
-  public enum TicketBatchEnum {
-    AGENT("AGENT"),
-    
-    ETICKET("ETICKET"),
-    
-    HELD("HELD");
-
-    private String value;
-
-    TicketBatchEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TicketBatchEnum fromValue(String value) {
-      for (TicketBatchEnum b : TicketBatchEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TicketBatchEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TicketBatchEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TicketBatchEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TicketBatchEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TICKET_BATCH = "ticketBatch";
   @SerializedName(SERIALIZED_NAME_TICKET_BATCH)
-  private TicketBatchEnum ticketBatch;
+  private TicketBatch ticketBatch;
 
   public CartRequest() { 
   }
@@ -279,7 +231,7 @@ public class CartRequest {
   }
 
 
-  public CartRequest ticketBatch(TicketBatchEnum ticketBatch) {
+  public CartRequest ticketBatch(TicketBatch ticketBatch) {
     
     this.ticketBatch = ticketBatch;
     return this;
@@ -292,12 +244,12 @@ public class CartRequest {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TicketBatchEnum getTicketBatch() {
+  public TicketBatch getTicketBatch() {
     return ticketBatch;
   }
 
 
-  public void setTicketBatch(TicketBatchEnum ticketBatch) {
+  public void setTicketBatch(TicketBatch ticketBatch) {
     this.ticketBatch = ticketBatch;
   }
 
@@ -417,9 +369,6 @@ public class CartRequest {
       // validate the optional field `customer`
       if (jsonObj.getAsJsonObject("customer") != null) {
         OrderCustomerRequest.validateJsonObject(jsonObj.getAsJsonObject("customer"));
-      }
-      if (jsonObj.get("ticketBatch") != null && !jsonObj.get("ticketBatch").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ticketBatch` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketBatch").toString()));
       }
   }
 

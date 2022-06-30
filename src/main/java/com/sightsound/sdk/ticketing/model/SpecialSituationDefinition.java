@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.ItemType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -47,7 +48,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * SpecialSituationDefinition
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class SpecialSituationDefinition {
   public static final String SERIALIZED_NAME_SPECIAL_SITUATION_CODE = "specialSituationCode";
   @SerializedName(SERIALIZED_NAME_SPECIAL_SITUATION_CODE)
@@ -61,84 +62,9 @@ public class SpecialSituationDefinition {
   @SerializedName(SERIALIZED_NAME_EMAIL_DESTINATION)
   private String emailDestination;
 
-  /**
-   * Gets or Sets itemTypeCode
-   */
-  @JsonAdapter(ItemTypeCodeEnum.Adapter.class)
-  public enum ItemTypeCodeEnum {
-    SHOW("SHOW"),
-    
-    TOUR("TOUR"),
-    
-    CHARGE("CHARGE"),
-    
-    MERCH("MERCH"),
-    
-    SHIPPING("SHIPPING"),
-    
-    GIFTCARD("GIFTCARD"),
-    
-    ATTRACTION("ATTRACTION"),
-    
-    COUPON("COUPON"),
-    
-    FOOD("FOOD"),
-    
-    HOTEL("HOTEL"),
-    
-    INTLSHIPPING("INTLSHIPPING"),
-    
-    MEAL("MEAL"),
-    
-    MERCHANDISE("MERCHANDISE"),
-    
-    MERCHSHIPPING("MERCHSHIPPING"),
-    
-    MISC("MISC"),
-    
-    VMEAL("VMEAL");
-
-    private String value;
-
-    ItemTypeCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ItemTypeCodeEnum fromValue(String value) {
-      for (ItemTypeCodeEnum b : ItemTypeCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ItemTypeCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ItemTypeCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ItemTypeCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ItemTypeCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ITEM_TYPE_CODE = "itemTypeCode";
   @SerializedName(SERIALIZED_NAME_ITEM_TYPE_CODE)
-  private ItemTypeCodeEnum itemTypeCode;
+  private ItemType itemTypeCode;
 
   public static final String SERIALIZED_NAME_SEND_EMAIL = "sendEmail";
   @SerializedName(SERIALIZED_NAME_SEND_EMAIL)
@@ -224,7 +150,7 @@ public class SpecialSituationDefinition {
   }
 
 
-  public SpecialSituationDefinition itemTypeCode(ItemTypeCodeEnum itemTypeCode) {
+  public SpecialSituationDefinition itemTypeCode(ItemType itemTypeCode) {
     
     this.itemTypeCode = itemTypeCode;
     return this;
@@ -237,12 +163,12 @@ public class SpecialSituationDefinition {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ItemTypeCodeEnum getItemTypeCode() {
+  public ItemType getItemTypeCode() {
     return itemTypeCode;
   }
 
 
-  public void setItemTypeCode(ItemTypeCodeEnum itemTypeCode) {
+  public void setItemTypeCode(ItemType itemTypeCode) {
     this.itemTypeCode = itemTypeCode;
   }
 
@@ -420,9 +346,6 @@ public class SpecialSituationDefinition {
       }
       if (jsonObj.get("emailDestination") != null && !jsonObj.get("emailDestination").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `emailDestination` to be a primitive type in the JSON string but got `%s`", jsonObj.get("emailDestination").toString()));
-      }
-      if (jsonObj.get("itemTypeCode") != null && !jsonObj.get("itemTypeCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `itemTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemTypeCode").toString()));
       }
       if (jsonObj.get("specialSituationDesc") != null && !jsonObj.get("specialSituationDesc").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `specialSituationDesc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("specialSituationDesc").toString()));

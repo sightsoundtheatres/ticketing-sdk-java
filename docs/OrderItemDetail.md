@@ -12,14 +12,14 @@
 |**count** | **Integer** |  |  [optional] |
 |**manDiscountCount** | **Integer** |  |  [optional] |
 |**specialDiscountCount** | **Integer** |  |  [optional] |
-|**designationCode** | [**DesignationCodeEnum**](#DesignationCodeEnum) |  |  |
+|**designationCode** | **Designation** |  |  |
 |**seatDiscountCount** | **Integer** |  |  [optional] |
 |**seatDiscountAmount** | **BigDecimal** |  |  |
-|**custDiscountTypeCode** | [**CustDiscountTypeCodeEnum**](#CustDiscountTypeCodeEnum) |  |  [optional] |
+|**custDiscountTypeCode** | **DiscountType** |  |  [optional] |
 |**custDiscountValue** | **BigDecimal** |  |  |
-|**specialTypeCode** | [**SpecialTypeCodeEnum**](#SpecialTypeCodeEnum) |  |  [optional] |
+|**specialTypeCode** | **DiscountType** |  |  [optional] |
 |**specialDiscountValue** | **BigDecimal** |  |  |
-|**manDiscountTypeCode** | [**ManDiscountTypeCodeEnum**](#ManDiscountTypeCodeEnum) |  |  [optional] |
+|**manDiscountTypeCode** | **DiscountType** |  |  [optional] |
 |**manDiscountValue** | **BigDecimal** |  |  |
 |**confirmedCount** | **Integer** |  |  [optional] |
 |**totalPrice** | **BigDecimal** |  |  [optional] |
@@ -40,56 +40,10 @@
 |**_new** | **Boolean** |  |  [optional] |
 |**savings** | **BigDecimal** |  |  [optional] |
 |**totalDiscount** | **BigDecimal** |  |  [optional] |
+|**listPriceWithDiscounts** | **BigDecimal** |  |  [optional] |
 |**manDiscountDollarAmount** | **BigDecimal** |  |  [optional] |
 |**unprintedCount** | **Integer** |  |  [optional] |
-|**listPriceWithDiscounts** | **BigDecimal** |  |  [optional] |
 |**totalSavings** | **BigDecimal** |  |  [optional] |
-
-
-
-## Enum: DesignationCodeEnum
-
-| Name | Value |
-|---- | -----|
-| ADULT | &quot;ADULT&quot; |
-| CHILD | &quot;CHILD&quot; |
-| ESCORT | &quot;ESCORT&quot; |
-| DRIVER | &quot;DRIVER&quot; |
-| TEEN | &quot;TEEN&quot; |
-| ANY | &quot;ANY&quot; |
-
-
-
-## Enum: CustDiscountTypeCodeEnum
-
-| Name | Value |
-|---- | -----|
-| A | &quot;A&quot; |
-| N | &quot;N&quot; |
-| E | &quot;E&quot; |
-| P | &quot;P&quot; |
-
-
-
-## Enum: SpecialTypeCodeEnum
-
-| Name | Value |
-|---- | -----|
-| A | &quot;A&quot; |
-| N | &quot;N&quot; |
-| E | &quot;E&quot; |
-| P | &quot;P&quot; |
-
-
-
-## Enum: ManDiscountTypeCodeEnum
-
-| Name | Value |
-|---- | -----|
-| A | &quot;A&quot; |
-| N | &quot;N&quot; |
-| E | &quot;E&quot; |
-| P | &quot;P&quot; |
 
 
 

@@ -20,17 +20,22 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.ActivityType;
+import com.sightsound.sdk.ticketing.model.EmployeeBenefitType;
 import com.sightsound.sdk.ticketing.model.Event;
 import com.sightsound.sdk.ticketing.model.FeeItem;
 import com.sightsound.sdk.ticketing.model.GroupInfo;
+import com.sightsound.sdk.ticketing.model.ItemType;
 import com.sightsound.sdk.ticketing.model.MiscEvent;
 import com.sightsound.sdk.ticketing.model.OIShowSpecialSituation;
 import com.sightsound.sdk.ticketing.model.Order;
 import com.sightsound.sdk.ticketing.model.OrderItemComp;
 import com.sightsound.sdk.ticketing.model.OrderItemDetail;
+import com.sightsound.sdk.ticketing.model.OrderItemStatus;
 import com.sightsound.sdk.ticketing.model.OrderItemTax;
 import com.sightsound.sdk.ticketing.model.ShowOverflowSeat;
 import com.sightsound.sdk.ticketing.model.ShowScheduleSeat;
+import com.sightsound.sdk.ticketing.model.TaxType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -62,7 +67,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class OrderItem {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -108,60 +113,9 @@ public class OrderItem {
   @SerializedName(SERIALIZED_NAME_OVERFLOW_COUNT)
   private Integer overflowCount;
 
-  /**
-   * Gets or Sets orderItemStatusCode
-   */
-  @JsonAdapter(OrderItemStatusCodeEnum.Adapter.class)
-  public enum OrderItemStatusCodeEnum {
-    SEATS_CHOSEN("SEATS_CHOSEN"),
-    
-    ACTIVE("ACTIVE"),
-    
-    CANCELLED("CANCELLED"),
-    
-    SEATS_ASSIGNED("SEATS_ASSIGNED");
-
-    private String value;
-
-    OrderItemStatusCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static OrderItemStatusCodeEnum fromValue(String value) {
-      for (OrderItemStatusCodeEnum b : OrderItemStatusCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<OrderItemStatusCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final OrderItemStatusCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public OrderItemStatusCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return OrderItemStatusCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ORDER_ITEM_STATUS_CODE = "orderItemStatusCode";
   @SerializedName(SERIALIZED_NAME_ORDER_ITEM_STATUS_CODE)
-  private OrderItemStatusCodeEnum orderItemStatusCode;
+  private OrderItemStatus orderItemStatusCode;
 
   public static final String SERIALIZED_NAME_CUST_TAN_D_C_PROFILE_CODE = "custTanDCProfileCode";
   @SerializedName(SERIALIZED_NAME_CUST_TAN_D_C_PROFILE_CODE)
@@ -227,84 +181,9 @@ public class OrderItem {
   @SerializedName(SERIALIZED_NAME_TRANS_TO_ITEM)
   private Long transToItem;
 
-  /**
-   * Gets or Sets itemType
-   */
-  @JsonAdapter(ItemTypeEnum.Adapter.class)
-  public enum ItemTypeEnum {
-    SHOW("SHOW"),
-    
-    TOUR("TOUR"),
-    
-    CHARGE("CHARGE"),
-    
-    MERCH("MERCH"),
-    
-    SHIPPING("SHIPPING"),
-    
-    GIFTCARD("GIFTCARD"),
-    
-    ATTRACTION("ATTRACTION"),
-    
-    COUPON("COUPON"),
-    
-    FOOD("FOOD"),
-    
-    HOTEL("HOTEL"),
-    
-    INTLSHIPPING("INTLSHIPPING"),
-    
-    MEAL("MEAL"),
-    
-    MERCHANDISE("MERCHANDISE"),
-    
-    MERCHSHIPPING("MERCHSHIPPING"),
-    
-    MISC("MISC"),
-    
-    VMEAL("VMEAL");
-
-    private String value;
-
-    ItemTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ItemTypeEnum fromValue(String value) {
-      for (ItemTypeEnum b : ItemTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ItemTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ItemTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ItemTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ItemTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ITEM_TYPE = "itemType";
   @SerializedName(SERIALIZED_NAME_ITEM_TYPE)
-  private ItemTypeEnum itemType;
+  private ItemType itemType;
 
   public static final String SERIALIZED_NAME_EVENT_DATE_TIME = "eventDateTime";
   @SerializedName(SERIALIZED_NAME_EVENT_DATE_TIME)
@@ -334,60 +213,9 @@ public class OrderItem {
   @SerializedName(SERIALIZED_NAME_ACTIVATE_DATE)
   private OffsetDateTime activateDate;
 
-  /**
-   * Gets or Sets empBenefitCode
-   */
-  @JsonAdapter(EmpBenefitCodeEnum.Adapter.class)
-  public enum EmpBenefitCodeEnum {
-    EMPDISC("EMPDISC"),
-    
-    EMPCOMP("EMPCOMP"),
-    
-    EMPDAY("EMPDAY"),
-    
-    TOUR_EMPCOMP("TOUR_EMPCOMP");
-
-    private String value;
-
-    EmpBenefitCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static EmpBenefitCodeEnum fromValue(String value) {
-      for (EmpBenefitCodeEnum b : EmpBenefitCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<EmpBenefitCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final EmpBenefitCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public EmpBenefitCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return EmpBenefitCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_EMP_BENEFIT_CODE = "empBenefitCode";
   @SerializedName(SERIALIZED_NAME_EMP_BENEFIT_CODE)
-  private EmpBenefitCodeEnum empBenefitCode;
+  private EmployeeBenefitType empBenefitCode;
 
   public static final String SERIALIZED_NAME_PARTNER_CONFIRM = "partnerConfirm";
   @SerializedName(SERIALIZED_NAME_PARTNER_CONFIRM)
@@ -413,64 +241,9 @@ public class OrderItem {
   @SerializedName(SERIALIZED_NAME_SKU_BIN_LOCATION)
   private String skuBinLocation;
 
-  /**
-   * Gets or Sets skuTaxType
-   */
-  @JsonAdapter(SkuTaxTypeEnum.Adapter.class)
-  public enum SkuTaxTypeEnum {
-    EN("EN"),
-    
-    XC("XC"),
-    
-    SC("SC"),
-    
-    SP("SP"),
-    
-    SH("SH"),
-    
-    PT("PT");
-
-    private String value;
-
-    SkuTaxTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SkuTaxTypeEnum fromValue(String value) {
-      for (SkuTaxTypeEnum b : SkuTaxTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SkuTaxTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SkuTaxTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SkuTaxTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SkuTaxTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SKU_TAX_TYPE = "skuTaxType";
   @SerializedName(SERIALIZED_NAME_SKU_TAX_TYPE)
-  private SkuTaxTypeEnum skuTaxType;
+  private TaxType skuTaxType;
 
   public static final String SERIALIZED_NAME_SALE = "sale";
   @SerializedName(SERIALIZED_NAME_SALE)
@@ -584,84 +357,9 @@ public class OrderItem {
   @SerializedName(SERIALIZED_NAME_MISC_EVENT)
   private MiscEvent miscEvent;
 
-  /**
-   * Gets or Sets logActivity
-   */
-  @JsonAdapter(LogActivityEnum.Adapter.class)
-  public enum LogActivityEnum {
-    ADD("ADD"),
-    
-    CHANGE("CHANGE"),
-    
-    ADD("ADD"),
-    
-    CHANGE("CHANGE"),
-    
-    CANCEL("CANCEL"),
-    
-    SPL_DISC_REMOVED("SPL DISC REMOVED"),
-    
-    SPL_DISC_APPLIED("SPL DISC APPLIED"),
-    
-    RESERVED("RESERVED"),
-    
-    COUNT_INCREASED("COUNT INCREASED"),
-    
-    COUNT_DECREASED("COUNT DECREASED"),
-    
-    AMOUNT_INCREASED("AMOUNT INCREASED"),
-    
-    AMOUNT_DECREASED("AMOUNT DECREASED"),
-    
-    DESIGNATION_CHANGE("DESIGNATION CHANGE"),
-    
-    TRANS_IN("TRANS IN"),
-    
-    CANCELLED("CANCELLED"),
-    
-    SPL_STN_MODIFIED("SPL STN MODIFIED");
-
-    private String value;
-
-    LogActivityEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static LogActivityEnum fromValue(String value) {
-      for (LogActivityEnum b : LogActivityEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<LogActivityEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final LogActivityEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public LogActivityEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return LogActivityEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_LOG_ACTIVITY = "logActivity";
   @SerializedName(SERIALIZED_NAME_LOG_ACTIVITY)
-  private LogActivityEnum logActivity;
+  private ActivityType logActivity;
 
   public static final String SERIALIZED_NAME_LOG_CHANGES = "logChanges";
   @SerializedName(SERIALIZED_NAME_LOG_CHANGES)
@@ -703,64 +401,33 @@ public class OrderItem {
   @SerializedName(SERIALIZED_NAME_NEW)
   private Boolean _new;
 
-  /**
-   * Gets or Sets taxType
-   */
-  @JsonAdapter(TaxTypeEnum.Adapter.class)
-  public enum TaxTypeEnum {
-    EN("EN"),
-    
-    XC("XC"),
-    
-    SC("SC"),
-    
-    SP("SP"),
-    
-    SH("SH"),
-    
-    PT("PT");
-
-    private String value;
-
-    TaxTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TaxTypeEnum fromValue(String value) {
-      for (TaxTypeEnum b : TaxTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TaxTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TaxTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TaxTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TaxTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TAX_TYPE = "taxType";
   @SerializedName(SERIALIZED_NAME_TAX_TYPE)
-  private TaxTypeEnum taxType;
+  private TaxType taxType;
+
+  public static final String SERIALIZED_NAME_ZONED_EVENT_DATE_TIME = "zonedEventDateTime";
+  @SerializedName(SERIALIZED_NAME_ZONED_EVENT_DATE_TIME)
+  private OffsetDateTime zonedEventDateTime;
+
+  public static final String SERIALIZED_NAME_COMP_COUNT = "compCount";
+  @SerializedName(SERIALIZED_NAME_COMP_COUNT)
+  private Integer compCount;
+
+  public static final String SERIALIZED_NAME_PAID_COUNT = "paidCount";
+  @SerializedName(SERIALIZED_NAME_PAID_COUNT)
+  private Integer paidCount;
+
+  public static final String SERIALIZED_NAME_SEATED_COUNT = "seatedCount";
+  @SerializedName(SERIALIZED_NAME_SEATED_COUNT)
+  private Integer seatedCount;
+
+  public static final String SERIALIZED_NAME_TOTAL_DESIGNATION_COUNT = "totalDesignationCount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_DESIGNATION_COUNT)
+  private Integer totalDesignationCount;
+
+  public static final String SERIALIZED_NAME_TOTAL_FEE = "totalFee";
+  @SerializedName(SERIALIZED_NAME_TOTAL_FEE)
+  private BigDecimal totalFee;
 
   public static final String SERIALIZED_NAME_TOTAL_TAX = "totalTax";
   @SerializedName(SERIALIZED_NAME_TOTAL_TAX)
@@ -774,6 +441,10 @@ public class OrderItem {
   @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNT)
   private BigDecimal totalDiscount;
 
+  public static final String SERIALIZED_NAME_ASSIGNED_SEAT_COUNT = "assignedSeatCount";
+  @SerializedName(SERIALIZED_NAME_ASSIGNED_SEAT_COUNT)
+  private Integer assignedSeatCount;
+
   public static final String SERIALIZED_NAME_TRANSACTION_CHARGE_ITEM = "transactionChargeItem";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_CHARGE_ITEM)
   private Boolean transactionChargeItem;
@@ -786,41 +457,13 @@ public class OrderItem {
   @SerializedName(SERIALIZED_NAME_ALL_ASSIGNED_SEAT_COUNT)
   private Integer allAssignedSeatCount;
 
-  public static final String SERIALIZED_NAME_UNPRINTED_COUNT = "unprintedCount";
-  @SerializedName(SERIALIZED_NAME_UNPRINTED_COUNT)
-  private Integer unprintedCount;
-
   public static final String SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT = "totalCustomerDiscount";
   @SerializedName(SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT)
   private BigDecimal totalCustomerDiscount;
 
-  public static final String SERIALIZED_NAME_SEATED_COUNT = "seatedCount";
-  @SerializedName(SERIALIZED_NAME_SEATED_COUNT)
-  private Integer seatedCount;
-
-  public static final String SERIALIZED_NAME_TOTAL_DESIGNATION_COUNT = "totalDesignationCount";
-  @SerializedName(SERIALIZED_NAME_TOTAL_DESIGNATION_COUNT)
-  private Integer totalDesignationCount;
-
-  public static final String SERIALIZED_NAME_ZONED_EVENT_DATE_TIME = "zonedEventDateTime";
-  @SerializedName(SERIALIZED_NAME_ZONED_EVENT_DATE_TIME)
-  private OffsetDateTime zonedEventDateTime;
-
-  public static final String SERIALIZED_NAME_TOTAL_FEE = "totalFee";
-  @SerializedName(SERIALIZED_NAME_TOTAL_FEE)
-  private BigDecimal totalFee;
-
-  public static final String SERIALIZED_NAME_COMP_COUNT = "compCount";
-  @SerializedName(SERIALIZED_NAME_COMP_COUNT)
-  private Integer compCount;
-
-  public static final String SERIALIZED_NAME_PAID_COUNT = "paidCount";
-  @SerializedName(SERIALIZED_NAME_PAID_COUNT)
-  private Integer paidCount;
-
-  public static final String SERIALIZED_NAME_ASSIGNED_SEAT_COUNT = "assignedSeatCount";
-  @SerializedName(SERIALIZED_NAME_ASSIGNED_SEAT_COUNT)
-  private Integer assignedSeatCount;
+  public static final String SERIALIZED_NAME_UNPRINTED_COUNT = "unprintedCount";
+  @SerializedName(SERIALIZED_NAME_UNPRINTED_COUNT)
+  private Integer unprintedCount;
 
   public static final String SERIALIZED_NAME_TOTAL_SAVINGS = "totalSavings";
   @SerializedName(SERIALIZED_NAME_TOTAL_SAVINGS)
@@ -1102,7 +745,7 @@ public class OrderItem {
   }
 
 
-  public OrderItem orderItemStatusCode(OrderItemStatusCodeEnum orderItemStatusCode) {
+  public OrderItem orderItemStatusCode(OrderItemStatus orderItemStatusCode) {
     
     this.orderItemStatusCode = orderItemStatusCode;
     return this;
@@ -1115,12 +758,12 @@ public class OrderItem {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public OrderItemStatusCodeEnum getOrderItemStatusCode() {
+  public OrderItemStatus getOrderItemStatusCode() {
     return orderItemStatusCode;
   }
 
 
-  public void setOrderItemStatusCode(OrderItemStatusCodeEnum orderItemStatusCode) {
+  public void setOrderItemStatusCode(OrderItemStatus orderItemStatusCode) {
     this.orderItemStatusCode = orderItemStatusCode;
   }
 
@@ -1493,7 +1136,7 @@ public class OrderItem {
   }
 
 
-  public OrderItem itemType(ItemTypeEnum itemType) {
+  public OrderItem itemType(ItemType itemType) {
     
     this.itemType = itemType;
     return this;
@@ -1506,12 +1149,12 @@ public class OrderItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ItemTypeEnum getItemType() {
+  public ItemType getItemType() {
     return itemType;
   }
 
 
-  public void setItemType(ItemTypeEnum itemType) {
+  public void setItemType(ItemType itemType) {
     this.itemType = itemType;
   }
 
@@ -1677,7 +1320,7 @@ public class OrderItem {
   }
 
 
-  public OrderItem empBenefitCode(EmpBenefitCodeEnum empBenefitCode) {
+  public OrderItem empBenefitCode(EmployeeBenefitType empBenefitCode) {
     
     this.empBenefitCode = empBenefitCode;
     return this;
@@ -1690,12 +1333,12 @@ public class OrderItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public EmpBenefitCodeEnum getEmpBenefitCode() {
+  public EmployeeBenefitType getEmpBenefitCode() {
     return empBenefitCode;
   }
 
 
-  public void setEmpBenefitCode(EmpBenefitCodeEnum empBenefitCode) {
+  public void setEmpBenefitCode(EmployeeBenefitType empBenefitCode) {
     this.empBenefitCode = empBenefitCode;
   }
 
@@ -1838,7 +1481,7 @@ public class OrderItem {
   }
 
 
-  public OrderItem skuTaxType(SkuTaxTypeEnum skuTaxType) {
+  public OrderItem skuTaxType(TaxType skuTaxType) {
     
     this.skuTaxType = skuTaxType;
     return this;
@@ -1851,12 +1494,12 @@ public class OrderItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public SkuTaxTypeEnum getSkuTaxType() {
+  public TaxType getSkuTaxType() {
     return skuTaxType;
   }
 
 
-  public void setSkuTaxType(SkuTaxTypeEnum skuTaxType) {
+  public void setSkuTaxType(TaxType skuTaxType) {
     this.skuTaxType = skuTaxType;
   }
 
@@ -2561,7 +2204,7 @@ public class OrderItem {
   }
 
 
-  public OrderItem logActivity(LogActivityEnum logActivity) {
+  public OrderItem logActivity(ActivityType logActivity) {
     
     this.logActivity = logActivity;
     return this;
@@ -2574,12 +2217,12 @@ public class OrderItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public LogActivityEnum getLogActivity() {
+  public ActivityType getLogActivity() {
     return logActivity;
   }
 
 
-  public void setLogActivity(LogActivityEnum logActivity) {
+  public void setLogActivity(ActivityType logActivity) {
     this.logActivity = logActivity;
   }
 
@@ -2814,7 +2457,7 @@ public class OrderItem {
   }
 
 
-  public OrderItem taxType(TaxTypeEnum taxType) {
+  public OrderItem taxType(TaxType taxType) {
     
     this.taxType = taxType;
     return this;
@@ -2827,13 +2470,151 @@ public class OrderItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TaxTypeEnum getTaxType() {
+  public TaxType getTaxType() {
     return taxType;
   }
 
 
-  public void setTaxType(TaxTypeEnum taxType) {
+  public void setTaxType(TaxType taxType) {
     this.taxType = taxType;
+  }
+
+
+  public OrderItem zonedEventDateTime(OffsetDateTime zonedEventDateTime) {
+    
+    this.zonedEventDateTime = zonedEventDateTime;
+    return this;
+  }
+
+   /**
+   * Get zonedEventDateTime
+   * @return zonedEventDateTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getZonedEventDateTime() {
+    return zonedEventDateTime;
+  }
+
+
+  public void setZonedEventDateTime(OffsetDateTime zonedEventDateTime) {
+    this.zonedEventDateTime = zonedEventDateTime;
+  }
+
+
+  public OrderItem compCount(Integer compCount) {
+    
+    this.compCount = compCount;
+    return this;
+  }
+
+   /**
+   * Get compCount
+   * @return compCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getCompCount() {
+    return compCount;
+  }
+
+
+  public void setCompCount(Integer compCount) {
+    this.compCount = compCount;
+  }
+
+
+  public OrderItem paidCount(Integer paidCount) {
+    
+    this.paidCount = paidCount;
+    return this;
+  }
+
+   /**
+   * Get paidCount
+   * @return paidCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getPaidCount() {
+    return paidCount;
+  }
+
+
+  public void setPaidCount(Integer paidCount) {
+    this.paidCount = paidCount;
+  }
+
+
+  public OrderItem seatedCount(Integer seatedCount) {
+    
+    this.seatedCount = seatedCount;
+    return this;
+  }
+
+   /**
+   * Get seatedCount
+   * @return seatedCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getSeatedCount() {
+    return seatedCount;
+  }
+
+
+  public void setSeatedCount(Integer seatedCount) {
+    this.seatedCount = seatedCount;
+  }
+
+
+  public OrderItem totalDesignationCount(Integer totalDesignationCount) {
+    
+    this.totalDesignationCount = totalDesignationCount;
+    return this;
+  }
+
+   /**
+   * Get totalDesignationCount
+   * @return totalDesignationCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getTotalDesignationCount() {
+    return totalDesignationCount;
+  }
+
+
+  public void setTotalDesignationCount(Integer totalDesignationCount) {
+    this.totalDesignationCount = totalDesignationCount;
+  }
+
+
+  public OrderItem totalFee(BigDecimal totalFee) {
+    
+    this.totalFee = totalFee;
+    return this;
+  }
+
+   /**
+   * Get totalFee
+   * @return totalFee
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalFee() {
+    return totalFee;
+  }
+
+
+  public void setTotalFee(BigDecimal totalFee) {
+    this.totalFee = totalFee;
   }
 
 
@@ -2906,6 +2687,29 @@ public class OrderItem {
   }
 
 
+  public OrderItem assignedSeatCount(Integer assignedSeatCount) {
+    
+    this.assignedSeatCount = assignedSeatCount;
+    return this;
+  }
+
+   /**
+   * Get assignedSeatCount
+   * @return assignedSeatCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getAssignedSeatCount() {
+    return assignedSeatCount;
+  }
+
+
+  public void setAssignedSeatCount(Integer assignedSeatCount) {
+    this.assignedSeatCount = assignedSeatCount;
+  }
+
+
   public OrderItem transactionChargeItem(Boolean transactionChargeItem) {
     
     this.transactionChargeItem = transactionChargeItem;
@@ -2975,29 +2779,6 @@ public class OrderItem {
   }
 
 
-  public OrderItem unprintedCount(Integer unprintedCount) {
-    
-    this.unprintedCount = unprintedCount;
-    return this;
-  }
-
-   /**
-   * Get unprintedCount
-   * @return unprintedCount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getUnprintedCount() {
-    return unprintedCount;
-  }
-
-
-  public void setUnprintedCount(Integer unprintedCount) {
-    this.unprintedCount = unprintedCount;
-  }
-
-
   public OrderItem totalCustomerDiscount(BigDecimal totalCustomerDiscount) {
     
     this.totalCustomerDiscount = totalCustomerDiscount;
@@ -3021,164 +2802,26 @@ public class OrderItem {
   }
 
 
-  public OrderItem seatedCount(Integer seatedCount) {
+  public OrderItem unprintedCount(Integer unprintedCount) {
     
-    this.seatedCount = seatedCount;
+    this.unprintedCount = unprintedCount;
     return this;
   }
 
    /**
-   * Get seatedCount
-   * @return seatedCount
+   * Get unprintedCount
+   * @return unprintedCount
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Integer getSeatedCount() {
-    return seatedCount;
+  public Integer getUnprintedCount() {
+    return unprintedCount;
   }
 
 
-  public void setSeatedCount(Integer seatedCount) {
-    this.seatedCount = seatedCount;
-  }
-
-
-  public OrderItem totalDesignationCount(Integer totalDesignationCount) {
-    
-    this.totalDesignationCount = totalDesignationCount;
-    return this;
-  }
-
-   /**
-   * Get totalDesignationCount
-   * @return totalDesignationCount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getTotalDesignationCount() {
-    return totalDesignationCount;
-  }
-
-
-  public void setTotalDesignationCount(Integer totalDesignationCount) {
-    this.totalDesignationCount = totalDesignationCount;
-  }
-
-
-  public OrderItem zonedEventDateTime(OffsetDateTime zonedEventDateTime) {
-    
-    this.zonedEventDateTime = zonedEventDateTime;
-    return this;
-  }
-
-   /**
-   * Get zonedEventDateTime
-   * @return zonedEventDateTime
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getZonedEventDateTime() {
-    return zonedEventDateTime;
-  }
-
-
-  public void setZonedEventDateTime(OffsetDateTime zonedEventDateTime) {
-    this.zonedEventDateTime = zonedEventDateTime;
-  }
-
-
-  public OrderItem totalFee(BigDecimal totalFee) {
-    
-    this.totalFee = totalFee;
-    return this;
-  }
-
-   /**
-   * Get totalFee
-   * @return totalFee
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalFee() {
-    return totalFee;
-  }
-
-
-  public void setTotalFee(BigDecimal totalFee) {
-    this.totalFee = totalFee;
-  }
-
-
-  public OrderItem compCount(Integer compCount) {
-    
-    this.compCount = compCount;
-    return this;
-  }
-
-   /**
-   * Get compCount
-   * @return compCount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getCompCount() {
-    return compCount;
-  }
-
-
-  public void setCompCount(Integer compCount) {
-    this.compCount = compCount;
-  }
-
-
-  public OrderItem paidCount(Integer paidCount) {
-    
-    this.paidCount = paidCount;
-    return this;
-  }
-
-   /**
-   * Get paidCount
-   * @return paidCount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getPaidCount() {
-    return paidCount;
-  }
-
-
-  public void setPaidCount(Integer paidCount) {
-    this.paidCount = paidCount;
-  }
-
-
-  public OrderItem assignedSeatCount(Integer assignedSeatCount) {
-    
-    this.assignedSeatCount = assignedSeatCount;
-    return this;
-  }
-
-   /**
-   * Get assignedSeatCount
-   * @return assignedSeatCount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getAssignedSeatCount() {
-    return assignedSeatCount;
-  }
-
-
-  public void setAssignedSeatCount(Integer assignedSeatCount) {
-    this.assignedSeatCount = assignedSeatCount;
+  public void setUnprintedCount(Integer unprintedCount) {
+    this.unprintedCount = unprintedCount;
   }
 
 
@@ -3391,21 +3034,21 @@ public class OrderItem {
         Objects.equals(this.cancelled, orderItem.cancelled) &&
         Objects.equals(this._new, orderItem._new) &&
         Objects.equals(this.taxType, orderItem.taxType) &&
+        Objects.equals(this.zonedEventDateTime, orderItem.zonedEventDateTime) &&
+        Objects.equals(this.compCount, orderItem.compCount) &&
+        Objects.equals(this.paidCount, orderItem.paidCount) &&
+        Objects.equals(this.seatedCount, orderItem.seatedCount) &&
+        Objects.equals(this.totalDesignationCount, orderItem.totalDesignationCount) &&
+        Objects.equals(this.totalFee, orderItem.totalFee) &&
         Objects.equals(this.totalTax, orderItem.totalTax) &&
         Objects.equals(this.totalGratuity, orderItem.totalGratuity) &&
         Objects.equals(this.totalDiscount, orderItem.totalDiscount) &&
+        Objects.equals(this.assignedSeatCount, orderItem.assignedSeatCount) &&
         Objects.equals(this.transactionChargeItem, orderItem.transactionChargeItem) &&
         Objects.equals(this.firstOccurringFeeDate, orderItem.firstOccurringFeeDate) &&
         Objects.equals(this.allAssignedSeatCount, orderItem.allAssignedSeatCount) &&
-        Objects.equals(this.unprintedCount, orderItem.unprintedCount) &&
         Objects.equals(this.totalCustomerDiscount, orderItem.totalCustomerDiscount) &&
-        Objects.equals(this.seatedCount, orderItem.seatedCount) &&
-        Objects.equals(this.totalDesignationCount, orderItem.totalDesignationCount) &&
-        Objects.equals(this.zonedEventDateTime, orderItem.zonedEventDateTime) &&
-        Objects.equals(this.totalFee, orderItem.totalFee) &&
-        Objects.equals(this.compCount, orderItem.compCount) &&
-        Objects.equals(this.paidCount, orderItem.paidCount) &&
-        Objects.equals(this.assignedSeatCount, orderItem.assignedSeatCount) &&
+        Objects.equals(this.unprintedCount, orderItem.unprintedCount) &&
         Objects.equals(this.totalSavings, orderItem.totalSavings) &&
         Objects.equals(this.grandTotalSavings, orderItem.grandTotalSavings) &&
         Objects.equals(this.netPrice, orderItem.netPrice) &&
@@ -3415,7 +3058,7 @@ public class OrderItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderNumber, itemNumber, seatDriverWithGroup, confirmed, canDoSteps, mealDateTime, eventCode, showDateTime, lumpSumDiscount, itemTotalPrice, overflowCount, orderItemStatusCode, custTanDCProfileCode, priceListCode, printedCount, voucherPrinted, cancelUserId, cancelDate, cancelConfirmDate, confirmDate, activeWithOrder, restContactName, addUserId, addLocation, addDate, cancelLocation, transFromItem, transToItem, itemType, eventDateTime, voucherExpirationDate, busCount, givexNumber, givexSecurityCode, activateUserId, activateDate, empBenefitCode, partnerConfirm, partnerEvent, pluNumber, skuCode, skuDescription, skuBinLocation, skuTaxType, sale, manDiscountCode, miscSkuRef, shipDate, trackNumber, damaged, shipMethod, comments, itemGrandTotalPrice, traDevCount, miscSkuDescription, free, oldPartnerConfirm, freeForItemNumber, traDevLangCode, bus, travelPhoneNumber, order, specialSituations, orderItemDetails, seats, overflowSeats, itemFees, itemTaxes, itemComps, groupInfo, event, miscEvent, logActivity, logChanges, seatOverBooked, seatOverbookCount, sendToAccpac, groupNumber, persisted, count, itemCount, cancelled, _new, taxType, totalTax, totalGratuity, totalDiscount, transactionChargeItem, firstOccurringFeeDate, allAssignedSeatCount, unprintedCount, totalCustomerDiscount, seatedCount, totalDesignationCount, zonedEventDateTime, totalFee, compCount, paidCount, assignedSeatCount, totalSavings, grandTotalSavings, netPrice, manualDiscountValue, taxable);
+    return Objects.hash(orderNumber, itemNumber, seatDriverWithGroup, confirmed, canDoSteps, mealDateTime, eventCode, showDateTime, lumpSumDiscount, itemTotalPrice, overflowCount, orderItemStatusCode, custTanDCProfileCode, priceListCode, printedCount, voucherPrinted, cancelUserId, cancelDate, cancelConfirmDate, confirmDate, activeWithOrder, restContactName, addUserId, addLocation, addDate, cancelLocation, transFromItem, transToItem, itemType, eventDateTime, voucherExpirationDate, busCount, givexNumber, givexSecurityCode, activateUserId, activateDate, empBenefitCode, partnerConfirm, partnerEvent, pluNumber, skuCode, skuDescription, skuBinLocation, skuTaxType, sale, manDiscountCode, miscSkuRef, shipDate, trackNumber, damaged, shipMethod, comments, itemGrandTotalPrice, traDevCount, miscSkuDescription, free, oldPartnerConfirm, freeForItemNumber, traDevLangCode, bus, travelPhoneNumber, order, specialSituations, orderItemDetails, seats, overflowSeats, itemFees, itemTaxes, itemComps, groupInfo, event, miscEvent, logActivity, logChanges, seatOverBooked, seatOverbookCount, sendToAccpac, groupNumber, persisted, count, itemCount, cancelled, _new, taxType, zonedEventDateTime, compCount, paidCount, seatedCount, totalDesignationCount, totalFee, totalTax, totalGratuity, totalDiscount, assignedSeatCount, transactionChargeItem, firstOccurringFeeDate, allAssignedSeatCount, totalCustomerDiscount, unprintedCount, totalSavings, grandTotalSavings, netPrice, manualDiscountValue, taxable);
   }
 
   @Override
@@ -3506,21 +3149,21 @@ public class OrderItem {
     sb.append("    cancelled: ").append(toIndentedString(cancelled)).append("\n");
     sb.append("    _new: ").append(toIndentedString(_new)).append("\n");
     sb.append("    taxType: ").append(toIndentedString(taxType)).append("\n");
+    sb.append("    zonedEventDateTime: ").append(toIndentedString(zonedEventDateTime)).append("\n");
+    sb.append("    compCount: ").append(toIndentedString(compCount)).append("\n");
+    sb.append("    paidCount: ").append(toIndentedString(paidCount)).append("\n");
+    sb.append("    seatedCount: ").append(toIndentedString(seatedCount)).append("\n");
+    sb.append("    totalDesignationCount: ").append(toIndentedString(totalDesignationCount)).append("\n");
+    sb.append("    totalFee: ").append(toIndentedString(totalFee)).append("\n");
     sb.append("    totalTax: ").append(toIndentedString(totalTax)).append("\n");
     sb.append("    totalGratuity: ").append(toIndentedString(totalGratuity)).append("\n");
     sb.append("    totalDiscount: ").append(toIndentedString(totalDiscount)).append("\n");
+    sb.append("    assignedSeatCount: ").append(toIndentedString(assignedSeatCount)).append("\n");
     sb.append("    transactionChargeItem: ").append(toIndentedString(transactionChargeItem)).append("\n");
     sb.append("    firstOccurringFeeDate: ").append(toIndentedString(firstOccurringFeeDate)).append("\n");
     sb.append("    allAssignedSeatCount: ").append(toIndentedString(allAssignedSeatCount)).append("\n");
-    sb.append("    unprintedCount: ").append(toIndentedString(unprintedCount)).append("\n");
     sb.append("    totalCustomerDiscount: ").append(toIndentedString(totalCustomerDiscount)).append("\n");
-    sb.append("    seatedCount: ").append(toIndentedString(seatedCount)).append("\n");
-    sb.append("    totalDesignationCount: ").append(toIndentedString(totalDesignationCount)).append("\n");
-    sb.append("    zonedEventDateTime: ").append(toIndentedString(zonedEventDateTime)).append("\n");
-    sb.append("    totalFee: ").append(toIndentedString(totalFee)).append("\n");
-    sb.append("    compCount: ").append(toIndentedString(compCount)).append("\n");
-    sb.append("    paidCount: ").append(toIndentedString(paidCount)).append("\n");
-    sb.append("    assignedSeatCount: ").append(toIndentedString(assignedSeatCount)).append("\n");
+    sb.append("    unprintedCount: ").append(toIndentedString(unprintedCount)).append("\n");
     sb.append("    totalSavings: ").append(toIndentedString(totalSavings)).append("\n");
     sb.append("    grandTotalSavings: ").append(toIndentedString(grandTotalSavings)).append("\n");
     sb.append("    netPrice: ").append(toIndentedString(netPrice)).append("\n");
@@ -3632,21 +3275,21 @@ public class OrderItem {
     openapiFields.add("cancelled");
     openapiFields.add("new");
     openapiFields.add("taxType");
+    openapiFields.add("zonedEventDateTime");
+    openapiFields.add("compCount");
+    openapiFields.add("paidCount");
+    openapiFields.add("seatedCount");
+    openapiFields.add("totalDesignationCount");
+    openapiFields.add("totalFee");
     openapiFields.add("totalTax");
     openapiFields.add("totalGratuity");
     openapiFields.add("totalDiscount");
+    openapiFields.add("assignedSeatCount");
     openapiFields.add("transactionChargeItem");
     openapiFields.add("firstOccurringFeeDate");
     openapiFields.add("allAssignedSeatCount");
-    openapiFields.add("unprintedCount");
     openapiFields.add("totalCustomerDiscount");
-    openapiFields.add("seatedCount");
-    openapiFields.add("totalDesignationCount");
-    openapiFields.add("zonedEventDateTime");
-    openapiFields.add("totalFee");
-    openapiFields.add("compCount");
-    openapiFields.add("paidCount");
-    openapiFields.add("assignedSeatCount");
+    openapiFields.add("unprintedCount");
     openapiFields.add("totalSavings");
     openapiFields.add("grandTotalSavings");
     openapiFields.add("netPrice");
@@ -3694,9 +3337,6 @@ public class OrderItem {
       if (jsonObj.get("eventCode") != null && !jsonObj.get("eventCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `eventCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventCode").toString()));
       }
-      if (jsonObj.get("orderItemStatusCode") != null && !jsonObj.get("orderItemStatusCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `orderItemStatusCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("orderItemStatusCode").toString()));
-      }
       if (jsonObj.get("custTanDCProfileCode") != null && !jsonObj.get("custTanDCProfileCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `custTanDCProfileCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custTanDCProfileCode").toString()));
       }
@@ -3718,9 +3358,6 @@ public class OrderItem {
       if (jsonObj.get("cancelLocation") != null && !jsonObj.get("cancelLocation").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cancelLocation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cancelLocation").toString()));
       }
-      if (jsonObj.get("itemType") != null && !jsonObj.get("itemType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `itemType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemType").toString()));
-      }
       if (jsonObj.get("givexNumber") != null && !jsonObj.get("givexNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `givexNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("givexNumber").toString()));
       }
@@ -3729,9 +3366,6 @@ public class OrderItem {
       }
       if (jsonObj.get("activateUserId") != null && !jsonObj.get("activateUserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `activateUserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("activateUserId").toString()));
-      }
-      if (jsonObj.get("empBenefitCode") != null && !jsonObj.get("empBenefitCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `empBenefitCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("empBenefitCode").toString()));
       }
       if (jsonObj.get("partnerConfirm") != null && !jsonObj.get("partnerConfirm").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `partnerConfirm` to be a primitive type in the JSON string but got `%s`", jsonObj.get("partnerConfirm").toString()));
@@ -3747,9 +3381,6 @@ public class OrderItem {
       }
       if (jsonObj.get("skuBinLocation") != null && !jsonObj.get("skuBinLocation").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `skuBinLocation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("skuBinLocation").toString()));
-      }
-      if (jsonObj.get("skuTaxType") != null && !jsonObj.get("skuTaxType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `skuTaxType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("skuTaxType").toString()));
       }
       if (jsonObj.get("manDiscountCode") != null && !jsonObj.get("manDiscountCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `manDiscountCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("manDiscountCode").toString()));
@@ -3877,12 +3508,6 @@ public class OrderItem {
       // validate the optional field `miscEvent`
       if (jsonObj.getAsJsonObject("miscEvent") != null) {
         MiscEvent.validateJsonObject(jsonObj.getAsJsonObject("miscEvent"));
-      }
-      if (jsonObj.get("logActivity") != null && !jsonObj.get("logActivity").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `logActivity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logActivity").toString()));
-      }
-      if (jsonObj.get("taxType") != null && !jsonObj.get("taxType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `taxType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxType").toString()));
       }
   }
 

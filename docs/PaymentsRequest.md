@@ -13,7 +13,7 @@
 |**billingAddress** | [**Address**](Address.md) |  |  [optional] |
 |**captureDelayHours** | **Integer** |  |  [optional] |
 |**checkoutAttemptId** | **String** |  |  [optional] |
-|**channel** | [**ChannelEnum**](#ChannelEnum) |  |  [optional] |
+|**channel** | **ChannelEnum** |  |  [optional] |
 |**company** | [**Company**](Company.md) |  |  [optional] |
 |**countryCode** | **String** |  |  [optional] |
 |**dateOfBirth** | **OffsetDateTime** |  |  [optional] |
@@ -23,7 +23,7 @@
 |**enableOneClick** | **Boolean** |  |  [optional] |
 |**enablePayOut** | **Boolean** |  |  [optional] |
 |**enableRecurring** | **Boolean** |  |  [optional] |
-|**entityType** | [**EntityTypeEnum**](#EntityTypeEnum) |  |  [optional] |
+|**entityType** | **EntityTypeEnum** |  |  [optional] |
 |**fraudOffset** | **Integer** |  |  [optional] |
 |**installments** | [**Installments**](Installments.md) |  |  [optional] |
 |**lineItems** | [**List&lt;LineItem&gt;**](LineItem.md) |  |  [optional] |
@@ -38,7 +38,7 @@
 |**sessionValidity** | **String** |  |  [optional] |
 |**shopperEmail** | **String** |  |  [optional] |
 |**shopperIP** | **String** |  |  [optional] |
-|**shopperInteraction** | [**ShopperInteractionEnum**](#ShopperInteractionEnum) |  |  [optional] |
+|**shopperInteraction** | **ShopperInteractionEnum** |  |  [optional] |
 |**shopperLocale** | **String** |  |  [optional] |
 |**shopperName** | [**Name**](Name.md) |  |  [optional] |
 |**shopperReference** | **String** |  |  [optional] |
@@ -53,7 +53,7 @@
 |**threeDS2RequestData** | [**ThreeDS2RequestData**](ThreeDS2RequestData.md) |  |  [optional] |
 |**trustedShopper** | **Boolean** |  |  [optional] |
 |**origin** | **String** |  |  [optional] |
-|**recurringProcessingModel** | [**RecurringProcessingModelEnum**](#RecurringProcessingModelEnum) |  |  [optional] |
+|**recurringProcessingModel** | **RecurringProcessingModelEnum** |  |  [optional] |
 |**mpiData** | [**ThreeDSecureData**](ThreeDSecureData.md) |  |  [optional] |
 |**redirectFromIssuerMethod** | **String** |  |  [optional] |
 |**redirectToIssuerMethod** | **String** |  |  [optional] |
@@ -66,46 +66,6 @@
 |**recurringExpiry** | **String** |  |  [optional] |
 |**recurringFrequency** | **String** |  |  [optional] |
 |**mandate** | [**Mandate**](Mandate.md) |  |  [optional] |
-
-
-
-## Enum: ChannelEnum
-
-| Name | Value |
-|---- | -----|
-| IOS | &quot;iOS&quot; |
-| ANDROID | &quot;Android&quot; |
-| WEB | &quot;Web&quot; |
-
-
-
-## Enum: EntityTypeEnum
-
-| Name | Value |
-|---- | -----|
-| NATURALPERSON | &quot;NaturalPerson&quot; |
-| COMPANYNAME | &quot;CompanyName&quot; |
-
-
-
-## Enum: ShopperInteractionEnum
-
-| Name | Value |
-|---- | -----|
-| ECOMMERCE | &quot;Ecommerce&quot; |
-| CONTAUTH | &quot;ContAuth&quot; |
-| MOTO | &quot;Moto&quot; |
-| POS | &quot;POS&quot; |
-
-
-
-## Enum: RecurringProcessingModelEnum
-
-| Name | Value |
-|---- | -----|
-| SUBSCRIPTION | &quot;Subscription&quot; |
-| CARDONFILE | &quot;CardOnFile&quot; |
-| UNSCHEDULEDCARDONFILE | &quot;UnscheduledCardOnFile&quot; |
 
 
 

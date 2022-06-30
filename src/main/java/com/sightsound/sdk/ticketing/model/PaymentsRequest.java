@@ -25,8 +25,10 @@ import com.sightsound.sdk.ticketing.model.Address;
 import com.sightsound.sdk.ticketing.model.Amount;
 import com.sightsound.sdk.ticketing.model.ApplicationInfo;
 import com.sightsound.sdk.ticketing.model.BrowserInfo;
+import com.sightsound.sdk.ticketing.model.ChannelEnum;
 import com.sightsound.sdk.ticketing.model.CheckoutOrder;
 import com.sightsound.sdk.ticketing.model.Company;
+import com.sightsound.sdk.ticketing.model.EntityTypeEnum;
 import com.sightsound.sdk.ticketing.model.ForexQuote;
 import com.sightsound.sdk.ticketing.model.Installments;
 import com.sightsound.sdk.ticketing.model.LineItem;
@@ -34,7 +36,9 @@ import com.sightsound.sdk.ticketing.model.Mandate;
 import com.sightsound.sdk.ticketing.model.MerchantRiskIndicator;
 import com.sightsound.sdk.ticketing.model.Name;
 import com.sightsound.sdk.ticketing.model.PaymentMethodDetails;
+import com.sightsound.sdk.ticketing.model.RecurringProcessingModelEnum;
 import com.sightsound.sdk.ticketing.model.RiskData;
+import com.sightsound.sdk.ticketing.model.ShopperInteractionEnum;
 import com.sightsound.sdk.ticketing.model.Split;
 import com.sightsound.sdk.ticketing.model.ThreeDS2RequestData;
 import com.sightsound.sdk.ticketing.model.ThreeDSecureData;
@@ -70,7 +74,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * PaymentsRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class PaymentsRequest {
   public static final String SERIALIZED_NAME_ACCOUNT_INFO = "accountInfo";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_INFO)
@@ -95,55 +99,6 @@ public class PaymentsRequest {
   public static final String SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID = "checkoutAttemptId";
   @SerializedName(SERIALIZED_NAME_CHECKOUT_ATTEMPT_ID)
   private String checkoutAttemptId;
-
-  /**
-   * Gets or Sets channel
-   */
-  @JsonAdapter(ChannelEnum.Adapter.class)
-  public enum ChannelEnum {
-    IOS("iOS"),
-    
-    ANDROID("Android"),
-    
-    WEB("Web");
-
-    private String value;
-
-    ChannelEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ChannelEnum fromValue(String value) {
-      for (ChannelEnum b : ChannelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ChannelEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ChannelEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ChannelEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ChannelEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_CHANNEL = "channel";
   @SerializedName(SERIALIZED_NAME_CHANNEL)
@@ -184,53 +139,6 @@ public class PaymentsRequest {
   public static final String SERIALIZED_NAME_ENABLE_RECURRING = "enableRecurring";
   @SerializedName(SERIALIZED_NAME_ENABLE_RECURRING)
   private Boolean enableRecurring;
-
-  /**
-   * Gets or Sets entityType
-   */
-  @JsonAdapter(EntityTypeEnum.Adapter.class)
-  public enum EntityTypeEnum {
-    NATURALPERSON("NaturalPerson"),
-    
-    COMPANYNAME("CompanyName");
-
-    private String value;
-
-    EntityTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static EntityTypeEnum fromValue(String value) {
-      for (EntityTypeEnum b : EntityTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<EntityTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final EntityTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public EntityTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return EntityTypeEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_ENTITY_TYPE = "entityType";
   @SerializedName(SERIALIZED_NAME_ENTITY_TYPE)
@@ -292,57 +200,6 @@ public class PaymentsRequest {
   @SerializedName(SERIALIZED_NAME_SHOPPER_I_P)
   private String shopperIP;
 
-  /**
-   * Gets or Sets shopperInteraction
-   */
-  @JsonAdapter(ShopperInteractionEnum.Adapter.class)
-  public enum ShopperInteractionEnum {
-    ECOMMERCE("Ecommerce"),
-    
-    CONTAUTH("ContAuth"),
-    
-    MOTO("Moto"),
-    
-    POS("POS");
-
-    private String value;
-
-    ShopperInteractionEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ShopperInteractionEnum fromValue(String value) {
-      for (ShopperInteractionEnum b : ShopperInteractionEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ShopperInteractionEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ShopperInteractionEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ShopperInteractionEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ShopperInteractionEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SHOPPER_INTERACTION = "shopperInteraction";
   @SerializedName(SERIALIZED_NAME_SHOPPER_INTERACTION)
   private ShopperInteractionEnum shopperInteraction;
@@ -402,55 +259,6 @@ public class PaymentsRequest {
   public static final String SERIALIZED_NAME_ORIGIN = "origin";
   @SerializedName(SERIALIZED_NAME_ORIGIN)
   private String origin;
-
-  /**
-   * Gets or Sets recurringProcessingModel
-   */
-  @JsonAdapter(RecurringProcessingModelEnum.Adapter.class)
-  public enum RecurringProcessingModelEnum {
-    SUBSCRIPTION("Subscription"),
-    
-    CARDONFILE("CardOnFile"),
-    
-    UNSCHEDULEDCARDONFILE("UnscheduledCardOnFile");
-
-    private String value;
-
-    RecurringProcessingModelEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static RecurringProcessingModelEnum fromValue(String value) {
-      for (RecurringProcessingModelEnum b : RecurringProcessingModelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<RecurringProcessingModelEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final RecurringProcessingModelEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public RecurringProcessingModelEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return RecurringProcessingModelEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_RECURRING_PROCESSING_MODEL = "recurringProcessingModel";
   @SerializedName(SERIALIZED_NAME_RECURRING_PROCESSING_MODEL)
@@ -2158,9 +1966,6 @@ public class PaymentsRequest {
       if (jsonObj.get("checkoutAttemptId") != null && !jsonObj.get("checkoutAttemptId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `checkoutAttemptId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkoutAttemptId").toString()));
       }
-      if (jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
-      }
       // validate the optional field `company`
       if (jsonObj.getAsJsonObject("company") != null) {
         Company.validateJsonObject(jsonObj.getAsJsonObject("company"));
@@ -2175,9 +1980,6 @@ public class PaymentsRequest {
       // validate the optional field `deliveryAddress`
       if (jsonObj.getAsJsonObject("deliveryAddress") != null) {
         Address.validateJsonObject(jsonObj.getAsJsonObject("deliveryAddress"));
-      }
-      if (jsonObj.get("entityType") != null && !jsonObj.get("entityType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `entityType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityType").toString()));
       }
       // validate the optional field `installments`
       if (jsonObj.getAsJsonObject("installments") != null) {
@@ -2225,9 +2027,6 @@ public class PaymentsRequest {
       }
       if (jsonObj.get("shopperIP") != null && !jsonObj.get("shopperIP").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `shopperIP` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shopperIP").toString()));
-      }
-      if (jsonObj.get("shopperInteraction") != null && !jsonObj.get("shopperInteraction").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `shopperInteraction` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shopperInteraction").toString()));
       }
       if (jsonObj.get("shopperLocale") != null && !jsonObj.get("shopperLocale").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `shopperLocale` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shopperLocale").toString()));
@@ -2281,9 +2080,6 @@ public class PaymentsRequest {
       }
       if (jsonObj.get("origin") != null && !jsonObj.get("origin").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `origin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("origin").toString()));
-      }
-      if (jsonObj.get("recurringProcessingModel") != null && !jsonObj.get("recurringProcessingModel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `recurringProcessingModel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recurringProcessingModel").toString()));
       }
       // validate the optional field `mpiData`
       if (jsonObj.getAsJsonObject("mpiData") != null) {

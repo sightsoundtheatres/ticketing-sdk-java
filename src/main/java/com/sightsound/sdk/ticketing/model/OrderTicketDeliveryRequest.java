@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.TicketBatch;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -47,60 +48,11 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderTicketDeliveryRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class OrderTicketDeliveryRequest {
-  /**
-   * Gets or Sets method
-   */
-  @JsonAdapter(MethodEnum.Adapter.class)
-  public enum MethodEnum {
-    AGENT("AGENT"),
-    
-    ETICKET("ETICKET"),
-    
-    HELD("HELD");
-
-    private String value;
-
-    MethodEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MethodEnum fromValue(String value) {
-      for (MethodEnum b : MethodEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<MethodEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MethodEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MethodEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_METHOD = "method";
   @SerializedName(SERIALIZED_NAME_METHOD)
-  private MethodEnum method;
+  private TicketBatch method;
 
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
@@ -109,7 +61,7 @@ public class OrderTicketDeliveryRequest {
   public OrderTicketDeliveryRequest() { 
   }
 
-  public OrderTicketDeliveryRequest method(MethodEnum method) {
+  public OrderTicketDeliveryRequest method(TicketBatch method) {
     
     this.method = method;
     return this;
@@ -122,12 +74,12 @@ public class OrderTicketDeliveryRequest {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public MethodEnum getMethod() {
+  public TicketBatch getMethod() {
     return method;
   }
 
 
-  public void setMethod(MethodEnum method) {
+  public void setMethod(TicketBatch method) {
     this.method = method;
   }
 
@@ -239,9 +191,6 @@ public class OrderTicketDeliveryRequest {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
-      }
-      if (jsonObj.get("method") != null && !jsonObj.get("method").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `method` to be a primitive type in the JSON string but got `%s`", jsonObj.get("method").toString()));
       }
       if (jsonObj.get("target") != null && !jsonObj.get("target").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `target` to be a primitive type in the JSON string but got `%s`", jsonObj.get("target").toString()));

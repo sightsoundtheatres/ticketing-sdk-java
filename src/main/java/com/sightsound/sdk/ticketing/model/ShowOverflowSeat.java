@@ -21,6 +21,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.OrderItem;
+import com.sightsound.sdk.ticketing.model.SeatStatus;
+import com.sightsound.sdk.ticketing.model.TicketPrintStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -49,7 +51,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * ShowOverflowSeat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class ShowOverflowSeat {
   public static final String SERIALIZED_NAME_OVERFLOW_ID = "overflowId";
   @SerializedName(SERIALIZED_NAME_OVERFLOW_ID)
@@ -75,115 +77,13 @@ public class ShowOverflowSeat {
   @SerializedName(SERIALIZED_NAME_TICKET_TEXT)
   private String ticketText;
 
-  /**
-   * Gets or Sets seatStatus
-   */
-  @JsonAdapter(SeatStatusEnum.Adapter.class)
-  public enum SeatStatusEnum {
-    A("A"),
-    
-    B("B"),
-    
-    H("H"),
-    
-    U("U");
-
-    private String value;
-
-    SeatStatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SeatStatusEnum fromValue(String value) {
-      for (SeatStatusEnum b : SeatStatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SeatStatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SeatStatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SeatStatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SeatStatusEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SEAT_STATUS = "seatStatus";
   @SerializedName(SERIALIZED_NAME_SEAT_STATUS)
-  private SeatStatusEnum seatStatus;
-
-  /**
-   * Gets or Sets ticketStatus
-   */
-  @JsonAdapter(TicketStatusEnum.Adapter.class)
-  public enum TicketStatusEnum {
-    MARK_NOT_PRINTED("MARK_NOT_PRINTED"),
-    
-    MARK_PRINTED("MARK_PRINTED"),
-    
-    PRINTED("PRINTED"),
-    
-    NOT_PRINTED("NOT_PRINTED");
-
-    private String value;
-
-    TicketStatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TicketStatusEnum fromValue(String value) {
-      for (TicketStatusEnum b : TicketStatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TicketStatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TicketStatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TicketStatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TicketStatusEnum.fromValue(value);
-      }
-    }
-  }
+  private SeatStatus seatStatus;
 
   public static final String SERIALIZED_NAME_TICKET_STATUS = "ticketStatus";
   @SerializedName(SERIALIZED_NAME_TICKET_STATUS)
-  private TicketStatusEnum ticketStatus;
+  private TicketPrintStatus ticketStatus;
 
   public static final String SERIALIZED_NAME_ORDER_ITEM = "orderItem";
   @SerializedName(SERIALIZED_NAME_ORDER_ITEM)
@@ -330,7 +230,7 @@ public class ShowOverflowSeat {
   }
 
 
-  public ShowOverflowSeat seatStatus(SeatStatusEnum seatStatus) {
+  public ShowOverflowSeat seatStatus(SeatStatus seatStatus) {
     
     this.seatStatus = seatStatus;
     return this;
@@ -343,17 +243,17 @@ public class ShowOverflowSeat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public SeatStatusEnum getSeatStatus() {
+  public SeatStatus getSeatStatus() {
     return seatStatus;
   }
 
 
-  public void setSeatStatus(SeatStatusEnum seatStatus) {
+  public void setSeatStatus(SeatStatus seatStatus) {
     this.seatStatus = seatStatus;
   }
 
 
-  public ShowOverflowSeat ticketStatus(TicketStatusEnum ticketStatus) {
+  public ShowOverflowSeat ticketStatus(TicketPrintStatus ticketStatus) {
     
     this.ticketStatus = ticketStatus;
     return this;
@@ -366,12 +266,12 @@ public class ShowOverflowSeat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TicketStatusEnum getTicketStatus() {
+  public TicketPrintStatus getTicketStatus() {
     return ticketStatus;
   }
 
 
-  public void setTicketStatus(TicketStatusEnum ticketStatus) {
+  public void setTicketStatus(TicketPrintStatus ticketStatus) {
     this.ticketStatus = ticketStatus;
   }
 
@@ -509,12 +409,6 @@ public class ShowOverflowSeat {
       }
       if (jsonObj.get("ticketText") != null && !jsonObj.get("ticketText").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ticketText` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketText").toString()));
-      }
-      if (jsonObj.get("seatStatus") != null && !jsonObj.get("seatStatus").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `seatStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("seatStatus").toString()));
-      }
-      if (jsonObj.get("ticketStatus") != null && !jsonObj.get("ticketStatus").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ticketStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketStatus").toString()));
       }
       // validate the optional field `orderItem`
       if (jsonObj.getAsJsonObject("orderItem") != null) {

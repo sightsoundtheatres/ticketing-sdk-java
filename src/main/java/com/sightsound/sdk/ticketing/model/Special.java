@@ -22,7 +22,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.SpecialAssociatedEvent;
 import com.sightsound.sdk.ticketing.model.SpecialDetail;
+import com.sightsound.sdk.ticketing.model.SpecialRestrictionType;
+import com.sightsound.sdk.ticketing.model.SpecialSubTypeCode;
 import com.sightsound.sdk.ticketing.model.SpecialType;
+import com.sightsound.sdk.ticketing.model.SpecialTypeCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -55,7 +58,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Special
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class Special {
   public static final String SERIALIZED_NAME_SPECIAL_CODE = "specialCode";
   @SerializedName(SERIALIZED_NAME_SPECIAL_CODE)
@@ -89,60 +92,9 @@ public class Special {
   @SerializedName(SERIALIZED_NAME_ACCEPT_ORDER_END_DATE)
   private OffsetDateTime acceptOrderEndDate;
 
-  /**
-   * Gets or Sets specialTypeCode
-   */
-  @JsonAdapter(SpecialTypeCodeEnum.Adapter.class)
-  public enum SpecialTypeCodeEnum {
-    BUY_GET("BUY_GET"),
-    
-    COMBO("COMBO"),
-    
-    MULTI_EVENT("MULTI_EVENT"),
-    
-    NET("NET");
-
-    private String value;
-
-    SpecialTypeCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SpecialTypeCodeEnum fromValue(String value) {
-      for (SpecialTypeCodeEnum b : SpecialTypeCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SpecialTypeCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SpecialTypeCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SpecialTypeCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SpecialTypeCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SPECIAL_TYPE_CODE = "specialTypeCode";
   @SerializedName(SERIALIZED_NAME_SPECIAL_TYPE_CODE)
-  private SpecialTypeCodeEnum specialTypeCode;
+  private SpecialTypeCode specialTypeCode;
 
   public static final String SERIALIZED_NAME_CUST_FIRST_ORDER = "custFirstOrder";
   @SerializedName(SERIALIZED_NAME_CUST_FIRST_ORDER)
@@ -220,60 +172,9 @@ public class Special {
   @SerializedName(SERIALIZED_NAME_CUST_DISC_ADDON_ONLY)
   private Boolean custDiscAddonOnly;
 
-  /**
-   * Gets or Sets subTypeCode
-   */
-  @JsonAdapter(SubTypeCodeEnum.Adapter.class)
-  public enum SubTypeCodeEnum {
-    _1FAMPACK("1FAMPACK"),
-    
-    _2FAMPACK("2FAMPACK"),
-    
-    NET("NET"),
-    
-    SHOWDAY("SHOWDAY");
-
-    private String value;
-
-    SubTypeCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SubTypeCodeEnum fromValue(String value) {
-      for (SubTypeCodeEnum b : SubTypeCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SubTypeCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SubTypeCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SubTypeCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SubTypeCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SUB_TYPE_CODE = "subTypeCode";
   @SerializedName(SERIALIZED_NAME_SUB_TYPE_CODE)
-  private SubTypeCodeEnum subTypeCode;
+  private SpecialSubTypeCode subTypeCode;
 
   public static final String SERIALIZED_NAME_SPECIAL_COMMENTS = "specialComments";
   @SerializedName(SERIALIZED_NAME_SPECIAL_COMMENTS)
@@ -331,58 +232,9 @@ public class Special {
   @SerializedName(SERIALIZED_NAME_ALLOW_INDIVIDUAL)
   private Boolean allowIndividual;
 
-  /**
-   * Gets or Sets restriction
-   */
-  @JsonAdapter(RestrictionEnum.Adapter.class)
-  public enum RestrictionEnum {
-    I("I"),
-    
-    E("E"),
-    
-    N("N");
-
-    private String value;
-
-    RestrictionEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static RestrictionEnum fromValue(String value) {
-      for (RestrictionEnum b : RestrictionEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<RestrictionEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final RestrictionEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public RestrictionEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return RestrictionEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_RESTRICTION = "restriction";
   @SerializedName(SERIALIZED_NAME_RESTRICTION)
-  private RestrictionEnum restriction;
+  private SpecialRestrictionType restriction;
 
   public static final String SERIALIZED_NAME_SALES_CONF = "salesConf";
   @SerializedName(SERIALIZED_NAME_SALES_CONF)
@@ -611,7 +463,7 @@ public class Special {
   }
 
 
-  public Special specialTypeCode(SpecialTypeCodeEnum specialTypeCode) {
+  public Special specialTypeCode(SpecialTypeCode specialTypeCode) {
     
     this.specialTypeCode = specialTypeCode;
     return this;
@@ -624,12 +476,12 @@ public class Special {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public SpecialTypeCodeEnum getSpecialTypeCode() {
+  public SpecialTypeCode getSpecialTypeCode() {
     return specialTypeCode;
   }
 
 
-  public void setSpecialTypeCode(SpecialTypeCodeEnum specialTypeCode) {
+  public void setSpecialTypeCode(SpecialTypeCode specialTypeCode) {
     this.specialTypeCode = specialTypeCode;
   }
 
@@ -1071,7 +923,7 @@ public class Special {
   }
 
 
-  public Special subTypeCode(SubTypeCodeEnum subTypeCode) {
+  public Special subTypeCode(SpecialSubTypeCode subTypeCode) {
     
     this.subTypeCode = subTypeCode;
     return this;
@@ -1084,12 +936,12 @@ public class Special {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public SubTypeCodeEnum getSubTypeCode() {
+  public SpecialSubTypeCode getSubTypeCode() {
     return subTypeCode;
   }
 
 
-  public void setSubTypeCode(SubTypeCodeEnum subTypeCode) {
+  public void setSubTypeCode(SpecialSubTypeCode subTypeCode) {
     this.subTypeCode = subTypeCode;
   }
 
@@ -1416,7 +1268,7 @@ public class Special {
   }
 
 
-  public Special restriction(RestrictionEnum restriction) {
+  public Special restriction(SpecialRestrictionType restriction) {
     
     this.restriction = restriction;
     return this;
@@ -1429,12 +1281,12 @@ public class Special {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public RestrictionEnum getRestriction() {
+  public SpecialRestrictionType getRestriction() {
     return restriction;
   }
 
 
-  public void setRestriction(RestrictionEnum restriction) {
+  public void setRestriction(SpecialRestrictionType restriction) {
     this.restriction = restriction;
   }
 
@@ -1947,9 +1799,6 @@ public class Special {
       if (jsonObj.get("numberEventsInCombo") != null && !jsonObj.get("numberEventsInCombo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `numberEventsInCombo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("numberEventsInCombo").toString()));
       }
-      if (jsonObj.get("specialTypeCode") != null && !jsonObj.get("specialTypeCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `specialTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("specialTypeCode").toString()));
-      }
       if (jsonObj.get("detailsValueTypeCode") != null && !jsonObj.get("detailsValueTypeCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `detailsValueTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detailsValueTypeCode").toString()));
       }
@@ -1968,9 +1817,6 @@ public class Special {
       if (jsonObj.get("couponLine5") != null && !jsonObj.get("couponLine5").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `couponLine5` to be a primitive type in the JSON string but got `%s`", jsonObj.get("couponLine5").toString()));
       }
-      if (jsonObj.get("subTypeCode") != null && !jsonObj.get("subTypeCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `subTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subTypeCode").toString()));
-      }
       if (jsonObj.get("specialComments") != null && !jsonObj.get("specialComments").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `specialComments` to be a primitive type in the JSON string but got `%s`", jsonObj.get("specialComments").toString()));
       }
@@ -1988,9 +1834,6 @@ public class Special {
       }
       if (jsonObj.get("rptDisplayName") != null && !jsonObj.get("rptDisplayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `rptDisplayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rptDisplayName").toString()));
-      }
-      if (jsonObj.get("restriction") != null && !jsonObj.get("restriction").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `restriction` to be a primitive type in the JSON string but got `%s`", jsonObj.get("restriction").toString()));
       }
       if (jsonObj.get("salesConfCat") != null && !jsonObj.get("salesConfCat").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `salesConfCat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salesConfCat").toString()));

@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**eventCode** | **String** |  |  [optional] |
 |**eventName** | **String** |  |  [optional] |
-|**itemType** | [**ItemTypeEnum**](#ItemTypeEnum) |  |  [optional] |
+|**itemType** | **ItemType** |  |  [optional] |
 |**eventTimeMinutes** | **Integer** |  |  [optional] |
 |**ticketed** | **Boolean** |  |  [optional] |
 |**ticketStyleCode** | **String** |  |  [optional] |
@@ -24,7 +24,7 @@
 |**eventTypeDetailCode** | **String** |  |  [optional] |
 |**compTicketsSeatsMin** | **Integer** |  |  [optional] |
 |**compTicketsStartDate** | **OffsetDateTime** |  |  [optional] |
-|**theaterLocation** | [**TheaterLocationEnum**](#TheaterLocationEnum) |  |  [optional] |
+|**theaterLocation** | **LocationDescription** |  |  [optional] |
 |**empDiscDaysToShow** | **Integer** |  |  [optional] |
 |**empDiscPercent** | **BigDecimal** |  |  [optional] |
 |**taxCode** | **String** |  |  [optional] |
@@ -49,38 +49,6 @@
 |**budget** | [**ShowBudget**](ShowBudget.md) |  |  [optional] |
 |**zonedEventEndDateTime** | **OffsetDateTime** |  |  [optional] |
 |**zonedEventStartDateTime** | **OffsetDateTime** |  |  [optional] |
-
-
-
-## Enum: ItemTypeEnum
-
-| Name | Value |
-|---- | -----|
-| SHOW | &quot;SHOW&quot; |
-| TOUR | &quot;TOUR&quot; |
-| CHARGE | &quot;CHARGE&quot; |
-| MERCH | &quot;MERCH&quot; |
-| SHIPPING | &quot;SHIPPING&quot; |
-| GIFTCARD | &quot;GIFTCARD&quot; |
-| ATTRACTION | &quot;ATTRACTION&quot; |
-| COUPON | &quot;COUPON&quot; |
-| FOOD | &quot;FOOD&quot; |
-| HOTEL | &quot;HOTEL&quot; |
-| INTLSHIPPING | &quot;INTLSHIPPING&quot; |
-| MEAL | &quot;MEAL&quot; |
-| MERCHANDISE | &quot;MERCHANDISE&quot; |
-| MERCHSHIPPING | &quot;MERCHSHIPPING&quot; |
-| MISC | &quot;MISC&quot; |
-| VMEAL | &quot;VMEAL&quot; |
-
-
-
-## Enum: TheaterLocationEnum
-
-| Name | Value |
-|---- | -----|
-| STRASBURG_PA | &quot;STRASBURG_PA&quot; |
-| BRANSON_MO | &quot;BRANSON_MO&quot; |
 
 
 

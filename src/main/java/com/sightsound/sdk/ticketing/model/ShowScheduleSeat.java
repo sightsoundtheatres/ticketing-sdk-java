@@ -21,7 +21,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.OrderItem;
+import com.sightsound.sdk.ticketing.model.SeatStatus;
+import com.sightsound.sdk.ticketing.model.SeatType;
 import com.sightsound.sdk.ticketing.model.SeatingTemplateSectionSeat;
+import com.sightsound.sdk.ticketing.model.TicketPrintStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -50,7 +53,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * ShowScheduleSeat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class ShowScheduleSeat {
   public static final String SERIALIZED_NAME_EVENT_CODE = "eventCode";
   @SerializedName(SERIALIZED_NAME_EVENT_CODE)
@@ -96,184 +99,17 @@ public class ShowScheduleSeat {
   @SerializedName(SERIALIZED_NAME_SSS_DATE_TIME)
   private OffsetDateTime sssDateTime;
 
-  /**
-   * Gets or Sets seatType
-   */
-  @JsonAdapter(SeatTypeEnum.Adapter.class)
-  public enum SeatTypeEnum {
-    A("A"),
-    
-    C("C"),
-    
-    D("D"),
-    
-    F("F"),
-    
-    H("H"),
-    
-    I("I"),
-    
-    M("M"),
-    
-    S("S"),
-    
-    T("T"),
-    
-    V("V"),
-    
-    W("W");
-
-    private String value;
-
-    SeatTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SeatTypeEnum fromValue(String value) {
-      for (SeatTypeEnum b : SeatTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SeatTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SeatTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SeatTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SeatTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_SEAT_TYPE = "seatType";
   @SerializedName(SERIALIZED_NAME_SEAT_TYPE)
-  private SeatTypeEnum seatType;
-
-  /**
-   * Gets or Sets seatStatus
-   */
-  @JsonAdapter(SeatStatusEnum.Adapter.class)
-  public enum SeatStatusEnum {
-    A("A"),
-    
-    B("B"),
-    
-    H("H"),
-    
-    U("U");
-
-    private String value;
-
-    SeatStatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SeatStatusEnum fromValue(String value) {
-      for (SeatStatusEnum b : SeatStatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SeatStatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SeatStatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SeatStatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SeatStatusEnum.fromValue(value);
-      }
-    }
-  }
+  private SeatType seatType;
 
   public static final String SERIALIZED_NAME_SEAT_STATUS = "seatStatus";
   @SerializedName(SERIALIZED_NAME_SEAT_STATUS)
-  private SeatStatusEnum seatStatus;
-
-  /**
-   * Gets or Sets ticketPrintStatus
-   */
-  @JsonAdapter(TicketPrintStatusEnum.Adapter.class)
-  public enum TicketPrintStatusEnum {
-    MARK_NOT_PRINTED("MARK_NOT_PRINTED"),
-    
-    MARK_PRINTED("MARK_PRINTED"),
-    
-    PRINTED("PRINTED"),
-    
-    NOT_PRINTED("NOT_PRINTED");
-
-    private String value;
-
-    TicketPrintStatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TicketPrintStatusEnum fromValue(String value) {
-      for (TicketPrintStatusEnum b : TicketPrintStatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TicketPrintStatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TicketPrintStatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TicketPrintStatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TicketPrintStatusEnum.fromValue(value);
-      }
-    }
-  }
+  private SeatStatus seatStatus;
 
   public static final String SERIALIZED_NAME_TICKET_PRINT_STATUS = "ticketPrintStatus";
   @SerializedName(SERIALIZED_NAME_TICKET_PRINT_STATUS)
-  private TicketPrintStatusEnum ticketPrintStatus;
+  private TicketPrintStatus ticketPrintStatus;
 
   public static final String SERIALIZED_NAME_MODIFY_USER_ID = "modifyUserId";
   @SerializedName(SERIALIZED_NAME_MODIFY_USER_ID)
@@ -287,13 +123,13 @@ public class ShowScheduleSeat {
   @SerializedName(SERIALIZED_NAME_TEMPLATE_SECTION_SEAT)
   private SeatingTemplateSectionSeat templateSectionSeat;
 
-  public static final String SERIALIZED_NAME_WHEELCHAIR_OR_MOTORIZED = "wheelchairOrMotorized";
-  @SerializedName(SERIALIZED_NAME_WHEELCHAIR_OR_MOTORIZED)
-  private Boolean wheelchairOrMotorized;
-
   public static final String SERIALIZED_NAME_SEAT_CODE = "seatCode";
   @SerializedName(SERIALIZED_NAME_SEAT_CODE)
   private String seatCode;
+
+  public static final String SERIALIZED_NAME_WHEELCHAIR_OR_MOTORIZED = "wheelchairOrMotorized";
+  @SerializedName(SERIALIZED_NAME_WHEELCHAIR_OR_MOTORIZED)
+  private Boolean wheelchairOrMotorized;
 
   public ShowScheduleSeat() { 
   }
@@ -551,7 +387,7 @@ public class ShowScheduleSeat {
   }
 
 
-  public ShowScheduleSeat seatType(SeatTypeEnum seatType) {
+  public ShowScheduleSeat seatType(SeatType seatType) {
     
     this.seatType = seatType;
     return this;
@@ -564,17 +400,17 @@ public class ShowScheduleSeat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public SeatTypeEnum getSeatType() {
+  public SeatType getSeatType() {
     return seatType;
   }
 
 
-  public void setSeatType(SeatTypeEnum seatType) {
+  public void setSeatType(SeatType seatType) {
     this.seatType = seatType;
   }
 
 
-  public ShowScheduleSeat seatStatus(SeatStatusEnum seatStatus) {
+  public ShowScheduleSeat seatStatus(SeatStatus seatStatus) {
     
     this.seatStatus = seatStatus;
     return this;
@@ -587,17 +423,17 @@ public class ShowScheduleSeat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public SeatStatusEnum getSeatStatus() {
+  public SeatStatus getSeatStatus() {
     return seatStatus;
   }
 
 
-  public void setSeatStatus(SeatStatusEnum seatStatus) {
+  public void setSeatStatus(SeatStatus seatStatus) {
     this.seatStatus = seatStatus;
   }
 
 
-  public ShowScheduleSeat ticketPrintStatus(TicketPrintStatusEnum ticketPrintStatus) {
+  public ShowScheduleSeat ticketPrintStatus(TicketPrintStatus ticketPrintStatus) {
     
     this.ticketPrintStatus = ticketPrintStatus;
     return this;
@@ -610,12 +446,12 @@ public class ShowScheduleSeat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TicketPrintStatusEnum getTicketPrintStatus() {
+  public TicketPrintStatus getTicketPrintStatus() {
     return ticketPrintStatus;
   }
 
 
-  public void setTicketPrintStatus(TicketPrintStatusEnum ticketPrintStatus) {
+  public void setTicketPrintStatus(TicketPrintStatus ticketPrintStatus) {
     this.ticketPrintStatus = ticketPrintStatus;
   }
 
@@ -689,29 +525,6 @@ public class ShowScheduleSeat {
   }
 
 
-  public ShowScheduleSeat wheelchairOrMotorized(Boolean wheelchairOrMotorized) {
-    
-    this.wheelchairOrMotorized = wheelchairOrMotorized;
-    return this;
-  }
-
-   /**
-   * Get wheelchairOrMotorized
-   * @return wheelchairOrMotorized
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getWheelchairOrMotorized() {
-    return wheelchairOrMotorized;
-  }
-
-
-  public void setWheelchairOrMotorized(Boolean wheelchairOrMotorized) {
-    this.wheelchairOrMotorized = wheelchairOrMotorized;
-  }
-
-
   public ShowScheduleSeat seatCode(String seatCode) {
     
     this.seatCode = seatCode;
@@ -732,6 +545,29 @@ public class ShowScheduleSeat {
 
   public void setSeatCode(String seatCode) {
     this.seatCode = seatCode;
+  }
+
+
+  public ShowScheduleSeat wheelchairOrMotorized(Boolean wheelchairOrMotorized) {
+    
+    this.wheelchairOrMotorized = wheelchairOrMotorized;
+    return this;
+  }
+
+   /**
+   * Get wheelchairOrMotorized
+   * @return wheelchairOrMotorized
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getWheelchairOrMotorized() {
+    return wheelchairOrMotorized;
+  }
+
+
+  public void setWheelchairOrMotorized(Boolean wheelchairOrMotorized) {
+    this.wheelchairOrMotorized = wheelchairOrMotorized;
   }
 
 
@@ -762,13 +598,13 @@ public class ShowScheduleSeat {
         Objects.equals(this.modifyUserId, showScheduleSeat.modifyUserId) &&
         Objects.equals(this.orderItem, showScheduleSeat.orderItem) &&
         Objects.equals(this.templateSectionSeat, showScheduleSeat.templateSectionSeat) &&
-        Objects.equals(this.wheelchairOrMotorized, showScheduleSeat.wheelchairOrMotorized) &&
-        Objects.equals(this.seatCode, showScheduleSeat.seatCode);
+        Objects.equals(this.seatCode, showScheduleSeat.seatCode) &&
+        Objects.equals(this.wheelchairOrMotorized, showScheduleSeat.wheelchairOrMotorized);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventCode, showDateTime, sectionCode, rowNumber, seatNumber, priceGrade, seatingTemplateCode, orderNumber, itemNumber, bookingPhase, sssDateTime, seatType, seatStatus, ticketPrintStatus, modifyUserId, orderItem, templateSectionSeat, wheelchairOrMotorized, seatCode);
+    return Objects.hash(eventCode, showDateTime, sectionCode, rowNumber, seatNumber, priceGrade, seatingTemplateCode, orderNumber, itemNumber, bookingPhase, sssDateTime, seatType, seatStatus, ticketPrintStatus, modifyUserId, orderItem, templateSectionSeat, seatCode, wheelchairOrMotorized);
   }
 
   @Override
@@ -792,8 +628,8 @@ public class ShowScheduleSeat {
     sb.append("    modifyUserId: ").append(toIndentedString(modifyUserId)).append("\n");
     sb.append("    orderItem: ").append(toIndentedString(orderItem)).append("\n");
     sb.append("    templateSectionSeat: ").append(toIndentedString(templateSectionSeat)).append("\n");
-    sb.append("    wheelchairOrMotorized: ").append(toIndentedString(wheelchairOrMotorized)).append("\n");
     sb.append("    seatCode: ").append(toIndentedString(seatCode)).append("\n");
+    sb.append("    wheelchairOrMotorized: ").append(toIndentedString(wheelchairOrMotorized)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -833,8 +669,8 @@ public class ShowScheduleSeat {
     openapiFields.add("modifyUserId");
     openapiFields.add("orderItem");
     openapiFields.add("templateSectionSeat");
-    openapiFields.add("wheelchairOrMotorized");
     openapiFields.add("seatCode");
+    openapiFields.add("wheelchairOrMotorized");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -888,15 +724,6 @@ public class ShowScheduleSeat {
       }
       if (jsonObj.get("seatingTemplateCode") != null && !jsonObj.get("seatingTemplateCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `seatingTemplateCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("seatingTemplateCode").toString()));
-      }
-      if (jsonObj.get("seatType") != null && !jsonObj.get("seatType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `seatType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("seatType").toString()));
-      }
-      if (jsonObj.get("seatStatus") != null && !jsonObj.get("seatStatus").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `seatStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("seatStatus").toString()));
-      }
-      if (jsonObj.get("ticketPrintStatus") != null && !jsonObj.get("ticketPrintStatus").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ticketPrintStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketPrintStatus").toString()));
       }
       if (jsonObj.get("modifyUserId") != null && !jsonObj.get("modifyUserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `modifyUserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("modifyUserId").toString()));

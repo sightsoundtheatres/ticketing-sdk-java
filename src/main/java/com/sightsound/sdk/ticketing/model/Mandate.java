@@ -20,6 +20,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.AmountRuleEnum;
+import com.sightsound.sdk.ticketing.model.BillingAttemptsRuleEnum;
+import com.sightsound.sdk.ticketing.model.FrequencyEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -47,111 +50,15 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Mandate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class Mandate {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private String amount;
 
-  /**
-   * Gets or Sets amountRule
-   */
-  @JsonAdapter(AmountRuleEnum.Adapter.class)
-  public enum AmountRuleEnum {
-    MAX("max"),
-    
-    EXACT("exact");
-
-    private String value;
-
-    AmountRuleEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static AmountRuleEnum fromValue(String value) {
-      for (AmountRuleEnum b : AmountRuleEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<AmountRuleEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final AmountRuleEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public AmountRuleEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return AmountRuleEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_AMOUNT_RULE = "amountRule";
   @SerializedName(SERIALIZED_NAME_AMOUNT_RULE)
   private AmountRuleEnum amountRule;
-
-  /**
-   * Gets or Sets billingAttemptsRule
-   */
-  @JsonAdapter(BillingAttemptsRuleEnum.Adapter.class)
-  public enum BillingAttemptsRuleEnum {
-    ON("on"),
-    
-    BEFORE("before"),
-    
-    AFTER("after");
-
-    private String value;
-
-    BillingAttemptsRuleEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static BillingAttemptsRuleEnum fromValue(String value) {
-      for (BillingAttemptsRuleEnum b : BillingAttemptsRuleEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<BillingAttemptsRuleEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final BillingAttemptsRuleEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public BillingAttemptsRuleEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return BillingAttemptsRuleEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_BILLING_ATTEMPTS_RULE = "billingAttemptsRule";
   @SerializedName(SERIALIZED_NAME_BILLING_ATTEMPTS_RULE)
@@ -164,65 +71,6 @@ public class Mandate {
   public static final String SERIALIZED_NAME_ENDS_AT = "endsAt";
   @SerializedName(SERIALIZED_NAME_ENDS_AT)
   private String endsAt;
-
-  /**
-   * Gets or Sets frequency
-   */
-  @JsonAdapter(FrequencyEnum.Adapter.class)
-  public enum FrequencyEnum {
-    ADHOC("adhoc"),
-    
-    DAILY("daily"),
-    
-    WEEKLY("weekly"),
-    
-    BIWEEKLY("biWeekly"),
-    
-    MONTHLY("monthly"),
-    
-    QUARTERLY("quarterly"),
-    
-    HALFYEARLY("halfYearly"),
-    
-    YEARLY("yearly");
-
-    private String value;
-
-    FrequencyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static FrequencyEnum fromValue(String value) {
-      for (FrequencyEnum b : FrequencyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<FrequencyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final FrequencyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public FrequencyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return FrequencyEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_FREQUENCY = "frequency";
   @SerializedName(SERIALIZED_NAME_FREQUENCY)
@@ -520,20 +368,11 @@ public class Mandate {
       if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount").toString()));
       }
-      if (jsonObj.get("amountRule") != null && !jsonObj.get("amountRule").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `amountRule` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amountRule").toString()));
-      }
-      if (jsonObj.get("billingAttemptsRule") != null && !jsonObj.get("billingAttemptsRule").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `billingAttemptsRule` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billingAttemptsRule").toString()));
-      }
       if (jsonObj.get("billingDay") != null && !jsonObj.get("billingDay").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `billingDay` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billingDay").toString()));
       }
       if (jsonObj.get("endsAt") != null && !jsonObj.get("endsAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endsAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endsAt").toString()));
-      }
-      if (jsonObj.get("frequency") != null && !jsonObj.get("frequency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `frequency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("frequency").toString()));
       }
       if (jsonObj.get("remarks") != null && !jsonObj.get("remarks").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `remarks` to be a primitive type in the JSON string but got `%s`", jsonObj.get("remarks").toString()));

@@ -21,14 +21,19 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.AddressExtended;
+import com.sightsound.sdk.ticketing.model.AddressVerifyStatus;
 import com.sightsound.sdk.ticketing.model.CustomerAttribute;
 import com.sightsound.sdk.ticketing.model.CustomerContactInfo;
 import com.sightsound.sdk.ticketing.model.CustomerDocument;
 import com.sightsound.sdk.ticketing.model.CustomerPhone;
 import com.sightsound.sdk.ticketing.model.CustomerPricingLevel;
+import com.sightsound.sdk.ticketing.model.CustomerType;
+import com.sightsound.sdk.ticketing.model.CustomerTypeResponse;
 import com.sightsound.sdk.ticketing.model.CustomerUPSAddress;
 import com.sightsound.sdk.ticketing.model.Note;
+import com.sightsound.sdk.ticketing.model.OldCustomerType;
 import com.sightsound.sdk.ticketing.model.Order;
+import com.sightsound.sdk.ticketing.model.TicketBatch;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -60,7 +65,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Customer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class Customer {
   public static final String SERIALIZED_NAME_CUSTOMER_NUMBER = "customerNumber";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_NUMBER)
@@ -134,60 +139,9 @@ public class Customer {
   @SerializedName(SERIALIZED_NAME_ACTIVE)
   private Boolean active;
 
-  /**
-   * Gets or Sets type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    CONSUMER("CONSUMER"),
-    
-    PARTNER("PARTNER"),
-    
-    POS("POS"),
-    
-    GROUP("GROUP");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  private CustomerType type;
 
   public static final String SERIALIZED_NAME_SOURCE_CODE = "sourceCode";
   @SerializedName(SERIALIZED_NAME_SOURCE_CODE)
@@ -225,56 +179,9 @@ public class Customer {
   @SerializedName(SERIALIZED_NAME_TAX_EXEMPT)
   private Boolean taxExempt;
 
-  /**
-   * Gets or Sets oldCustTypeCode
-   */
-  @JsonAdapter(OldCustTypeCodeEnum.Adapter.class)
-  public enum OldCustTypeCodeEnum {
-    HOUSE_ACCOUNT("House Account"),
-    
-    COMP_LETTER("Comp Letter");
-
-    private String value;
-
-    OldCustTypeCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static OldCustTypeCodeEnum fromValue(String value) {
-      for (OldCustTypeCodeEnum b : OldCustTypeCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<OldCustTypeCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final OldCustTypeCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public OldCustTypeCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return OldCustTypeCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_OLD_CUST_TYPE_CODE = "oldCustTypeCode";
   @SerializedName(SERIALIZED_NAME_OLD_CUST_TYPE_CODE)
-  private OldCustTypeCodeEnum oldCustTypeCode;
+  private OldCustomerType oldCustTypeCode;
 
   public static final String SERIALIZED_NAME_CALL_LIST = "callList";
   @SerializedName(SERIALIZED_NAME_CALL_LIST)
@@ -476,58 +383,9 @@ public class Customer {
   @SerializedName(SERIALIZED_NAME_USPS_ADDRESS_ERROR)
   private String uspsAddressError;
 
-  /**
-   * Gets or Sets ticketDelivery
-   */
-  @JsonAdapter(TicketDeliveryEnum.Adapter.class)
-  public enum TicketDeliveryEnum {
-    AGENT("AGENT"),
-    
-    ETICKET("ETICKET"),
-    
-    HELD("HELD");
-
-    private String value;
-
-    TicketDeliveryEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TicketDeliveryEnum fromValue(String value) {
-      for (TicketDeliveryEnum b : TicketDeliveryEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TicketDeliveryEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TicketDeliveryEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TicketDeliveryEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TicketDeliveryEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TICKET_DELIVERY = "ticketDelivery";
   @SerializedName(SERIALIZED_NAME_TICKET_DELIVERY)
-  private TicketDeliveryEnum ticketDelivery;
+  private TicketBatch ticketDelivery;
 
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
@@ -573,72 +431,21 @@ public class Customer {
   @SerializedName(SERIALIZED_NAME_RESELLER)
   private Boolean reseller;
 
-  /**
-   * Gets or Sets customerTypeResponse
-   */
-  @JsonAdapter(CustomerTypeResponseEnum.Adapter.class)
-  public enum CustomerTypeResponseEnum {
-    CONSUMER("CONSUMER"),
-    
-    ORGANIZATION("ORGANIZATION"),
-    
-    RESELLER("RESELLER"),
-    
-    EMPLOYEE("EMPLOYEE");
-
-    private String value;
-
-    CustomerTypeResponseEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CustomerTypeResponseEnum fromValue(String value) {
-      for (CustomerTypeResponseEnum b : CustomerTypeResponseEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<CustomerTypeResponseEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CustomerTypeResponseEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CustomerTypeResponseEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CustomerTypeResponseEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_CUSTOMER_TYPE_RESPONSE = "customerTypeResponse";
-  @SerializedName(SERIALIZED_NAME_CUSTOMER_TYPE_RESPONSE)
-  private CustomerTypeResponseEnum customerTypeResponse;
+  public static final String SERIALIZED_NAME_CUSTOMER_NAME_TO_DISPLAY = "customerNameToDisplay";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER_NAME_TO_DISPLAY)
+  private String customerNameToDisplay;
 
   public static final String SERIALIZED_NAME_DEFAULT_PHONE_NUMBER = "defaultPhoneNumber";
   @SerializedName(SERIALIZED_NAME_DEFAULT_PHONE_NUMBER)
   private String defaultPhoneNumber;
 
+  public static final String SERIALIZED_NAME_CUSTOMER_TYPE_RESPONSE = "customerTypeResponse";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER_TYPE_RESPONSE)
+  private CustomerTypeResponse customerTypeResponse;
+
   public static final String SERIALIZED_NAME_GENERAL_CONSUMER = "generalConsumer";
   @SerializedName(SERIALIZED_NAME_GENERAL_CONSUMER)
   private Boolean generalConsumer;
-
-  public static final String SERIALIZED_NAME_CUSTOMER_NAME_TO_DISPLAY = "customerNameToDisplay";
-  @SerializedName(SERIALIZED_NAME_CUSTOMER_NAME_TO_DISPLAY)
-  private String customerNameToDisplay;
 
   public static final String SERIALIZED_NAME_PRIMARY_CONTACT = "primaryContact";
   @SerializedName(SERIALIZED_NAME_PRIMARY_CONTACT)
@@ -652,60 +459,9 @@ public class Customer {
   @SerializedName(SERIALIZED_NAME_ORGANIZATION)
   private Boolean organization;
 
-  /**
-   * Gets or Sets addressVerifiedStatus
-   */
-  @JsonAdapter(AddressVerifiedStatusEnum.Adapter.class)
-  public enum AddressVerifiedStatusEnum {
-    UNEXPIRED("UNEXPIRED"),
-    
-    EXPIRED("EXPIRED"),
-    
-    FAILED("FAILED"),
-    
-    UNVERIFIED("UNVERIFIED");
-
-    private String value;
-
-    AddressVerifiedStatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static AddressVerifiedStatusEnum fromValue(String value) {
-      for (AddressVerifiedStatusEnum b : AddressVerifiedStatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<AddressVerifiedStatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final AddressVerifiedStatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public AddressVerifiedStatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return AddressVerifiedStatusEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ADDRESS_VERIFIED_STATUS = "addressVerifiedStatus";
   @SerializedName(SERIALIZED_NAME_ADDRESS_VERIFIED_STATUS)
-  private AddressVerifiedStatusEnum addressVerifiedStatus;
+  private AddressVerifyStatus addressVerifiedStatus;
 
   public Customer() { 
   }
@@ -1124,7 +880,7 @@ public class Customer {
   }
 
 
-  public Customer type(TypeEnum type) {
+  public Customer type(CustomerType type) {
     
     this.type = type;
     return this;
@@ -1137,12 +893,12 @@ public class Customer {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public TypeEnum getType() {
+  public CustomerType getType() {
     return type;
   }
 
 
-  public void setType(TypeEnum type) {
+  public void setType(CustomerType type) {
     this.type = type;
   }
 
@@ -1356,7 +1112,7 @@ public class Customer {
   }
 
 
-  public Customer oldCustTypeCode(OldCustTypeCodeEnum oldCustTypeCode) {
+  public Customer oldCustTypeCode(OldCustomerType oldCustTypeCode) {
     
     this.oldCustTypeCode = oldCustTypeCode;
     return this;
@@ -1369,12 +1125,12 @@ public class Customer {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public OldCustTypeCodeEnum getOldCustTypeCode() {
+  public OldCustomerType getOldCustTypeCode() {
     return oldCustTypeCode;
   }
 
 
-  public void setOldCustTypeCode(OldCustTypeCodeEnum oldCustTypeCode) {
+  public void setOldCustTypeCode(OldCustomerType oldCustTypeCode) {
     this.oldCustTypeCode = oldCustTypeCode;
   }
 
@@ -2529,7 +2285,7 @@ public class Customer {
   }
 
 
-  public Customer ticketDelivery(TicketDeliveryEnum ticketDelivery) {
+  public Customer ticketDelivery(TicketBatch ticketDelivery) {
     
     this.ticketDelivery = ticketDelivery;
     return this;
@@ -2542,12 +2298,12 @@ public class Customer {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TicketDeliveryEnum getTicketDelivery() {
+  public TicketBatch getTicketDelivery() {
     return ticketDelivery;
   }
 
 
-  public void setTicketDelivery(TicketDeliveryEnum ticketDelivery) {
+  public void setTicketDelivery(TicketBatch ticketDelivery) {
     this.ticketDelivery = ticketDelivery;
   }
 
@@ -2877,26 +2633,26 @@ public class Customer {
   }
 
 
-  public Customer customerTypeResponse(CustomerTypeResponseEnum customerTypeResponse) {
+  public Customer customerNameToDisplay(String customerNameToDisplay) {
     
-    this.customerTypeResponse = customerTypeResponse;
+    this.customerNameToDisplay = customerNameToDisplay;
     return this;
   }
 
    /**
-   * Get customerTypeResponse
-   * @return customerTypeResponse
+   * Get customerNameToDisplay
+   * @return customerNameToDisplay
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public CustomerTypeResponseEnum getCustomerTypeResponse() {
-    return customerTypeResponse;
+  public String getCustomerNameToDisplay() {
+    return customerNameToDisplay;
   }
 
 
-  public void setCustomerTypeResponse(CustomerTypeResponseEnum customerTypeResponse) {
-    this.customerTypeResponse = customerTypeResponse;
+  public void setCustomerNameToDisplay(String customerNameToDisplay) {
+    this.customerNameToDisplay = customerNameToDisplay;
   }
 
 
@@ -2923,6 +2679,29 @@ public class Customer {
   }
 
 
+  public Customer customerTypeResponse(CustomerTypeResponse customerTypeResponse) {
+    
+    this.customerTypeResponse = customerTypeResponse;
+    return this;
+  }
+
+   /**
+   * Get customerTypeResponse
+   * @return customerTypeResponse
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CustomerTypeResponse getCustomerTypeResponse() {
+    return customerTypeResponse;
+  }
+
+
+  public void setCustomerTypeResponse(CustomerTypeResponse customerTypeResponse) {
+    this.customerTypeResponse = customerTypeResponse;
+  }
+
+
   public Customer generalConsumer(Boolean generalConsumer) {
     
     this.generalConsumer = generalConsumer;
@@ -2943,29 +2722,6 @@ public class Customer {
 
   public void setGeneralConsumer(Boolean generalConsumer) {
     this.generalConsumer = generalConsumer;
-  }
-
-
-  public Customer customerNameToDisplay(String customerNameToDisplay) {
-    
-    this.customerNameToDisplay = customerNameToDisplay;
-    return this;
-  }
-
-   /**
-   * Get customerNameToDisplay
-   * @return customerNameToDisplay
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getCustomerNameToDisplay() {
-    return customerNameToDisplay;
-  }
-
-
-  public void setCustomerNameToDisplay(String customerNameToDisplay) {
-    this.customerNameToDisplay = customerNameToDisplay;
   }
 
 
@@ -3038,7 +2794,7 @@ public class Customer {
   }
 
 
-  public Customer addressVerifiedStatus(AddressVerifiedStatusEnum addressVerifiedStatus) {
+  public Customer addressVerifiedStatus(AddressVerifyStatus addressVerifiedStatus) {
     
     this.addressVerifiedStatus = addressVerifiedStatus;
     return this;
@@ -3051,12 +2807,12 @@ public class Customer {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public AddressVerifiedStatusEnum getAddressVerifiedStatus() {
+  public AddressVerifyStatus getAddressVerifiedStatus() {
     return addressVerifiedStatus;
   }
 
 
-  public void setAddressVerifiedStatus(AddressVerifiedStatusEnum addressVerifiedStatus) {
+  public void setAddressVerifiedStatus(AddressVerifyStatus addressVerifiedStatus) {
     this.addressVerifiedStatus = addressVerifiedStatus;
   }
 
@@ -3162,10 +2918,10 @@ public class Customer {
         Objects.equals(this.additionalContacts, customer.additionalContacts) &&
         Objects.equals(this.employee, customer.employee) &&
         Objects.equals(this.reseller, customer.reseller) &&
-        Objects.equals(this.customerTypeResponse, customer.customerTypeResponse) &&
-        Objects.equals(this.defaultPhoneNumber, customer.defaultPhoneNumber) &&
-        Objects.equals(this.generalConsumer, customer.generalConsumer) &&
         Objects.equals(this.customerNameToDisplay, customer.customerNameToDisplay) &&
+        Objects.equals(this.defaultPhoneNumber, customer.defaultPhoneNumber) &&
+        Objects.equals(this.customerTypeResponse, customer.customerTypeResponse) &&
+        Objects.equals(this.generalConsumer, customer.generalConsumer) &&
         Objects.equals(this.primaryContact, customer.primaryContact) &&
         Objects.equals(this.accountFrozen, customer.accountFrozen) &&
         Objects.equals(this.organization, customer.organization) &&
@@ -3174,7 +2930,7 @@ public class Customer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerNumber, companyName, firstName, lastName, email, mailingList, comments, corpIdExpirationDate, lastBookingDate, numberBookedCurrYear, numberCanceledCurrYear, numberBookedLastYear, numberCanceledLastYear, numberBookedNextYear, numberCanceledNextYear, addUserId, addDate, active, type, sourceCode, additionalDiscPercent, corpIdNumber, corpAffiliatedCode, sourceCodeComments, emailList, emailStyle, rpOfficeNumber, taxExempt, oldCustTypeCode, callList, textList, address, sysProcessDate, sysStatusCode, sysCheckDate, sysCheckResult, club, title, birthDay, birthMonth, birthYear, press, clubMemberCancelComments, ageRange, clubCancelDate, specialNeeds, addressVerifyDate, custDetail, fitFrozen, fitMaxTickets, fitMaxTicketsEmailSent, addressVerifyFailDate, fitPrepaidThresholdEmail, fitFrozenOverride, passPhrase, extraCompTickets, empNumber, bookUntilDate, checkPayment, emailPaperwork, emailVerifiedDate, church, congregationSize, marketingPartner, immediateSeatAssign, printETicket, slidingScaleDiscount, groupNumber, tier, tour, receptive, employeeExitDate, group, lastShowCode, lastShowDate, lastShowTickets, lastShowOrderNumber, company, uspsAddressError, ticketDelivery, documents, upsAddresses, prices, phones, contacts, customerAttributes, orders, notes, additionalContacts, employee, reseller, customerTypeResponse, defaultPhoneNumber, generalConsumer, customerNameToDisplay, primaryContact, accountFrozen, organization, addressVerifiedStatus);
+    return Objects.hash(customerNumber, companyName, firstName, lastName, email, mailingList, comments, corpIdExpirationDate, lastBookingDate, numberBookedCurrYear, numberCanceledCurrYear, numberBookedLastYear, numberCanceledLastYear, numberBookedNextYear, numberCanceledNextYear, addUserId, addDate, active, type, sourceCode, additionalDiscPercent, corpIdNumber, corpAffiliatedCode, sourceCodeComments, emailList, emailStyle, rpOfficeNumber, taxExempt, oldCustTypeCode, callList, textList, address, sysProcessDate, sysStatusCode, sysCheckDate, sysCheckResult, club, title, birthDay, birthMonth, birthYear, press, clubMemberCancelComments, ageRange, clubCancelDate, specialNeeds, addressVerifyDate, custDetail, fitFrozen, fitMaxTickets, fitMaxTicketsEmailSent, addressVerifyFailDate, fitPrepaidThresholdEmail, fitFrozenOverride, passPhrase, extraCompTickets, empNumber, bookUntilDate, checkPayment, emailPaperwork, emailVerifiedDate, church, congregationSize, marketingPartner, immediateSeatAssign, printETicket, slidingScaleDiscount, groupNumber, tier, tour, receptive, employeeExitDate, group, lastShowCode, lastShowDate, lastShowTickets, lastShowOrderNumber, company, uspsAddressError, ticketDelivery, documents, upsAddresses, prices, phones, contacts, customerAttributes, orders, notes, additionalContacts, employee, reseller, customerNameToDisplay, defaultPhoneNumber, customerTypeResponse, generalConsumer, primaryContact, accountFrozen, organization, addressVerifiedStatus);
   }
 
   @Override
@@ -3272,10 +3028,10 @@ public class Customer {
     sb.append("    additionalContacts: ").append(toIndentedString(additionalContacts)).append("\n");
     sb.append("    employee: ").append(toIndentedString(employee)).append("\n");
     sb.append("    reseller: ").append(toIndentedString(reseller)).append("\n");
-    sb.append("    customerTypeResponse: ").append(toIndentedString(customerTypeResponse)).append("\n");
-    sb.append("    defaultPhoneNumber: ").append(toIndentedString(defaultPhoneNumber)).append("\n");
-    sb.append("    generalConsumer: ").append(toIndentedString(generalConsumer)).append("\n");
     sb.append("    customerNameToDisplay: ").append(toIndentedString(customerNameToDisplay)).append("\n");
+    sb.append("    defaultPhoneNumber: ").append(toIndentedString(defaultPhoneNumber)).append("\n");
+    sb.append("    customerTypeResponse: ").append(toIndentedString(customerTypeResponse)).append("\n");
+    sb.append("    generalConsumer: ").append(toIndentedString(generalConsumer)).append("\n");
     sb.append("    primaryContact: ").append(toIndentedString(primaryContact)).append("\n");
     sb.append("    accountFrozen: ").append(toIndentedString(accountFrozen)).append("\n");
     sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
@@ -3393,10 +3149,10 @@ public class Customer {
     openapiFields.add("additionalContacts");
     openapiFields.add("employee");
     openapiFields.add("reseller");
-    openapiFields.add("customerTypeResponse");
-    openapiFields.add("defaultPhoneNumber");
-    openapiFields.add("generalConsumer");
     openapiFields.add("customerNameToDisplay");
+    openapiFields.add("defaultPhoneNumber");
+    openapiFields.add("customerTypeResponse");
+    openapiFields.add("generalConsumer");
     openapiFields.add("primaryContact");
     openapiFields.add("accountFrozen");
     openapiFields.add("organization");
@@ -3455,9 +3211,6 @@ public class Customer {
       if (jsonObj.get("addUserId") != null && !jsonObj.get("addUserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `addUserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("addUserId").toString()));
       }
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       if (jsonObj.get("sourceCode") != null && !jsonObj.get("sourceCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sourceCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceCode").toString()));
       }
@@ -3475,9 +3228,6 @@ public class Customer {
       }
       if (jsonObj.get("rpOfficeNumber") != null && !jsonObj.get("rpOfficeNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `rpOfficeNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rpOfficeNumber").toString()));
-      }
-      if (jsonObj.get("oldCustTypeCode") != null && !jsonObj.get("oldCustTypeCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `oldCustTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("oldCustTypeCode").toString()));
       }
       // validate the optional field `address`
       if (jsonObj.getAsJsonObject("address") != null) {
@@ -3518,9 +3268,6 @@ public class Customer {
       }
       if (jsonObj.get("uspsAddressError") != null && !jsonObj.get("uspsAddressError").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uspsAddressError` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uspsAddressError").toString()));
-      }
-      if (jsonObj.get("ticketDelivery") != null && !jsonObj.get("ticketDelivery").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ticketDelivery` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketDelivery").toString()));
       }
       JsonArray jsonArraydocuments = jsonObj.getAsJsonArray("documents");
       if (jsonArraydocuments != null) {
@@ -3630,21 +3377,15 @@ public class Customer {
           CustomerContactInfo.validateJsonObject(jsonArrayadditionalContacts.get(i).getAsJsonObject());
         };
       }
-      if (jsonObj.get("customerTypeResponse") != null && !jsonObj.get("customerTypeResponse").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customerTypeResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customerTypeResponse").toString()));
+      if (jsonObj.get("customerNameToDisplay") != null && !jsonObj.get("customerNameToDisplay").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customerNameToDisplay` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customerNameToDisplay").toString()));
       }
       if (jsonObj.get("defaultPhoneNumber") != null && !jsonObj.get("defaultPhoneNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `defaultPhoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("defaultPhoneNumber").toString()));
       }
-      if (jsonObj.get("customerNameToDisplay") != null && !jsonObj.get("customerNameToDisplay").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customerNameToDisplay` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customerNameToDisplay").toString()));
-      }
       // validate the optional field `primaryContact`
       if (jsonObj.getAsJsonObject("primaryContact") != null) {
         CustomerContactInfo.validateJsonObject(jsonObj.getAsJsonObject("primaryContact"));
-      }
-      if (jsonObj.get("addressVerifiedStatus") != null && !jsonObj.get("addressVerifiedStatus").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `addressVerifiedStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("addressVerifiedStatus").toString()));
       }
   }
 

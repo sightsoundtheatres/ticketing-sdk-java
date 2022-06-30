@@ -20,6 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.ItemType;
+import com.sightsound.sdk.ticketing.model.LocationDescription;
 import com.sightsound.sdk.ticketing.model.Schedule;
 import com.sightsound.sdk.ticketing.model.ShowBudget;
 import com.sightsound.sdk.ticketing.model.ShowTrackingDetail;
@@ -54,7 +56,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Event
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class Event {
   public static final String SERIALIZED_NAME_EVENT_CODE = "eventCode";
   @SerializedName(SERIALIZED_NAME_EVENT_CODE)
@@ -64,84 +66,9 @@ public class Event {
   @SerializedName(SERIALIZED_NAME_EVENT_NAME)
   private String eventName;
 
-  /**
-   * Gets or Sets itemType
-   */
-  @JsonAdapter(ItemTypeEnum.Adapter.class)
-  public enum ItemTypeEnum {
-    SHOW("SHOW"),
-    
-    TOUR("TOUR"),
-    
-    CHARGE("CHARGE"),
-    
-    MERCH("MERCH"),
-    
-    SHIPPING("SHIPPING"),
-    
-    GIFTCARD("GIFTCARD"),
-    
-    ATTRACTION("ATTRACTION"),
-    
-    COUPON("COUPON"),
-    
-    FOOD("FOOD"),
-    
-    HOTEL("HOTEL"),
-    
-    INTLSHIPPING("INTLSHIPPING"),
-    
-    MEAL("MEAL"),
-    
-    MERCHANDISE("MERCHANDISE"),
-    
-    MERCHSHIPPING("MERCHSHIPPING"),
-    
-    MISC("MISC"),
-    
-    VMEAL("VMEAL");
-
-    private String value;
-
-    ItemTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ItemTypeEnum fromValue(String value) {
-      for (ItemTypeEnum b : ItemTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ItemTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ItemTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ItemTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ItemTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ITEM_TYPE = "itemType";
   @SerializedName(SERIALIZED_NAME_ITEM_TYPE)
-  private ItemTypeEnum itemType;
+  private ItemType itemType;
 
   public static final String SERIALIZED_NAME_EVENT_TIME_MINUTES = "eventTimeMinutes";
   @SerializedName(SERIALIZED_NAME_EVENT_TIME_MINUTES)
@@ -199,56 +126,9 @@ public class Event {
   @SerializedName(SERIALIZED_NAME_COMP_TICKETS_START_DATE)
   private OffsetDateTime compTicketsStartDate;
 
-  /**
-   * Gets or Sets theaterLocation
-   */
-  @JsonAdapter(TheaterLocationEnum.Adapter.class)
-  public enum TheaterLocationEnum {
-    STRASBURG_PA("STRASBURG_PA"),
-    
-    BRANSON_MO("BRANSON_MO");
-
-    private String value;
-
-    TheaterLocationEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TheaterLocationEnum fromValue(String value) {
-      for (TheaterLocationEnum b : TheaterLocationEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TheaterLocationEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TheaterLocationEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TheaterLocationEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TheaterLocationEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_THEATER_LOCATION = "theaterLocation";
   @SerializedName(SERIALIZED_NAME_THEATER_LOCATION)
-  private TheaterLocationEnum theaterLocation;
+  private LocationDescription theaterLocation;
 
   public static final String SERIALIZED_NAME_EMP_DISC_DAYS_TO_SHOW = "empDiscDaysToShow";
   @SerializedName(SERIALIZED_NAME_EMP_DISC_DAYS_TO_SHOW)
@@ -395,7 +275,7 @@ public class Event {
   }
 
 
-  public Event itemType(ItemTypeEnum itemType) {
+  public Event itemType(ItemType itemType) {
     
     this.itemType = itemType;
     return this;
@@ -408,12 +288,12 @@ public class Event {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ItemTypeEnum getItemType() {
+  public ItemType getItemType() {
     return itemType;
   }
 
 
-  public void setItemType(ItemTypeEnum itemType) {
+  public void setItemType(ItemType itemType) {
     this.itemType = itemType;
   }
 
@@ -740,7 +620,7 @@ public class Event {
   }
 
 
-  public Event theaterLocation(TheaterLocationEnum theaterLocation) {
+  public Event theaterLocation(LocationDescription theaterLocation) {
     
     this.theaterLocation = theaterLocation;
     return this;
@@ -753,12 +633,12 @@ public class Event {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TheaterLocationEnum getTheaterLocation() {
+  public LocationDescription getTheaterLocation() {
     return theaterLocation;
   }
 
 
-  public void setTheaterLocation(TheaterLocationEnum theaterLocation) {
+  public void setTheaterLocation(LocationDescription theaterLocation) {
     this.theaterLocation = theaterLocation;
   }
 
@@ -1533,9 +1413,6 @@ public class Event {
       if (jsonObj.get("eventName") != null && !jsonObj.get("eventName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `eventName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventName").toString()));
       }
-      if (jsonObj.get("itemType") != null && !jsonObj.get("itemType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `itemType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemType").toString()));
-      }
       if (jsonObj.get("ticketStyleCode") != null && !jsonObj.get("ticketStyleCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ticketStyleCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketStyleCode").toString()));
       }
@@ -1550,9 +1427,6 @@ public class Event {
       }
       if (jsonObj.get("eventTypeDetailCode") != null && !jsonObj.get("eventTypeDetailCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `eventTypeDetailCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventTypeDetailCode").toString()));
-      }
-      if (jsonObj.get("theaterLocation") != null && !jsonObj.get("theaterLocation").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `theaterLocation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("theaterLocation").toString()));
       }
       if (jsonObj.get("taxCode") != null && !jsonObj.get("taxCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxCode").toString()));

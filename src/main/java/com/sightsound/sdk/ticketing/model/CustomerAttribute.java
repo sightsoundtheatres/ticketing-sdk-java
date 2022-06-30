@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.Customer;
+import com.sightsound.sdk.ticketing.model.CustomerAttributeType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -48,7 +49,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * CustomerAttribute
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class CustomerAttribute {
   public static final String SERIALIZED_NAME_CUSTOMER_NUMBER = "customerNumber";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_NUMBER)
@@ -58,56 +59,9 @@ public class CustomerAttribute {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTE)
   private String attribute;
 
-  /**
-   * Gets or Sets attributeType
-   */
-  @JsonAdapter(AttributeTypeEnum.Adapter.class)
-  public enum AttributeTypeEnum {
-    MARKETING("MARKETING"),
-    
-    PAYMENT("PAYMENT");
-
-    private String value;
-
-    AttributeTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static AttributeTypeEnum fromValue(String value) {
-      for (AttributeTypeEnum b : AttributeTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<AttributeTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final AttributeTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public AttributeTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return AttributeTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ATTRIBUTE_TYPE = "attributeType";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTE_TYPE)
-  private AttributeTypeEnum attributeType;
+  private CustomerAttributeType attributeType;
 
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
@@ -162,7 +116,7 @@ public class CustomerAttribute {
   }
 
 
-  public CustomerAttribute attributeType(AttributeTypeEnum attributeType) {
+  public CustomerAttribute attributeType(CustomerAttributeType attributeType) {
     
     this.attributeType = attributeType;
     return this;
@@ -175,12 +129,12 @@ public class CustomerAttribute {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public AttributeTypeEnum getAttributeType() {
+  public CustomerAttributeType getAttributeType() {
     return attributeType;
   }
 
 
-  public void setAttributeType(AttributeTypeEnum attributeType) {
+  public void setAttributeType(CustomerAttributeType attributeType) {
     this.attributeType = attributeType;
   }
 
@@ -300,9 +254,6 @@ public class CustomerAttribute {
       }
       if (jsonObj.get("attribute") != null && !jsonObj.get("attribute").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `attribute` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attribute").toString()));
-      }
-      if (jsonObj.get("attributeType") != null && !jsonObj.get("attributeType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `attributeType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attributeType").toString()));
       }
       // validate the optional field `customer`
       if (jsonObj.getAsJsonObject("customer") != null) {

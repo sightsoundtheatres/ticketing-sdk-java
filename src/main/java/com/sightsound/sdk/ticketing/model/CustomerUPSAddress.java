@@ -49,7 +49,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * CustomerUPSAddress
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class CustomerUPSAddress {
   public static final String SERIALIZED_NAME_CUSTOMER_NUMBER = "customerNumber";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_NUMBER)

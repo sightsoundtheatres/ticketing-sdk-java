@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.ItemType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -49,90 +50,15 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * MiscEvent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class MiscEvent {
   public static final String SERIALIZED_NAME_EVENT_CODE = "eventCode";
   @SerializedName(SERIALIZED_NAME_EVENT_CODE)
   private String eventCode;
 
-  /**
-   * Gets or Sets itemType
-   */
-  @JsonAdapter(ItemTypeEnum.Adapter.class)
-  public enum ItemTypeEnum {
-    SHOW("SHOW"),
-    
-    TOUR("TOUR"),
-    
-    CHARGE("CHARGE"),
-    
-    MERCH("MERCH"),
-    
-    SHIPPING("SHIPPING"),
-    
-    GIFTCARD("GIFTCARD"),
-    
-    ATTRACTION("ATTRACTION"),
-    
-    COUPON("COUPON"),
-    
-    FOOD("FOOD"),
-    
-    HOTEL("HOTEL"),
-    
-    INTLSHIPPING("INTLSHIPPING"),
-    
-    MEAL("MEAL"),
-    
-    MERCHANDISE("MERCHANDISE"),
-    
-    MERCHSHIPPING("MERCHSHIPPING"),
-    
-    MISC("MISC"),
-    
-    VMEAL("VMEAL");
-
-    private String value;
-
-    ItemTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ItemTypeEnum fromValue(String value) {
-      for (ItemTypeEnum b : ItemTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ItemTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ItemTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ItemTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ItemTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ITEM_TYPE = "itemType";
   @SerializedName(SERIALIZED_NAME_ITEM_TYPE)
-  private ItemTypeEnum itemType;
+  private ItemType itemType;
 
   public static final String SERIALIZED_NAME_EVENT_DESCRIPTION = "eventDescription";
   @SerializedName(SERIALIZED_NAME_EVENT_DESCRIPTION)
@@ -188,7 +114,7 @@ public class MiscEvent {
   }
 
 
-  public MiscEvent itemType(ItemTypeEnum itemType) {
+  public MiscEvent itemType(ItemType itemType) {
     
     this.itemType = itemType;
     return this;
@@ -201,12 +127,12 @@ public class MiscEvent {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ItemTypeEnum getItemType() {
+  public ItemType getItemType() {
     return itemType;
   }
 
 
-  public void setItemType(ItemTypeEnum itemType) {
+  public void setItemType(ItemType itemType) {
     this.itemType = itemType;
   }
 
@@ -479,9 +405,6 @@ public class MiscEvent {
       }
       if (jsonObj.get("eventCode") != null && !jsonObj.get("eventCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `eventCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventCode").toString()));
-      }
-      if (jsonObj.get("itemType") != null && !jsonObj.get("itemType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `itemType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemType").toString()));
       }
       if (jsonObj.get("eventDescription") != null && !jsonObj.get("eventDescription").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `eventDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventDescription").toString()));

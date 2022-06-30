@@ -13,21 +13,10 @@
 |**id** | **String** |  |  [optional] |
 |**quantity** | **Long** |  |  [optional] |
 |**taxAmount** | **Long** |  |  [optional] |
-|**taxCategory** | [**TaxCategoryEnum**](#TaxCategoryEnum) |  |  [optional] |
+|**taxCategory** | **TaxCategoryEnum** |  |  [optional] |
 |**taxPercentage** | **Long** |  |  [optional] |
 |**productUrl** | **String** |  |  [optional] |
 |**imageUrl** | **String** |  |  [optional] |
-
-
-
-## Enum: TaxCategoryEnum
-
-| Name | Value |
-|---- | -----|
-| HIGH | &quot;High&quot; |
-| LOW | &quot;Low&quot; |
-| NONE | &quot;None&quot; |
-| ZERO | &quot;Zero&quot; |
 
 
 

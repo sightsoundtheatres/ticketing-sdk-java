@@ -20,14 +20,22 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.ActivityType;
 import com.sightsound.sdk.ticketing.model.AddressExtended;
 import com.sightsound.sdk.ticketing.model.Customer;
 import com.sightsound.sdk.ticketing.model.GroupInfo;
 import com.sightsound.sdk.ticketing.model.Invoice;
+import com.sightsound.sdk.ticketing.model.InvoiceCompany;
+import com.sightsound.sdk.ticketing.model.InvoiceType;
+import com.sightsound.sdk.ticketing.model.LocationDescription;
 import com.sightsound.sdk.ticketing.model.Note;
 import com.sightsound.sdk.ticketing.model.OrderItem;
+import com.sightsound.sdk.ticketing.model.OrderOrigin;
+import com.sightsound.sdk.ticketing.model.OrderStatus;
 import com.sightsound.sdk.ticketing.model.Payment;
+import com.sightsound.sdk.ticketing.model.PricingLevel;
 import com.sightsound.sdk.ticketing.model.Special;
+import com.sightsound.sdk.ticketing.model.TicketBatch;
 import com.sightsound.sdk.ticketing.model.WatchList;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -61,7 +69,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Order
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class Order {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -139,58 +147,9 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
   private String companyName;
 
-  /**
-   * Gets or Sets status
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    CANCELLED("CANCELLED"),
-    
-    COMPLETED("COMPLETED"),
-    
-    OPEN("OPEN");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
+  private OrderStatus status;
 
   public static final String SERIALIZED_NAME_EDIT_USER_ID = "editUserId";
   @SerializedName(SERIALIZED_NAME_EDIT_USER_ID)
@@ -200,60 +159,9 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_EDIT_DATE)
   private OffsetDateTime editDate;
 
-  /**
-   * Gets or Sets orderOrigin
-   */
-  @JsonAdapter(OrderOriginEnum.Adapter.class)
-  public enum OrderOriginEnum {
-    FAST_SALE("FAST_SALE"),
-    
-    POS("POS"),
-    
-    INTERNET("INTERNET"),
-    
-    SHOWTIX("SHOWTIX");
-
-    private String value;
-
-    OrderOriginEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static OrderOriginEnum fromValue(String value) {
-      for (OrderOriginEnum b : OrderOriginEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<OrderOriginEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final OrderOriginEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public OrderOriginEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return OrderOriginEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ORDER_ORIGIN = "orderOrigin";
   @SerializedName(SERIALIZED_NAME_ORDER_ORIGIN)
-  private OrderOriginEnum orderOrigin;
+  private OrderOrigin orderOrigin;
 
   public static final String SERIALIZED_NAME_PRINT_USER_ID = "printUserId";
   @SerializedName(SERIALIZED_NAME_PRINT_USER_ID)
@@ -295,78 +203,9 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_WAIVE_DEPOSIT_DUE)
   private Boolean waiveDepositDue;
 
-  /**
-   * Gets or Sets pricingLevel
-   */
-  @JsonAdapter(PricingLevelEnum.Adapter.class)
-  public enum PricingLevelEnum {
-    NOLEVEL("NOLEVEL"),
-    
-    POSTPAY("POSTPAY"),
-    
-    LEVEL1("LEVEL1"),
-    
-    LEVEL2("LEVEL2"),
-    
-    LEVEL3("LEVEL3"),
-    
-    HOT("HOT"),
-    
-    RECEPTOR("RECEPTOR"),
-    
-    RECEPTIVE("RECEPTIVE"),
-    
-    NOTIER("NOTIER"),
-    
-    TIER1("TIER1"),
-    
-    TIER2("TIER2"),
-    
-    TIER3("TIER3"),
-    
-    TIER4("TIER4");
-
-    private String value;
-
-    PricingLevelEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PricingLevelEnum fromValue(String value) {
-      for (PricingLevelEnum b : PricingLevelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PricingLevelEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PricingLevelEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PricingLevelEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PricingLevelEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_PRICING_LEVEL = "pricingLevel";
   @SerializedName(SERIALIZED_NAME_PRICING_LEVEL)
-  private PricingLevelEnum pricingLevel;
+  private PricingLevel pricingLevel;
 
   public static final String SERIALIZED_NAME_TIER_YEAR = "tierYear";
   @SerializedName(SERIALIZED_NAME_TIER_YEAR)
@@ -376,56 +215,9 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_DEPOSIT_DUE_DATE)
   private OffsetDateTime depositDueDate;
 
-  /**
-   * Gets or Sets theaterLocationCode
-   */
-  @JsonAdapter(TheaterLocationCodeEnum.Adapter.class)
-  public enum TheaterLocationCodeEnum {
-    STRASBURG_PA("STRASBURG_PA"),
-    
-    BRANSON_MO("BRANSON_MO");
-
-    private String value;
-
-    TheaterLocationCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TheaterLocationCodeEnum fromValue(String value) {
-      for (TheaterLocationCodeEnum b : TheaterLocationCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TheaterLocationCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TheaterLocationCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TheaterLocationCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TheaterLocationCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_THEATER_LOCATION_CODE = "theaterLocationCode";
   @SerializedName(SERIALIZED_NAME_THEATER_LOCATION_CODE)
-  private TheaterLocationCodeEnum theaterLocationCode;
+  private LocationDescription theaterLocationCode;
 
   public static final String SERIALIZED_NAME_DEPOSIT_AMOUNT = "depositAmount";
   @SerializedName(SERIALIZED_NAME_DEPOSIT_AMOUNT)
@@ -511,115 +303,17 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_MAIL_TO_ADDRESS_VERIFIED)
   private Boolean mailToAddressVerified;
 
-  /**
-   * Gets or Sets ticketBatch
-   */
-  @JsonAdapter(TicketBatchEnum.Adapter.class)
-  public enum TicketBatchEnum {
-    AGENT("AGENT"),
-    
-    ETICKET("ETICKET"),
-    
-    HELD("HELD");
-
-    private String value;
-
-    TicketBatchEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TicketBatchEnum fromValue(String value) {
-      for (TicketBatchEnum b : TicketBatchEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TicketBatchEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TicketBatchEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TicketBatchEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TicketBatchEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TICKET_BATCH = "ticketBatch";
   @SerializedName(SERIALIZED_NAME_TICKET_BATCH)
-  private TicketBatchEnum ticketBatch;
+  private TicketBatch ticketBatch;
 
   public static final String SERIALIZED_NAME_TICKET_BATCH_AGENT = "ticketBatchAgent";
   @SerializedName(SERIALIZED_NAME_TICKET_BATCH_AGENT)
   private String ticketBatchAgent;
 
-  /**
-   * Gets or Sets invoiceType
-   */
-  @JsonAdapter(InvoiceTypeEnum.Adapter.class)
-  public enum InvoiceTypeEnum {
-    I("I"),
-    
-    C("C"),
-    
-    R("R");
-
-    private String value;
-
-    InvoiceTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static InvoiceTypeEnum fromValue(String value) {
-      for (InvoiceTypeEnum b : InvoiceTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<InvoiceTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final InvoiceTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public InvoiceTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return InvoiceTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_INVOICE_TYPE = "invoiceType";
   @SerializedName(SERIALIZED_NAME_INVOICE_TYPE)
-  private InvoiceTypeEnum invoiceType;
+  private InvoiceType invoiceType;
 
   public static final String SERIALIZED_NAME_RETURN_ORDER_NUMBER = "returnOrderNumber";
   @SerializedName(SERIALIZED_NAME_RETURN_ORDER_NUMBER)
@@ -757,84 +451,9 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_DISCOUNT_AUTO_APPLIED)
   private Boolean discountAutoApplied;
 
-  /**
-   * Gets or Sets logActivity
-   */
-  @JsonAdapter(LogActivityEnum.Adapter.class)
-  public enum LogActivityEnum {
-    ADD("ADD"),
-    
-    CHANGE("CHANGE"),
-    
-    ADD("ADD"),
-    
-    CHANGE("CHANGE"),
-    
-    CANCEL("CANCEL"),
-    
-    SPL_DISC_REMOVED("SPL DISC REMOVED"),
-    
-    SPL_DISC_APPLIED("SPL DISC APPLIED"),
-    
-    RESERVED("RESERVED"),
-    
-    COUNT_INCREASED("COUNT INCREASED"),
-    
-    COUNT_DECREASED("COUNT DECREASED"),
-    
-    AMOUNT_INCREASED("AMOUNT INCREASED"),
-    
-    AMOUNT_DECREASED("AMOUNT DECREASED"),
-    
-    DESIGNATION_CHANGE("DESIGNATION CHANGE"),
-    
-    TRANS_IN("TRANS IN"),
-    
-    CANCELLED("CANCELLED"),
-    
-    SPL_STN_MODIFIED("SPL STN MODIFIED");
-
-    private String value;
-
-    LogActivityEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static LogActivityEnum fromValue(String value) {
-      for (LogActivityEnum b : LogActivityEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<LogActivityEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final LogActivityEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public LogActivityEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return LogActivityEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_LOG_ACTIVITY = "logActivity";
   @SerializedName(SERIALIZED_NAME_LOG_ACTIVITY)
-  private LogActivityEnum logActivity;
+  private ActivityType logActivity;
 
   public static final String SERIALIZED_NAME_PERSISTED = "persisted";
   @SerializedName(SERIALIZED_NAME_PERSISTED)
@@ -852,6 +471,18 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_CANCELLED)
   private Boolean cancelled;
 
+  public static final String SERIALIZED_NAME_ALL_SHOW_TOUR_ITEM = "allShowTourItem";
+  @SerializedName(SERIALIZED_NAME_ALL_SHOW_TOUR_ITEM)
+  private List<OrderItem> allShowTourItem = null;
+
+  public static final String SERIALIZED_NAME_GRAND_TOTAL_SAVING = "grandTotalSaving";
+  @SerializedName(SERIALIZED_NAME_GRAND_TOTAL_SAVING)
+  private BigDecimal grandTotalSaving;
+
+  public static final String SERIALIZED_NAME_AUTO_APPLY_DISCOUNTS = "autoApplyDiscounts";
+  @SerializedName(SERIALIZED_NAME_AUTO_APPLY_DISCOUNTS)
+  private Boolean autoApplyDiscounts;
+
   public static final String SERIALIZED_NAME_NEW = "new";
   @SerializedName(SERIALIZED_NAME_NEW)
   private Boolean _new;
@@ -859,6 +490,38 @@ public class Order {
   public static final String SERIALIZED_NAME_GROUP = "group";
   @SerializedName(SERIALIZED_NAME_GROUP)
   private Boolean group;
+
+  public static final String SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM_COUNT = "activeShowTourItemCount";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM_COUNT)
+  private Integer activeShowTourItemCount;
+
+  public static final String SERIALIZED_NAME_INVOICE_COMPANY = "invoiceCompany";
+  @SerializedName(SERIALIZED_NAME_INVOICE_COMPANY)
+  private InvoiceCompany invoiceCompany;
+
+  public static final String SERIALIZED_NAME_DUE_AMOUNT = "dueAmount";
+  @SerializedName(SERIALIZED_NAME_DUE_AMOUNT)
+  private BigDecimal dueAmount;
+
+  public static final String SERIALIZED_NAME_TOTAL_PAID_AMOUNT = "totalPaidAmount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_PAID_AMOUNT)
+  private BigDecimal totalPaidAmount;
+
+  public static final String SERIALIZED_NAME_COMPANY_CODE = "companyCode";
+  @SerializedName(SERIALIZED_NAME_COMPANY_CODE)
+  private String companyCode;
+
+  public static final String SERIALIZED_NAME_GROUP_COUNT = "groupCount";
+  @SerializedName(SERIALIZED_NAME_GROUP_COUNT)
+  private Integer groupCount;
+
+  public static final String SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM = "activeShowTourItem";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM)
+  private List<OrderItem> activeShowTourItem = null;
+
+  public static final String SERIALIZED_NAME_TOTAL_FEE = "totalFee";
+  @SerializedName(SERIALIZED_NAME_TOTAL_FEE)
+  private BigDecimal totalFee;
 
   public static final String SERIALIZED_NAME_FIRST_OCCURRING_SHOW_ITEM = "firstOccurringShowItem";
   @SerializedName(SERIALIZED_NAME_FIRST_OCCURRING_SHOW_ITEM)
@@ -872,78 +535,9 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_ACTIVE_WITH_ORDER)
   private List<OrderItem> activeWithOrder = null;
 
-  /**
-   * Gets or Sets postPayPricingLevel
-   */
-  @JsonAdapter(PostPayPricingLevelEnum.Adapter.class)
-  public enum PostPayPricingLevelEnum {
-    NOLEVEL("NOLEVEL"),
-    
-    POSTPAY("POSTPAY"),
-    
-    LEVEL1("LEVEL1"),
-    
-    LEVEL2("LEVEL2"),
-    
-    LEVEL3("LEVEL3"),
-    
-    HOT("HOT"),
-    
-    RECEPTOR("RECEPTOR"),
-    
-    RECEPTIVE("RECEPTIVE"),
-    
-    NOTIER("NOTIER"),
-    
-    TIER1("TIER1"),
-    
-    TIER2("TIER2"),
-    
-    TIER3("TIER3"),
-    
-    TIER4("TIER4");
-
-    private String value;
-
-    PostPayPricingLevelEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PostPayPricingLevelEnum fromValue(String value) {
-      for (PostPayPricingLevelEnum b : PostPayPricingLevelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PostPayPricingLevelEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PostPayPricingLevelEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PostPayPricingLevelEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PostPayPricingLevelEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_POST_PAY_PRICING_LEVEL = "postPayPricingLevel";
   @SerializedName(SERIALIZED_NAME_POST_PAY_PRICING_LEVEL)
-  private PostPayPricingLevelEnum postPayPricingLevel;
+  private PricingLevel postPayPricingLevel;
 
   public static final String SERIALIZED_NAME_ALL_ITEMS_TOTAL_PRICE = "allItemsTotalPrice";
   @SerializedName(SERIALIZED_NAME_ALL_ITEMS_TOTAL_PRICE)
@@ -961,82 +555,21 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNT)
   private BigDecimal totalDiscount;
 
+  public static final String SERIALIZED_NAME_SEATS_OVER_ASSIGNED = "seatsOverAssigned";
+  @SerializedName(SERIALIZED_NAME_SEATS_OVER_ASSIGNED)
+  private Boolean seatsOverAssigned;
+
+  public static final String SERIALIZED_NAME_ALL_SEAT_ASSIGNED = "allSeatAssigned";
+  @SerializedName(SERIALIZED_NAME_ALL_SEAT_ASSIGNED)
+  private Boolean allSeatAssigned;
+
   public static final String SERIALIZED_NAME_ACTIVE_ORDER_ITEM_LIST = "activeOrderItemList";
   @SerializedName(SERIALIZED_NAME_ACTIVE_ORDER_ITEM_LIST)
   private List<OrderItem> activeOrderItemList = null;
 
-  /**
-   * Gets or Sets calculatedPricingLevel
-   */
-  @JsonAdapter(CalculatedPricingLevelEnum.Adapter.class)
-  public enum CalculatedPricingLevelEnum {
-    NOLEVEL("NOLEVEL"),
-    
-    POSTPAY("POSTPAY"),
-    
-    LEVEL1("LEVEL1"),
-    
-    LEVEL2("LEVEL2"),
-    
-    LEVEL3("LEVEL3"),
-    
-    HOT("HOT"),
-    
-    RECEPTOR("RECEPTOR"),
-    
-    RECEPTIVE("RECEPTIVE"),
-    
-    NOTIER("NOTIER"),
-    
-    TIER1("TIER1"),
-    
-    TIER2("TIER2"),
-    
-    TIER3("TIER3"),
-    
-    TIER4("TIER4");
-
-    private String value;
-
-    CalculatedPricingLevelEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CalculatedPricingLevelEnum fromValue(String value) {
-      for (CalculatedPricingLevelEnum b : CalculatedPricingLevelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<CalculatedPricingLevelEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CalculatedPricingLevelEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CalculatedPricingLevelEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CalculatedPricingLevelEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_CALCULATED_PRICING_LEVEL = "calculatedPricingLevel";
   @SerializedName(SERIALIZED_NAME_CALCULATED_PRICING_LEVEL)
-  private CalculatedPricingLevelEnum calculatedPricingLevel;
+  private PricingLevel calculatedPricingLevel;
 
   public static final String SERIALIZED_NAME_PAYMENT_PAST = "paymentPast";
   @SerializedName(SERIALIZED_NAME_PAYMENT_PAST)
@@ -1082,6 +615,10 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_HIGH_COUNT_BY_ORDER_ITEM)
   private Integer highCountByOrderItem;
 
+  public static final String SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT = "totalCustomerDiscount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT)
+  private BigDecimal totalCustomerDiscount;
+
   public static final String SERIALIZED_NAME_READY_FOR_PRINTING = "readyForPrinting";
   @SerializedName(SERIALIZED_NAME_READY_FOR_PRINTING)
   private Boolean readyForPrinting;
@@ -1097,109 +634,6 @@ public class Order {
   public static final String SERIALIZED_NAME_SHIP_METHOD = "shipMethod";
   @SerializedName(SERIALIZED_NAME_SHIP_METHOD)
   private String shipMethod;
-
-  public static final String SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT = "totalCustomerDiscount";
-  @SerializedName(SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT)
-  private BigDecimal totalCustomerDiscount;
-
-  /**
-   * Gets or Sets invoiceCompany
-   */
-  @JsonAdapter(InvoiceCompanyEnum.Adapter.class)
-  public enum InvoiceCompanyEnum {
-    SS("SS"),
-    
-    BR("BR");
-
-    private String value;
-
-    InvoiceCompanyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static InvoiceCompanyEnum fromValue(String value) {
-      for (InvoiceCompanyEnum b : InvoiceCompanyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<InvoiceCompanyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final InvoiceCompanyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public InvoiceCompanyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return InvoiceCompanyEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_INVOICE_COMPANY = "invoiceCompany";
-  @SerializedName(SERIALIZED_NAME_INVOICE_COMPANY)
-  private InvoiceCompanyEnum invoiceCompany;
-
-  public static final String SERIALIZED_NAME_DUE_AMOUNT = "dueAmount";
-  @SerializedName(SERIALIZED_NAME_DUE_AMOUNT)
-  private BigDecimal dueAmount;
-
-  public static final String SERIALIZED_NAME_TOTAL_PAID_AMOUNT = "totalPaidAmount";
-  @SerializedName(SERIALIZED_NAME_TOTAL_PAID_AMOUNT)
-  private BigDecimal totalPaidAmount;
-
-  public static final String SERIALIZED_NAME_COMPANY_CODE = "companyCode";
-  @SerializedName(SERIALIZED_NAME_COMPANY_CODE)
-  private String companyCode;
-
-  public static final String SERIALIZED_NAME_GROUP_COUNT = "groupCount";
-  @SerializedName(SERIALIZED_NAME_GROUP_COUNT)
-  private Integer groupCount;
-
-  public static final String SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM = "activeShowTourItem";
-  @SerializedName(SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM)
-  private List<OrderItem> activeShowTourItem = null;
-
-  public static final String SERIALIZED_NAME_TOTAL_FEE = "totalFee";
-  @SerializedName(SERIALIZED_NAME_TOTAL_FEE)
-  private BigDecimal totalFee;
-
-  public static final String SERIALIZED_NAME_SEATS_OVER_ASSIGNED = "seatsOverAssigned";
-  @SerializedName(SERIALIZED_NAME_SEATS_OVER_ASSIGNED)
-  private Boolean seatsOverAssigned;
-
-  public static final String SERIALIZED_NAME_ALL_SEAT_ASSIGNED = "allSeatAssigned";
-  @SerializedName(SERIALIZED_NAME_ALL_SEAT_ASSIGNED)
-  private Boolean allSeatAssigned;
-
-  public static final String SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM_COUNT = "activeShowTourItemCount";
-  @SerializedName(SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM_COUNT)
-  private Integer activeShowTourItemCount;
-
-  public static final String SERIALIZED_NAME_ALL_SHOW_TOUR_ITEM = "allShowTourItem";
-  @SerializedName(SERIALIZED_NAME_ALL_SHOW_TOUR_ITEM)
-  private List<OrderItem> allShowTourItem = null;
-
-  public static final String SERIALIZED_NAME_GRAND_TOTAL_SAVING = "grandTotalSaving";
-  @SerializedName(SERIALIZED_NAME_GRAND_TOTAL_SAVING)
-  private BigDecimal grandTotalSaving;
-
-  public static final String SERIALIZED_NAME_AUTO_APPLY_DISCOUNTS = "autoApplyDiscounts";
-  @SerializedName(SERIALIZED_NAME_AUTO_APPLY_DISCOUNTS)
-  private Boolean autoApplyDiscounts;
 
   public static final String SERIALIZED_NAME_LAST_SHOW_DATE = "lastShowDate";
   @SerializedName(SERIALIZED_NAME_LAST_SHOW_DATE)
@@ -1665,7 +1099,7 @@ public class Order {
   }
 
 
-  public Order status(StatusEnum status) {
+  public Order status(OrderStatus status) {
     
     this.status = status;
     return this;
@@ -1678,12 +1112,12 @@ public class Order {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public StatusEnum getStatus() {
+  public OrderStatus getStatus() {
     return status;
   }
 
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(OrderStatus status) {
     this.status = status;
   }
 
@@ -1734,7 +1168,7 @@ public class Order {
   }
 
 
-  public Order orderOrigin(OrderOriginEnum orderOrigin) {
+  public Order orderOrigin(OrderOrigin orderOrigin) {
     
     this.orderOrigin = orderOrigin;
     return this;
@@ -1747,12 +1181,12 @@ public class Order {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public OrderOriginEnum getOrderOrigin() {
+  public OrderOrigin getOrderOrigin() {
     return orderOrigin;
   }
 
 
-  public void setOrderOrigin(OrderOriginEnum orderOrigin) {
+  public void setOrderOrigin(OrderOrigin orderOrigin) {
     this.orderOrigin = orderOrigin;
   }
 
@@ -1989,7 +1423,7 @@ public class Order {
   }
 
 
-  public Order pricingLevel(PricingLevelEnum pricingLevel) {
+  public Order pricingLevel(PricingLevel pricingLevel) {
     
     this.pricingLevel = pricingLevel;
     return this;
@@ -2002,12 +1436,12 @@ public class Order {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingLevelEnum getPricingLevel() {
+  public PricingLevel getPricingLevel() {
     return pricingLevel;
   }
 
 
-  public void setPricingLevel(PricingLevelEnum pricingLevel) {
+  public void setPricingLevel(PricingLevel pricingLevel) {
     this.pricingLevel = pricingLevel;
   }
 
@@ -2058,7 +1492,7 @@ public class Order {
   }
 
 
-  public Order theaterLocationCode(TheaterLocationCodeEnum theaterLocationCode) {
+  public Order theaterLocationCode(LocationDescription theaterLocationCode) {
     
     this.theaterLocationCode = theaterLocationCode;
     return this;
@@ -2071,12 +1505,12 @@ public class Order {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TheaterLocationCodeEnum getTheaterLocationCode() {
+  public LocationDescription getTheaterLocationCode() {
     return theaterLocationCode;
   }
 
 
-  public void setTheaterLocationCode(TheaterLocationCodeEnum theaterLocationCode) {
+  public void setTheaterLocationCode(LocationDescription theaterLocationCode) {
     this.theaterLocationCode = theaterLocationCode;
   }
 
@@ -2564,7 +1998,7 @@ public class Order {
   }
 
 
-  public Order ticketBatch(TicketBatchEnum ticketBatch) {
+  public Order ticketBatch(TicketBatch ticketBatch) {
     
     this.ticketBatch = ticketBatch;
     return this;
@@ -2577,12 +2011,12 @@ public class Order {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TicketBatchEnum getTicketBatch() {
+  public TicketBatch getTicketBatch() {
     return ticketBatch;
   }
 
 
-  public void setTicketBatch(TicketBatchEnum ticketBatch) {
+  public void setTicketBatch(TicketBatch ticketBatch) {
     this.ticketBatch = ticketBatch;
   }
 
@@ -2610,7 +2044,7 @@ public class Order {
   }
 
 
-  public Order invoiceType(InvoiceTypeEnum invoiceType) {
+  public Order invoiceType(InvoiceType invoiceType) {
     
     this.invoiceType = invoiceType;
     return this;
@@ -2623,12 +2057,12 @@ public class Order {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public InvoiceTypeEnum getInvoiceType() {
+  public InvoiceType getInvoiceType() {
     return invoiceType;
   }
 
 
-  public void setInvoiceType(InvoiceTypeEnum invoiceType) {
+  public void setInvoiceType(InvoiceType invoiceType) {
     this.invoiceType = invoiceType;
   }
 
@@ -3463,7 +2897,7 @@ public class Order {
   }
 
 
-  public Order logActivity(LogActivityEnum logActivity) {
+  public Order logActivity(ActivityType logActivity) {
     
     this.logActivity = logActivity;
     return this;
@@ -3476,12 +2910,12 @@ public class Order {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public LogActivityEnum getLogActivity() {
+  public ActivityType getLogActivity() {
     return logActivity;
   }
 
 
-  public void setLogActivity(LogActivityEnum logActivity) {
+  public void setLogActivity(ActivityType logActivity) {
     this.logActivity = logActivity;
   }
 
@@ -3578,6 +3012,83 @@ public class Order {
   }
 
 
+  public Order allShowTourItem(List<OrderItem> allShowTourItem) {
+    
+    this.allShowTourItem = allShowTourItem;
+    return this;
+  }
+
+  public Order addAllShowTourItemItem(OrderItem allShowTourItemItem) {
+    if (this.allShowTourItem == null) {
+      this.allShowTourItem = new ArrayList<>();
+    }
+    this.allShowTourItem.add(allShowTourItemItem);
+    return this;
+  }
+
+   /**
+   * Get allShowTourItem
+   * @return allShowTourItem
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<OrderItem> getAllShowTourItem() {
+    return allShowTourItem;
+  }
+
+
+  public void setAllShowTourItem(List<OrderItem> allShowTourItem) {
+    this.allShowTourItem = allShowTourItem;
+  }
+
+
+  public Order grandTotalSaving(BigDecimal grandTotalSaving) {
+    
+    this.grandTotalSaving = grandTotalSaving;
+    return this;
+  }
+
+   /**
+   * Get grandTotalSaving
+   * @return grandTotalSaving
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getGrandTotalSaving() {
+    return grandTotalSaving;
+  }
+
+
+  public void setGrandTotalSaving(BigDecimal grandTotalSaving) {
+    this.grandTotalSaving = grandTotalSaving;
+  }
+
+
+  public Order autoApplyDiscounts(Boolean autoApplyDiscounts) {
+    
+    this.autoApplyDiscounts = autoApplyDiscounts;
+    return this;
+  }
+
+   /**
+   * Get autoApplyDiscounts
+   * @return autoApplyDiscounts
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getAutoApplyDiscounts() {
+    return autoApplyDiscounts;
+  }
+
+
+  public void setAutoApplyDiscounts(Boolean autoApplyDiscounts) {
+    this.autoApplyDiscounts = autoApplyDiscounts;
+  }
+
+
   public Order _new(Boolean _new) {
     
     this._new = _new;
@@ -3621,6 +3132,198 @@ public class Order {
 
   public void setGroup(Boolean group) {
     this.group = group;
+  }
+
+
+  public Order activeShowTourItemCount(Integer activeShowTourItemCount) {
+    
+    this.activeShowTourItemCount = activeShowTourItemCount;
+    return this;
+  }
+
+   /**
+   * Get activeShowTourItemCount
+   * @return activeShowTourItemCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getActiveShowTourItemCount() {
+    return activeShowTourItemCount;
+  }
+
+
+  public void setActiveShowTourItemCount(Integer activeShowTourItemCount) {
+    this.activeShowTourItemCount = activeShowTourItemCount;
+  }
+
+
+  public Order invoiceCompany(InvoiceCompany invoiceCompany) {
+    
+    this.invoiceCompany = invoiceCompany;
+    return this;
+  }
+
+   /**
+   * Get invoiceCompany
+   * @return invoiceCompany
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public InvoiceCompany getInvoiceCompany() {
+    return invoiceCompany;
+  }
+
+
+  public void setInvoiceCompany(InvoiceCompany invoiceCompany) {
+    this.invoiceCompany = invoiceCompany;
+  }
+
+
+  public Order dueAmount(BigDecimal dueAmount) {
+    
+    this.dueAmount = dueAmount;
+    return this;
+  }
+
+   /**
+   * Get dueAmount
+   * @return dueAmount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getDueAmount() {
+    return dueAmount;
+  }
+
+
+  public void setDueAmount(BigDecimal dueAmount) {
+    this.dueAmount = dueAmount;
+  }
+
+
+  public Order totalPaidAmount(BigDecimal totalPaidAmount) {
+    
+    this.totalPaidAmount = totalPaidAmount;
+    return this;
+  }
+
+   /**
+   * Get totalPaidAmount
+   * @return totalPaidAmount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalPaidAmount() {
+    return totalPaidAmount;
+  }
+
+
+  public void setTotalPaidAmount(BigDecimal totalPaidAmount) {
+    this.totalPaidAmount = totalPaidAmount;
+  }
+
+
+  public Order companyCode(String companyCode) {
+    
+    this.companyCode = companyCode;
+    return this;
+  }
+
+   /**
+   * Get companyCode
+   * @return companyCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCompanyCode() {
+    return companyCode;
+  }
+
+
+  public void setCompanyCode(String companyCode) {
+    this.companyCode = companyCode;
+  }
+
+
+  public Order groupCount(Integer groupCount) {
+    
+    this.groupCount = groupCount;
+    return this;
+  }
+
+   /**
+   * Get groupCount
+   * @return groupCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getGroupCount() {
+    return groupCount;
+  }
+
+
+  public void setGroupCount(Integer groupCount) {
+    this.groupCount = groupCount;
+  }
+
+
+  public Order activeShowTourItem(List<OrderItem> activeShowTourItem) {
+    
+    this.activeShowTourItem = activeShowTourItem;
+    return this;
+  }
+
+  public Order addActiveShowTourItemItem(OrderItem activeShowTourItemItem) {
+    if (this.activeShowTourItem == null) {
+      this.activeShowTourItem = new ArrayList<>();
+    }
+    this.activeShowTourItem.add(activeShowTourItemItem);
+    return this;
+  }
+
+   /**
+   * Get activeShowTourItem
+   * @return activeShowTourItem
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<OrderItem> getActiveShowTourItem() {
+    return activeShowTourItem;
+  }
+
+
+  public void setActiveShowTourItem(List<OrderItem> activeShowTourItem) {
+    this.activeShowTourItem = activeShowTourItem;
+  }
+
+
+  public Order totalFee(BigDecimal totalFee) {
+    
+    this.totalFee = totalFee;
+    return this;
+  }
+
+   /**
+   * Get totalFee
+   * @return totalFee
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalFee() {
+    return totalFee;
+  }
+
+
+  public void setTotalFee(BigDecimal totalFee) {
+    this.totalFee = totalFee;
   }
 
 
@@ -3701,7 +3404,7 @@ public class Order {
   }
 
 
-  public Order postPayPricingLevel(PostPayPricingLevelEnum postPayPricingLevel) {
+  public Order postPayPricingLevel(PricingLevel postPayPricingLevel) {
     
     this.postPayPricingLevel = postPayPricingLevel;
     return this;
@@ -3714,12 +3417,12 @@ public class Order {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PostPayPricingLevelEnum getPostPayPricingLevel() {
+  public PricingLevel getPostPayPricingLevel() {
     return postPayPricingLevel;
   }
 
 
-  public void setPostPayPricingLevel(PostPayPricingLevelEnum postPayPricingLevel) {
+  public void setPostPayPricingLevel(PricingLevel postPayPricingLevel) {
     this.postPayPricingLevel = postPayPricingLevel;
   }
 
@@ -3816,6 +3519,52 @@ public class Order {
   }
 
 
+  public Order seatsOverAssigned(Boolean seatsOverAssigned) {
+    
+    this.seatsOverAssigned = seatsOverAssigned;
+    return this;
+  }
+
+   /**
+   * Get seatsOverAssigned
+   * @return seatsOverAssigned
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSeatsOverAssigned() {
+    return seatsOverAssigned;
+  }
+
+
+  public void setSeatsOverAssigned(Boolean seatsOverAssigned) {
+    this.seatsOverAssigned = seatsOverAssigned;
+  }
+
+
+  public Order allSeatAssigned(Boolean allSeatAssigned) {
+    
+    this.allSeatAssigned = allSeatAssigned;
+    return this;
+  }
+
+   /**
+   * Get allSeatAssigned
+   * @return allSeatAssigned
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getAllSeatAssigned() {
+    return allSeatAssigned;
+  }
+
+
+  public void setAllSeatAssigned(Boolean allSeatAssigned) {
+    this.allSeatAssigned = allSeatAssigned;
+  }
+
+
   public Order activeOrderItemList(List<OrderItem> activeOrderItemList) {
     
     this.activeOrderItemList = activeOrderItemList;
@@ -3847,7 +3596,7 @@ public class Order {
   }
 
 
-  public Order calculatedPricingLevel(CalculatedPricingLevelEnum calculatedPricingLevel) {
+  public Order calculatedPricingLevel(PricingLevel calculatedPricingLevel) {
     
     this.calculatedPricingLevel = calculatedPricingLevel;
     return this;
@@ -3860,12 +3609,12 @@ public class Order {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public CalculatedPricingLevelEnum getCalculatedPricingLevel() {
+  public PricingLevel getCalculatedPricingLevel() {
     return calculatedPricingLevel;
   }
 
 
-  public void setCalculatedPricingLevel(CalculatedPricingLevelEnum calculatedPricingLevel) {
+  public void setCalculatedPricingLevel(PricingLevel calculatedPricingLevel) {
     this.calculatedPricingLevel = calculatedPricingLevel;
   }
 
@@ -4123,6 +3872,29 @@ public class Order {
   }
 
 
+  public Order totalCustomerDiscount(BigDecimal totalCustomerDiscount) {
+    
+    this.totalCustomerDiscount = totalCustomerDiscount;
+    return this;
+  }
+
+   /**
+   * Get totalCustomerDiscount
+   * @return totalCustomerDiscount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalCustomerDiscount() {
+    return totalCustomerDiscount;
+  }
+
+
+  public void setTotalCustomerDiscount(BigDecimal totalCustomerDiscount) {
+    this.totalCustomerDiscount = totalCustomerDiscount;
+  }
+
+
   public Order readyForPrinting(Boolean readyForPrinting) {
     
     this.readyForPrinting = readyForPrinting;
@@ -4220,344 +3992,6 @@ public class Order {
 
   public void setShipMethod(String shipMethod) {
     this.shipMethod = shipMethod;
-  }
-
-
-  public Order totalCustomerDiscount(BigDecimal totalCustomerDiscount) {
-    
-    this.totalCustomerDiscount = totalCustomerDiscount;
-    return this;
-  }
-
-   /**
-   * Get totalCustomerDiscount
-   * @return totalCustomerDiscount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalCustomerDiscount() {
-    return totalCustomerDiscount;
-  }
-
-
-  public void setTotalCustomerDiscount(BigDecimal totalCustomerDiscount) {
-    this.totalCustomerDiscount = totalCustomerDiscount;
-  }
-
-
-  public Order invoiceCompany(InvoiceCompanyEnum invoiceCompany) {
-    
-    this.invoiceCompany = invoiceCompany;
-    return this;
-  }
-
-   /**
-   * Get invoiceCompany
-   * @return invoiceCompany
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public InvoiceCompanyEnum getInvoiceCompany() {
-    return invoiceCompany;
-  }
-
-
-  public void setInvoiceCompany(InvoiceCompanyEnum invoiceCompany) {
-    this.invoiceCompany = invoiceCompany;
-  }
-
-
-  public Order dueAmount(BigDecimal dueAmount) {
-    
-    this.dueAmount = dueAmount;
-    return this;
-  }
-
-   /**
-   * Get dueAmount
-   * @return dueAmount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getDueAmount() {
-    return dueAmount;
-  }
-
-
-  public void setDueAmount(BigDecimal dueAmount) {
-    this.dueAmount = dueAmount;
-  }
-
-
-  public Order totalPaidAmount(BigDecimal totalPaidAmount) {
-    
-    this.totalPaidAmount = totalPaidAmount;
-    return this;
-  }
-
-   /**
-   * Get totalPaidAmount
-   * @return totalPaidAmount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalPaidAmount() {
-    return totalPaidAmount;
-  }
-
-
-  public void setTotalPaidAmount(BigDecimal totalPaidAmount) {
-    this.totalPaidAmount = totalPaidAmount;
-  }
-
-
-  public Order companyCode(String companyCode) {
-    
-    this.companyCode = companyCode;
-    return this;
-  }
-
-   /**
-   * Get companyCode
-   * @return companyCode
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getCompanyCode() {
-    return companyCode;
-  }
-
-
-  public void setCompanyCode(String companyCode) {
-    this.companyCode = companyCode;
-  }
-
-
-  public Order groupCount(Integer groupCount) {
-    
-    this.groupCount = groupCount;
-    return this;
-  }
-
-   /**
-   * Get groupCount
-   * @return groupCount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getGroupCount() {
-    return groupCount;
-  }
-
-
-  public void setGroupCount(Integer groupCount) {
-    this.groupCount = groupCount;
-  }
-
-
-  public Order activeShowTourItem(List<OrderItem> activeShowTourItem) {
-    
-    this.activeShowTourItem = activeShowTourItem;
-    return this;
-  }
-
-  public Order addActiveShowTourItemItem(OrderItem activeShowTourItemItem) {
-    if (this.activeShowTourItem == null) {
-      this.activeShowTourItem = new ArrayList<>();
-    }
-    this.activeShowTourItem.add(activeShowTourItemItem);
-    return this;
-  }
-
-   /**
-   * Get activeShowTourItem
-   * @return activeShowTourItem
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<OrderItem> getActiveShowTourItem() {
-    return activeShowTourItem;
-  }
-
-
-  public void setActiveShowTourItem(List<OrderItem> activeShowTourItem) {
-    this.activeShowTourItem = activeShowTourItem;
-  }
-
-
-  public Order totalFee(BigDecimal totalFee) {
-    
-    this.totalFee = totalFee;
-    return this;
-  }
-
-   /**
-   * Get totalFee
-   * @return totalFee
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalFee() {
-    return totalFee;
-  }
-
-
-  public void setTotalFee(BigDecimal totalFee) {
-    this.totalFee = totalFee;
-  }
-
-
-  public Order seatsOverAssigned(Boolean seatsOverAssigned) {
-    
-    this.seatsOverAssigned = seatsOverAssigned;
-    return this;
-  }
-
-   /**
-   * Get seatsOverAssigned
-   * @return seatsOverAssigned
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getSeatsOverAssigned() {
-    return seatsOverAssigned;
-  }
-
-
-  public void setSeatsOverAssigned(Boolean seatsOverAssigned) {
-    this.seatsOverAssigned = seatsOverAssigned;
-  }
-
-
-  public Order allSeatAssigned(Boolean allSeatAssigned) {
-    
-    this.allSeatAssigned = allSeatAssigned;
-    return this;
-  }
-
-   /**
-   * Get allSeatAssigned
-   * @return allSeatAssigned
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getAllSeatAssigned() {
-    return allSeatAssigned;
-  }
-
-
-  public void setAllSeatAssigned(Boolean allSeatAssigned) {
-    this.allSeatAssigned = allSeatAssigned;
-  }
-
-
-  public Order activeShowTourItemCount(Integer activeShowTourItemCount) {
-    
-    this.activeShowTourItemCount = activeShowTourItemCount;
-    return this;
-  }
-
-   /**
-   * Get activeShowTourItemCount
-   * @return activeShowTourItemCount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getActiveShowTourItemCount() {
-    return activeShowTourItemCount;
-  }
-
-
-  public void setActiveShowTourItemCount(Integer activeShowTourItemCount) {
-    this.activeShowTourItemCount = activeShowTourItemCount;
-  }
-
-
-  public Order allShowTourItem(List<OrderItem> allShowTourItem) {
-    
-    this.allShowTourItem = allShowTourItem;
-    return this;
-  }
-
-  public Order addAllShowTourItemItem(OrderItem allShowTourItemItem) {
-    if (this.allShowTourItem == null) {
-      this.allShowTourItem = new ArrayList<>();
-    }
-    this.allShowTourItem.add(allShowTourItemItem);
-    return this;
-  }
-
-   /**
-   * Get allShowTourItem
-   * @return allShowTourItem
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<OrderItem> getAllShowTourItem() {
-    return allShowTourItem;
-  }
-
-
-  public void setAllShowTourItem(List<OrderItem> allShowTourItem) {
-    this.allShowTourItem = allShowTourItem;
-  }
-
-
-  public Order grandTotalSaving(BigDecimal grandTotalSaving) {
-    
-    this.grandTotalSaving = grandTotalSaving;
-    return this;
-  }
-
-   /**
-   * Get grandTotalSaving
-   * @return grandTotalSaving
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getGrandTotalSaving() {
-    return grandTotalSaving;
-  }
-
-
-  public void setGrandTotalSaving(BigDecimal grandTotalSaving) {
-    this.grandTotalSaving = grandTotalSaving;
-  }
-
-
-  public Order autoApplyDiscounts(Boolean autoApplyDiscounts) {
-    
-    this.autoApplyDiscounts = autoApplyDiscounts;
-    return this;
-  }
-
-   /**
-   * Get autoApplyDiscounts
-   * @return autoApplyDiscounts
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getAutoApplyDiscounts() {
-    return autoApplyDiscounts;
-  }
-
-
-  public void setAutoApplyDiscounts(Boolean autoApplyDiscounts) {
-    this.autoApplyDiscounts = autoApplyDiscounts;
   }
 
 
@@ -4817,8 +4251,19 @@ public class Order {
         Objects.equals(this.alreadyLoggedActivity, order.alreadyLoggedActivity) &&
         Objects.equals(this.ticketDeliveryMessage, order.ticketDeliveryMessage) &&
         Objects.equals(this.cancelled, order.cancelled) &&
+        Objects.equals(this.allShowTourItem, order.allShowTourItem) &&
+        Objects.equals(this.grandTotalSaving, order.grandTotalSaving) &&
+        Objects.equals(this.autoApplyDiscounts, order.autoApplyDiscounts) &&
         Objects.equals(this._new, order._new) &&
         Objects.equals(this.group, order.group) &&
+        Objects.equals(this.activeShowTourItemCount, order.activeShowTourItemCount) &&
+        Objects.equals(this.invoiceCompany, order.invoiceCompany) &&
+        Objects.equals(this.dueAmount, order.dueAmount) &&
+        Objects.equals(this.totalPaidAmount, order.totalPaidAmount) &&
+        Objects.equals(this.companyCode, order.companyCode) &&
+        Objects.equals(this.groupCount, order.groupCount) &&
+        Objects.equals(this.activeShowTourItem, order.activeShowTourItem) &&
+        Objects.equals(this.totalFee, order.totalFee) &&
         Objects.equals(this.firstOccurringShowItem, order.firstOccurringShowItem) &&
         Objects.equals(this.firstOccurringTourItem, order.firstOccurringTourItem) &&
         Objects.equals(this.activeWithOrder, order.activeWithOrder) &&
@@ -4827,6 +4272,8 @@ public class Order {
         Objects.equals(this.totalTax, order.totalTax) &&
         Objects.equals(this.totalGratuity, order.totalGratuity) &&
         Objects.equals(this.totalDiscount, order.totalDiscount) &&
+        Objects.equals(this.seatsOverAssigned, order.seatsOverAssigned) &&
+        Objects.equals(this.allSeatAssigned, order.allSeatAssigned) &&
         Objects.equals(this.activeOrderItemList, order.activeOrderItemList) &&
         Objects.equals(this.calculatedPricingLevel, order.calculatedPricingLevel) &&
         Objects.equals(this.paymentPast, order.paymentPast) &&
@@ -4840,24 +4287,11 @@ public class Order {
         Objects.equals(this.totalTransactionCharge, order.totalTransactionCharge) &&
         Objects.equals(this.showsDaysSpan, order.showsDaysSpan) &&
         Objects.equals(this.highCountByOrderItem, order.highCountByOrderItem) &&
+        Objects.equals(this.totalCustomerDiscount, order.totalCustomerDiscount) &&
         Objects.equals(this.readyForPrinting, order.readyForPrinting) &&
         Objects.equals(this.activeShowItems, order.activeShowItems) &&
         Objects.equals(this.mailToName, order.mailToName) &&
         Objects.equals(this.shipMethod, order.shipMethod) &&
-        Objects.equals(this.totalCustomerDiscount, order.totalCustomerDiscount) &&
-        Objects.equals(this.invoiceCompany, order.invoiceCompany) &&
-        Objects.equals(this.dueAmount, order.dueAmount) &&
-        Objects.equals(this.totalPaidAmount, order.totalPaidAmount) &&
-        Objects.equals(this.companyCode, order.companyCode) &&
-        Objects.equals(this.groupCount, order.groupCount) &&
-        Objects.equals(this.activeShowTourItem, order.activeShowTourItem) &&
-        Objects.equals(this.totalFee, order.totalFee) &&
-        Objects.equals(this.seatsOverAssigned, order.seatsOverAssigned) &&
-        Objects.equals(this.allSeatAssigned, order.allSeatAssigned) &&
-        Objects.equals(this.activeShowTourItemCount, order.activeShowTourItemCount) &&
-        Objects.equals(this.allShowTourItem, order.allShowTourItem) &&
-        Objects.equals(this.grandTotalSaving, order.grandTotalSaving) &&
-        Objects.equals(this.autoApplyDiscounts, order.autoApplyDiscounts) &&
         Objects.equals(this.lastShowDate, order.lastShowDate) &&
         Objects.equals(this.firstOccurringShowItemWithValidCount, order.firstOccurringShowItemWithValidCount) &&
         Objects.equals(this.lastOccurringShowTourItem, order.lastOccurringShowTourItem) &&
@@ -4868,7 +4302,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderNumber, customerNumber, orderDate, groupName, mailToAddress, specialCode, firstName, lastName, addUserId, finalPaymentDueDate, cancelUserId, cancelDate, contractReceivedDate, addLocationCode, cancelLocationCode, sourceCode, finalPaymentExtDueDate, orderTotalPrice, companyName, status, editUserId, editDate, orderOrigin, printUserId, sourceCodeComments, depositDueAmount, contactFirstName, contactLastName, rpCustNumber, mailToSameAsCustomer, bypassAutoSpecial, orderTypeCode, waiveDepositDue, pricingLevel, tierYear, depositDueDate, theaterLocationCode, depositAmount, cancelReminderSent, emailTicketsProcessed, presentedByName, mailToOrganizationName, mailToPhone, authorizedUsers, resReqEncText, salesRepId, lockShippingDate, lockRefundDate, finalSale, heldName, refNumber, taxExempt, recalculate, slidingScaleDiscount, shipDate, trackingNumber, shipFromLocation, mailToAddressVerified, ticketBatch, ticketBatchAgent, invoiceType, returnOrderNumber, contactPhone, inventoryMoved, invalid, mailOrder, deliverStatus, deliverUserId, deliverDateTime, intlGroup, intlCountryCode, salesConfCode, email, authUserPhoneNumber, completedDate, orderToken, notes, orderItems, customer, watchLists, invoices, groupInfo, payments, special, changeExistingDiscounts, sendToAccpac, sessionPaidAmount, sessionRefundAmount, amountPaidWhenOrderLoaded, editMode, specialAutoApplied, logChanges, specialRemoved, promoCode, discountAutoApplied, logActivity, persisted, alreadyLoggedActivity, ticketDeliveryMessage, cancelled, _new, group, firstOccurringShowItem, firstOccurringTourItem, activeWithOrder, postPayPricingLevel, allItemsTotalPrice, totalTax, totalGratuity, totalDiscount, activeOrderItemList, calculatedPricingLevel, paymentPast, finalPaymentDueDays, maxItemNumber, ticketsMailed, earliestEventDate, firstShowDate, seatsUnderAssigned, latestEventOrderItem, totalTransactionCharge, showsDaysSpan, highCountByOrderItem, readyForPrinting, activeShowItems, mailToName, shipMethod, totalCustomerDiscount, invoiceCompany, dueAmount, totalPaidAmount, companyCode, groupCount, activeShowTourItem, totalFee, seatsOverAssigned, allSeatAssigned, activeShowTourItemCount, allShowTourItem, grandTotalSaving, autoApplyDiscounts, lastShowDate, firstOccurringShowItemWithValidCount, lastOccurringShowTourItem, firstOccurringShowTourItem, cancelledShowTourItemList, allPartnerEventsConfirmed);
+    return Objects.hash(orderNumber, customerNumber, orderDate, groupName, mailToAddress, specialCode, firstName, lastName, addUserId, finalPaymentDueDate, cancelUserId, cancelDate, contractReceivedDate, addLocationCode, cancelLocationCode, sourceCode, finalPaymentExtDueDate, orderTotalPrice, companyName, status, editUserId, editDate, orderOrigin, printUserId, sourceCodeComments, depositDueAmount, contactFirstName, contactLastName, rpCustNumber, mailToSameAsCustomer, bypassAutoSpecial, orderTypeCode, waiveDepositDue, pricingLevel, tierYear, depositDueDate, theaterLocationCode, depositAmount, cancelReminderSent, emailTicketsProcessed, presentedByName, mailToOrganizationName, mailToPhone, authorizedUsers, resReqEncText, salesRepId, lockShippingDate, lockRefundDate, finalSale, heldName, refNumber, taxExempt, recalculate, slidingScaleDiscount, shipDate, trackingNumber, shipFromLocation, mailToAddressVerified, ticketBatch, ticketBatchAgent, invoiceType, returnOrderNumber, contactPhone, inventoryMoved, invalid, mailOrder, deliverStatus, deliverUserId, deliverDateTime, intlGroup, intlCountryCode, salesConfCode, email, authUserPhoneNumber, completedDate, orderToken, notes, orderItems, customer, watchLists, invoices, groupInfo, payments, special, changeExistingDiscounts, sendToAccpac, sessionPaidAmount, sessionRefundAmount, amountPaidWhenOrderLoaded, editMode, specialAutoApplied, logChanges, specialRemoved, promoCode, discountAutoApplied, logActivity, persisted, alreadyLoggedActivity, ticketDeliveryMessage, cancelled, allShowTourItem, grandTotalSaving, autoApplyDiscounts, _new, group, activeShowTourItemCount, invoiceCompany, dueAmount, totalPaidAmount, companyCode, groupCount, activeShowTourItem, totalFee, firstOccurringShowItem, firstOccurringTourItem, activeWithOrder, postPayPricingLevel, allItemsTotalPrice, totalTax, totalGratuity, totalDiscount, seatsOverAssigned, allSeatAssigned, activeOrderItemList, calculatedPricingLevel, paymentPast, finalPaymentDueDays, maxItemNumber, ticketsMailed, earliestEventDate, firstShowDate, seatsUnderAssigned, latestEventOrderItem, totalTransactionCharge, showsDaysSpan, highCountByOrderItem, totalCustomerDiscount, readyForPrinting, activeShowItems, mailToName, shipMethod, lastShowDate, firstOccurringShowItemWithValidCount, lastOccurringShowTourItem, firstOccurringShowTourItem, cancelledShowTourItemList, allPartnerEventsConfirmed);
   }
 
   @Override
@@ -4975,8 +4409,19 @@ public class Order {
     sb.append("    alreadyLoggedActivity: ").append(toIndentedString(alreadyLoggedActivity)).append("\n");
     sb.append("    ticketDeliveryMessage: ").append(toIndentedString(ticketDeliveryMessage)).append("\n");
     sb.append("    cancelled: ").append(toIndentedString(cancelled)).append("\n");
+    sb.append("    allShowTourItem: ").append(toIndentedString(allShowTourItem)).append("\n");
+    sb.append("    grandTotalSaving: ").append(toIndentedString(grandTotalSaving)).append("\n");
+    sb.append("    autoApplyDiscounts: ").append(toIndentedString(autoApplyDiscounts)).append("\n");
     sb.append("    _new: ").append(toIndentedString(_new)).append("\n");
     sb.append("    group: ").append(toIndentedString(group)).append("\n");
+    sb.append("    activeShowTourItemCount: ").append(toIndentedString(activeShowTourItemCount)).append("\n");
+    sb.append("    invoiceCompany: ").append(toIndentedString(invoiceCompany)).append("\n");
+    sb.append("    dueAmount: ").append(toIndentedString(dueAmount)).append("\n");
+    sb.append("    totalPaidAmount: ").append(toIndentedString(totalPaidAmount)).append("\n");
+    sb.append("    companyCode: ").append(toIndentedString(companyCode)).append("\n");
+    sb.append("    groupCount: ").append(toIndentedString(groupCount)).append("\n");
+    sb.append("    activeShowTourItem: ").append(toIndentedString(activeShowTourItem)).append("\n");
+    sb.append("    totalFee: ").append(toIndentedString(totalFee)).append("\n");
     sb.append("    firstOccurringShowItem: ").append(toIndentedString(firstOccurringShowItem)).append("\n");
     sb.append("    firstOccurringTourItem: ").append(toIndentedString(firstOccurringTourItem)).append("\n");
     sb.append("    activeWithOrder: ").append(toIndentedString(activeWithOrder)).append("\n");
@@ -4985,6 +4430,8 @@ public class Order {
     sb.append("    totalTax: ").append(toIndentedString(totalTax)).append("\n");
     sb.append("    totalGratuity: ").append(toIndentedString(totalGratuity)).append("\n");
     sb.append("    totalDiscount: ").append(toIndentedString(totalDiscount)).append("\n");
+    sb.append("    seatsOverAssigned: ").append(toIndentedString(seatsOverAssigned)).append("\n");
+    sb.append("    allSeatAssigned: ").append(toIndentedString(allSeatAssigned)).append("\n");
     sb.append("    activeOrderItemList: ").append(toIndentedString(activeOrderItemList)).append("\n");
     sb.append("    calculatedPricingLevel: ").append(toIndentedString(calculatedPricingLevel)).append("\n");
     sb.append("    paymentPast: ").append(toIndentedString(paymentPast)).append("\n");
@@ -4998,24 +4445,11 @@ public class Order {
     sb.append("    totalTransactionCharge: ").append(toIndentedString(totalTransactionCharge)).append("\n");
     sb.append("    showsDaysSpan: ").append(toIndentedString(showsDaysSpan)).append("\n");
     sb.append("    highCountByOrderItem: ").append(toIndentedString(highCountByOrderItem)).append("\n");
+    sb.append("    totalCustomerDiscount: ").append(toIndentedString(totalCustomerDiscount)).append("\n");
     sb.append("    readyForPrinting: ").append(toIndentedString(readyForPrinting)).append("\n");
     sb.append("    activeShowItems: ").append(toIndentedString(activeShowItems)).append("\n");
     sb.append("    mailToName: ").append(toIndentedString(mailToName)).append("\n");
     sb.append("    shipMethod: ").append(toIndentedString(shipMethod)).append("\n");
-    sb.append("    totalCustomerDiscount: ").append(toIndentedString(totalCustomerDiscount)).append("\n");
-    sb.append("    invoiceCompany: ").append(toIndentedString(invoiceCompany)).append("\n");
-    sb.append("    dueAmount: ").append(toIndentedString(dueAmount)).append("\n");
-    sb.append("    totalPaidAmount: ").append(toIndentedString(totalPaidAmount)).append("\n");
-    sb.append("    companyCode: ").append(toIndentedString(companyCode)).append("\n");
-    sb.append("    groupCount: ").append(toIndentedString(groupCount)).append("\n");
-    sb.append("    activeShowTourItem: ").append(toIndentedString(activeShowTourItem)).append("\n");
-    sb.append("    totalFee: ").append(toIndentedString(totalFee)).append("\n");
-    sb.append("    seatsOverAssigned: ").append(toIndentedString(seatsOverAssigned)).append("\n");
-    sb.append("    allSeatAssigned: ").append(toIndentedString(allSeatAssigned)).append("\n");
-    sb.append("    activeShowTourItemCount: ").append(toIndentedString(activeShowTourItemCount)).append("\n");
-    sb.append("    allShowTourItem: ").append(toIndentedString(allShowTourItem)).append("\n");
-    sb.append("    grandTotalSaving: ").append(toIndentedString(grandTotalSaving)).append("\n");
-    sb.append("    autoApplyDiscounts: ").append(toIndentedString(autoApplyDiscounts)).append("\n");
     sb.append("    lastShowDate: ").append(toIndentedString(lastShowDate)).append("\n");
     sb.append("    firstOccurringShowItemWithValidCount: ").append(toIndentedString(firstOccurringShowItemWithValidCount)).append("\n");
     sb.append("    lastOccurringShowTourItem: ").append(toIndentedString(lastOccurringShowTourItem)).append("\n");
@@ -5144,8 +4578,19 @@ public class Order {
     openapiFields.add("alreadyLoggedActivity");
     openapiFields.add("ticketDeliveryMessage");
     openapiFields.add("cancelled");
+    openapiFields.add("allShowTourItem");
+    openapiFields.add("grandTotalSaving");
+    openapiFields.add("autoApplyDiscounts");
     openapiFields.add("new");
     openapiFields.add("group");
+    openapiFields.add("activeShowTourItemCount");
+    openapiFields.add("invoiceCompany");
+    openapiFields.add("dueAmount");
+    openapiFields.add("totalPaidAmount");
+    openapiFields.add("companyCode");
+    openapiFields.add("groupCount");
+    openapiFields.add("activeShowTourItem");
+    openapiFields.add("totalFee");
     openapiFields.add("firstOccurringShowItem");
     openapiFields.add("firstOccurringTourItem");
     openapiFields.add("activeWithOrder");
@@ -5154,6 +4599,8 @@ public class Order {
     openapiFields.add("totalTax");
     openapiFields.add("totalGratuity");
     openapiFields.add("totalDiscount");
+    openapiFields.add("seatsOverAssigned");
+    openapiFields.add("allSeatAssigned");
     openapiFields.add("activeOrderItemList");
     openapiFields.add("calculatedPricingLevel");
     openapiFields.add("paymentPast");
@@ -5167,24 +4614,11 @@ public class Order {
     openapiFields.add("totalTransactionCharge");
     openapiFields.add("showsDaysSpan");
     openapiFields.add("highCountByOrderItem");
+    openapiFields.add("totalCustomerDiscount");
     openapiFields.add("readyForPrinting");
     openapiFields.add("activeShowItems");
     openapiFields.add("mailToName");
     openapiFields.add("shipMethod");
-    openapiFields.add("totalCustomerDiscount");
-    openapiFields.add("invoiceCompany");
-    openapiFields.add("dueAmount");
-    openapiFields.add("totalPaidAmount");
-    openapiFields.add("companyCode");
-    openapiFields.add("groupCount");
-    openapiFields.add("activeShowTourItem");
-    openapiFields.add("totalFee");
-    openapiFields.add("seatsOverAssigned");
-    openapiFields.add("allSeatAssigned");
-    openapiFields.add("activeShowTourItemCount");
-    openapiFields.add("allShowTourItem");
-    openapiFields.add("grandTotalSaving");
-    openapiFields.add("autoApplyDiscounts");
     openapiFields.add("lastShowDate");
     openapiFields.add("firstOccurringShowItemWithValidCount");
     openapiFields.add("lastOccurringShowTourItem");
@@ -5263,14 +4697,8 @@ public class Order {
       if (jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
-      if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
       if (jsonObj.get("editUserId") != null && !jsonObj.get("editUserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `editUserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("editUserId").toString()));
-      }
-      if (jsonObj.get("orderOrigin") != null && !jsonObj.get("orderOrigin").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `orderOrigin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("orderOrigin").toString()));
       }
       if (jsonObj.get("printUserId") != null && !jsonObj.get("printUserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `printUserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("printUserId").toString()));
@@ -5286,12 +4714,6 @@ public class Order {
       }
       if (jsonObj.get("orderTypeCode") != null && !jsonObj.get("orderTypeCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `orderTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("orderTypeCode").toString()));
-      }
-      if (jsonObj.get("pricingLevel") != null && !jsonObj.get("pricingLevel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pricingLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricingLevel").toString()));
-      }
-      if (jsonObj.get("theaterLocationCode") != null && !jsonObj.get("theaterLocationCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `theaterLocationCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("theaterLocationCode").toString()));
       }
       if (jsonObj.get("presentedByName") != null && !jsonObj.get("presentedByName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `presentedByName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("presentedByName").toString()));
@@ -5323,14 +4745,8 @@ public class Order {
       if (jsonObj.get("shipFromLocation") != null && !jsonObj.get("shipFromLocation").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `shipFromLocation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shipFromLocation").toString()));
       }
-      if (jsonObj.get("ticketBatch") != null && !jsonObj.get("ticketBatch").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ticketBatch` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketBatch").toString()));
-      }
       if (jsonObj.get("ticketBatchAgent") != null && !jsonObj.get("ticketBatchAgent").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ticketBatchAgent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketBatchAgent").toString()));
-      }
-      if (jsonObj.get("invoiceType") != null && !jsonObj.get("invoiceType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `invoiceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("invoiceType").toString()));
       }
       if (jsonObj.get("contactPhone") != null && !jsonObj.get("contactPhone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `contactPhone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contactPhone").toString()));
@@ -5439,11 +4855,35 @@ public class Order {
       if (jsonObj.get("promoCode") != null && !jsonObj.get("promoCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `promoCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("promoCode").toString()));
       }
-      if (jsonObj.get("logActivity") != null && !jsonObj.get("logActivity").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `logActivity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logActivity").toString()));
-      }
       if (jsonObj.get("ticketDeliveryMessage") != null && !jsonObj.get("ticketDeliveryMessage").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ticketDeliveryMessage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketDeliveryMessage").toString()));
+      }
+      JsonArray jsonArrayallShowTourItem = jsonObj.getAsJsonArray("allShowTourItem");
+      if (jsonArrayallShowTourItem != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("allShowTourItem").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `allShowTourItem` to be an array in the JSON string but got `%s`", jsonObj.get("allShowTourItem").toString()));
+        }
+
+        // validate the optional field `allShowTourItem` (array)
+        for (int i = 0; i < jsonArrayallShowTourItem.size(); i++) {
+          OrderItem.validateJsonObject(jsonArrayallShowTourItem.get(i).getAsJsonObject());
+        };
+      }
+      if (jsonObj.get("companyCode") != null && !jsonObj.get("companyCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `companyCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyCode").toString()));
+      }
+      JsonArray jsonArrayactiveShowTourItem = jsonObj.getAsJsonArray("activeShowTourItem");
+      if (jsonArrayactiveShowTourItem != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("activeShowTourItem").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `activeShowTourItem` to be an array in the JSON string but got `%s`", jsonObj.get("activeShowTourItem").toString()));
+        }
+
+        // validate the optional field `activeShowTourItem` (array)
+        for (int i = 0; i < jsonArrayactiveShowTourItem.size(); i++) {
+          OrderItem.validateJsonObject(jsonArrayactiveShowTourItem.get(i).getAsJsonObject());
+        };
       }
       // validate the optional field `firstOccurringShowItem`
       if (jsonObj.getAsJsonObject("firstOccurringShowItem") != null) {
@@ -5465,9 +4905,6 @@ public class Order {
           OrderItem.validateJsonObject(jsonArrayactiveWithOrder.get(i).getAsJsonObject());
         };
       }
-      if (jsonObj.get("postPayPricingLevel") != null && !jsonObj.get("postPayPricingLevel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `postPayPricingLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postPayPricingLevel").toString()));
-      }
       JsonArray jsonArrayactiveOrderItemList = jsonObj.getAsJsonArray("activeOrderItemList");
       if (jsonArrayactiveOrderItemList != null) {
         // ensure the json data is an array
@@ -5479,9 +4916,6 @@ public class Order {
         for (int i = 0; i < jsonArrayactiveOrderItemList.size(); i++) {
           OrderItem.validateJsonObject(jsonArrayactiveOrderItemList.get(i).getAsJsonObject());
         };
-      }
-      if (jsonObj.get("calculatedPricingLevel") != null && !jsonObj.get("calculatedPricingLevel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `calculatedPricingLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("calculatedPricingLevel").toString()));
       }
       // validate the optional field `latestEventOrderItem`
       if (jsonObj.getAsJsonObject("latestEventOrderItem") != null) {
@@ -5504,36 +4938,6 @@ public class Order {
       }
       if (jsonObj.get("shipMethod") != null && !jsonObj.get("shipMethod").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `shipMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shipMethod").toString()));
-      }
-      if (jsonObj.get("invoiceCompany") != null && !jsonObj.get("invoiceCompany").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `invoiceCompany` to be a primitive type in the JSON string but got `%s`", jsonObj.get("invoiceCompany").toString()));
-      }
-      if (jsonObj.get("companyCode") != null && !jsonObj.get("companyCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `companyCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyCode").toString()));
-      }
-      JsonArray jsonArrayactiveShowTourItem = jsonObj.getAsJsonArray("activeShowTourItem");
-      if (jsonArrayactiveShowTourItem != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("activeShowTourItem").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `activeShowTourItem` to be an array in the JSON string but got `%s`", jsonObj.get("activeShowTourItem").toString()));
-        }
-
-        // validate the optional field `activeShowTourItem` (array)
-        for (int i = 0; i < jsonArrayactiveShowTourItem.size(); i++) {
-          OrderItem.validateJsonObject(jsonArrayactiveShowTourItem.get(i).getAsJsonObject());
-        };
-      }
-      JsonArray jsonArrayallShowTourItem = jsonObj.getAsJsonArray("allShowTourItem");
-      if (jsonArrayallShowTourItem != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("allShowTourItem").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `allShowTourItem` to be an array in the JSON string but got `%s`", jsonObj.get("allShowTourItem").toString()));
-        }
-
-        // validate the optional field `allShowTourItem` (array)
-        for (int i = 0; i < jsonArrayallShowTourItem.size(); i++) {
-          OrderItem.validateJsonObject(jsonArrayallShowTourItem.get(i).getAsJsonObject());
-        };
       }
       // validate the optional field `firstOccurringShowItemWithValidCount`
       if (jsonObj.getAsJsonObject("firstOccurringShowItemWithValidCount") != null) {

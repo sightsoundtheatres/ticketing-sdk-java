@@ -20,8 +20,10 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.ChallengeIndicatorEnum;
 import com.sightsound.sdk.ticketing.model.DeviceRenderOptions;
 import com.sightsound.sdk.ticketing.model.SDKEphemPubKey;
+import com.sightsound.sdk.ticketing.model.TransactionTypeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -49,62 +51,11 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * ThreeDS2RequestData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class ThreeDS2RequestData {
   public static final String SERIALIZED_NAME_AUTHENTICATION_ONLY = "authenticationOnly";
   @SerializedName(SERIALIZED_NAME_AUTHENTICATION_ONLY)
   private Boolean authenticationOnly;
-
-  /**
-   * Gets or Sets challengeIndicator
-   */
-  @JsonAdapter(ChallengeIndicatorEnum.Adapter.class)
-  public enum ChallengeIndicatorEnum {
-    NOPREFERENCE("noPreference"),
-    
-    REQUESTCHALLENGE("requestChallenge"),
-    
-    REQUESTNOCHALLENGE("requestNoChallenge"),
-    
-    REQUESTCHALLENGEASMANDATE("requestChallengeAsMandate");
-
-    private String value;
-
-    ChallengeIndicatorEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ChallengeIndicatorEnum fromValue(String value) {
-      for (ChallengeIndicatorEnum b : ChallengeIndicatorEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ChallengeIndicatorEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ChallengeIndicatorEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ChallengeIndicatorEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ChallengeIndicatorEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_CHALLENGE_INDICATOR = "challengeIndicator";
   @SerializedName(SERIALIZED_NAME_CHALLENGE_INDICATOR)
@@ -190,59 +141,6 @@ public class ThreeDS2RequestData {
   @SerializedName(SERIALIZED_NAME_MERCHANT_NAME)
   private String merchantName;
 
-  /**
-   * Gets or Sets transactionType
-   */
-  @JsonAdapter(TransactionTypeEnum.Adapter.class)
-  public enum TransactionTypeEnum {
-    GOODSORSERVICEPURCHASE("goodsOrServicePurchase"),
-    
-    CHECKACCEPTANCE("checkAcceptance"),
-    
-    ACCOUNTFUNDING("accountFunding"),
-    
-    QUASICASHTRANSACTION("quasiCashTransaction"),
-    
-    PREPAIDACTIVATIONANDLOAD("prepaidActivationAndLoad");
-
-    private String value;
-
-    TransactionTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TransactionTypeEnum fromValue(String value) {
-      for (TransactionTypeEnum b : TransactionTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TransactionTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TransactionTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TransactionTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TransactionTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "transactionType";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
   private TransactionTypeEnum transactionType;
@@ -286,9 +184,7 @@ public class ThreeDS2RequestData {
    /**
    * Get challengeIndicator
    * @return challengeIndicator
-   * @deprecated
   **/
-  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -952,9 +848,6 @@ public class ThreeDS2RequestData {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ThreeDS2RequestData` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if (jsonObj.get("challengeIndicator") != null && !jsonObj.get("challengeIndicator").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `challengeIndicator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("challengeIndicator").toString()));
-      }
       if (jsonObj.get("deviceChannel") != null && !jsonObj.get("deviceChannel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `deviceChannel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deviceChannel").toString()));
       }
@@ -1013,9 +906,6 @@ public class ThreeDS2RequestData {
       }
       if (jsonObj.get("merchantName") != null && !jsonObj.get("merchantName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `merchantName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("merchantName").toString()));
-      }
-      if (jsonObj.get("transactionType") != null && !jsonObj.get("transactionType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `transactionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionType").toString()));
       }
       if (jsonObj.get("whiteListStatus") != null && !jsonObj.get("whiteListStatus").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `whiteListStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("whiteListStatus").toString()));

@@ -11,7 +11,7 @@
 |**seatingCapacity** | **Integer** |  |  |
 |**seatingTemplateDescription** | **String** |  |  [optional] |
 |**overflow** | **Boolean** |  |  |
-|**locationCode** | [**LocationCodeEnum**](#LocationCodeEnum) |  |  |
+|**locationCode** | **TheaterLocation** |  |  |
 |**masterTemplateYN** | **String** |  |  |
 |**overflowMax** | **Integer** |  |  |
 |**seatProfileCode** | **String** |  |  [optional] |
@@ -22,16 +22,6 @@
 |**profile** | [**SeatingProfile**](SeatingProfile.md) |  |  [optional] |
 |**xcoordCenter** | **Integer** |  |  [optional] |
 |**ycoordBestRow** | **Integer** |  |  [optional] |
-
-
-
-## Enum: LocationCodeEnum
-
-| Name | Value |
-|---- | -----|
-| LIVING_WATERS | &quot;LIVING_WATERS&quot; |
-| MILLENNIUM_THEATER | &quot;MILLENNIUM_THEATER&quot; |
-| BRANSON_THEATER | &quot;BRANSON_THEATER&quot; |
 
 
 

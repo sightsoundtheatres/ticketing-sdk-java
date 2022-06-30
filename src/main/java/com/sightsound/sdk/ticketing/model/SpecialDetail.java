@@ -20,6 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.Designation;
+import com.sightsound.sdk.ticketing.model.DiscountType;
 import com.sightsound.sdk.ticketing.model.Special;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -49,7 +51,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * SpecialDetail
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class SpecialDetail {
   public static final String SERIALIZED_NAME_SPECIAL_CODE = "specialCode";
   @SerializedName(SERIALIZED_NAME_SPECIAL_CODE)
@@ -59,64 +61,9 @@ public class SpecialDetail {
   @SerializedName(SERIALIZED_NAME_EVENT_CODE)
   private String eventCode;
 
-  /**
-   * Gets or Sets designationCode
-   */
-  @JsonAdapter(DesignationCodeEnum.Adapter.class)
-  public enum DesignationCodeEnum {
-    ADULT("ADULT"),
-    
-    CHILD("CHILD"),
-    
-    ESCORT("ESCORT"),
-    
-    DRIVER("DRIVER"),
-    
-    TEEN("TEEN"),
-    
-    ANY("ANY");
-
-    private String value;
-
-    DesignationCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DesignationCodeEnum fromValue(String value) {
-      for (DesignationCodeEnum b : DesignationCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DesignationCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DesignationCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DesignationCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DesignationCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_DESIGNATION_CODE = "designationCode";
   @SerializedName(SERIALIZED_NAME_DESIGNATION_CODE)
-  private DesignationCodeEnum designationCode;
+  private Designation designationCode;
 
   public static final String SERIALIZED_NAME_BUY_COUNT = "buyCount";
   @SerializedName(SERIALIZED_NAME_BUY_COUNT)
@@ -134,60 +81,9 @@ public class SpecialDetail {
   @SerializedName(SERIALIZED_NAME_DISC_COUNT)
   private Integer discCount;
 
-  /**
-   * Gets or Sets discTypeCode
-   */
-  @JsonAdapter(DiscTypeCodeEnum.Adapter.class)
-  public enum DiscTypeCodeEnum {
-    A("A"),
-    
-    N("N"),
-    
-    E("E"),
-    
-    P("P");
-
-    private String value;
-
-    DiscTypeCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DiscTypeCodeEnum fromValue(String value) {
-      for (DiscTypeCodeEnum b : DiscTypeCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DiscTypeCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DiscTypeCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DiscTypeCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DiscTypeCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_DISC_TYPE_CODE = "discTypeCode";
   @SerializedName(SERIALIZED_NAME_DISC_TYPE_CODE)
-  private DiscTypeCodeEnum discTypeCode;
+  private DiscountType discTypeCode;
 
   public static final String SERIALIZED_NAME_DISC_VALUE = "discValue";
   @SerializedName(SERIALIZED_NAME_DISC_VALUE)
@@ -254,7 +150,7 @@ public class SpecialDetail {
   }
 
 
-  public SpecialDetail designationCode(DesignationCodeEnum designationCode) {
+  public SpecialDetail designationCode(Designation designationCode) {
     
     this.designationCode = designationCode;
     return this;
@@ -267,12 +163,12 @@ public class SpecialDetail {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public DesignationCodeEnum getDesignationCode() {
+  public Designation getDesignationCode() {
     return designationCode;
   }
 
 
-  public void setDesignationCode(DesignationCodeEnum designationCode) {
+  public void setDesignationCode(Designation designationCode) {
     this.designationCode = designationCode;
   }
 
@@ -369,7 +265,7 @@ public class SpecialDetail {
   }
 
 
-  public SpecialDetail discTypeCode(DiscTypeCodeEnum discTypeCode) {
+  public SpecialDetail discTypeCode(DiscountType discTypeCode) {
     
     this.discTypeCode = discTypeCode;
     return this;
@@ -382,12 +278,12 @@ public class SpecialDetail {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public DiscTypeCodeEnum getDiscTypeCode() {
+  public DiscountType getDiscTypeCode() {
     return discTypeCode;
   }
 
 
-  public void setDiscTypeCode(DiscTypeCodeEnum discTypeCode) {
+  public void setDiscTypeCode(DiscountType discTypeCode) {
     this.discTypeCode = discTypeCode;
   }
 
@@ -607,12 +503,6 @@ public class SpecialDetail {
       }
       if (jsonObj.get("eventCode") != null && !jsonObj.get("eventCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `eventCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventCode").toString()));
-      }
-      if (jsonObj.get("designationCode") != null && !jsonObj.get("designationCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `designationCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("designationCode").toString()));
-      }
-      if (jsonObj.get("discTypeCode") != null && !jsonObj.get("discTypeCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `discTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("discTypeCode").toString()));
       }
       // validate the optional field `special`
       if (jsonObj.getAsJsonObject("special") != null) {

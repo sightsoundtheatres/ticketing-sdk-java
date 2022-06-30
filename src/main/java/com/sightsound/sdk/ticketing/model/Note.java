@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.Customer;
+import com.sightsound.sdk.ticketing.model.NoteType;
 import com.sightsound.sdk.ticketing.model.Order;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -50,110 +51,15 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Note
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class Note {
   public static final String SERIALIZED_NAME_NOTE_ID = "noteId";
   @SerializedName(SERIALIZED_NAME_NOTE_ID)
   private Long noteId;
 
-  /**
-   * Gets or Sets noteType
-   */
-  @JsonAdapter(NoteTypeEnum.Adapter.class)
-  public enum NoteTypeEnum {
-    AGENT("AGENT"),
-    
-    ATTRACTION("ATTRACTION"),
-    
-    GROUP_AGENT("GROUP_AGENT"),
-    
-    MEAL("MEAL"),
-    
-    MEAL_RESTR("MEAL_RESTR"),
-    
-    CUST_PRIVATE("CUST_PRIVATE"),
-    
-    CUST_GIFT_CARD("CUST_GIFT_CARD"),
-    
-    BOX("BOX"),
-    
-    MERCHANDISE("MERCHANDISE"),
-    
-    POS("POS"),
-    
-    GIFT_CARD("GIFT_CARD"),
-    
-    CUST_SEAT_ALERT_MT("CUST_SEAT_ALERT_MT"),
-    
-    CUST_SEAT_ALERT_BR("CUST_SEAT_ALERT_BR"),
-    
-    CUST_SEAT_ALERT_LW("CUST_SEAT_ALERT_LW"),
-    
-    FIT("FIT"),
-    
-    RES("RES"),
-    
-    SEATING("SEATING"),
-    
-    PAYMENT("PAYMENT"),
-    
-    CANCEL("CANCEL"),
-    
-    CUST("CUST"),
-    
-    CUST_ALERT("CUST_ALERT"),
-    
-    CUST_SALES_COMM("CUST_SALES_COMM"),
-    
-    CUST_TOUCHES("CUST_TOUCHES"),
-    
-    RES_ALERT("RES_ALERT"),
-    
-    SPL_SITUATION("SPL_SITUATION"),
-    
-    VOUCHERS("VOUCHERS");
-
-    private String value;
-
-    NoteTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static NoteTypeEnum fromValue(String value) {
-      for (NoteTypeEnum b : NoteTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<NoteTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final NoteTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public NoteTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return NoteTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_NOTE_TYPE = "noteType";
   @SerializedName(SERIALIZED_NAME_NOTE_TYPE)
-  private NoteTypeEnum noteType;
+  private NoteType noteType;
 
   public static final String SERIALIZED_NAME_NOTE_DATE = "noteDate";
   @SerializedName(SERIALIZED_NAME_NOTE_DATE)
@@ -229,7 +135,7 @@ public class Note {
   }
 
 
-  public Note noteType(NoteTypeEnum noteType) {
+  public Note noteType(NoteType noteType) {
     
     this.noteType = noteType;
     return this;
@@ -242,12 +148,12 @@ public class Note {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public NoteTypeEnum getNoteType() {
+  public NoteType getNoteType() {
     return noteType;
   }
 
 
-  public void setNoteType(NoteTypeEnum noteType) {
+  public void setNoteType(NoteType noteType) {
     this.noteType = noteType;
   }
 
@@ -643,9 +549,6 @@ public class Note {
         if (!Note.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Note` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
-      }
-      if (jsonObj.get("noteType") != null && !jsonObj.get("noteType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `noteType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("noteType").toString()));
       }
       if (jsonObj.get("agent") != null && !jsonObj.get("agent").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `agent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("agent").toString()));

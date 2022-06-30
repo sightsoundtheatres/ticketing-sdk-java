@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.SplitAmount;
+import com.sightsound.sdk.ticketing.model.TypeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -48,7 +49,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Split
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class Split {
   public static final String SERIALIZED_NAME_ACCOUNT = "account";
   @SerializedName(SERIALIZED_NAME_ACCOUNT)
@@ -65,63 +66,6 @@ public class Split {
   public static final String SERIALIZED_NAME_REFERENCE = "reference";
   @SerializedName(SERIALIZED_NAME_REFERENCE)
   private String reference;
-
-  /**
-   * Gets or Sets type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    BALANCEACCOUNT("BalanceAccount"),
-    
-    COMMISSION("Commission"),
-    
-    DEFAULT("Default"),
-    
-    MARKETPLACE("MarketPlace"),
-    
-    PAYMENTFEE("PaymentFee"),
-    
-    VAT("VAT"),
-    
-    VERIFICATION("Verification");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -342,9 +286,6 @@ public class Split {
       }
       if (jsonObj.get("reference") != null && !jsonObj.get("reference").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reference` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reference").toString()));
-      }
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

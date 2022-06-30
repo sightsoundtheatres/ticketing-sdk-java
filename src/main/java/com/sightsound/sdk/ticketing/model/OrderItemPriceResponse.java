@@ -20,6 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.sightsound.sdk.ticketing.model.ItemType;
+import com.sightsound.sdk.ticketing.model.OrderItemStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -48,86 +50,11 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderItemPriceResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class OrderItemPriceResponse {
-  /**
-   * Gets or Sets type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    SHOW("SHOW"),
-    
-    TOUR("TOUR"),
-    
-    CHARGE("CHARGE"),
-    
-    MERCH("MERCH"),
-    
-    SHIPPING("SHIPPING"),
-    
-    GIFTCARD("GIFTCARD"),
-    
-    ATTRACTION("ATTRACTION"),
-    
-    COUPON("COUPON"),
-    
-    FOOD("FOOD"),
-    
-    HOTEL("HOTEL"),
-    
-    INTLSHIPPING("INTLSHIPPING"),
-    
-    MEAL("MEAL"),
-    
-    MERCHANDISE("MERCHANDISE"),
-    
-    MERCHSHIPPING("MERCHSHIPPING"),
-    
-    MISC("MISC"),
-    
-    VMEAL("VMEAL");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  private ItemType type;
 
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -145,60 +72,9 @@ public class OrderItemPriceResponse {
   @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNT)
   private BigDecimal totalDiscount;
 
-  /**
-   * Gets or Sets itemStatus
-   */
-  @JsonAdapter(ItemStatusEnum.Adapter.class)
-  public enum ItemStatusEnum {
-    SEATS_CHOSEN("SEATS_CHOSEN"),
-    
-    ACTIVE("ACTIVE"),
-    
-    CANCELLED("CANCELLED"),
-    
-    SEATS_ASSIGNED("SEATS_ASSIGNED");
-
-    private String value;
-
-    ItemStatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ItemStatusEnum fromValue(String value) {
-      for (ItemStatusEnum b : ItemStatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ItemStatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ItemStatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ItemStatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ItemStatusEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ITEM_STATUS = "itemStatus";
   @SerializedName(SERIALIZED_NAME_ITEM_STATUS)
-  private ItemStatusEnum itemStatus;
+  private OrderItemStatus itemStatus;
 
   public static final String SERIALIZED_NAME_BUS = "bus";
   @SerializedName(SERIALIZED_NAME_BUS)
@@ -211,7 +87,7 @@ public class OrderItemPriceResponse {
   public OrderItemPriceResponse() { 
   }
 
-  public OrderItemPriceResponse type(TypeEnum type) {
+  public OrderItemPriceResponse type(ItemType type) {
     
     this.type = type;
     return this;
@@ -224,12 +100,12 @@ public class OrderItemPriceResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TypeEnum getType() {
+  public ItemType getType() {
     return type;
   }
 
 
-  public void setType(TypeEnum type) {
+  public void setType(ItemType type) {
     this.type = type;
   }
 
@@ -326,7 +202,7 @@ public class OrderItemPriceResponse {
   }
 
 
-  public OrderItemPriceResponse itemStatus(ItemStatusEnum itemStatus) {
+  public OrderItemPriceResponse itemStatus(OrderItemStatus itemStatus) {
     
     this.itemStatus = itemStatus;
     return this;
@@ -339,12 +215,12 @@ public class OrderItemPriceResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ItemStatusEnum getItemStatus() {
+  public OrderItemStatus getItemStatus() {
     return itemStatus;
   }
 
 
-  public void setItemStatus(ItemStatusEnum itemStatus) {
+  public void setItemStatus(OrderItemStatus itemStatus) {
     this.itemStatus = itemStatus;
   }
 
@@ -488,12 +364,6 @@ public class OrderItemPriceResponse {
         if (!OrderItemPriceResponse.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OrderItemPriceResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
-      }
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      if (jsonObj.get("itemStatus") != null && !jsonObj.get("itemStatus").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `itemStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemStatus").toString()));
       }
   }
 

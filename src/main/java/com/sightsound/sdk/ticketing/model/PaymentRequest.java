@@ -24,6 +24,7 @@ import com.sightsound.sdk.ticketing.model.ACHRequest;
 import com.sightsound.sdk.ticketing.model.PaperCheckRequest;
 import com.sightsound.sdk.ticketing.model.PaymentGiftCardRequest;
 import com.sightsound.sdk.ticketing.model.PaymentsRequest;
+import com.sightsound.sdk.ticketing.model.ReceiptPaymentType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -53,76 +54,11 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * PaymentRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class PaymentRequest {
-  /**
-   * Gets or Sets paymentType
-   */
-  @JsonAdapter(PaymentTypeEnum.Adapter.class)
-  public enum PaymentTypeEnum {
-    W("W"),
-    
-    CH("CH"),
-    
-    AC("AC"),
-    
-    CS("CS"),
-    
-    RF("RF"),
-    
-    CV("CV"),
-    
-    GV("GV"),
-    
-    NF("NF"),
-    
-    CR("CR"),
-    
-    GC("GC"),
-    
-    MX("MX");
-
-    private String value;
-
-    PaymentTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PaymentTypeEnum fromValue(String value) {
-      for (PaymentTypeEnum b : PaymentTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PaymentTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PaymentTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PaymentTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PaymentTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_PAYMENT_TYPE = "paymentType";
   @SerializedName(SERIALIZED_NAME_PAYMENT_TYPE)
-  private PaymentTypeEnum paymentType;
+  private ReceiptPaymentType paymentType;
 
   public static final String SERIALIZED_NAME_CHECKS = "checks";
   @SerializedName(SERIALIZED_NAME_CHECKS)
@@ -151,7 +87,7 @@ public class PaymentRequest {
   public PaymentRequest() { 
   }
 
-  public PaymentRequest paymentType(PaymentTypeEnum paymentType) {
+  public PaymentRequest paymentType(ReceiptPaymentType paymentType) {
     
     this.paymentType = paymentType;
     return this;
@@ -164,12 +100,12 @@ public class PaymentRequest {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public PaymentTypeEnum getPaymentType() {
+  public ReceiptPaymentType getPaymentType() {
     return paymentType;
   }
 
 
-  public void setPaymentType(PaymentTypeEnum paymentType) {
+  public void setPaymentType(ReceiptPaymentType paymentType) {
     this.paymentType = paymentType;
   }
 
@@ -426,9 +362,6 @@ public class PaymentRequest {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
-      }
-      if (jsonObj.get("paymentType") != null && !jsonObj.get("paymentType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `paymentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("paymentType").toString()));
       }
       JsonArray jsonArraychecks = jsonObj.getAsJsonArray("checks");
       if (jsonArraychecks != null) {

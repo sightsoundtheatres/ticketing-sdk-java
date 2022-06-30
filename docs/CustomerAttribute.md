@@ -9,17 +9,8 @@
 |------------ | ------------- | ------------- | -------------|
 |**customerNumber** | **Long** |  |  [optional] |
 |**attribute** | **String** |  |  |
-|**attributeType** | [**AttributeTypeEnum**](#AttributeTypeEnum) |  |  [optional] |
+|**attributeType** | **CustomerAttributeType** |  |  [optional] |
 |**customer** | [**Customer**](Customer.md) |  |  [optional] |
-
-
-
-## Enum: AttributeTypeEnum
-
-| Name | Value |
-|---- | -----|
-| MARKETING | &quot;MARKETING&quot; |
-| PAYMENT | &quot;PAYMENT&quot; |
 
 
 

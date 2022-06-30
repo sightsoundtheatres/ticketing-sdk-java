@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.SeatingProfile;
 import com.sightsound.sdk.ticketing.model.SeatingTemplateSection;
 import com.sightsound.sdk.ticketing.model.SeatingTemplateSectionSeat;
+import com.sightsound.sdk.ticketing.model.TheaterLocation;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -52,7 +53,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * SeatingTemplate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:05:59.817736-05:00[America/Chicago]")
 public class SeatingTemplate {
   public static final String SERIALIZED_NAME_SEATING_TEMPLATE_CODE = "seatingTemplateCode";
   @SerializedName(SERIALIZED_NAME_SEATING_TEMPLATE_CODE)
@@ -70,58 +71,9 @@ public class SeatingTemplate {
   @SerializedName(SERIALIZED_NAME_OVERFLOW)
   private Boolean overflow;
 
-  /**
-   * Gets or Sets locationCode
-   */
-  @JsonAdapter(LocationCodeEnum.Adapter.class)
-  public enum LocationCodeEnum {
-    LIVING_WATERS("LIVING_WATERS"),
-    
-    MILLENNIUM_THEATER("MILLENNIUM_THEATER"),
-    
-    BRANSON_THEATER("BRANSON_THEATER");
-
-    private String value;
-
-    LocationCodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static LocationCodeEnum fromValue(String value) {
-      for (LocationCodeEnum b : LocationCodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<LocationCodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final LocationCodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public LocationCodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return LocationCodeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_LOCATION_CODE = "locationCode";
   @SerializedName(SERIALIZED_NAME_LOCATION_CODE)
-  private LocationCodeEnum locationCode;
+  private TheaterLocation locationCode;
 
   public static final String SERIALIZED_NAME_MASTER_TEMPLATE_Y_N = "masterTemplateYN";
   @SerializedName(SERIALIZED_NAME_MASTER_TEMPLATE_Y_N)
@@ -258,7 +210,7 @@ public class SeatingTemplate {
   }
 
 
-  public SeatingTemplate locationCode(LocationCodeEnum locationCode) {
+  public SeatingTemplate locationCode(TheaterLocation locationCode) {
     
     this.locationCode = locationCode;
     return this;
@@ -271,12 +223,12 @@ public class SeatingTemplate {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public LocationCodeEnum getLocationCode() {
+  public TheaterLocation getLocationCode() {
     return locationCode;
   }
 
 
-  public void setLocationCode(LocationCodeEnum locationCode) {
+  public void setLocationCode(TheaterLocation locationCode) {
     this.locationCode = locationCode;
   }
 
@@ -662,9 +614,6 @@ public class SeatingTemplate {
       }
       if (jsonObj.get("seatingTemplateDescription") != null && !jsonObj.get("seatingTemplateDescription").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `seatingTemplateDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("seatingTemplateDescription").toString()));
-      }
-      if (jsonObj.get("locationCode") != null && !jsonObj.get("locationCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `locationCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("locationCode").toString()));
       }
       if (jsonObj.get("masterTemplateYN") != null && !jsonObj.get("masterTemplateYN").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `masterTemplateYN` to be a primitive type in the JSON string but got `%s`", jsonObj.get("masterTemplateYN").toString()));

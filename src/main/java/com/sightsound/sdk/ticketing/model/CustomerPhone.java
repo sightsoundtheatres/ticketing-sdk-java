@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.Customer;
+import com.sightsound.sdk.ticketing.model.PhoneType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -48,7 +49,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * CustomerPhone
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T15:39:26.193544-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-30T16:06:07.372728-05:00[America/Chicago]")
 public class CustomerPhone {
   public static final String SERIALIZED_NAME_CUSTOMER_NUMBER = "customerNumber";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_NUMBER)
@@ -62,70 +63,9 @@ public class CustomerPhone {
   @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
   private String phoneNumber;
 
-  /**
-   * Gets or Sets phoneType
-   */
-  @JsonAdapter(PhoneTypeEnum.Adapter.class)
-  public enum PhoneTypeEnum {
-    FAX("FAX"),
-    
-    WORK("WORK"),
-    
-    DAYTIME("DAYTIME"),
-    
-    HOME("HOME"),
-    
-    CHURCH("CHURCH"),
-    
-    EVENING("EVENING"),
-    
-    CELL("CELL"),
-    
-    MOBILE("MOBILE"),
-    
-    AUTH_USER("AUTH_USER");
-
-    private String value;
-
-    PhoneTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PhoneTypeEnum fromValue(String value) {
-      for (PhoneTypeEnum b : PhoneTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PhoneTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PhoneTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PhoneTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PhoneTypeEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_PHONE_TYPE = "phoneType";
   @SerializedName(SERIALIZED_NAME_PHONE_TYPE)
-  private PhoneTypeEnum phoneType;
+  private PhoneType phoneType;
 
   public static final String SERIALIZED_NAME_PHONE_NOTE = "phoneNote";
   @SerializedName(SERIALIZED_NAME_PHONE_NOTE)
@@ -207,7 +147,7 @@ public class CustomerPhone {
   }
 
 
-  public CustomerPhone phoneType(PhoneTypeEnum phoneType) {
+  public CustomerPhone phoneType(PhoneType phoneType) {
     
     this.phoneType = phoneType;
     return this;
@@ -220,12 +160,12 @@ public class CustomerPhone {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public PhoneTypeEnum getPhoneType() {
+  public PhoneType getPhoneType() {
     return phoneType;
   }
 
 
-  public void setPhoneType(PhoneTypeEnum phoneType) {
+  public void setPhoneType(PhoneType phoneType) {
     this.phoneType = phoneType;
   }
 
@@ -375,9 +315,6 @@ public class CustomerPhone {
       }
       if (jsonObj.get("phoneNumber") != null && !jsonObj.get("phoneNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNumber").toString()));
-      }
-      if (jsonObj.get("phoneType") != null && !jsonObj.get("phoneType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `phoneType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneType").toString()));
       }
       if (jsonObj.get("phoneNote") != null && !jsonObj.get("phoneNote").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `phoneNote` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phoneNote").toString()));

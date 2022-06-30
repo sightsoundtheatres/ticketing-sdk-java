@@ -13,17 +13,7 @@
 |**referenceNumber** | **String** |  |  [optional] |
 |**items** | [**List&lt;OrderItemPriceRequest&gt;**](OrderItemPriceRequest.md) |  |  [optional] |
 |**customer** | [**OrderCustomerRequest**](OrderCustomerRequest.md) |  |  [optional] |
-|**ticketBatch** | [**TicketBatchEnum**](#TicketBatchEnum) |  |  [optional] |
-
-
-
-## Enum: TicketBatchEnum
-
-| Name | Value |
-|---- | -----|
-| AGENT | &quot;AGENT&quot; |
-| ETICKET | &quot;ETICKET&quot; |
-| HELD | &quot;HELD&quot; |
+|**ticketBatch** | **TicketBatch** |  |  [optional] |
 
 
 

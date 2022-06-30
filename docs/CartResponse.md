@@ -15,8 +15,8 @@
 |**totalTransactionCharge** | **BigDecimal** |  |  [optional] |
 |**totalDueAmount** | **BigDecimal** |  |  [optional] |
 |**refundPolicy** | **String** |  |  [optional] |
-|**location** | [**LocationEnum**](#LocationEnum) |  |  [optional] |
-|**ticketBatch** | [**TicketBatchEnum**](#TicketBatchEnum) |  |  [optional] |
+|**location** | **LocationDescription** |  |  [optional] |
+|**ticketBatch** | **TicketBatch** |  |  [optional] |
 |**heldName** | **String** |  |  [optional] |
 |**email** | **String** |  |  [optional] |
 |**items** | [**List&lt;OrderItemPriceResponse&gt;**](OrderItemPriceResponse.md) |  |  [optional] |
@@ -30,25 +30,6 @@
 |**groupName** | **String** |  |  [optional] |
 |**refNumber** | **String** |  |  [optional] |
 |**eticketsAllowed** | **Boolean** |  |  [optional] |
-
-
-
-## Enum: LocationEnum
-
-| Name | Value |
-|---- | -----|
-| STRASBURG_PA | &quot;STRASBURG_PA&quot; |
-| BRANSON_MO | &quot;BRANSON_MO&quot; |
-
-
-
-## Enum: TicketBatchEnum
-
-| Name | Value |
-|---- | -----|
-| AGENT | &quot;AGENT&quot; |
-| ETICKET | &quot;ETICKET&quot; |
-| HELD | &quot;HELD&quot; |
 
 
 

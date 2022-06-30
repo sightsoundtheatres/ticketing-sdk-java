@@ -25,7 +25,7 @@
 |**addUserId** | **String** |  |  [optional] |
 |**addDate** | **OffsetDateTime** |  |  [optional] |
 |**active** | **Boolean** |  |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  |
+|**type** | **CustomerType** |  |  |
 |**sourceCode** | **String** |  |  [optional] |
 |**additionalDiscPercent** | **BigDecimal** |  |  [optional] |
 |**corpIdNumber** | **String** |  |  [optional] |
@@ -35,7 +35,7 @@
 |**emailStyle** | **String** |  |  [optional] |
 |**rpOfficeNumber** | **String** |  |  [optional] |
 |**taxExempt** | **Boolean** |  |  [optional] |
-|**oldCustTypeCode** | [**OldCustTypeCodeEnum**](#OldCustTypeCodeEnum) |  |  [optional] |
+|**oldCustTypeCode** | **OldCustomerType** |  |  [optional] |
 |**callList** | **Boolean** |  |  [optional] |
 |**textList** | **Boolean** |  |  [optional] |
 |**address** | [**AddressExtended**](AddressExtended.md) |  |  |
@@ -86,7 +86,7 @@
 |**lastShowOrderNumber** | **Integer** |  |  [optional] |
 |**company** | **Boolean** |  |  [optional] |
 |**uspsAddressError** | **String** |  |  [optional] |
-|**ticketDelivery** | [**TicketDeliveryEnum**](#TicketDeliveryEnum) |  |  [optional] |
+|**ticketDelivery** | **TicketBatch** |  |  [optional] |
 |**documents** | [**List&lt;CustomerDocument&gt;**](CustomerDocument.md) |  |  [optional] |
 |**upsAddresses** | [**List&lt;CustomerUPSAddress&gt;**](CustomerUPSAddress.md) |  |  [optional] |
 |**prices** | [**List&lt;CustomerPricingLevel&gt;**](CustomerPricingLevel.md) |  |  [optional] |
@@ -98,66 +98,14 @@
 |**additionalContacts** | [**List&lt;CustomerContactInfo&gt;**](CustomerContactInfo.md) |  |  [optional] |
 |**employee** | **Boolean** |  |  [optional] |
 |**reseller** | **Boolean** |  |  [optional] |
-|**customerTypeResponse** | [**CustomerTypeResponseEnum**](#CustomerTypeResponseEnum) |  |  [optional] |
-|**defaultPhoneNumber** | **String** |  |  [optional] |
-|**generalConsumer** | **Boolean** |  |  [optional] |
 |**customerNameToDisplay** | **String** |  |  [optional] |
+|**defaultPhoneNumber** | **String** |  |  [optional] |
+|**customerTypeResponse** | **CustomerTypeResponse** |  |  [optional] |
+|**generalConsumer** | **Boolean** |  |  [optional] |
 |**primaryContact** | [**CustomerContactInfo**](CustomerContactInfo.md) |  |  [optional] |
 |**accountFrozen** | **Boolean** |  |  [optional] |
 |**organization** | **Boolean** |  |  [optional] |
-|**addressVerifiedStatus** | [**AddressVerifiedStatusEnum**](#AddressVerifiedStatusEnum) |  |  [optional] |
-
-
-
-## Enum: TypeEnum
-
-| Name | Value |
-|---- | -----|
-| CONSUMER | &quot;CONSUMER&quot; |
-| PARTNER | &quot;PARTNER&quot; |
-| POS | &quot;POS&quot; |
-| GROUP | &quot;GROUP&quot; |
-
-
-
-## Enum: OldCustTypeCodeEnum
-
-| Name | Value |
-|---- | -----|
-| HOUSE_ACCOUNT | &quot;House Account&quot; |
-| COMP_LETTER | &quot;Comp Letter&quot; |
-
-
-
-## Enum: TicketDeliveryEnum
-
-| Name | Value |
-|---- | -----|
-| AGENT | &quot;AGENT&quot; |
-| ETICKET | &quot;ETICKET&quot; |
-| HELD | &quot;HELD&quot; |
-
-
-
-## Enum: CustomerTypeResponseEnum
-
-| Name | Value |
-|---- | -----|
-| CONSUMER | &quot;CONSUMER&quot; |
-| ORGANIZATION | &quot;ORGANIZATION&quot; |
-| RESELLER | &quot;RESELLER&quot; |
-| EMPLOYEE | &quot;EMPLOYEE&quot; |
-
-
-
-## Enum: AddressVerifiedStatusEnum
-
-| Name | Value |
-|---- | -----|
-| UNEXPIRED | &quot;UNEXPIRED&quot; |
-| EXPIRED | &quot;EXPIRED&quot; |
-| FAILED | &quot;FAILED&quot; |
-| UNVERIFIED | &quot;UNVERIFIED&quot; |
+|**addressVerifiedStatus** | **AddressVerifyStatus** |  |  [optional] |
 
 
 
