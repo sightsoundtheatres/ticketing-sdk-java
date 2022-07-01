@@ -48,7 +48,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * SpecialSituationDefinition
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:16:16.028085Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
 public class SpecialSituationDefinition {
   public static final String SERIALIZED_NAME_SPECIAL_SITUATION_CODE = "specialSituationCode";
   @SerializedName(SERIALIZED_NAME_SPECIAL_SITUATION_CODE)
