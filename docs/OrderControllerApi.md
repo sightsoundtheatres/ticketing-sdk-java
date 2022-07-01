@@ -1,6 +1,6 @@
 # OrderControllerApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://helios.sight-sound.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -27,7 +27,7 @@ import com.sightsound.sdk.ticketing.api.OrderControllerApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:8080");
+    defaultClient.setBasePath("https://helios.sight-sound.com");
 
     OrderControllerApi apiInstance = new OrderControllerApi(defaultClient);
     Long orderNumber = 56L; // Long | 
