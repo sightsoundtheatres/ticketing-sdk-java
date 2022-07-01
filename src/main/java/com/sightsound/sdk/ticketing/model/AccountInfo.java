@@ -54,7 +54,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * AccountInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T08:40:20.483181-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:16:16.028085Z[Etc/UTC]")
 public class AccountInfo {
   public static final String SERIALIZED_NAME_ACCOUNT_AGE_INDICATOR = "accountAgeIndicator";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_AGE_INDICATOR)

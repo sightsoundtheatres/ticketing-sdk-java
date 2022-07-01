@@ -96,15 +96,15 @@
 |**orders** | [**List&lt;Order&gt;**](Order.md) |  |  [optional] |
 |**notes** | [**List&lt;Note&gt;**](Note.md) |  |  [optional] |
 |**additionalContacts** | [**List&lt;CustomerContactInfo&gt;**](CustomerContactInfo.md) |  |  [optional] |
-|**accountFrozen** | **Boolean** |  |  [optional] |
-|**customerNameToDisplay** | **String** |  |  [optional] |
-|**generalConsumer** | **Boolean** |  |  [optional] |
+|**organization** | **Boolean** |  |  [optional] |
+|**defaultPhoneNumber** | **String** |  |  [optional] |
+|**employee** | **Boolean** |  |  [optional] |
 |**primaryContact** | [**CustomerContactInfo**](CustomerContactInfo.md) |  |  [optional] |
 |**customerTypeResponse** | **CustomerTypeResponse** |  |  [optional] |
-|**defaultPhoneNumber** | **String** |  |  [optional] |
+|**generalConsumer** | **Boolean** |  |  [optional] |
 |**reseller** | **Boolean** |  |  [optional] |
-|**employee** | **Boolean** |  |  [optional] |
-|**organization** | **Boolean** |  |  [optional] |
+|**accountFrozen** | **Boolean** |  |  [optional] |
+|**customerNameToDisplay** | **String** |  |  [optional] |
 |**addressVerifiedStatus** | **AddressVerifyStatus** |  |  [optional] |
 
 

@@ -51,7 +51,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderItemDetail
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T08:40:20.483181-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:16:16.028085Z[Etc/UTC]")
 public class OrderItemDetail {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -173,21 +173,21 @@ public class OrderItemDetail {
   @SerializedName(SERIALIZED_NAME_PERSISTED)
   private Boolean persisted;
 
-  public static final String SERIALIZED_NAME_UNPRINTED_COUNT = "unprintedCount";
-  @SerializedName(SERIALIZED_NAME_UNPRINTED_COUNT)
-  private Integer unprintedCount;
-
   public static final String SERIALIZED_NAME_LIST_PRICE_WITH_DISCOUNTS = "listPriceWithDiscounts";
   @SerializedName(SERIALIZED_NAME_LIST_PRICE_WITH_DISCOUNTS)
   private BigDecimal listPriceWithDiscounts;
 
-  public static final String SERIALIZED_NAME_MAN_DISCOUNT_DOLLAR_AMOUNT = "manDiscountDollarAmount";
-  @SerializedName(SERIALIZED_NAME_MAN_DISCOUNT_DOLLAR_AMOUNT)
-  private BigDecimal manDiscountDollarAmount;
-
   public static final String SERIALIZED_NAME_TOTAL_DISCOUNT = "totalDiscount";
   @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNT)
   private BigDecimal totalDiscount;
+
+  public static final String SERIALIZED_NAME_UNPRINTED_COUNT = "unprintedCount";
+  @SerializedName(SERIALIZED_NAME_UNPRINTED_COUNT)
+  private Integer unprintedCount;
+
+  public static final String SERIALIZED_NAME_MAN_DISCOUNT_DOLLAR_AMOUNT = "manDiscountDollarAmount";
+  @SerializedName(SERIALIZED_NAME_MAN_DISCOUNT_DOLLAR_AMOUNT)
+  private BigDecimal manDiscountDollarAmount;
 
   public static final String SERIALIZED_NAME_SAVINGS = "savings";
   @SerializedName(SERIALIZED_NAME_SAVINGS)
@@ -894,29 +894,6 @@ public class OrderItemDetail {
   }
 
 
-  public OrderItemDetail unprintedCount(Integer unprintedCount) {
-    
-    this.unprintedCount = unprintedCount;
-    return this;
-  }
-
-   /**
-   * Get unprintedCount
-   * @return unprintedCount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getUnprintedCount() {
-    return unprintedCount;
-  }
-
-
-  public void setUnprintedCount(Integer unprintedCount) {
-    this.unprintedCount = unprintedCount;
-  }
-
-
   public OrderItemDetail listPriceWithDiscounts(BigDecimal listPriceWithDiscounts) {
     
     this.listPriceWithDiscounts = listPriceWithDiscounts;
@@ -940,29 +917,6 @@ public class OrderItemDetail {
   }
 
 
-  public OrderItemDetail manDiscountDollarAmount(BigDecimal manDiscountDollarAmount) {
-    
-    this.manDiscountDollarAmount = manDiscountDollarAmount;
-    return this;
-  }
-
-   /**
-   * Get manDiscountDollarAmount
-   * @return manDiscountDollarAmount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getManDiscountDollarAmount() {
-    return manDiscountDollarAmount;
-  }
-
-
-  public void setManDiscountDollarAmount(BigDecimal manDiscountDollarAmount) {
-    this.manDiscountDollarAmount = manDiscountDollarAmount;
-  }
-
-
   public OrderItemDetail totalDiscount(BigDecimal totalDiscount) {
     
     this.totalDiscount = totalDiscount;
@@ -983,6 +937,52 @@ public class OrderItemDetail {
 
   public void setTotalDiscount(BigDecimal totalDiscount) {
     this.totalDiscount = totalDiscount;
+  }
+
+
+  public OrderItemDetail unprintedCount(Integer unprintedCount) {
+    
+    this.unprintedCount = unprintedCount;
+    return this;
+  }
+
+   /**
+   * Get unprintedCount
+   * @return unprintedCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getUnprintedCount() {
+    return unprintedCount;
+  }
+
+
+  public void setUnprintedCount(Integer unprintedCount) {
+    this.unprintedCount = unprintedCount;
+  }
+
+
+  public OrderItemDetail manDiscountDollarAmount(BigDecimal manDiscountDollarAmount) {
+    
+    this.manDiscountDollarAmount = manDiscountDollarAmount;
+    return this;
+  }
+
+   /**
+   * Get manDiscountDollarAmount
+   * @return manDiscountDollarAmount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getManDiscountDollarAmount() {
+    return manDiscountDollarAmount;
+  }
+
+
+  public void setManDiscountDollarAmount(BigDecimal manDiscountDollarAmount) {
+    this.manDiscountDollarAmount = manDiscountDollarAmount;
   }
 
 
@@ -1095,10 +1095,10 @@ public class OrderItemDetail {
         Objects.equals(this.orderItem, orderItemDetail.orderItem) &&
         Objects.equals(this.deltaCount, orderItemDetail.deltaCount) &&
         Objects.equals(this.persisted, orderItemDetail.persisted) &&
-        Objects.equals(this.unprintedCount, orderItemDetail.unprintedCount) &&
         Objects.equals(this.listPriceWithDiscounts, orderItemDetail.listPriceWithDiscounts) &&
-        Objects.equals(this.manDiscountDollarAmount, orderItemDetail.manDiscountDollarAmount) &&
         Objects.equals(this.totalDiscount, orderItemDetail.totalDiscount) &&
+        Objects.equals(this.unprintedCount, orderItemDetail.unprintedCount) &&
+        Objects.equals(this.manDiscountDollarAmount, orderItemDetail.manDiscountDollarAmount) &&
         Objects.equals(this.savings, orderItemDetail.savings) &&
         Objects.equals(this._new, orderItemDetail._new) &&
         Objects.equals(this.totalSavings, orderItemDetail.totalSavings);
@@ -1106,7 +1106,7 @@ public class OrderItemDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderNumber, itemNumber, count, manDiscountCount, specialDiscountCount, designationCode, seatDiscountCount, seatDiscountAmount, custDiscountTypeCode, custDiscountValue, specialTypeCode, specialDiscountValue, manDiscountTypeCode, manDiscountValue, confirmedCount, totalPrice, specialDiscountTotalAmount, manDiscountTotalAmount, seatDiscountTotalAmount, custDiscountTotalAmount, printedCount, priceValue, price, compCount, gratuity, ssMargin, custDiscountCount, orderItem, deltaCount, persisted, unprintedCount, listPriceWithDiscounts, manDiscountDollarAmount, totalDiscount, savings, _new, totalSavings);
+    return Objects.hash(orderNumber, itemNumber, count, manDiscountCount, specialDiscountCount, designationCode, seatDiscountCount, seatDiscountAmount, custDiscountTypeCode, custDiscountValue, specialTypeCode, specialDiscountValue, manDiscountTypeCode, manDiscountValue, confirmedCount, totalPrice, specialDiscountTotalAmount, manDiscountTotalAmount, seatDiscountTotalAmount, custDiscountTotalAmount, printedCount, priceValue, price, compCount, gratuity, ssMargin, custDiscountCount, orderItem, deltaCount, persisted, listPriceWithDiscounts, totalDiscount, unprintedCount, manDiscountDollarAmount, savings, _new, totalSavings);
   }
 
   @Override
@@ -1143,10 +1143,10 @@ public class OrderItemDetail {
     sb.append("    orderItem: ").append(toIndentedString(orderItem)).append("\n");
     sb.append("    deltaCount: ").append(toIndentedString(deltaCount)).append("\n");
     sb.append("    persisted: ").append(toIndentedString(persisted)).append("\n");
-    sb.append("    unprintedCount: ").append(toIndentedString(unprintedCount)).append("\n");
     sb.append("    listPriceWithDiscounts: ").append(toIndentedString(listPriceWithDiscounts)).append("\n");
-    sb.append("    manDiscountDollarAmount: ").append(toIndentedString(manDiscountDollarAmount)).append("\n");
     sb.append("    totalDiscount: ").append(toIndentedString(totalDiscount)).append("\n");
+    sb.append("    unprintedCount: ").append(toIndentedString(unprintedCount)).append("\n");
+    sb.append("    manDiscountDollarAmount: ").append(toIndentedString(manDiscountDollarAmount)).append("\n");
     sb.append("    savings: ").append(toIndentedString(savings)).append("\n");
     sb.append("    _new: ").append(toIndentedString(_new)).append("\n");
     sb.append("    totalSavings: ").append(toIndentedString(totalSavings)).append("\n");
@@ -1202,10 +1202,10 @@ public class OrderItemDetail {
     openapiFields.add("orderItem");
     openapiFields.add("deltaCount");
     openapiFields.add("persisted");
-    openapiFields.add("unprintedCount");
     openapiFields.add("listPriceWithDiscounts");
-    openapiFields.add("manDiscountDollarAmount");
     openapiFields.add("totalDiscount");
+    openapiFields.add("unprintedCount");
+    openapiFields.add("manDiscountDollarAmount");
     openapiFields.add("savings");
     openapiFields.add("new");
     openapiFields.add("totalSavings");

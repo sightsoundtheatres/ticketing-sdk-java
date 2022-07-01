@@ -67,7 +67,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T08:40:20.483181-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:16:16.028085Z[Etc/UTC]")
 public class OrderItem {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -397,13 +397,25 @@ public class OrderItem {
   @SerializedName(SERIALIZED_NAME_CANCELLED)
   private Boolean cancelled;
 
-  public static final String SERIALIZED_NAME_UNPRINTED_COUNT = "unprintedCount";
-  @SerializedName(SERIALIZED_NAME_UNPRINTED_COUNT)
-  private Integer unprintedCount;
+  public static final String SERIALIZED_NAME_COMP_COUNT = "compCount";
+  @SerializedName(SERIALIZED_NAME_COMP_COUNT)
+  private Integer compCount;
+
+  public static final String SERIALIZED_NAME_PAID_COUNT = "paidCount";
+  @SerializedName(SERIALIZED_NAME_PAID_COUNT)
+  private Integer paidCount;
+
+  public static final String SERIALIZED_NAME_SEATED_COUNT = "seatedCount";
+  @SerializedName(SERIALIZED_NAME_SEATED_COUNT)
+  private Integer seatedCount;
 
   public static final String SERIALIZED_NAME_ASSIGNED_SEAT_COUNT = "assignedSeatCount";
   @SerializedName(SERIALIZED_NAME_ASSIGNED_SEAT_COUNT)
   private Integer assignedSeatCount;
+
+  public static final String SERIALIZED_NAME_TAX_TYPE = "taxType";
+  @SerializedName(SERIALIZED_NAME_TAX_TYPE)
+  private TaxType taxType;
 
   public static final String SERIALIZED_NAME_TRANSACTION_CHARGE_ITEM = "transactionChargeItem";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_CHARGE_ITEM)
@@ -413,77 +425,65 @@ public class OrderItem {
   @SerializedName(SERIALIZED_NAME_ALL_ASSIGNED_SEAT_COUNT)
   private Integer allAssignedSeatCount;
 
-  public static final String SERIALIZED_NAME_SEATED_COUNT = "seatedCount";
-  @SerializedName(SERIALIZED_NAME_SEATED_COUNT)
-  private Integer seatedCount;
+  public static final String SERIALIZED_NAME_TOTAL_DISCOUNT = "totalDiscount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNT)
+  private BigDecimal totalDiscount;
 
-  public static final String SERIALIZED_NAME_TOTAL_DESIGNATION_COUNT = "totalDesignationCount";
-  @SerializedName(SERIALIZED_NAME_TOTAL_DESIGNATION_COUNT)
-  private Integer totalDesignationCount;
-
-  public static final String SERIALIZED_NAME_ZONED_EVENT_DATE_TIME = "zonedEventDateTime";
-  @SerializedName(SERIALIZED_NAME_ZONED_EVENT_DATE_TIME)
-  private OffsetDateTime zonedEventDateTime;
-
-  public static final String SERIALIZED_NAME_TOTAL_FEE = "totalFee";
-  @SerializedName(SERIALIZED_NAME_TOTAL_FEE)
-  private BigDecimal totalFee;
-
-  public static final String SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT = "totalCustomerDiscount";
-  @SerializedName(SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT)
-  private BigDecimal totalCustomerDiscount;
-
-  public static final String SERIALIZED_NAME_TOTAL_TAX = "totalTax";
-  @SerializedName(SERIALIZED_NAME_TOTAL_TAX)
-  private BigDecimal totalTax;
+  public static final String SERIALIZED_NAME_UNPRINTED_COUNT = "unprintedCount";
+  @SerializedName(SERIALIZED_NAME_UNPRINTED_COUNT)
+  private Integer unprintedCount;
 
   public static final String SERIALIZED_NAME_TOTAL_GRATUITY = "totalGratuity";
   @SerializedName(SERIALIZED_NAME_TOTAL_GRATUITY)
   private BigDecimal totalGratuity;
 
-  public static final String SERIALIZED_NAME_TOTAL_DISCOUNT = "totalDiscount";
-  @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNT)
-  private BigDecimal totalDiscount;
+  public static final String SERIALIZED_NAME_TOTAL_DESIGNATION_COUNT = "totalDesignationCount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_DESIGNATION_COUNT)
+  private Integer totalDesignationCount;
+
+  public static final String SERIALIZED_NAME_TOTAL_TAX = "totalTax";
+  @SerializedName(SERIALIZED_NAME_TOTAL_TAX)
+  private BigDecimal totalTax;
+
+  public static final String SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT = "totalCustomerDiscount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT)
+  private BigDecimal totalCustomerDiscount;
+
+  public static final String SERIALIZED_NAME_ZONED_EVENT_DATE_TIME = "zonedEventDateTime";
+  @SerializedName(SERIALIZED_NAME_ZONED_EVENT_DATE_TIME)
+  private OffsetDateTime zonedEventDateTime;
 
   public static final String SERIALIZED_NAME_FIRST_OCCURRING_FEE_DATE = "firstOccurringFeeDate";
   @SerializedName(SERIALIZED_NAME_FIRST_OCCURRING_FEE_DATE)
   private OffsetDateTime firstOccurringFeeDate;
 
-  public static final String SERIALIZED_NAME_PAID_COUNT = "paidCount";
-  @SerializedName(SERIALIZED_NAME_PAID_COUNT)
-  private Integer paidCount;
-
-  public static final String SERIALIZED_NAME_GRAND_TOTAL_SAVINGS = "grandTotalSavings";
-  @SerializedName(SERIALIZED_NAME_GRAND_TOTAL_SAVINGS)
-  private BigDecimal grandTotalSavings;
-
-  public static final String SERIALIZED_NAME_NET_PRICE = "netPrice";
-  @SerializedName(SERIALIZED_NAME_NET_PRICE)
-  private BigDecimal netPrice;
-
-  public static final String SERIALIZED_NAME_MANUAL_DISCOUNT_VALUE = "manualDiscountValue";
-  @SerializedName(SERIALIZED_NAME_MANUAL_DISCOUNT_VALUE)
-  private BigDecimal manualDiscountValue;
-
-  public static final String SERIALIZED_NAME_COMP_COUNT = "compCount";
-  @SerializedName(SERIALIZED_NAME_COMP_COUNT)
-  private Integer compCount;
-
-  public static final String SERIALIZED_NAME_TAX_TYPE = "taxType";
-  @SerializedName(SERIALIZED_NAME_TAX_TYPE)
-  private TaxType taxType;
+  public static final String SERIALIZED_NAME_TOTAL_FEE = "totalFee";
+  @SerializedName(SERIALIZED_NAME_TOTAL_FEE)
+  private BigDecimal totalFee;
 
   public static final String SERIALIZED_NAME_NEW = "new";
   @SerializedName(SERIALIZED_NAME_NEW)
   private Boolean _new;
 
+  public static final String SERIALIZED_NAME_GRAND_TOTAL_SAVINGS = "grandTotalSavings";
+  @SerializedName(SERIALIZED_NAME_GRAND_TOTAL_SAVINGS)
+  private BigDecimal grandTotalSavings;
+
   public static final String SERIALIZED_NAME_TOTAL_SAVINGS = "totalSavings";
   @SerializedName(SERIALIZED_NAME_TOTAL_SAVINGS)
   private BigDecimal totalSavings;
 
+  public static final String SERIALIZED_NAME_NET_PRICE = "netPrice";
+  @SerializedName(SERIALIZED_NAME_NET_PRICE)
+  private BigDecimal netPrice;
+
   public static final String SERIALIZED_NAME_TAXABLE = "taxable";
   @SerializedName(SERIALIZED_NAME_TAXABLE)
   private Boolean taxable;
+
+  public static final String SERIALIZED_NAME_MANUAL_DISCOUNT_VALUE = "manualDiscountValue";
+  @SerializedName(SERIALIZED_NAME_MANUAL_DISCOUNT_VALUE)
+  private BigDecimal manualDiscountValue;
 
   public OrderItem() { 
   }
@@ -2434,26 +2434,72 @@ public class OrderItem {
   }
 
 
-  public OrderItem unprintedCount(Integer unprintedCount) {
+  public OrderItem compCount(Integer compCount) {
     
-    this.unprintedCount = unprintedCount;
+    this.compCount = compCount;
     return this;
   }
 
    /**
-   * Get unprintedCount
-   * @return unprintedCount
+   * Get compCount
+   * @return compCount
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Integer getUnprintedCount() {
-    return unprintedCount;
+  public Integer getCompCount() {
+    return compCount;
   }
 
 
-  public void setUnprintedCount(Integer unprintedCount) {
-    this.unprintedCount = unprintedCount;
+  public void setCompCount(Integer compCount) {
+    this.compCount = compCount;
+  }
+
+
+  public OrderItem paidCount(Integer paidCount) {
+    
+    this.paidCount = paidCount;
+    return this;
+  }
+
+   /**
+   * Get paidCount
+   * @return paidCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getPaidCount() {
+    return paidCount;
+  }
+
+
+  public void setPaidCount(Integer paidCount) {
+    this.paidCount = paidCount;
+  }
+
+
+  public OrderItem seatedCount(Integer seatedCount) {
+    
+    this.seatedCount = seatedCount;
+    return this;
+  }
+
+   /**
+   * Get seatedCount
+   * @return seatedCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getSeatedCount() {
+    return seatedCount;
+  }
+
+
+  public void setSeatedCount(Integer seatedCount) {
+    this.seatedCount = seatedCount;
   }
 
 
@@ -2477,6 +2523,29 @@ public class OrderItem {
 
   public void setAssignedSeatCount(Integer assignedSeatCount) {
     this.assignedSeatCount = assignedSeatCount;
+  }
+
+
+  public OrderItem taxType(TaxType taxType) {
+    
+    this.taxType = taxType;
+    return this;
+  }
+
+   /**
+   * Get taxType
+   * @return taxType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public TaxType getTaxType() {
+    return taxType;
+  }
+
+
+  public void setTaxType(TaxType taxType) {
+    this.taxType = taxType;
   }
 
 
@@ -2526,141 +2595,49 @@ public class OrderItem {
   }
 
 
-  public OrderItem seatedCount(Integer seatedCount) {
+  public OrderItem totalDiscount(BigDecimal totalDiscount) {
     
-    this.seatedCount = seatedCount;
+    this.totalDiscount = totalDiscount;
     return this;
   }
 
    /**
-   * Get seatedCount
-   * @return seatedCount
+   * Get totalDiscount
+   * @return totalDiscount
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Integer getSeatedCount() {
-    return seatedCount;
+  public BigDecimal getTotalDiscount() {
+    return totalDiscount;
   }
 
 
-  public void setSeatedCount(Integer seatedCount) {
-    this.seatedCount = seatedCount;
+  public void setTotalDiscount(BigDecimal totalDiscount) {
+    this.totalDiscount = totalDiscount;
   }
 
 
-  public OrderItem totalDesignationCount(Integer totalDesignationCount) {
+  public OrderItem unprintedCount(Integer unprintedCount) {
     
-    this.totalDesignationCount = totalDesignationCount;
+    this.unprintedCount = unprintedCount;
     return this;
   }
 
    /**
-   * Get totalDesignationCount
-   * @return totalDesignationCount
+   * Get unprintedCount
+   * @return unprintedCount
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Integer getTotalDesignationCount() {
-    return totalDesignationCount;
+  public Integer getUnprintedCount() {
+    return unprintedCount;
   }
 
 
-  public void setTotalDesignationCount(Integer totalDesignationCount) {
-    this.totalDesignationCount = totalDesignationCount;
-  }
-
-
-  public OrderItem zonedEventDateTime(OffsetDateTime zonedEventDateTime) {
-    
-    this.zonedEventDateTime = zonedEventDateTime;
-    return this;
-  }
-
-   /**
-   * Get zonedEventDateTime
-   * @return zonedEventDateTime
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getZonedEventDateTime() {
-    return zonedEventDateTime;
-  }
-
-
-  public void setZonedEventDateTime(OffsetDateTime zonedEventDateTime) {
-    this.zonedEventDateTime = zonedEventDateTime;
-  }
-
-
-  public OrderItem totalFee(BigDecimal totalFee) {
-    
-    this.totalFee = totalFee;
-    return this;
-  }
-
-   /**
-   * Get totalFee
-   * @return totalFee
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalFee() {
-    return totalFee;
-  }
-
-
-  public void setTotalFee(BigDecimal totalFee) {
-    this.totalFee = totalFee;
-  }
-
-
-  public OrderItem totalCustomerDiscount(BigDecimal totalCustomerDiscount) {
-    
-    this.totalCustomerDiscount = totalCustomerDiscount;
-    return this;
-  }
-
-   /**
-   * Get totalCustomerDiscount
-   * @return totalCustomerDiscount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalCustomerDiscount() {
-    return totalCustomerDiscount;
-  }
-
-
-  public void setTotalCustomerDiscount(BigDecimal totalCustomerDiscount) {
-    this.totalCustomerDiscount = totalCustomerDiscount;
-  }
-
-
-  public OrderItem totalTax(BigDecimal totalTax) {
-    
-    this.totalTax = totalTax;
-    return this;
-  }
-
-   /**
-   * Get totalTax
-   * @return totalTax
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalTax() {
-    return totalTax;
-  }
-
-
-  public void setTotalTax(BigDecimal totalTax) {
-    this.totalTax = totalTax;
+  public void setUnprintedCount(Integer unprintedCount) {
+    this.unprintedCount = unprintedCount;
   }
 
 
@@ -2687,26 +2664,95 @@ public class OrderItem {
   }
 
 
-  public OrderItem totalDiscount(BigDecimal totalDiscount) {
+  public OrderItem totalDesignationCount(Integer totalDesignationCount) {
     
-    this.totalDiscount = totalDiscount;
+    this.totalDesignationCount = totalDesignationCount;
     return this;
   }
 
    /**
-   * Get totalDiscount
-   * @return totalDiscount
+   * Get totalDesignationCount
+   * @return totalDesignationCount
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getTotalDiscount() {
-    return totalDiscount;
+  public Integer getTotalDesignationCount() {
+    return totalDesignationCount;
   }
 
 
-  public void setTotalDiscount(BigDecimal totalDiscount) {
-    this.totalDiscount = totalDiscount;
+  public void setTotalDesignationCount(Integer totalDesignationCount) {
+    this.totalDesignationCount = totalDesignationCount;
+  }
+
+
+  public OrderItem totalTax(BigDecimal totalTax) {
+    
+    this.totalTax = totalTax;
+    return this;
+  }
+
+   /**
+   * Get totalTax
+   * @return totalTax
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalTax() {
+    return totalTax;
+  }
+
+
+  public void setTotalTax(BigDecimal totalTax) {
+    this.totalTax = totalTax;
+  }
+
+
+  public OrderItem totalCustomerDiscount(BigDecimal totalCustomerDiscount) {
+    
+    this.totalCustomerDiscount = totalCustomerDiscount;
+    return this;
+  }
+
+   /**
+   * Get totalCustomerDiscount
+   * @return totalCustomerDiscount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalCustomerDiscount() {
+    return totalCustomerDiscount;
+  }
+
+
+  public void setTotalCustomerDiscount(BigDecimal totalCustomerDiscount) {
+    this.totalCustomerDiscount = totalCustomerDiscount;
+  }
+
+
+  public OrderItem zonedEventDateTime(OffsetDateTime zonedEventDateTime) {
+    
+    this.zonedEventDateTime = zonedEventDateTime;
+    return this;
+  }
+
+   /**
+   * Get zonedEventDateTime
+   * @return zonedEventDateTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getZonedEventDateTime() {
+    return zonedEventDateTime;
+  }
+
+
+  public void setZonedEventDateTime(OffsetDateTime zonedEventDateTime) {
+    this.zonedEventDateTime = zonedEventDateTime;
   }
 
 
@@ -2733,141 +2779,26 @@ public class OrderItem {
   }
 
 
-  public OrderItem paidCount(Integer paidCount) {
+  public OrderItem totalFee(BigDecimal totalFee) {
     
-    this.paidCount = paidCount;
+    this.totalFee = totalFee;
     return this;
   }
 
    /**
-   * Get paidCount
-   * @return paidCount
+   * Get totalFee
+   * @return totalFee
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Integer getPaidCount() {
-    return paidCount;
+  public BigDecimal getTotalFee() {
+    return totalFee;
   }
 
 
-  public void setPaidCount(Integer paidCount) {
-    this.paidCount = paidCount;
-  }
-
-
-  public OrderItem grandTotalSavings(BigDecimal grandTotalSavings) {
-    
-    this.grandTotalSavings = grandTotalSavings;
-    return this;
-  }
-
-   /**
-   * Get grandTotalSavings
-   * @return grandTotalSavings
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getGrandTotalSavings() {
-    return grandTotalSavings;
-  }
-
-
-  public void setGrandTotalSavings(BigDecimal grandTotalSavings) {
-    this.grandTotalSavings = grandTotalSavings;
-  }
-
-
-  public OrderItem netPrice(BigDecimal netPrice) {
-    
-    this.netPrice = netPrice;
-    return this;
-  }
-
-   /**
-   * Get netPrice
-   * @return netPrice
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getNetPrice() {
-    return netPrice;
-  }
-
-
-  public void setNetPrice(BigDecimal netPrice) {
-    this.netPrice = netPrice;
-  }
-
-
-  public OrderItem manualDiscountValue(BigDecimal manualDiscountValue) {
-    
-    this.manualDiscountValue = manualDiscountValue;
-    return this;
-  }
-
-   /**
-   * Get manualDiscountValue
-   * @return manualDiscountValue
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getManualDiscountValue() {
-    return manualDiscountValue;
-  }
-
-
-  public void setManualDiscountValue(BigDecimal manualDiscountValue) {
-    this.manualDiscountValue = manualDiscountValue;
-  }
-
-
-  public OrderItem compCount(Integer compCount) {
-    
-    this.compCount = compCount;
-    return this;
-  }
-
-   /**
-   * Get compCount
-   * @return compCount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getCompCount() {
-    return compCount;
-  }
-
-
-  public void setCompCount(Integer compCount) {
-    this.compCount = compCount;
-  }
-
-
-  public OrderItem taxType(TaxType taxType) {
-    
-    this.taxType = taxType;
-    return this;
-  }
-
-   /**
-   * Get taxType
-   * @return taxType
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public TaxType getTaxType() {
-    return taxType;
-  }
-
-
-  public void setTaxType(TaxType taxType) {
-    this.taxType = taxType;
+  public void setTotalFee(BigDecimal totalFee) {
+    this.totalFee = totalFee;
   }
 
 
@@ -2894,6 +2825,29 @@ public class OrderItem {
   }
 
 
+  public OrderItem grandTotalSavings(BigDecimal grandTotalSavings) {
+    
+    this.grandTotalSavings = grandTotalSavings;
+    return this;
+  }
+
+   /**
+   * Get grandTotalSavings
+   * @return grandTotalSavings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getGrandTotalSavings() {
+    return grandTotalSavings;
+  }
+
+
+  public void setGrandTotalSavings(BigDecimal grandTotalSavings) {
+    this.grandTotalSavings = grandTotalSavings;
+  }
+
+
   public OrderItem totalSavings(BigDecimal totalSavings) {
     
     this.totalSavings = totalSavings;
@@ -2917,6 +2871,29 @@ public class OrderItem {
   }
 
 
+  public OrderItem netPrice(BigDecimal netPrice) {
+    
+    this.netPrice = netPrice;
+    return this;
+  }
+
+   /**
+   * Get netPrice
+   * @return netPrice
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getNetPrice() {
+    return netPrice;
+  }
+
+
+  public void setNetPrice(BigDecimal netPrice) {
+    this.netPrice = netPrice;
+  }
+
+
   public OrderItem taxable(Boolean taxable) {
     
     this.taxable = taxable;
@@ -2937,6 +2914,29 @@ public class OrderItem {
 
   public void setTaxable(Boolean taxable) {
     this.taxable = taxable;
+  }
+
+
+  public OrderItem manualDiscountValue(BigDecimal manualDiscountValue) {
+    
+    this.manualDiscountValue = manualDiscountValue;
+    return this;
+  }
+
+   /**
+   * Get manualDiscountValue
+   * @return manualDiscountValue
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getManualDiscountValue() {
+    return manualDiscountValue;
+  }
+
+
+  public void setManualDiscountValue(BigDecimal manualDiscountValue) {
+    this.manualDiscountValue = manualDiscountValue;
   }
 
 
@@ -3032,33 +3032,33 @@ public class OrderItem {
         Objects.equals(this.count, orderItem.count) &&
         Objects.equals(this.itemCount, orderItem.itemCount) &&
         Objects.equals(this.cancelled, orderItem.cancelled) &&
-        Objects.equals(this.unprintedCount, orderItem.unprintedCount) &&
+        Objects.equals(this.compCount, orderItem.compCount) &&
+        Objects.equals(this.paidCount, orderItem.paidCount) &&
+        Objects.equals(this.seatedCount, orderItem.seatedCount) &&
         Objects.equals(this.assignedSeatCount, orderItem.assignedSeatCount) &&
+        Objects.equals(this.taxType, orderItem.taxType) &&
         Objects.equals(this.transactionChargeItem, orderItem.transactionChargeItem) &&
         Objects.equals(this.allAssignedSeatCount, orderItem.allAssignedSeatCount) &&
-        Objects.equals(this.seatedCount, orderItem.seatedCount) &&
-        Objects.equals(this.totalDesignationCount, orderItem.totalDesignationCount) &&
-        Objects.equals(this.zonedEventDateTime, orderItem.zonedEventDateTime) &&
-        Objects.equals(this.totalFee, orderItem.totalFee) &&
-        Objects.equals(this.totalCustomerDiscount, orderItem.totalCustomerDiscount) &&
-        Objects.equals(this.totalTax, orderItem.totalTax) &&
-        Objects.equals(this.totalGratuity, orderItem.totalGratuity) &&
         Objects.equals(this.totalDiscount, orderItem.totalDiscount) &&
+        Objects.equals(this.unprintedCount, orderItem.unprintedCount) &&
+        Objects.equals(this.totalGratuity, orderItem.totalGratuity) &&
+        Objects.equals(this.totalDesignationCount, orderItem.totalDesignationCount) &&
+        Objects.equals(this.totalTax, orderItem.totalTax) &&
+        Objects.equals(this.totalCustomerDiscount, orderItem.totalCustomerDiscount) &&
+        Objects.equals(this.zonedEventDateTime, orderItem.zonedEventDateTime) &&
         Objects.equals(this.firstOccurringFeeDate, orderItem.firstOccurringFeeDate) &&
-        Objects.equals(this.paidCount, orderItem.paidCount) &&
-        Objects.equals(this.grandTotalSavings, orderItem.grandTotalSavings) &&
-        Objects.equals(this.netPrice, orderItem.netPrice) &&
-        Objects.equals(this.manualDiscountValue, orderItem.manualDiscountValue) &&
-        Objects.equals(this.compCount, orderItem.compCount) &&
-        Objects.equals(this.taxType, orderItem.taxType) &&
+        Objects.equals(this.totalFee, orderItem.totalFee) &&
         Objects.equals(this._new, orderItem._new) &&
+        Objects.equals(this.grandTotalSavings, orderItem.grandTotalSavings) &&
         Objects.equals(this.totalSavings, orderItem.totalSavings) &&
-        Objects.equals(this.taxable, orderItem.taxable);
+        Objects.equals(this.netPrice, orderItem.netPrice) &&
+        Objects.equals(this.taxable, orderItem.taxable) &&
+        Objects.equals(this.manualDiscountValue, orderItem.manualDiscountValue);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderNumber, itemNumber, seatDriverWithGroup, confirmed, canDoSteps, mealDateTime, eventCode, showDateTime, lumpSumDiscount, itemTotalPrice, overflowCount, orderItemStatusCode, custTanDCProfileCode, priceListCode, printedCount, voucherPrinted, cancelUserId, cancelDate, cancelConfirmDate, confirmDate, activeWithOrder, restContactName, addUserId, addLocation, addDate, cancelLocation, transFromItem, transToItem, itemType, eventDateTime, voucherExpirationDate, busCount, givexNumber, givexSecurityCode, activateUserId, activateDate, empBenefitCode, partnerConfirm, partnerEvent, pluNumber, skuCode, skuDescription, skuBinLocation, skuTaxType, sale, manDiscountCode, miscSkuRef, shipDate, trackNumber, damaged, shipMethod, comments, itemGrandTotalPrice, traDevCount, miscSkuDescription, free, oldPartnerConfirm, freeForItemNumber, traDevLangCode, bus, travelPhoneNumber, order, specialSituations, orderItemDetails, seats, overflowSeats, itemFees, itemTaxes, itemComps, groupInfo, event, miscEvent, logActivity, logChanges, seatOverBooked, seatOverbookCount, sendToAccpac, groupNumber, persisted, count, itemCount, cancelled, unprintedCount, assignedSeatCount, transactionChargeItem, allAssignedSeatCount, seatedCount, totalDesignationCount, zonedEventDateTime, totalFee, totalCustomerDiscount, totalTax, totalGratuity, totalDiscount, firstOccurringFeeDate, paidCount, grandTotalSavings, netPrice, manualDiscountValue, compCount, taxType, _new, totalSavings, taxable);
+    return Objects.hash(orderNumber, itemNumber, seatDriverWithGroup, confirmed, canDoSteps, mealDateTime, eventCode, showDateTime, lumpSumDiscount, itemTotalPrice, overflowCount, orderItemStatusCode, custTanDCProfileCode, priceListCode, printedCount, voucherPrinted, cancelUserId, cancelDate, cancelConfirmDate, confirmDate, activeWithOrder, restContactName, addUserId, addLocation, addDate, cancelLocation, transFromItem, transToItem, itemType, eventDateTime, voucherExpirationDate, busCount, givexNumber, givexSecurityCode, activateUserId, activateDate, empBenefitCode, partnerConfirm, partnerEvent, pluNumber, skuCode, skuDescription, skuBinLocation, skuTaxType, sale, manDiscountCode, miscSkuRef, shipDate, trackNumber, damaged, shipMethod, comments, itemGrandTotalPrice, traDevCount, miscSkuDescription, free, oldPartnerConfirm, freeForItemNumber, traDevLangCode, bus, travelPhoneNumber, order, specialSituations, orderItemDetails, seats, overflowSeats, itemFees, itemTaxes, itemComps, groupInfo, event, miscEvent, logActivity, logChanges, seatOverBooked, seatOverbookCount, sendToAccpac, groupNumber, persisted, count, itemCount, cancelled, compCount, paidCount, seatedCount, assignedSeatCount, taxType, transactionChargeItem, allAssignedSeatCount, totalDiscount, unprintedCount, totalGratuity, totalDesignationCount, totalTax, totalCustomerDiscount, zonedEventDateTime, firstOccurringFeeDate, totalFee, _new, grandTotalSavings, totalSavings, netPrice, taxable, manualDiscountValue);
   }
 
   @Override
@@ -3147,28 +3147,28 @@ public class OrderItem {
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    itemCount: ").append(toIndentedString(itemCount)).append("\n");
     sb.append("    cancelled: ").append(toIndentedString(cancelled)).append("\n");
-    sb.append("    unprintedCount: ").append(toIndentedString(unprintedCount)).append("\n");
+    sb.append("    compCount: ").append(toIndentedString(compCount)).append("\n");
+    sb.append("    paidCount: ").append(toIndentedString(paidCount)).append("\n");
+    sb.append("    seatedCount: ").append(toIndentedString(seatedCount)).append("\n");
     sb.append("    assignedSeatCount: ").append(toIndentedString(assignedSeatCount)).append("\n");
+    sb.append("    taxType: ").append(toIndentedString(taxType)).append("\n");
     sb.append("    transactionChargeItem: ").append(toIndentedString(transactionChargeItem)).append("\n");
     sb.append("    allAssignedSeatCount: ").append(toIndentedString(allAssignedSeatCount)).append("\n");
-    sb.append("    seatedCount: ").append(toIndentedString(seatedCount)).append("\n");
-    sb.append("    totalDesignationCount: ").append(toIndentedString(totalDesignationCount)).append("\n");
-    sb.append("    zonedEventDateTime: ").append(toIndentedString(zonedEventDateTime)).append("\n");
-    sb.append("    totalFee: ").append(toIndentedString(totalFee)).append("\n");
-    sb.append("    totalCustomerDiscount: ").append(toIndentedString(totalCustomerDiscount)).append("\n");
-    sb.append("    totalTax: ").append(toIndentedString(totalTax)).append("\n");
-    sb.append("    totalGratuity: ").append(toIndentedString(totalGratuity)).append("\n");
     sb.append("    totalDiscount: ").append(toIndentedString(totalDiscount)).append("\n");
+    sb.append("    unprintedCount: ").append(toIndentedString(unprintedCount)).append("\n");
+    sb.append("    totalGratuity: ").append(toIndentedString(totalGratuity)).append("\n");
+    sb.append("    totalDesignationCount: ").append(toIndentedString(totalDesignationCount)).append("\n");
+    sb.append("    totalTax: ").append(toIndentedString(totalTax)).append("\n");
+    sb.append("    totalCustomerDiscount: ").append(toIndentedString(totalCustomerDiscount)).append("\n");
+    sb.append("    zonedEventDateTime: ").append(toIndentedString(zonedEventDateTime)).append("\n");
     sb.append("    firstOccurringFeeDate: ").append(toIndentedString(firstOccurringFeeDate)).append("\n");
-    sb.append("    paidCount: ").append(toIndentedString(paidCount)).append("\n");
-    sb.append("    grandTotalSavings: ").append(toIndentedString(grandTotalSavings)).append("\n");
-    sb.append("    netPrice: ").append(toIndentedString(netPrice)).append("\n");
-    sb.append("    manualDiscountValue: ").append(toIndentedString(manualDiscountValue)).append("\n");
-    sb.append("    compCount: ").append(toIndentedString(compCount)).append("\n");
-    sb.append("    taxType: ").append(toIndentedString(taxType)).append("\n");
+    sb.append("    totalFee: ").append(toIndentedString(totalFee)).append("\n");
     sb.append("    _new: ").append(toIndentedString(_new)).append("\n");
+    sb.append("    grandTotalSavings: ").append(toIndentedString(grandTotalSavings)).append("\n");
     sb.append("    totalSavings: ").append(toIndentedString(totalSavings)).append("\n");
+    sb.append("    netPrice: ").append(toIndentedString(netPrice)).append("\n");
     sb.append("    taxable: ").append(toIndentedString(taxable)).append("\n");
+    sb.append("    manualDiscountValue: ").append(toIndentedString(manualDiscountValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -3273,28 +3273,28 @@ public class OrderItem {
     openapiFields.add("count");
     openapiFields.add("itemCount");
     openapiFields.add("cancelled");
-    openapiFields.add("unprintedCount");
+    openapiFields.add("compCount");
+    openapiFields.add("paidCount");
+    openapiFields.add("seatedCount");
     openapiFields.add("assignedSeatCount");
+    openapiFields.add("taxType");
     openapiFields.add("transactionChargeItem");
     openapiFields.add("allAssignedSeatCount");
-    openapiFields.add("seatedCount");
-    openapiFields.add("totalDesignationCount");
-    openapiFields.add("zonedEventDateTime");
-    openapiFields.add("totalFee");
-    openapiFields.add("totalCustomerDiscount");
-    openapiFields.add("totalTax");
-    openapiFields.add("totalGratuity");
     openapiFields.add("totalDiscount");
+    openapiFields.add("unprintedCount");
+    openapiFields.add("totalGratuity");
+    openapiFields.add("totalDesignationCount");
+    openapiFields.add("totalTax");
+    openapiFields.add("totalCustomerDiscount");
+    openapiFields.add("zonedEventDateTime");
     openapiFields.add("firstOccurringFeeDate");
-    openapiFields.add("paidCount");
-    openapiFields.add("grandTotalSavings");
-    openapiFields.add("netPrice");
-    openapiFields.add("manualDiscountValue");
-    openapiFields.add("compCount");
-    openapiFields.add("taxType");
+    openapiFields.add("totalFee");
     openapiFields.add("new");
+    openapiFields.add("grandTotalSavings");
     openapiFields.add("totalSavings");
+    openapiFields.add("netPrice");
     openapiFields.add("taxable");
+    openapiFields.add("manualDiscountValue");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

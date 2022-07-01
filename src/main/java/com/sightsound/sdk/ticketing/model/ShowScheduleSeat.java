@@ -53,7 +53,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * ShowScheduleSeat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T08:40:20.483181-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:16:16.028085Z[Etc/UTC]")
 public class ShowScheduleSeat {
   public static final String SERIALIZED_NAME_EVENT_CODE = "eventCode";
   @SerializedName(SERIALIZED_NAME_EVENT_CODE)
@@ -123,13 +123,13 @@ public class ShowScheduleSeat {
   @SerializedName(SERIALIZED_NAME_TEMPLATE_SECTION_SEAT)
   private SeatingTemplateSectionSeat templateSectionSeat;
 
-  public static final String SERIALIZED_NAME_WHEELCHAIR_OR_MOTORIZED = "wheelchairOrMotorized";
-  @SerializedName(SERIALIZED_NAME_WHEELCHAIR_OR_MOTORIZED)
-  private Boolean wheelchairOrMotorized;
-
   public static final String SERIALIZED_NAME_SEAT_CODE = "seatCode";
   @SerializedName(SERIALIZED_NAME_SEAT_CODE)
   private String seatCode;
+
+  public static final String SERIALIZED_NAME_WHEELCHAIR_OR_MOTORIZED = "wheelchairOrMotorized";
+  @SerializedName(SERIALIZED_NAME_WHEELCHAIR_OR_MOTORIZED)
+  private Boolean wheelchairOrMotorized;
 
   public ShowScheduleSeat() { 
   }
@@ -525,29 +525,6 @@ public class ShowScheduleSeat {
   }
 
 
-  public ShowScheduleSeat wheelchairOrMotorized(Boolean wheelchairOrMotorized) {
-    
-    this.wheelchairOrMotorized = wheelchairOrMotorized;
-    return this;
-  }
-
-   /**
-   * Get wheelchairOrMotorized
-   * @return wheelchairOrMotorized
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getWheelchairOrMotorized() {
-    return wheelchairOrMotorized;
-  }
-
-
-  public void setWheelchairOrMotorized(Boolean wheelchairOrMotorized) {
-    this.wheelchairOrMotorized = wheelchairOrMotorized;
-  }
-
-
   public ShowScheduleSeat seatCode(String seatCode) {
     
     this.seatCode = seatCode;
@@ -568,6 +545,29 @@ public class ShowScheduleSeat {
 
   public void setSeatCode(String seatCode) {
     this.seatCode = seatCode;
+  }
+
+
+  public ShowScheduleSeat wheelchairOrMotorized(Boolean wheelchairOrMotorized) {
+    
+    this.wheelchairOrMotorized = wheelchairOrMotorized;
+    return this;
+  }
+
+   /**
+   * Get wheelchairOrMotorized
+   * @return wheelchairOrMotorized
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getWheelchairOrMotorized() {
+    return wheelchairOrMotorized;
+  }
+
+
+  public void setWheelchairOrMotorized(Boolean wheelchairOrMotorized) {
+    this.wheelchairOrMotorized = wheelchairOrMotorized;
   }
 
 
@@ -598,13 +598,13 @@ public class ShowScheduleSeat {
         Objects.equals(this.modifyUserId, showScheduleSeat.modifyUserId) &&
         Objects.equals(this.orderItem, showScheduleSeat.orderItem) &&
         Objects.equals(this.templateSectionSeat, showScheduleSeat.templateSectionSeat) &&
-        Objects.equals(this.wheelchairOrMotorized, showScheduleSeat.wheelchairOrMotorized) &&
-        Objects.equals(this.seatCode, showScheduleSeat.seatCode);
+        Objects.equals(this.seatCode, showScheduleSeat.seatCode) &&
+        Objects.equals(this.wheelchairOrMotorized, showScheduleSeat.wheelchairOrMotorized);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventCode, showDateTime, sectionCode, rowNumber, seatNumber, priceGrade, seatingTemplateCode, orderNumber, itemNumber, bookingPhase, sssDateTime, seatType, seatStatus, ticketPrintStatus, modifyUserId, orderItem, templateSectionSeat, wheelchairOrMotorized, seatCode);
+    return Objects.hash(eventCode, showDateTime, sectionCode, rowNumber, seatNumber, priceGrade, seatingTemplateCode, orderNumber, itemNumber, bookingPhase, sssDateTime, seatType, seatStatus, ticketPrintStatus, modifyUserId, orderItem, templateSectionSeat, seatCode, wheelchairOrMotorized);
   }
 
   @Override
@@ -628,8 +628,8 @@ public class ShowScheduleSeat {
     sb.append("    modifyUserId: ").append(toIndentedString(modifyUserId)).append("\n");
     sb.append("    orderItem: ").append(toIndentedString(orderItem)).append("\n");
     sb.append("    templateSectionSeat: ").append(toIndentedString(templateSectionSeat)).append("\n");
-    sb.append("    wheelchairOrMotorized: ").append(toIndentedString(wheelchairOrMotorized)).append("\n");
     sb.append("    seatCode: ").append(toIndentedString(seatCode)).append("\n");
+    sb.append("    wheelchairOrMotorized: ").append(toIndentedString(wheelchairOrMotorized)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -669,8 +669,8 @@ public class ShowScheduleSeat {
     openapiFields.add("modifyUserId");
     openapiFields.add("orderItem");
     openapiFields.add("templateSectionSeat");
-    openapiFields.add("wheelchairOrMotorized");
     openapiFields.add("seatCode");
+    openapiFields.add("wheelchairOrMotorized");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

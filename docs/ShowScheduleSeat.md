@@ -24,8 +24,8 @@
 |**modifyUserId** | **String** |  |  [optional] |
 |**orderItem** | [**OrderItem**](OrderItem.md) |  |  [optional] |
 |**templateSectionSeat** | [**SeatingTemplateSectionSeat**](SeatingTemplateSectionSeat.md) |  |  [optional] |
-|**wheelchairOrMotorized** | **Boolean** |  |  [optional] |
 |**seatCode** | **String** |  |  [optional] |
+|**wheelchairOrMotorized** | **Boolean** |  |  [optional] |
 
 
 

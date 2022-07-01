@@ -89,28 +89,28 @@
 |**count** | **Integer** |  |  [optional] |
 |**itemCount** | **Integer** |  |  [optional] |
 |**cancelled** | **Boolean** |  |  [optional] |
-|**unprintedCount** | **Integer** |  |  [optional] |
+|**compCount** | **Integer** |  |  [optional] |
+|**paidCount** | **Integer** |  |  [optional] |
+|**seatedCount** | **Integer** |  |  [optional] |
 |**assignedSeatCount** | **Integer** |  |  [optional] |
+|**taxType** | **TaxType** |  |  [optional] |
 |**transactionChargeItem** | **Boolean** |  |  [optional] |
 |**allAssignedSeatCount** | **Integer** |  |  [optional] |
-|**seatedCount** | **Integer** |  |  [optional] |
-|**totalDesignationCount** | **Integer** |  |  [optional] |
-|**zonedEventDateTime** | **OffsetDateTime** |  |  [optional] |
-|**totalFee** | **BigDecimal** |  |  [optional] |
-|**totalCustomerDiscount** | **BigDecimal** |  |  [optional] |
-|**totalTax** | **BigDecimal** |  |  [optional] |
-|**totalGratuity** | **BigDecimal** |  |  [optional] |
 |**totalDiscount** | **BigDecimal** |  |  [optional] |
+|**unprintedCount** | **Integer** |  |  [optional] |
+|**totalGratuity** | **BigDecimal** |  |  [optional] |
+|**totalDesignationCount** | **Integer** |  |  [optional] |
+|**totalTax** | **BigDecimal** |  |  [optional] |
+|**totalCustomerDiscount** | **BigDecimal** |  |  [optional] |
+|**zonedEventDateTime** | **OffsetDateTime** |  |  [optional] |
 |**firstOccurringFeeDate** | **OffsetDateTime** |  |  [optional] |
-|**paidCount** | **Integer** |  |  [optional] |
-|**grandTotalSavings** | **BigDecimal** |  |  [optional] |
-|**netPrice** | **BigDecimal** |  |  [optional] |
-|**manualDiscountValue** | **BigDecimal** |  |  [optional] |
-|**compCount** | **Integer** |  |  [optional] |
-|**taxType** | **TaxType** |  |  [optional] |
+|**totalFee** | **BigDecimal** |  |  [optional] |
 |**_new** | **Boolean** |  |  [optional] |
+|**grandTotalSavings** | **BigDecimal** |  |  [optional] |
 |**totalSavings** | **BigDecimal** |  |  [optional] |
+|**netPrice** | **BigDecimal** |  |  [optional] |
 |**taxable** | **Boolean** |  |  [optional] |
+|**manualDiscountValue** | **BigDecimal** |  |  [optional] |
 
 
 
