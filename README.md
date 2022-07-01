@@ -2,7 +2,7 @@
 
 Helios
 - API version: 0.0.1-SNAPSHOT
-  - Build date: 2022-07-01T08:27:57.763723-05:00[America/Chicago]
+  - Build date: 2022-07-01T08:40:20.483181-05:00[America/Chicago]
 
 Sight & Sound Theatres Ticketing API
 

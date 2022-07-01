@@ -49,7 +49,7 @@ import com.sightsound.sdk.ticketing.JSON;
  * Order complete response
  */
 @ApiModel(description = "Order complete response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T08:27:57.763723-05:00[America/Chicago]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T08:40:20.483181-05:00[America/Chicago]")
 public class OrderCompleteResponse {
   public static final String SERIALIZED_NAME_PAYMENT_APPLIED_INFO = "paymentAppliedInfo";
   @SerializedName(SERIALIZED_NAME_PAYMENT_APPLIED_INFO)
