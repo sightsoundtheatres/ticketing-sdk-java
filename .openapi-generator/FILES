@@ -161,6 +161,7 @@ docs/TicketPrintStatus.md
 docs/TransactionTypeEnum.md
 docs/TypeEnum.md
 docs/WatchList.md
+git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
