@@ -35,15 +35,14 @@ public class OrderControllerApiTest {
     /**
      * Complete order
      *
-     * Completes an order. Can be new or existing.
+     * Completes a new order.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void completeOrderTest() throws ApiException {
-        Long orderNumber = null;
+    public void completeNewOrderTest() throws ApiException {
         OrderCompleteRequest orderCompleteRequest = null;
-        OrderCompleteResponse response = api.completeOrder(orderNumber, orderCompleteRequest);
+        OrderCompleteResponse response = api.completeNewOrder(orderCompleteRequest);
         // TODO: test validations
     }
 
