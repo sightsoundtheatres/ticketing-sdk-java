@@ -2,7 +2,7 @@
 
 Partner Ticketing API
 - API version: 0.0.1-SNAPSHOT
-  - Build date: 2022-07-18T19:32:42.242731Z[Etc/UTC]
+  - Build date: 2022-07-18T19:37:37.998841Z[Etc/UTC]
 
 Sight & Sound Theatres Partner Ticketing API
 

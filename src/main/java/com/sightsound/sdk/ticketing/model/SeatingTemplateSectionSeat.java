@@ -51,7 +51,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * SeatingTemplateSectionSeat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:37:37.998841Z[Etc/UTC]")
 public class SeatingTemplateSectionSeat {
   public static final String SERIALIZED_NAME_SECTION_CODE = "sectionCode";
   @SerializedName(SERIALIZED_NAME_SECTION_CODE)
