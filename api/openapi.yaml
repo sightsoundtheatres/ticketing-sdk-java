@@ -4,31 +4,25 @@ info:
     email: DeveloperTeam@sight-sound.com
     name: Sight & Sound Development Team
     url: https://sight-sound.com
-  description: Sight & Sound Theatres Ticketing API
-  title: Helios
+  description: Sight & Sound Theatres Partner Ticketing API
+  title: Partner Ticketing API
   version: 0.0.1-SNAPSHOT
 externalDocs:
-  description: Sight & Sound API Documentation
+  description: Sight & Sound Theatres API Documentation
   url: https://developer.sight-sound.com
 servers:
-- description: PROD
-  url: https://helios.sight-sound.com
 - description: DEV
   url: https://dev-helios.sight-sound.com
+- description: PROD
+  url: https://helios.sight-sound.com
+security:
+- PROD: []
+  DEV: []
 paths:
   /order/complete:
     post:
-      description: Completes an order. Can be new or existing.
-      operationId: completeOrder
-      parameters:
-      - explode: false
-        in: path
-        name: orderNumber
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
+      description: Completes a new order.
+      operationId: completeNewOrder
       requestBody:
         content:
           application/json:
@@ -47,6 +41,15 @@ paths:
       - order-controller
       x-content-type: application/json
       x-accepts: '*/*'
+  /system/util/status:
+    get:
+      operationId: status
+      responses:
+        "200":
+          description: OK
+      tags:
+      - util-controller
+      x-accepts: application/json
 components:
   schemas:
     ACHRequest:
@@ -624,6 +627,9 @@ components:
       example:
         groupName: groupName
         ticketBatch: null
+        ticketDelivery:
+          method: null
+          target: target
         orderNumber: 0
         referenceNumber: referenceNumber
         promoCode: promoCode
@@ -645,22 +651,22 @@ components:
               seatDiscountTotalAmount: 1.1730742509559433
               price: 9.369310271410669
               manDiscountTypeCode: null
-              deltaCount: 7
-              unprintedCount: 5
-              savings: 3.3182952910080674
+              deltaCount: 1
+              unprintedCount: 0
+              savings: 9.728706165995554
               printedCount: 5
               specialTypeCode: null
               new: true
               compCount: 6
               orderItem:
                 miscSkuRef: miscSkuRef
-                seatedCount: 4
+                seatedCount: 2
                 canDoSteps: true
                 itemGrandTotalPrice: 3.0937452626664474
-                totalGratuity: 3.8463127686084055
+                totalGratuity: 7.321091499885957
                 miscSkuDescription: miscSkuDescription
                 manDiscountCode: manDiscountCode
-                totalDesignationCount: 0
+                totalDesignationCount: 7
                 printedCount: 6
                 taxType: null
                 order:
@@ -670,7 +676,7 @@ components:
                   - null
                   finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
                   companyName: companyName
-                  totalGratuity: 4.863793115215697
+                  totalGratuity: 2.831445253698411
                   deliverDateTime: 2000-01-23T04:56:07.000+00:00
                   activeShowItems:
                   - null
@@ -3120,7 +3126,7 @@ components:
                   grandTotalSaving: 1.2786903972794905
                   sessionPaidAmount: 9.505836306729838
                   changeExistingDiscounts: true
-                  maxItemNumber: 5
+                  maxItemNumber: 9
                   resReqEncText: resReqEncText
                   depositAmount: 3.0205796992916243
                   heldName: heldName
@@ -3137,7 +3143,7 @@ components:
                   mailToPhone: mailToPhone
                   groupName: groupName
                   orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  groupCount: 6
+                  groupCount: 1
                   contractReceivedDate: 2000-01-23T04:56:07.000+00:00
                   shipMethod: shipMethod
                   invalid: true
@@ -4329,11 +4335,11 @@ components:
                   - null
                   bypassAutoSpecial: true
                   logActivity: null
-                  totalTransactionCharge: 2.924533207692744
+                  totalTransactionCharge: 6.712603870693706
                   refNumber: refNumber
                   sessionRefundAmount: 8.768153453040833
                   emailTicketsProcessed: true
-                  totalDiscount: 9.007961177824221
+                  totalDiscount: 5.499986845135928
                   mailToName: mailToName
                   mailToOrganizationName: mailToOrganizationName
                   contactPhone: contactPhone
@@ -5060,7 +5066,7 @@ components:
                   authorizedUsers: authorizedUsers
                   highCountByOrderItem: 3
                   deliverStatus: deliverStatus
-                  totalTax: 2.831445253698411
+                  totalTax: 8.238101405568635
                   firstShowDate: 2000-01-23T04:56:07.000+00:00
                   ticketBatchAgent: ticketBatchAgent
                   invoiceType: null
@@ -5077,7 +5083,7 @@ components:
                   theaterLocationCode: null
                   latestEventOrderItem: null
                   taxExempt: true
-                  totalPaidAmount: 1.0046985756074744
+                  totalPaidAmount: 6.345503614942988
                   orderTotalPrice: 0.10263654006109402
                   amountPaidWhenOrderLoaded: 2.684056218962324
                   mailToSameAsCustomer: true
@@ -5087,7 +5093,7 @@ components:
                   completedDate: 2000-01-23T04:56:07.000+00:00
                   firstName: firstName
                   inventoryMoved: true
-                  totalCustomerDiscount: 6.345503614942988
+                  totalCustomerDiscount: 1.0046985756074744
                   specialRemoved: true
                   editMode: true
                   rpCustNumber: 8
@@ -5098,9 +5104,8 @@ components:
                   orderDate: 2000-01-23T04:56:07.000+00:00
                   addLocationCode: addLocationCode
                   specialCode: specialCode
-                  activeShowTourItemCount: 2
+                  activeShowTourItemCount: 5
                   readyForPrinting: true
-                  ticketDeliveryMessage: ticketDeliveryMessage
                   cancelDate: 2000-01-23T04:56:07.000+00:00
                   cancelReminderSent: true
                   authUserPhoneNumber: authUserPhoneNumber
@@ -5124,7 +5129,7 @@ components:
                   firstOccurringShowItem: null
                   sendToAccpac: true
                   earliestEventDate: 2000-01-23T04:56:07.000+00:00
-                  allItemsTotalPrice: 1.5743672347582194
+                  allItemsTotalPrice: 2.924533207692744
                   customerNumber: 6
                   sourceCodeComments: sourceCodeComments
                   special:
@@ -5227,8 +5232,8 @@ components:
                     acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
                     custDiscAddonOnly: true
                   finalSale: true
-                  totalFee: 5.499986845135928
-                  dueAmount: 8.569658089905484
+                  dueAmount: 4.863793115215697
+                  totalFee: 2.008994665592807
                   autoApplyDiscounts: true
                   persisted: true
                   presentedByName: presentedByName
@@ -5644,7 +5649,7 @@ components:
                 mealDateTime: 2000-01-23T04:56:07.000+00:00
                 cancelled: true
                 cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-                allAssignedSeatCount: 7
+                allAssignedSeatCount: 4
                 skuCode: skuCode
                 zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
                 voucherPrinted: true
@@ -5706,7 +5711,7 @@ components:
                   busSpaces: busSpaces
                   order: null
                 logChanges: true
-                unprintedCount: 6
+                unprintedCount: 0
                 free: true
                 event:
                   itemType: null
@@ -5824,19 +5829,18 @@ components:
                   eventStartDate: 2000-01-23T04:56:07.000+00:00
                   allowGroupDisc: true
                 givexSecurityCode: givexSecurityCode
-                compCount: 4
+                compCount: 5
                 itemTotalPrice: 2.8841621266687802
                 addDate: 2000-01-23T04:56:07.000+00:00
-                groupNumber: 9
-                totalSavings: 2.3317418552851765
+                totalSavings: 6.568304668801491
                 grandTotalSavings: 2.674423984487264
-                itemCount: 8
+                itemCount: 9
                 eventCode: eventCode
                 logActivity: null
                 sale: true
                 damaged: true
                 orderItemStatusCode: null
-                totalDiscount: 2.408218941758913
+                totalDiscount: 6.936593194494838
                 cancelLocation: cancelLocation
                 itemNumber: 6
                 overflowCount: 6
@@ -5844,7 +5848,7 @@ components:
                 orderNumber: 3
                 activateDate: 2000-01-23T04:56:07.000+00:00
                 cancelUserId: cancelUserId
-                netPrice: 6.568304668801491
+                netPrice: 2.3317418552851765
                 oldPartnerConfirm: oldPartnerConfirm
                 partnerEvent: true
                 seats:
@@ -5955,14 +5959,14 @@ components:
                       height: 1
                       xcoordinate: 7
                     seatingTemplateCode: seatingTemplateCode
-                    zrotation: 1
+                    zrotation: 3
                     seatNumber: 5
                     sectionDesireability: 4
                     seatType: null
                     priceGrade: priceGrade
                     entranceCode: null
                     rowNumber: rowNumber
-                    xcoordinate: 3
+                    xcoordinate: 1
                   wheelchairOrMotorized: true
                   seatCode: seatCode
                   priceGrade: priceGrade
@@ -6075,14 +6079,14 @@ components:
                       height: 1
                       xcoordinate: 7
                     seatingTemplateCode: seatingTemplateCode
-                    zrotation: 1
+                    zrotation: 3
                     seatNumber: 5
                     sectionDesireability: 4
                     seatType: null
                     priceGrade: priceGrade
                     entranceCode: null
                     rowNumber: rowNumber
-                    xcoordinate: 3
+                    xcoordinate: 1
                   wheelchairOrMotorized: true
                   seatCode: seatCode
                   priceGrade: priceGrade
@@ -6090,18 +6094,17 @@ components:
                   ticketPrintStatus: null
                 transactionChargeItem: true
                 traDevLangCode: traDevLangCode
-                totalTax: 5.103912736584151
+                totalTax: 4.180725413706508
                 traDevCount: 7
-                paidCount: 7
+                paidCount: 3
                 givexNumber: givexNumber
                 empBenefitCode: null
-                assignedSeatCount: 7
                 new: true
+                assignedSeatCount: 4
                 overflowSeats:
                 - eventCode: eventCode
                   itemNumber: 8
                   ticketText: ticketText
-                  seatStatus: null
                   orderNumber: 4
                   orderItem: null
                   ticketStatus: null
@@ -6110,7 +6113,6 @@ components:
                 - eventCode: eventCode
                   itemNumber: 8
                   ticketText: ticketText
-                  seatStatus: null
                   orderNumber: 4
                   orderItem: null
                   ticketStatus: null
@@ -6121,7 +6123,7 @@ components:
                 showDateTime: 2000-01-23T04:56:07.000+00:00
                 seatOverbookCount: 5
                 transFromItem: 5
-                totalCustomerDiscount: 4.515863748649669
+                totalCustomerDiscount: 8.81377937009168
                 activeWithOrder: true
                 priceListCode: priceListCode
                 cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -6136,7 +6138,7 @@ components:
                   showStartDate: 2000-01-23T04:56:07.000+00:00
                   eventDescription: eventDescription
                   effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-                manualDiscountValue: 1.4985931822280574
+                manualDiscountValue: 4.075306827525243
                 travelPhoneNumber: travelPhoneNumber
                 sendToAccpac: true
                 seatDriverWithGroup: true
@@ -6176,7 +6178,7 @@ components:
                     specialSituationCode: specialSituationCode
                     specialSituationDesc: specialSituationDesc
                   specialSituationCode: specialSituationCode
-                totalFee: 4.075306827525243
+                totalFee: 7.964879197514727
                 itemTaxes:
                 - orderItem: null
                   entryDate: 2000-01-23T04:56:07.000+00:00
@@ -6203,12 +6205,12 @@ components:
               priceValue: 9.965781217890562
               ssMargin: 9.018348186070783
               seatDiscountCount: 3
-              listPriceWithDiscounts: 9.739448828157911
-              totalSavings: 8.50835276411088
-              manDiscountDollarAmount: 9.728706165995554
+              listPriceWithDiscounts: 7.338782761819433
+              totalSavings: 3.3182952910080674
+              manDiscountDollarAmount: 5.099298781640682
               specialDiscountTotalAmount: 6.84685269835264
               specialDiscountCount: 9
-              totalDiscount: 0.05965928697733491
+              totalDiscount: 9.739448828157911
               designationCode: null
               custDiscountTypeCode: null
               persisted: true
@@ -6228,22 +6230,22 @@ components:
               seatDiscountTotalAmount: 1.1730742509559433
               price: 9.369310271410669
               manDiscountTypeCode: null
-              deltaCount: 7
-              unprintedCount: 5
-              savings: 3.3182952910080674
+              deltaCount: 1
+              unprintedCount: 0
+              savings: 9.728706165995554
               printedCount: 5
               specialTypeCode: null
               new: true
               compCount: 6
               orderItem:
                 miscSkuRef: miscSkuRef
-                seatedCount: 4
+                seatedCount: 2
                 canDoSteps: true
                 itemGrandTotalPrice: 3.0937452626664474
-                totalGratuity: 3.8463127686084055
+                totalGratuity: 7.321091499885957
                 miscSkuDescription: miscSkuDescription
                 manDiscountCode: manDiscountCode
-                totalDesignationCount: 0
+                totalDesignationCount: 7
                 printedCount: 6
                 taxType: null
                 order:
@@ -6253,7 +6255,7 @@ components:
                   - null
                   finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
                   companyName: companyName
-                  totalGratuity: 4.863793115215697
+                  totalGratuity: 2.831445253698411
                   deliverDateTime: 2000-01-23T04:56:07.000+00:00
                   activeShowItems:
                   - null
@@ -8703,7 +8705,7 @@ components:
                   grandTotalSaving: 1.2786903972794905
                   sessionPaidAmount: 9.505836306729838
                   changeExistingDiscounts: true
-                  maxItemNumber: 5
+                  maxItemNumber: 9
                   resReqEncText: resReqEncText
                   depositAmount: 3.0205796992916243
                   heldName: heldName
@@ -8720,7 +8722,7 @@ components:
                   mailToPhone: mailToPhone
                   groupName: groupName
                   orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  groupCount: 6
+                  groupCount: 1
                   contractReceivedDate: 2000-01-23T04:56:07.000+00:00
                   shipMethod: shipMethod
                   invalid: true
@@ -9912,11 +9914,11 @@ components:
                   - null
                   bypassAutoSpecial: true
                   logActivity: null
-                  totalTransactionCharge: 2.924533207692744
+                  totalTransactionCharge: 6.712603870693706
                   refNumber: refNumber
                   sessionRefundAmount: 8.768153453040833
                   emailTicketsProcessed: true
-                  totalDiscount: 9.007961177824221
+                  totalDiscount: 5.499986845135928
                   mailToName: mailToName
                   mailToOrganizationName: mailToOrganizationName
                   contactPhone: contactPhone
@@ -10643,7 +10645,7 @@ components:
                   authorizedUsers: authorizedUsers
                   highCountByOrderItem: 3
                   deliverStatus: deliverStatus
-                  totalTax: 2.831445253698411
+                  totalTax: 8.238101405568635
                   firstShowDate: 2000-01-23T04:56:07.000+00:00
                   ticketBatchAgent: ticketBatchAgent
                   invoiceType: null
@@ -10660,7 +10662,7 @@ components:
                   theaterLocationCode: null
                   latestEventOrderItem: null
                   taxExempt: true
-                  totalPaidAmount: 1.0046985756074744
+                  totalPaidAmount: 6.345503614942988
                   orderTotalPrice: 0.10263654006109402
                   amountPaidWhenOrderLoaded: 2.684056218962324
                   mailToSameAsCustomer: true
@@ -10670,7 +10672,7 @@ components:
                   completedDate: 2000-01-23T04:56:07.000+00:00
                   firstName: firstName
                   inventoryMoved: true
-                  totalCustomerDiscount: 6.345503614942988
+                  totalCustomerDiscount: 1.0046985756074744
                   specialRemoved: true
                   editMode: true
                   rpCustNumber: 8
@@ -10681,9 +10683,8 @@ components:
                   orderDate: 2000-01-23T04:56:07.000+00:00
                   addLocationCode: addLocationCode
                   specialCode: specialCode
-                  activeShowTourItemCount: 2
+                  activeShowTourItemCount: 5
                   readyForPrinting: true
-                  ticketDeliveryMessage: ticketDeliveryMessage
                   cancelDate: 2000-01-23T04:56:07.000+00:00
                   cancelReminderSent: true
                   authUserPhoneNumber: authUserPhoneNumber
@@ -10707,7 +10708,7 @@ components:
                   firstOccurringShowItem: null
                   sendToAccpac: true
                   earliestEventDate: 2000-01-23T04:56:07.000+00:00
-                  allItemsTotalPrice: 1.5743672347582194
+                  allItemsTotalPrice: 2.924533207692744
                   customerNumber: 6
                   sourceCodeComments: sourceCodeComments
                   special:
@@ -10810,8 +10811,8 @@ components:
                     acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
                     custDiscAddonOnly: true
                   finalSale: true
-                  totalFee: 5.499986845135928
-                  dueAmount: 8.569658089905484
+                  dueAmount: 4.863793115215697
+                  totalFee: 2.008994665592807
                   autoApplyDiscounts: true
                   persisted: true
                   presentedByName: presentedByName
@@ -11227,7 +11228,7 @@ components:
                 mealDateTime: 2000-01-23T04:56:07.000+00:00
                 cancelled: true
                 cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-                allAssignedSeatCount: 7
+                allAssignedSeatCount: 4
                 skuCode: skuCode
                 zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
                 voucherPrinted: true
@@ -11289,7 +11290,7 @@ components:
                   busSpaces: busSpaces
                   order: null
                 logChanges: true
-                unprintedCount: 6
+                unprintedCount: 0
                 free: true
                 event:
                   itemType: null
@@ -11407,19 +11408,18 @@ components:
                   eventStartDate: 2000-01-23T04:56:07.000+00:00
                   allowGroupDisc: true
                 givexSecurityCode: givexSecurityCode
-                compCount: 4
+                compCount: 5
                 itemTotalPrice: 2.8841621266687802
                 addDate: 2000-01-23T04:56:07.000+00:00
-                groupNumber: 9
-                totalSavings: 2.3317418552851765
+                totalSavings: 6.568304668801491
                 grandTotalSavings: 2.674423984487264
-                itemCount: 8
+                itemCount: 9
                 eventCode: eventCode
                 logActivity: null
                 sale: true
                 damaged: true
                 orderItemStatusCode: null
-                totalDiscount: 2.408218941758913
+                totalDiscount: 6.936593194494838
                 cancelLocation: cancelLocation
                 itemNumber: 6
                 overflowCount: 6
@@ -11427,7 +11427,7 @@ components:
                 orderNumber: 3
                 activateDate: 2000-01-23T04:56:07.000+00:00
                 cancelUserId: cancelUserId
-                netPrice: 6.568304668801491
+                netPrice: 2.3317418552851765
                 oldPartnerConfirm: oldPartnerConfirm
                 partnerEvent: true
                 seats:
@@ -11538,14 +11538,14 @@ components:
                       height: 1
                       xcoordinate: 7
                     seatingTemplateCode: seatingTemplateCode
-                    zrotation: 1
+                    zrotation: 3
                     seatNumber: 5
                     sectionDesireability: 4
                     seatType: null
                     priceGrade: priceGrade
                     entranceCode: null
                     rowNumber: rowNumber
-                    xcoordinate: 3
+                    xcoordinate: 1
                   wheelchairOrMotorized: true
                   seatCode: seatCode
                   priceGrade: priceGrade
@@ -11658,14 +11658,14 @@ components:
                       height: 1
                       xcoordinate: 7
                     seatingTemplateCode: seatingTemplateCode
-                    zrotation: 1
+                    zrotation: 3
                     seatNumber: 5
                     sectionDesireability: 4
                     seatType: null
                     priceGrade: priceGrade
                     entranceCode: null
                     rowNumber: rowNumber
-                    xcoordinate: 3
+                    xcoordinate: 1
                   wheelchairOrMotorized: true
                   seatCode: seatCode
                   priceGrade: priceGrade
@@ -11673,18 +11673,17 @@ components:
                   ticketPrintStatus: null
                 transactionChargeItem: true
                 traDevLangCode: traDevLangCode
-                totalTax: 5.103912736584151
+                totalTax: 4.180725413706508
                 traDevCount: 7
-                paidCount: 7
+                paidCount: 3
                 givexNumber: givexNumber
                 empBenefitCode: null
-                assignedSeatCount: 7
                 new: true
+                assignedSeatCount: 4
                 overflowSeats:
                 - eventCode: eventCode
                   itemNumber: 8
                   ticketText: ticketText
-                  seatStatus: null
                   orderNumber: 4
                   orderItem: null
                   ticketStatus: null
@@ -11693,7 +11692,6 @@ components:
                 - eventCode: eventCode
                   itemNumber: 8
                   ticketText: ticketText
-                  seatStatus: null
                   orderNumber: 4
                   orderItem: null
                   ticketStatus: null
@@ -11704,7 +11702,7 @@ components:
                 showDateTime: 2000-01-23T04:56:07.000+00:00
                 seatOverbookCount: 5
                 transFromItem: 5
-                totalCustomerDiscount: 4.515863748649669
+                totalCustomerDiscount: 8.81377937009168
                 activeWithOrder: true
                 priceListCode: priceListCode
                 cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -11719,7 +11717,7 @@ components:
                   showStartDate: 2000-01-23T04:56:07.000+00:00
                   eventDescription: eventDescription
                   effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-                manualDiscountValue: 1.4985931822280574
+                manualDiscountValue: 4.075306827525243
                 travelPhoneNumber: travelPhoneNumber
                 sendToAccpac: true
                 seatDriverWithGroup: true
@@ -11759,7 +11757,7 @@ components:
                     specialSituationCode: specialSituationCode
                     specialSituationDesc: specialSituationDesc
                   specialSituationCode: specialSituationCode
-                totalFee: 4.075306827525243
+                totalFee: 7.964879197514727
                 itemTaxes:
                 - orderItem: null
                   entryDate: 2000-01-23T04:56:07.000+00:00
@@ -11786,12 +11784,12 @@ components:
               priceValue: 9.965781217890562
               ssMargin: 9.018348186070783
               seatDiscountCount: 3
-              listPriceWithDiscounts: 9.739448828157911
-              totalSavings: 8.50835276411088
-              manDiscountDollarAmount: 9.728706165995554
+              listPriceWithDiscounts: 7.338782761819433
+              totalSavings: 3.3182952910080674
+              manDiscountDollarAmount: 5.099298781640682
               specialDiscountTotalAmount: 6.84685269835264
               specialDiscountCount: 9
-              totalDiscount: 0.05965928697733491
+              totalDiscount: 9.739448828157911
               designationCode: null
               custDiscountTypeCode: null
               persisted: true
@@ -11815,22 +11813,22 @@ components:
               seatDiscountTotalAmount: 1.1730742509559433
               price: 9.369310271410669
               manDiscountTypeCode: null
-              deltaCount: 7
-              unprintedCount: 5
-              savings: 3.3182952910080674
+              deltaCount: 1
+              unprintedCount: 0
+              savings: 9.728706165995554
               printedCount: 5
               specialTypeCode: null
               new: true
               compCount: 6
               orderItem:
                 miscSkuRef: miscSkuRef
-                seatedCount: 4
+                seatedCount: 2
                 canDoSteps: true
                 itemGrandTotalPrice: 3.0937452626664474
-                totalGratuity: 3.8463127686084055
+                totalGratuity: 7.321091499885957
                 miscSkuDescription: miscSkuDescription
                 manDiscountCode: manDiscountCode
-                totalDesignationCount: 0
+                totalDesignationCount: 7
                 printedCount: 6
                 taxType: null
                 order:
@@ -11840,7 +11838,7 @@ components:
                   - null
                   finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
                   companyName: companyName
-                  totalGratuity: 4.863793115215697
+                  totalGratuity: 2.831445253698411
                   deliverDateTime: 2000-01-23T04:56:07.000+00:00
                   activeShowItems:
                   - null
@@ -14290,7 +14288,7 @@ components:
                   grandTotalSaving: 1.2786903972794905
                   sessionPaidAmount: 9.505836306729838
                   changeExistingDiscounts: true
-                  maxItemNumber: 5
+                  maxItemNumber: 9
                   resReqEncText: resReqEncText
                   depositAmount: 3.0205796992916243
                   heldName: heldName
@@ -14307,7 +14305,7 @@ components:
                   mailToPhone: mailToPhone
                   groupName: groupName
                   orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  groupCount: 6
+                  groupCount: 1
                   contractReceivedDate: 2000-01-23T04:56:07.000+00:00
                   shipMethod: shipMethod
                   invalid: true
@@ -15499,11 +15497,11 @@ components:
                   - null
                   bypassAutoSpecial: true
                   logActivity: null
-                  totalTransactionCharge: 2.924533207692744
+                  totalTransactionCharge: 6.712603870693706
                   refNumber: refNumber
                   sessionRefundAmount: 8.768153453040833
                   emailTicketsProcessed: true
-                  totalDiscount: 9.007961177824221
+                  totalDiscount: 5.499986845135928
                   mailToName: mailToName
                   mailToOrganizationName: mailToOrganizationName
                   contactPhone: contactPhone
@@ -16230,7 +16228,7 @@ components:
                   authorizedUsers: authorizedUsers
                   highCountByOrderItem: 3
                   deliverStatus: deliverStatus
-                  totalTax: 2.831445253698411
+                  totalTax: 8.238101405568635
                   firstShowDate: 2000-01-23T04:56:07.000+00:00
                   ticketBatchAgent: ticketBatchAgent
                   invoiceType: null
@@ -16247,7 +16245,7 @@ components:
                   theaterLocationCode: null
                   latestEventOrderItem: null
                   taxExempt: true
-                  totalPaidAmount: 1.0046985756074744
+                  totalPaidAmount: 6.345503614942988
                   orderTotalPrice: 0.10263654006109402
                   amountPaidWhenOrderLoaded: 2.684056218962324
                   mailToSameAsCustomer: true
@@ -16257,7 +16255,7 @@ components:
                   completedDate: 2000-01-23T04:56:07.000+00:00
                   firstName: firstName
                   inventoryMoved: true
-                  totalCustomerDiscount: 6.345503614942988
+                  totalCustomerDiscount: 1.0046985756074744
                   specialRemoved: true
                   editMode: true
                   rpCustNumber: 8
@@ -16268,9 +16266,8 @@ components:
                   orderDate: 2000-01-23T04:56:07.000+00:00
                   addLocationCode: addLocationCode
                   specialCode: specialCode
-                  activeShowTourItemCount: 2
+                  activeShowTourItemCount: 5
                   readyForPrinting: true
-                  ticketDeliveryMessage: ticketDeliveryMessage
                   cancelDate: 2000-01-23T04:56:07.000+00:00
                   cancelReminderSent: true
                   authUserPhoneNumber: authUserPhoneNumber
@@ -16294,7 +16291,7 @@ components:
                   firstOccurringShowItem: null
                   sendToAccpac: true
                   earliestEventDate: 2000-01-23T04:56:07.000+00:00
-                  allItemsTotalPrice: 1.5743672347582194
+                  allItemsTotalPrice: 2.924533207692744
                   customerNumber: 6
                   sourceCodeComments: sourceCodeComments
                   special:
@@ -16397,8 +16394,8 @@ components:
                     acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
                     custDiscAddonOnly: true
                   finalSale: true
-                  totalFee: 5.499986845135928
-                  dueAmount: 8.569658089905484
+                  dueAmount: 4.863793115215697
+                  totalFee: 2.008994665592807
                   autoApplyDiscounts: true
                   persisted: true
                   presentedByName: presentedByName
@@ -16814,7 +16811,7 @@ components:
                 mealDateTime: 2000-01-23T04:56:07.000+00:00
                 cancelled: true
                 cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-                allAssignedSeatCount: 7
+                allAssignedSeatCount: 4
                 skuCode: skuCode
                 zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
                 voucherPrinted: true
@@ -16876,7 +16873,7 @@ components:
                   busSpaces: busSpaces
                   order: null
                 logChanges: true
-                unprintedCount: 6
+                unprintedCount: 0
                 free: true
                 event:
                   itemType: null
@@ -16994,19 +16991,18 @@ components:
                   eventStartDate: 2000-01-23T04:56:07.000+00:00
                   allowGroupDisc: true
                 givexSecurityCode: givexSecurityCode
-                compCount: 4
+                compCount: 5
                 itemTotalPrice: 2.8841621266687802
                 addDate: 2000-01-23T04:56:07.000+00:00
-                groupNumber: 9
-                totalSavings: 2.3317418552851765
+                totalSavings: 6.568304668801491
                 grandTotalSavings: 2.674423984487264
-                itemCount: 8
+                itemCount: 9
                 eventCode: eventCode
                 logActivity: null
                 sale: true
                 damaged: true
                 orderItemStatusCode: null
-                totalDiscount: 2.408218941758913
+                totalDiscount: 6.936593194494838
                 cancelLocation: cancelLocation
                 itemNumber: 6
                 overflowCount: 6
@@ -17014,7 +17010,7 @@ components:
                 orderNumber: 3
                 activateDate: 2000-01-23T04:56:07.000+00:00
                 cancelUserId: cancelUserId
-                netPrice: 6.568304668801491
+                netPrice: 2.3317418552851765
                 oldPartnerConfirm: oldPartnerConfirm
                 partnerEvent: true
                 seats:
@@ -17125,14 +17121,14 @@ components:
                       height: 1
                       xcoordinate: 7
                     seatingTemplateCode: seatingTemplateCode
-                    zrotation: 1
+                    zrotation: 3
                     seatNumber: 5
                     sectionDesireability: 4
                     seatType: null
                     priceGrade: priceGrade
                     entranceCode: null
                     rowNumber: rowNumber
-                    xcoordinate: 3
+                    xcoordinate: 1
                   wheelchairOrMotorized: true
                   seatCode: seatCode
                   priceGrade: priceGrade
@@ -17245,14 +17241,14 @@ components:
                       height: 1
                       xcoordinate: 7
                     seatingTemplateCode: seatingTemplateCode
-                    zrotation: 1
+                    zrotation: 3
                     seatNumber: 5
                     sectionDesireability: 4
                     seatType: null
                     priceGrade: priceGrade
                     entranceCode: null
                     rowNumber: rowNumber
-                    xcoordinate: 3
+                    xcoordinate: 1
                   wheelchairOrMotorized: true
                   seatCode: seatCode
                   priceGrade: priceGrade
@@ -17260,18 +17256,17 @@ components:
                   ticketPrintStatus: null
                 transactionChargeItem: true
                 traDevLangCode: traDevLangCode
-                totalTax: 5.103912736584151
+                totalTax: 4.180725413706508
                 traDevCount: 7
-                paidCount: 7
+                paidCount: 3
                 givexNumber: givexNumber
                 empBenefitCode: null
-                assignedSeatCount: 7
                 new: true
+                assignedSeatCount: 4
                 overflowSeats:
                 - eventCode: eventCode
                   itemNumber: 8
                   ticketText: ticketText
-                  seatStatus: null
                   orderNumber: 4
                   orderItem: null
                   ticketStatus: null
@@ -17280,7 +17275,6 @@ components:
                 - eventCode: eventCode
                   itemNumber: 8
                   ticketText: ticketText
-                  seatStatus: null
                   orderNumber: 4
                   orderItem: null
                   ticketStatus: null
@@ -17291,7 +17285,7 @@ components:
                 showDateTime: 2000-01-23T04:56:07.000+00:00
                 seatOverbookCount: 5
                 transFromItem: 5
-                totalCustomerDiscount: 4.515863748649669
+                totalCustomerDiscount: 8.81377937009168
                 activeWithOrder: true
                 priceListCode: priceListCode
                 cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -17306,7 +17300,7 @@ components:
                   showStartDate: 2000-01-23T04:56:07.000+00:00
                   eventDescription: eventDescription
                   effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-                manualDiscountValue: 1.4985931822280574
+                manualDiscountValue: 4.075306827525243
                 travelPhoneNumber: travelPhoneNumber
                 sendToAccpac: true
                 seatDriverWithGroup: true
@@ -17346,7 +17340,7 @@ components:
                     specialSituationCode: specialSituationCode
                     specialSituationDesc: specialSituationDesc
                   specialSituationCode: specialSituationCode
-                totalFee: 4.075306827525243
+                totalFee: 7.964879197514727
                 itemTaxes:
                 - orderItem: null
                   entryDate: 2000-01-23T04:56:07.000+00:00
@@ -17373,12 +17367,12 @@ components:
               priceValue: 9.965781217890562
               ssMargin: 9.018348186070783
               seatDiscountCount: 3
-              listPriceWithDiscounts: 9.739448828157911
-              totalSavings: 8.50835276411088
-              manDiscountDollarAmount: 9.728706165995554
+              listPriceWithDiscounts: 7.338782761819433
+              totalSavings: 3.3182952910080674
+              manDiscountDollarAmount: 5.099298781640682
               specialDiscountTotalAmount: 6.84685269835264
               specialDiscountCount: 9
-              totalDiscount: 0.05965928697733491
+              totalDiscount: 9.739448828157911
               designationCode: null
               custDiscountTypeCode: null
               persisted: true
@@ -17398,22 +17392,22 @@ components:
               seatDiscountTotalAmount: 1.1730742509559433
               price: 9.369310271410669
               manDiscountTypeCode: null
-              deltaCount: 7
-              unprintedCount: 5
-              savings: 3.3182952910080674
+              deltaCount: 1
+              unprintedCount: 0
+              savings: 9.728706165995554
               printedCount: 5
               specialTypeCode: null
               new: true
               compCount: 6
               orderItem:
                 miscSkuRef: miscSkuRef
-                seatedCount: 4
+                seatedCount: 2
                 canDoSteps: true
                 itemGrandTotalPrice: 3.0937452626664474
-                totalGratuity: 3.8463127686084055
+                totalGratuity: 7.321091499885957
                 miscSkuDescription: miscSkuDescription
                 manDiscountCode: manDiscountCode
-                totalDesignationCount: 0
+                totalDesignationCount: 7
                 printedCount: 6
                 taxType: null
                 order:
@@ -17423,7 +17417,7 @@ components:
                   - null
                   finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
                   companyName: companyName
-                  totalGratuity: 4.863793115215697
+                  totalGratuity: 2.831445253698411
                   deliverDateTime: 2000-01-23T04:56:07.000+00:00
                   activeShowItems:
                   - null
@@ -19873,7 +19867,7 @@ components:
                   grandTotalSaving: 1.2786903972794905
                   sessionPaidAmount: 9.505836306729838
                   changeExistingDiscounts: true
-                  maxItemNumber: 5
+                  maxItemNumber: 9
                   resReqEncText: resReqEncText
                   depositAmount: 3.0205796992916243
                   heldName: heldName
@@ -19890,7 +19884,7 @@ components:
                   mailToPhone: mailToPhone
                   groupName: groupName
                   orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                  groupCount: 6
+                  groupCount: 1
                   contractReceivedDate: 2000-01-23T04:56:07.000+00:00
                   shipMethod: shipMethod
                   invalid: true
@@ -21082,11 +21076,11 @@ components:
                   - null
                   bypassAutoSpecial: true
                   logActivity: null
-                  totalTransactionCharge: 2.924533207692744
+                  totalTransactionCharge: 6.712603870693706
                   refNumber: refNumber
                   sessionRefundAmount: 8.768153453040833
                   emailTicketsProcessed: true
-                  totalDiscount: 9.007961177824221
+                  totalDiscount: 5.499986845135928
                   mailToName: mailToName
                   mailToOrganizationName: mailToOrganizationName
                   contactPhone: contactPhone
@@ -21813,7 +21807,7 @@ components:
                   authorizedUsers: authorizedUsers
                   highCountByOrderItem: 3
                   deliverStatus: deliverStatus
-                  totalTax: 2.831445253698411
+                  totalTax: 8.238101405568635
                   firstShowDate: 2000-01-23T04:56:07.000+00:00
                   ticketBatchAgent: ticketBatchAgent
                   invoiceType: null
@@ -21830,7 +21824,7 @@ components:
                   theaterLocationCode: null
                   latestEventOrderItem: null
                   taxExempt: true
-                  totalPaidAmount: 1.0046985756074744
+                  totalPaidAmount: 6.345503614942988
                   orderTotalPrice: 0.10263654006109402
                   amountPaidWhenOrderLoaded: 2.684056218962324
                   mailToSameAsCustomer: true
@@ -21840,7 +21834,7 @@ components:
                   completedDate: 2000-01-23T04:56:07.000+00:00
                   firstName: firstName
                   inventoryMoved: true
-                  totalCustomerDiscount: 6.345503614942988
+                  totalCustomerDiscount: 1.0046985756074744
                   specialRemoved: true
                   editMode: true
                   rpCustNumber: 8
@@ -21851,9 +21845,8 @@ components:
                   orderDate: 2000-01-23T04:56:07.000+00:00
                   addLocationCode: addLocationCode
                   specialCode: specialCode
-                  activeShowTourItemCount: 2
+                  activeShowTourItemCount: 5
                   readyForPrinting: true
-                  ticketDeliveryMessage: ticketDeliveryMessage
                   cancelDate: 2000-01-23T04:56:07.000+00:00
                   cancelReminderSent: true
                   authUserPhoneNumber: authUserPhoneNumber
@@ -21877,7 +21870,7 @@ components:
                   firstOccurringShowItem: null
                   sendToAccpac: true
                   earliestEventDate: 2000-01-23T04:56:07.000+00:00
-                  allItemsTotalPrice: 1.5743672347582194
+                  allItemsTotalPrice: 2.924533207692744
                   customerNumber: 6
                   sourceCodeComments: sourceCodeComments
                   special:
@@ -21980,8 +21973,8 @@ components:
                     acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
                     custDiscAddonOnly: true
                   finalSale: true
-                  totalFee: 5.499986845135928
-                  dueAmount: 8.569658089905484
+                  dueAmount: 4.863793115215697
+                  totalFee: 2.008994665592807
                   autoApplyDiscounts: true
                   persisted: true
                   presentedByName: presentedByName
@@ -22397,7 +22390,7 @@ components:
                 mealDateTime: 2000-01-23T04:56:07.000+00:00
                 cancelled: true
                 cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-                allAssignedSeatCount: 7
+                allAssignedSeatCount: 4
                 skuCode: skuCode
                 zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
                 voucherPrinted: true
@@ -22459,7 +22452,7 @@ components:
                   busSpaces: busSpaces
                   order: null
                 logChanges: true
-                unprintedCount: 6
+                unprintedCount: 0
                 free: true
                 event:
                   itemType: null
@@ -22577,19 +22570,18 @@ components:
                   eventStartDate: 2000-01-23T04:56:07.000+00:00
                   allowGroupDisc: true
                 givexSecurityCode: givexSecurityCode
-                compCount: 4
+                compCount: 5
                 itemTotalPrice: 2.8841621266687802
                 addDate: 2000-01-23T04:56:07.000+00:00
-                groupNumber: 9
-                totalSavings: 2.3317418552851765
+                totalSavings: 6.568304668801491
                 grandTotalSavings: 2.674423984487264
-                itemCount: 8
+                itemCount: 9
                 eventCode: eventCode
                 logActivity: null
                 sale: true
                 damaged: true
                 orderItemStatusCode: null
-                totalDiscount: 2.408218941758913
+                totalDiscount: 6.936593194494838
                 cancelLocation: cancelLocation
                 itemNumber: 6
                 overflowCount: 6
@@ -22597,7 +22589,7 @@ components:
                 orderNumber: 3
                 activateDate: 2000-01-23T04:56:07.000+00:00
                 cancelUserId: cancelUserId
-                netPrice: 6.568304668801491
+                netPrice: 2.3317418552851765
                 oldPartnerConfirm: oldPartnerConfirm
                 partnerEvent: true
                 seats:
@@ -22708,14 +22700,14 @@ components:
                       height: 1
                       xcoordinate: 7
                     seatingTemplateCode: seatingTemplateCode
-                    zrotation: 1
+                    zrotation: 3
                     seatNumber: 5
                     sectionDesireability: 4
                     seatType: null
                     priceGrade: priceGrade
                     entranceCode: null
                     rowNumber: rowNumber
-                    xcoordinate: 3
+                    xcoordinate: 1
                   wheelchairOrMotorized: true
                   seatCode: seatCode
                   priceGrade: priceGrade
@@ -22828,14 +22820,14 @@ components:
                       height: 1
                       xcoordinate: 7
                     seatingTemplateCode: seatingTemplateCode
-                    zrotation: 1
+                    zrotation: 3
                     seatNumber: 5
                     sectionDesireability: 4
                     seatType: null
                     priceGrade: priceGrade
                     entranceCode: null
                     rowNumber: rowNumber
-                    xcoordinate: 3
+                    xcoordinate: 1
                   wheelchairOrMotorized: true
                   seatCode: seatCode
                   priceGrade: priceGrade
@@ -22843,18 +22835,17 @@ components:
                   ticketPrintStatus: null
                 transactionChargeItem: true
                 traDevLangCode: traDevLangCode
-                totalTax: 5.103912736584151
+                totalTax: 4.180725413706508
                 traDevCount: 7
-                paidCount: 7
+                paidCount: 3
                 givexNumber: givexNumber
                 empBenefitCode: null
-                assignedSeatCount: 7
                 new: true
+                assignedSeatCount: 4
                 overflowSeats:
                 - eventCode: eventCode
                   itemNumber: 8
                   ticketText: ticketText
-                  seatStatus: null
                   orderNumber: 4
                   orderItem: null
                   ticketStatus: null
@@ -22863,7 +22854,6 @@ components:
                 - eventCode: eventCode
                   itemNumber: 8
                   ticketText: ticketText
-                  seatStatus: null
                   orderNumber: 4
                   orderItem: null
                   ticketStatus: null
@@ -22874,7 +22864,7 @@ components:
                 showDateTime: 2000-01-23T04:56:07.000+00:00
                 seatOverbookCount: 5
                 transFromItem: 5
-                totalCustomerDiscount: 4.515863748649669
+                totalCustomerDiscount: 8.81377937009168
                 activeWithOrder: true
                 priceListCode: priceListCode
                 cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -22889,7 +22879,7 @@ components:
                   showStartDate: 2000-01-23T04:56:07.000+00:00
                   eventDescription: eventDescription
                   effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-                manualDiscountValue: 1.4985931822280574
+                manualDiscountValue: 4.075306827525243
                 travelPhoneNumber: travelPhoneNumber
                 sendToAccpac: true
                 seatDriverWithGroup: true
@@ -22929,7 +22919,7 @@ components:
                     specialSituationCode: specialSituationCode
                     specialSituationDesc: specialSituationDesc
                   specialSituationCode: specialSituationCode
-                totalFee: 4.075306827525243
+                totalFee: 7.964879197514727
                 itemTaxes:
                 - orderItem: null
                   entryDate: 2000-01-23T04:56:07.000+00:00
@@ -22956,12 +22946,12 @@ components:
               priceValue: 9.965781217890562
               ssMargin: 9.018348186070783
               seatDiscountCount: 3
-              listPriceWithDiscounts: 9.739448828157911
-              totalSavings: 8.50835276411088
-              manDiscountDollarAmount: 9.728706165995554
+              listPriceWithDiscounts: 7.338782761819433
+              totalSavings: 3.3182952910080674
+              manDiscountDollarAmount: 5.099298781640682
               specialDiscountTotalAmount: 6.84685269835264
               specialDiscountCount: 9
-              totalDiscount: 0.05965928697733491
+              totalDiscount: 9.739448828157911
               designationCode: null
               custDiscountTypeCode: null
               persisted: true
@@ -22975,6 +22965,7 @@ components:
           emailAddress: emailAddress
           phoneNumber: phoneNumber
           organizationName: organizationName
+          emailList: true
           websiteCustomerSearchRequest:
             firstName: firstName
             lastName: lastName
@@ -22988,17 +22979,17 @@ components:
               state: state
             companyName: companyName
             phones:
-            - sequenceNumber: 9
+            - sequenceNumber: 8
               phoneType: null
               phoneNumber: phoneNumber
               deleted: true
               phoneNote: phoneNote
-            - sequenceNumber: 9
+            - sequenceNumber: 8
               phoneType: null
               phoneNumber: phoneNumber
               deleted: true
               phoneNote: phoneNote
-            - sequenceNumber: 9
+            - sequenceNumber: 8
               phoneType: null
               phoneNumber: phoneNumber
               deleted: true
@@ -23037,6 +23028,8 @@ components:
           $ref: '#/components/schemas/OrderCustomerRequest'
         ticketBatch:
           $ref: '#/components/schemas/TicketBatch'
+        ticketDelivery:
+          $ref: '#/components/schemas/OrderTicketDeliveryRequest'
       type: object
     ChallengeIndicatorEnum:
       enum:
@@ -23118,17 +23111,17 @@ components:
           state: state
         companyName: companyName
         phones:
-        - sequenceNumber: 9
+        - sequenceNumber: 8
           phoneType: null
           phoneNumber: phoneNumber
           deleted: true
           phoneNote: phoneNote
-        - sequenceNumber: 9
+        - sequenceNumber: 8
           phoneType: null
           phoneNumber: phoneNumber
           deleted: true
           phoneNote: phoneNote
-        - sequenceNumber: 9
+        - sequenceNumber: 8
           phoneType: null
           phoneNumber: phoneNumber
           deleted: true
@@ -23782,26 +23775,26 @@ components:
           items:
             $ref: '#/components/schemas/CustomerContactInfo'
           type: array
-        organization:
-          type: boolean
+        customerNameToDisplay:
+          type: string
+        customerTypeResponse:
+          $ref: '#/components/schemas/CustomerTypeResponse'
         defaultPhoneNumber:
           type: string
-        employee:
+        reseller:
           type: boolean
         primaryContact:
           $ref: '#/components/schemas/CustomerContactInfo'
-        customerTypeResponse:
-          $ref: '#/components/schemas/CustomerTypeResponse'
         generalConsumer:
-          type: boolean
-        reseller:
           type: boolean
         accountFrozen:
           type: boolean
-        customerNameToDisplay:
-          type: string
+        employee:
+          type: boolean
         addressVerifiedStatus:
           $ref: '#/components/schemas/AddressVerifyStatus'
+        organization:
+          type: boolean
       required:
       - address
       - type
@@ -24008,7 +24001,7 @@ components:
       type: object
     CustomerPhoneRequest:
       example:
-        sequenceNumber: 9
+        sequenceNumber: 8
         phoneType: null
         phoneNumber: phoneNumber
         deleted: true
@@ -26867,7 +26860,7 @@ components:
         - null
         finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
         companyName: companyName
-        totalGratuity: 4.863793115215697
+        totalGratuity: 2.831445253698411
         deliverDateTime: 2000-01-23T04:56:07.000+00:00
         activeShowItems:
         - null
@@ -29317,7 +29310,7 @@ components:
         grandTotalSaving: 1.2786903972794905
         sessionPaidAmount: 9.505836306729838
         changeExistingDiscounts: true
-        maxItemNumber: 5
+        maxItemNumber: 9
         resReqEncText: resReqEncText
         depositAmount: 3.0205796992916243
         heldName: heldName
@@ -29334,7 +29327,7 @@ components:
         mailToPhone: mailToPhone
         groupName: groupName
         orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        groupCount: 6
+        groupCount: 1
         contractReceivedDate: 2000-01-23T04:56:07.000+00:00
         shipMethod: shipMethod
         invalid: true
@@ -30526,11 +30519,11 @@ components:
         - null
         bypassAutoSpecial: true
         logActivity: null
-        totalTransactionCharge: 2.924533207692744
+        totalTransactionCharge: 6.712603870693706
         refNumber: refNumber
         sessionRefundAmount: 8.768153453040833
         emailTicketsProcessed: true
-        totalDiscount: 9.007961177824221
+        totalDiscount: 5.499986845135928
         mailToName: mailToName
         mailToOrganizationName: mailToOrganizationName
         contactPhone: contactPhone
@@ -31257,7 +31250,7 @@ components:
         authorizedUsers: authorizedUsers
         highCountByOrderItem: 3
         deliverStatus: deliverStatus
-        totalTax: 2.831445253698411
+        totalTax: 8.238101405568635
         firstShowDate: 2000-01-23T04:56:07.000+00:00
         ticketBatchAgent: ticketBatchAgent
         invoiceType: null
@@ -31274,7 +31267,7 @@ components:
         theaterLocationCode: null
         latestEventOrderItem: null
         taxExempt: true
-        totalPaidAmount: 1.0046985756074744
+        totalPaidAmount: 6.345503614942988
         orderTotalPrice: 0.10263654006109402
         amountPaidWhenOrderLoaded: 2.684056218962324
         mailToSameAsCustomer: true
@@ -31284,7 +31277,7 @@ components:
         completedDate: 2000-01-23T04:56:07.000+00:00
         firstName: firstName
         inventoryMoved: true
-        totalCustomerDiscount: 6.345503614942988
+        totalCustomerDiscount: 1.0046985756074744
         specialRemoved: true
         editMode: true
         rpCustNumber: 8
@@ -31295,9 +31288,8 @@ components:
         orderDate: 2000-01-23T04:56:07.000+00:00
         addLocationCode: addLocationCode
         specialCode: specialCode
-        activeShowTourItemCount: 2
+        activeShowTourItemCount: 5
         readyForPrinting: true
-        ticketDeliveryMessage: ticketDeliveryMessage
         cancelDate: 2000-01-23T04:56:07.000+00:00
         cancelReminderSent: true
         authUserPhoneNumber: authUserPhoneNumber
@@ -31321,7 +31313,7 @@ components:
         firstOccurringShowItem: null
         sendToAccpac: true
         earliestEventDate: 2000-01-23T04:56:07.000+00:00
-        allItemsTotalPrice: 1.5743672347582194
+        allItemsTotalPrice: 2.924533207692744
         customerNumber: 6
         sourceCodeComments: sourceCodeComments
         special:
@@ -31424,8 +31416,8 @@ components:
           acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
           custDiscAddonOnly: true
         finalSale: true
-        totalFee: 5.499986845135928
-        dueAmount: 8.569658089905484
+        dueAmount: 4.863793115215697
+        totalFee: 2.008994665592807
         autoApplyDiscounts: true
         persisted: true
         presentedByName: presentedByName
@@ -32095,14 +32087,86 @@ components:
           type: boolean
         alreadyLoggedActivity:
           type: boolean
-        ticketDeliveryMessage:
-          type: string
         cancelled:
           type: boolean
+        lastOccurringShowTourItem:
+          $ref: '#/components/schemas/OrderItem'
+        totalTransactionCharge:
+          type: number
+        totalCustomerDiscount:
+          type: number
+        highCountByOrderItem:
+          format: int32
+          type: integer
+        new:
+          type: boolean
+        firstOccurringShowTourItem:
+          $ref: '#/components/schemas/OrderItem'
+        activeOrderItemList:
+          items:
+            $ref: '#/components/schemas/OrderItem'
+          type: array
+        seatsUnderAssigned:
+          type: boolean
+        maxItemNumber:
+          format: int32
+          type: integer
+        paymentPast:
+          type: boolean
+        ticketsMailed:
+          type: boolean
+        latestEventOrderItem:
+          $ref: '#/components/schemas/OrderItem'
+        earliestEventDate:
+          format: date-time
+          type: string
+        firstShowDate:
+          format: date-time
+          type: string
+        cancelledShowTourItemList:
+          items:
+            $ref: '#/components/schemas/OrderItem'
+          type: array
         groupCount:
           format: int32
           type: integer
+        calculatedPricingLevel:
+          $ref: '#/components/schemas/PricingLevel'
+        dueAmount:
+          type: number
+        totalFee:
+          type: number
+        invoiceCompany:
+          $ref: '#/components/schemas/InvoiceCompany'
+        activeShowTourItem:
+          items:
+            $ref: '#/components/schemas/OrderItem'
+          type: array
+        companyCode:
+          type: string
+        firstOccurringShowItem:
+          $ref: '#/components/schemas/OrderItem'
+        firstOccurringTourItem:
+          $ref: '#/components/schemas/OrderItem'
+        activeWithOrder:
+          items:
+            $ref: '#/components/schemas/OrderItem'
+          type: array
+        postPayPricingLevel:
+          $ref: '#/components/schemas/PricingLevel'
+        allItemsTotalPrice:
+          type: number
+        totalTax:
+          type: number
+        totalGratuity:
+          type: number
+        totalPaidAmount:
+          type: number
+        totalDiscount:
+          type: number
         readyForPrinting:
+          type: boolean
+        group:
           type: boolean
         activeShowItems:
           items:
@@ -32110,104 +32174,30 @@ components:
           type: array
         mailToName:
           type: string
-        totalPaidAmount:
-          type: number
-        invoiceCompany:
-          $ref: '#/components/schemas/InvoiceCompany'
-        highCountByOrderItem:
-          format: int32
-          type: integer
-        totalDiscount:
-          type: number
-        companyCode:
+        shipMethod:
           type: string
-        postPayPricingLevel:
-          $ref: '#/components/schemas/PricingLevel'
-        allItemsTotalPrice:
-          type: number
-        totalGratuity:
-          type: number
         firstOccurringShowItemWithValidCount:
           $ref: '#/components/schemas/OrderItem'
-        activeShowTourItemCount:
-          format: int32
-          type: integer
-        seatsOverAssigned:
-          type: boolean
-        group:
-          type: boolean
-        allSeatAssigned:
-          type: boolean
-        totalTransactionCharge:
-          type: number
-        calculatedPricingLevel:
-          $ref: '#/components/schemas/PricingLevel'
-        earliestEventDate:
-          format: date-time
-          type: string
-        ticketsMailed:
-          type: boolean
-        activeOrderItemList:
-          items:
-            $ref: '#/components/schemas/OrderItem'
-          type: array
-        cancelledShowTourItemList:
-          items:
-            $ref: '#/components/schemas/OrderItem'
-          type: array
-        activeShowTourItem:
-          items:
-            $ref: '#/components/schemas/OrderItem'
-          type: array
         showsDaysSpan:
           format: int64
           type: integer
-        totalTax:
-          type: number
-        firstShowDate:
-          format: date-time
-          type: string
-        totalCustomerDiscount:
-          type: number
-        firstOccurringTourItem:
-          $ref: '#/components/schemas/OrderItem'
-        firstOccurringShowItem:
-          $ref: '#/components/schemas/OrderItem'
-        shipMethod:
-          type: string
-        activeWithOrder:
-          items:
-            $ref: '#/components/schemas/OrderItem'
-          type: array
-        totalFee:
-          type: number
-        dueAmount:
-          type: number
-        new:
+        allSeatAssigned:
           type: boolean
-        maxItemNumber:
+        seatsOverAssigned:
+          type: boolean
+        activeShowTourItemCount:
           format: int32
           type: integer
-        latestEventOrderItem:
-          $ref: '#/components/schemas/OrderItem'
-        lastOccurringShowTourItem:
-          $ref: '#/components/schemas/OrderItem'
-        seatsUnderAssigned:
-          type: boolean
-        paymentPast:
-          type: boolean
         finalPaymentDueDays:
           format: int64
           type: integer
-        firstOccurringShowTourItem:
-          $ref: '#/components/schemas/OrderItem'
+        lastShowDate:
+          format: date-time
+          type: string
         allShowTourItem:
           items:
             $ref: '#/components/schemas/OrderItem'
           type: array
-        lastShowDate:
-          format: date-time
-          type: string
         allPartnerEventsConfirmed:
           type: boolean
         grandTotalSaving:
@@ -32501,9 +32491,9 @@ components:
           applyMoa: true
           storeCreditCard: true
           giftCards:
-          - amountToCharge: 5.3152834658745505
+          - amountToCharge: 9.551762125042277
             cardNumber: cardNumber
-          - amountToCharge: 5.3152834658745505
+          - amountToCharge: 9.551762125042277
             cardNumber: cardNumber
           adyenPaymentRequest:
             dccQuote:
@@ -32766,9 +32756,13 @@ components:
               eci: eci
               threeDSVersion: threeDSVersion
           paymentType: null
+        overflowSeatCount: 9
         cart:
           groupName: groupName
           ticketBatch: null
+          ticketDelivery:
+            method: null
+            target: target
           orderNumber: 0
           referenceNumber: referenceNumber
           promoCode: promoCode
@@ -32790,22 +32784,22 @@ components:
                 seatDiscountTotalAmount: 1.1730742509559433
                 price: 9.369310271410669
                 manDiscountTypeCode: null
-                deltaCount: 7
-                unprintedCount: 5
-                savings: 3.3182952910080674
+                deltaCount: 1
+                unprintedCount: 0
+                savings: 9.728706165995554
                 printedCount: 5
                 specialTypeCode: null
                 new: true
                 compCount: 6
                 orderItem:
                   miscSkuRef: miscSkuRef
-                  seatedCount: 4
+                  seatedCount: 2
                   canDoSteps: true
                   itemGrandTotalPrice: 3.0937452626664474
-                  totalGratuity: 3.8463127686084055
+                  totalGratuity: 7.321091499885957
                   miscSkuDescription: miscSkuDescription
                   manDiscountCode: manDiscountCode
-                  totalDesignationCount: 0
+                  totalDesignationCount: 7
                   printedCount: 6
                   taxType: null
                   order:
@@ -32815,7 +32809,7 @@ components:
                     - null
                     finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
                     companyName: companyName
-                    totalGratuity: 4.863793115215697
+                    totalGratuity: 2.831445253698411
                     deliverDateTime: 2000-01-23T04:56:07.000+00:00
                     activeShowItems:
                     - null
@@ -35265,7 +35259,7 @@ components:
                     grandTotalSaving: 1.2786903972794905
                     sessionPaidAmount: 9.505836306729838
                     changeExistingDiscounts: true
-                    maxItemNumber: 5
+                    maxItemNumber: 9
                     resReqEncText: resReqEncText
                     depositAmount: 3.0205796992916243
                     heldName: heldName
@@ -35282,7 +35276,7 @@ components:
                     mailToPhone: mailToPhone
                     groupName: groupName
                     orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                    groupCount: 6
+                    groupCount: 1
                     contractReceivedDate: 2000-01-23T04:56:07.000+00:00
                     shipMethod: shipMethod
                     invalid: true
@@ -36474,11 +36468,11 @@ components:
                     - null
                     bypassAutoSpecial: true
                     logActivity: null
-                    totalTransactionCharge: 2.924533207692744
+                    totalTransactionCharge: 6.712603870693706
                     refNumber: refNumber
                     sessionRefundAmount: 8.768153453040833
                     emailTicketsProcessed: true
-                    totalDiscount: 9.007961177824221
+                    totalDiscount: 5.499986845135928
                     mailToName: mailToName
                     mailToOrganizationName: mailToOrganizationName
                     contactPhone: contactPhone
@@ -37205,7 +37199,7 @@ components:
                     authorizedUsers: authorizedUsers
                     highCountByOrderItem: 3
                     deliverStatus: deliverStatus
-                    totalTax: 2.831445253698411
+                    totalTax: 8.238101405568635
                     firstShowDate: 2000-01-23T04:56:07.000+00:00
                     ticketBatchAgent: ticketBatchAgent
                     invoiceType: null
@@ -37222,7 +37216,7 @@ components:
                     theaterLocationCode: null
                     latestEventOrderItem: null
                     taxExempt: true
-                    totalPaidAmount: 1.0046985756074744
+                    totalPaidAmount: 6.345503614942988
                     orderTotalPrice: 0.10263654006109402
                     amountPaidWhenOrderLoaded: 2.684056218962324
                     mailToSameAsCustomer: true
@@ -37232,7 +37226,7 @@ components:
                     completedDate: 2000-01-23T04:56:07.000+00:00
                     firstName: firstName
                     inventoryMoved: true
-                    totalCustomerDiscount: 6.345503614942988
+                    totalCustomerDiscount: 1.0046985756074744
                     specialRemoved: true
                     editMode: true
                     rpCustNumber: 8
@@ -37243,9 +37237,8 @@ components:
                     orderDate: 2000-01-23T04:56:07.000+00:00
                     addLocationCode: addLocationCode
                     specialCode: specialCode
-                    activeShowTourItemCount: 2
+                    activeShowTourItemCount: 5
                     readyForPrinting: true
-                    ticketDeliveryMessage: ticketDeliveryMessage
                     cancelDate: 2000-01-23T04:56:07.000+00:00
                     cancelReminderSent: true
                     authUserPhoneNumber: authUserPhoneNumber
@@ -37269,7 +37262,7 @@ components:
                     firstOccurringShowItem: null
                     sendToAccpac: true
                     earliestEventDate: 2000-01-23T04:56:07.000+00:00
-                    allItemsTotalPrice: 1.5743672347582194
+                    allItemsTotalPrice: 2.924533207692744
                     customerNumber: 6
                     sourceCodeComments: sourceCodeComments
                     special:
@@ -37372,8 +37365,8 @@ components:
                       acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
                       custDiscAddonOnly: true
                     finalSale: true
-                    totalFee: 5.499986845135928
-                    dueAmount: 8.569658089905484
+                    dueAmount: 4.863793115215697
+                    totalFee: 2.008994665592807
                     autoApplyDiscounts: true
                     persisted: true
                     presentedByName: presentedByName
@@ -37789,7 +37782,7 @@ components:
                   mealDateTime: 2000-01-23T04:56:07.000+00:00
                   cancelled: true
                   cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-                  allAssignedSeatCount: 7
+                  allAssignedSeatCount: 4
                   skuCode: skuCode
                   zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
                   voucherPrinted: true
@@ -37851,7 +37844,7 @@ components:
                     busSpaces: busSpaces
                     order: null
                   logChanges: true
-                  unprintedCount: 6
+                  unprintedCount: 0
                   free: true
                   event:
                     itemType: null
@@ -37969,19 +37962,18 @@ components:
                     eventStartDate: 2000-01-23T04:56:07.000+00:00
                     allowGroupDisc: true
                   givexSecurityCode: givexSecurityCode
-                  compCount: 4
+                  compCount: 5
                   itemTotalPrice: 2.8841621266687802
                   addDate: 2000-01-23T04:56:07.000+00:00
-                  groupNumber: 9
-                  totalSavings: 2.3317418552851765
+                  totalSavings: 6.568304668801491
                   grandTotalSavings: 2.674423984487264
-                  itemCount: 8
+                  itemCount: 9
                   eventCode: eventCode
                   logActivity: null
                   sale: true
                   damaged: true
                   orderItemStatusCode: null
-                  totalDiscount: 2.408218941758913
+                  totalDiscount: 6.936593194494838
                   cancelLocation: cancelLocation
                   itemNumber: 6
                   overflowCount: 6
@@ -37989,7 +37981,7 @@ components:
                   orderNumber: 3
                   activateDate: 2000-01-23T04:56:07.000+00:00
                   cancelUserId: cancelUserId
-                  netPrice: 6.568304668801491
+                  netPrice: 2.3317418552851765
                   oldPartnerConfirm: oldPartnerConfirm
                   partnerEvent: true
                   seats:
@@ -38100,14 +38092,14 @@ components:
                         height: 1
                         xcoordinate: 7
                       seatingTemplateCode: seatingTemplateCode
-                      zrotation: 1
+                      zrotation: 3
                       seatNumber: 5
                       sectionDesireability: 4
                       seatType: null
                       priceGrade: priceGrade
                       entranceCode: null
                       rowNumber: rowNumber
-                      xcoordinate: 3
+                      xcoordinate: 1
                     wheelchairOrMotorized: true
                     seatCode: seatCode
                     priceGrade: priceGrade
@@ -38220,14 +38212,14 @@ components:
                         height: 1
                         xcoordinate: 7
                       seatingTemplateCode: seatingTemplateCode
-                      zrotation: 1
+                      zrotation: 3
                       seatNumber: 5
                       sectionDesireability: 4
                       seatType: null
                       priceGrade: priceGrade
                       entranceCode: null
                       rowNumber: rowNumber
-                      xcoordinate: 3
+                      xcoordinate: 1
                     wheelchairOrMotorized: true
                     seatCode: seatCode
                     priceGrade: priceGrade
@@ -38235,18 +38227,17 @@ components:
                     ticketPrintStatus: null
                   transactionChargeItem: true
                   traDevLangCode: traDevLangCode
-                  totalTax: 5.103912736584151
+                  totalTax: 4.180725413706508
                   traDevCount: 7
-                  paidCount: 7
+                  paidCount: 3
                   givexNumber: givexNumber
                   empBenefitCode: null
-                  assignedSeatCount: 7
                   new: true
+                  assignedSeatCount: 4
                   overflowSeats:
                   - eventCode: eventCode
                     itemNumber: 8
                     ticketText: ticketText
-                    seatStatus: null
                     orderNumber: 4
                     orderItem: null
                     ticketStatus: null
@@ -38255,7 +38246,6 @@ components:
                   - eventCode: eventCode
                     itemNumber: 8
                     ticketText: ticketText
-                    seatStatus: null
                     orderNumber: 4
                     orderItem: null
                     ticketStatus: null
@@ -38266,7 +38256,7 @@ components:
                   showDateTime: 2000-01-23T04:56:07.000+00:00
                   seatOverbookCount: 5
                   transFromItem: 5
-                  totalCustomerDiscount: 4.515863748649669
+                  totalCustomerDiscount: 8.81377937009168
                   activeWithOrder: true
                   priceListCode: priceListCode
                   cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -38281,7 +38271,7 @@ components:
                     showStartDate: 2000-01-23T04:56:07.000+00:00
                     eventDescription: eventDescription
                     effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-                  manualDiscountValue: 1.4985931822280574
+                  manualDiscountValue: 4.075306827525243
                   travelPhoneNumber: travelPhoneNumber
                   sendToAccpac: true
                   seatDriverWithGroup: true
@@ -38321,7 +38311,7 @@ components:
                       specialSituationCode: specialSituationCode
                       specialSituationDesc: specialSituationDesc
                     specialSituationCode: specialSituationCode
-                  totalFee: 4.075306827525243
+                  totalFee: 7.964879197514727
                   itemTaxes:
                   - orderItem: null
                     entryDate: 2000-01-23T04:56:07.000+00:00
@@ -38348,12 +38338,12 @@ components:
                 priceValue: 9.965781217890562
                 ssMargin: 9.018348186070783
                 seatDiscountCount: 3
-                listPriceWithDiscounts: 9.739448828157911
-                totalSavings: 8.50835276411088
-                manDiscountDollarAmount: 9.728706165995554
+                listPriceWithDiscounts: 7.338782761819433
+                totalSavings: 3.3182952910080674
+                manDiscountDollarAmount: 5.099298781640682
                 specialDiscountTotalAmount: 6.84685269835264
                 specialDiscountCount: 9
-                totalDiscount: 0.05965928697733491
+                totalDiscount: 9.739448828157911
                 designationCode: null
                 custDiscountTypeCode: null
                 persisted: true
@@ -38373,22 +38363,22 @@ components:
                 seatDiscountTotalAmount: 1.1730742509559433
                 price: 9.369310271410669
                 manDiscountTypeCode: null
-                deltaCount: 7
-                unprintedCount: 5
-                savings: 3.3182952910080674
+                deltaCount: 1
+                unprintedCount: 0
+                savings: 9.728706165995554
                 printedCount: 5
                 specialTypeCode: null
                 new: true
                 compCount: 6
                 orderItem:
                   miscSkuRef: miscSkuRef
-                  seatedCount: 4
+                  seatedCount: 2
                   canDoSteps: true
                   itemGrandTotalPrice: 3.0937452626664474
-                  totalGratuity: 3.8463127686084055
+                  totalGratuity: 7.321091499885957
                   miscSkuDescription: miscSkuDescription
                   manDiscountCode: manDiscountCode
-                  totalDesignationCount: 0
+                  totalDesignationCount: 7
                   printedCount: 6
                   taxType: null
                   order:
@@ -38398,7 +38388,7 @@ components:
                     - null
                     finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
                     companyName: companyName
-                    totalGratuity: 4.863793115215697
+                    totalGratuity: 2.831445253698411
                     deliverDateTime: 2000-01-23T04:56:07.000+00:00
                     activeShowItems:
                     - null
@@ -40848,7 +40838,7 @@ components:
                     grandTotalSaving: 1.2786903972794905
                     sessionPaidAmount: 9.505836306729838
                     changeExistingDiscounts: true
-                    maxItemNumber: 5
+                    maxItemNumber: 9
                     resReqEncText: resReqEncText
                     depositAmount: 3.0205796992916243
                     heldName: heldName
@@ -40865,7 +40855,7 @@ components:
                     mailToPhone: mailToPhone
                     groupName: groupName
                     orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                    groupCount: 6
+                    groupCount: 1
                     contractReceivedDate: 2000-01-23T04:56:07.000+00:00
                     shipMethod: shipMethod
                     invalid: true
@@ -42057,11 +42047,11 @@ components:
                     - null
                     bypassAutoSpecial: true
                     logActivity: null
-                    totalTransactionCharge: 2.924533207692744
+                    totalTransactionCharge: 6.712603870693706
                     refNumber: refNumber
                     sessionRefundAmount: 8.768153453040833
                     emailTicketsProcessed: true
-                    totalDiscount: 9.007961177824221
+                    totalDiscount: 5.499986845135928
                     mailToName: mailToName
                     mailToOrganizationName: mailToOrganizationName
                     contactPhone: contactPhone
@@ -42788,7 +42778,7 @@ components:
                     authorizedUsers: authorizedUsers
                     highCountByOrderItem: 3
                     deliverStatus: deliverStatus
-                    totalTax: 2.831445253698411
+                    totalTax: 8.238101405568635
                     firstShowDate: 2000-01-23T04:56:07.000+00:00
                     ticketBatchAgent: ticketBatchAgent
                     invoiceType: null
@@ -42805,7 +42795,7 @@ components:
                     theaterLocationCode: null
                     latestEventOrderItem: null
                     taxExempt: true
-                    totalPaidAmount: 1.0046985756074744
+                    totalPaidAmount: 6.345503614942988
                     orderTotalPrice: 0.10263654006109402
                     amountPaidWhenOrderLoaded: 2.684056218962324
                     mailToSameAsCustomer: true
@@ -42815,7 +42805,7 @@ components:
                     completedDate: 2000-01-23T04:56:07.000+00:00
                     firstName: firstName
                     inventoryMoved: true
-                    totalCustomerDiscount: 6.345503614942988
+                    totalCustomerDiscount: 1.0046985756074744
                     specialRemoved: true
                     editMode: true
                     rpCustNumber: 8
@@ -42826,9 +42816,8 @@ components:
                     orderDate: 2000-01-23T04:56:07.000+00:00
                     addLocationCode: addLocationCode
                     specialCode: specialCode
-                    activeShowTourItemCount: 2
+                    activeShowTourItemCount: 5
                     readyForPrinting: true
-                    ticketDeliveryMessage: ticketDeliveryMessage
                     cancelDate: 2000-01-23T04:56:07.000+00:00
                     cancelReminderSent: true
                     authUserPhoneNumber: authUserPhoneNumber
@@ -42852,7 +42841,7 @@ components:
                     firstOccurringShowItem: null
                     sendToAccpac: true
                     earliestEventDate: 2000-01-23T04:56:07.000+00:00
-                    allItemsTotalPrice: 1.5743672347582194
+                    allItemsTotalPrice: 2.924533207692744
                     customerNumber: 6
                     sourceCodeComments: sourceCodeComments
                     special:
@@ -42955,8 +42944,8 @@ components:
                       acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
                       custDiscAddonOnly: true
                     finalSale: true
-                    totalFee: 5.499986845135928
-                    dueAmount: 8.569658089905484
+                    dueAmount: 4.863793115215697
+                    totalFee: 2.008994665592807
                     autoApplyDiscounts: true
                     persisted: true
                     presentedByName: presentedByName
@@ -43372,7 +43361,7 @@ components:
                   mealDateTime: 2000-01-23T04:56:07.000+00:00
                   cancelled: true
                   cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-                  allAssignedSeatCount: 7
+                  allAssignedSeatCount: 4
                   skuCode: skuCode
                   zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
                   voucherPrinted: true
@@ -43434,7 +43423,7 @@ components:
                     busSpaces: busSpaces
                     order: null
                   logChanges: true
-                  unprintedCount: 6
+                  unprintedCount: 0
                   free: true
                   event:
                     itemType: null
@@ -43552,19 +43541,18 @@ components:
                     eventStartDate: 2000-01-23T04:56:07.000+00:00
                     allowGroupDisc: true
                   givexSecurityCode: givexSecurityCode
-                  compCount: 4
+                  compCount: 5
                   itemTotalPrice: 2.8841621266687802
                   addDate: 2000-01-23T04:56:07.000+00:00
-                  groupNumber: 9
-                  totalSavings: 2.3317418552851765
+                  totalSavings: 6.568304668801491
                   grandTotalSavings: 2.674423984487264
-                  itemCount: 8
+                  itemCount: 9
                   eventCode: eventCode
                   logActivity: null
                   sale: true
                   damaged: true
                   orderItemStatusCode: null
-                  totalDiscount: 2.408218941758913
+                  totalDiscount: 6.936593194494838
                   cancelLocation: cancelLocation
                   itemNumber: 6
                   overflowCount: 6
@@ -43572,7 +43560,7 @@ components:
                   orderNumber: 3
                   activateDate: 2000-01-23T04:56:07.000+00:00
                   cancelUserId: cancelUserId
-                  netPrice: 6.568304668801491
+                  netPrice: 2.3317418552851765
                   oldPartnerConfirm: oldPartnerConfirm
                   partnerEvent: true
                   seats:
@@ -43683,14 +43671,14 @@ components:
                         height: 1
                         xcoordinate: 7
                       seatingTemplateCode: seatingTemplateCode
-                      zrotation: 1
+                      zrotation: 3
                       seatNumber: 5
                       sectionDesireability: 4
                       seatType: null
                       priceGrade: priceGrade
                       entranceCode: null
                       rowNumber: rowNumber
-                      xcoordinate: 3
+                      xcoordinate: 1
                     wheelchairOrMotorized: true
                     seatCode: seatCode
                     priceGrade: priceGrade
@@ -43803,14 +43791,14 @@ components:
                         height: 1
                         xcoordinate: 7
                       seatingTemplateCode: seatingTemplateCode
-                      zrotation: 1
+                      zrotation: 3
                       seatNumber: 5
                       sectionDesireability: 4
                       seatType: null
                       priceGrade: priceGrade
                       entranceCode: null
                       rowNumber: rowNumber
-                      xcoordinate: 3
+                      xcoordinate: 1
                     wheelchairOrMotorized: true
                     seatCode: seatCode
                     priceGrade: priceGrade
@@ -43818,18 +43806,17 @@ components:
                     ticketPrintStatus: null
                   transactionChargeItem: true
                   traDevLangCode: traDevLangCode
-                  totalTax: 5.103912736584151
+                  totalTax: 4.180725413706508
                   traDevCount: 7
-                  paidCount: 7
+                  paidCount: 3
                   givexNumber: givexNumber
                   empBenefitCode: null
-                  assignedSeatCount: 7
                   new: true
+                  assignedSeatCount: 4
                   overflowSeats:
                   - eventCode: eventCode
                     itemNumber: 8
                     ticketText: ticketText
-                    seatStatus: null
                     orderNumber: 4
                     orderItem: null
                     ticketStatus: null
@@ -43838,7 +43825,6 @@ components:
                   - eventCode: eventCode
                     itemNumber: 8
                     ticketText: ticketText
-                    seatStatus: null
                     orderNumber: 4
                     orderItem: null
                     ticketStatus: null
@@ -43849,7 +43835,7 @@ components:
                   showDateTime: 2000-01-23T04:56:07.000+00:00
                   seatOverbookCount: 5
                   transFromItem: 5
-                  totalCustomerDiscount: 4.515863748649669
+                  totalCustomerDiscount: 8.81377937009168
                   activeWithOrder: true
                   priceListCode: priceListCode
                   cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -43864,7 +43850,7 @@ components:
                     showStartDate: 2000-01-23T04:56:07.000+00:00
                     eventDescription: eventDescription
                     effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-                  manualDiscountValue: 1.4985931822280574
+                  manualDiscountValue: 4.075306827525243
                   travelPhoneNumber: travelPhoneNumber
                   sendToAccpac: true
                   seatDriverWithGroup: true
@@ -43904,7 +43890,7 @@ components:
                       specialSituationCode: specialSituationCode
                       specialSituationDesc: specialSituationDesc
                     specialSituationCode: specialSituationCode
-                  totalFee: 4.075306827525243
+                  totalFee: 7.964879197514727
                   itemTaxes:
                   - orderItem: null
                     entryDate: 2000-01-23T04:56:07.000+00:00
@@ -43931,12 +43917,12 @@ components:
                 priceValue: 9.965781217890562
                 ssMargin: 9.018348186070783
                 seatDiscountCount: 3
-                listPriceWithDiscounts: 9.739448828157911
-                totalSavings: 8.50835276411088
-                manDiscountDollarAmount: 9.728706165995554
+                listPriceWithDiscounts: 7.338782761819433
+                totalSavings: 3.3182952910080674
+                manDiscountDollarAmount: 5.099298781640682
                 specialDiscountTotalAmount: 6.84685269835264
                 specialDiscountCount: 9
-                totalDiscount: 0.05965928697733491
+                totalDiscount: 9.739448828157911
                 designationCode: null
                 custDiscountTypeCode: null
                 persisted: true
@@ -43960,22 +43946,22 @@ components:
                 seatDiscountTotalAmount: 1.1730742509559433
                 price: 9.369310271410669
                 manDiscountTypeCode: null
-                deltaCount: 7
-                unprintedCount: 5
-                savings: 3.3182952910080674
+                deltaCount: 1
+                unprintedCount: 0
+                savings: 9.728706165995554
                 printedCount: 5
                 specialTypeCode: null
                 new: true
                 compCount: 6
                 orderItem:
                   miscSkuRef: miscSkuRef
-                  seatedCount: 4
+                  seatedCount: 2
                   canDoSteps: true
                   itemGrandTotalPrice: 3.0937452626664474
-                  totalGratuity: 3.8463127686084055
+                  totalGratuity: 7.321091499885957
                   miscSkuDescription: miscSkuDescription
                   manDiscountCode: manDiscountCode
-                  totalDesignationCount: 0
+                  totalDesignationCount: 7
                   printedCount: 6
                   taxType: null
                   order:
@@ -43985,7 +43971,7 @@ components:
                     - null
                     finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
                     companyName: companyName
-                    totalGratuity: 4.863793115215697
+                    totalGratuity: 2.831445253698411
                     deliverDateTime: 2000-01-23T04:56:07.000+00:00
                     activeShowItems:
                     - null
@@ -46435,7 +46421,7 @@ components:
                     grandTotalSaving: 1.2786903972794905
                     sessionPaidAmount: 9.505836306729838
                     changeExistingDiscounts: true
-                    maxItemNumber: 5
+                    maxItemNumber: 9
                     resReqEncText: resReqEncText
                     depositAmount: 3.0205796992916243
                     heldName: heldName
@@ -46452,7 +46438,7 @@ components:
                     mailToPhone: mailToPhone
                     groupName: groupName
                     orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                    groupCount: 6
+                    groupCount: 1
                     contractReceivedDate: 2000-01-23T04:56:07.000+00:00
                     shipMethod: shipMethod
                     invalid: true
@@ -47644,11 +47630,11 @@ components:
                     - null
                     bypassAutoSpecial: true
                     logActivity: null
-                    totalTransactionCharge: 2.924533207692744
+                    totalTransactionCharge: 6.712603870693706
                     refNumber: refNumber
                     sessionRefundAmount: 8.768153453040833
                     emailTicketsProcessed: true
-                    totalDiscount: 9.007961177824221
+                    totalDiscount: 5.499986845135928
                     mailToName: mailToName
                     mailToOrganizationName: mailToOrganizationName
                     contactPhone: contactPhone
@@ -48375,7 +48361,7 @@ components:
                     authorizedUsers: authorizedUsers
                     highCountByOrderItem: 3
                     deliverStatus: deliverStatus
-                    totalTax: 2.831445253698411
+                    totalTax: 8.238101405568635
                     firstShowDate: 2000-01-23T04:56:07.000+00:00
                     ticketBatchAgent: ticketBatchAgent
                     invoiceType: null
@@ -48392,7 +48378,7 @@ components:
                     theaterLocationCode: null
                     latestEventOrderItem: null
                     taxExempt: true
-                    totalPaidAmount: 1.0046985756074744
+                    totalPaidAmount: 6.345503614942988
                     orderTotalPrice: 0.10263654006109402
                     amountPaidWhenOrderLoaded: 2.684056218962324
                     mailToSameAsCustomer: true
@@ -48402,7 +48388,7 @@ components:
                     completedDate: 2000-01-23T04:56:07.000+00:00
                     firstName: firstName
                     inventoryMoved: true
-                    totalCustomerDiscount: 6.345503614942988
+                    totalCustomerDiscount: 1.0046985756074744
                     specialRemoved: true
                     editMode: true
                     rpCustNumber: 8
@@ -48413,9 +48399,8 @@ components:
                     orderDate: 2000-01-23T04:56:07.000+00:00
                     addLocationCode: addLocationCode
                     specialCode: specialCode
-                    activeShowTourItemCount: 2
+                    activeShowTourItemCount: 5
                     readyForPrinting: true
-                    ticketDeliveryMessage: ticketDeliveryMessage
                     cancelDate: 2000-01-23T04:56:07.000+00:00
                     cancelReminderSent: true
                     authUserPhoneNumber: authUserPhoneNumber
@@ -48439,7 +48424,7 @@ components:
                     firstOccurringShowItem: null
                     sendToAccpac: true
                     earliestEventDate: 2000-01-23T04:56:07.000+00:00
-                    allItemsTotalPrice: 1.5743672347582194
+                    allItemsTotalPrice: 2.924533207692744
                     customerNumber: 6
                     sourceCodeComments: sourceCodeComments
                     special:
@@ -48542,8 +48527,8 @@ components:
                       acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
                       custDiscAddonOnly: true
                     finalSale: true
-                    totalFee: 5.499986845135928
-                    dueAmount: 8.569658089905484
+                    dueAmount: 4.863793115215697
+                    totalFee: 2.008994665592807
                     autoApplyDiscounts: true
                     persisted: true
                     presentedByName: presentedByName
@@ -48959,7 +48944,7 @@ components:
                   mealDateTime: 2000-01-23T04:56:07.000+00:00
                   cancelled: true
                   cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-                  allAssignedSeatCount: 7
+                  allAssignedSeatCount: 4
                   skuCode: skuCode
                   zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
                   voucherPrinted: true
@@ -49021,7 +49006,7 @@ components:
                     busSpaces: busSpaces
                     order: null
                   logChanges: true
-                  unprintedCount: 6
+                  unprintedCount: 0
                   free: true
                   event:
                     itemType: null
@@ -49139,19 +49124,18 @@ components:
                     eventStartDate: 2000-01-23T04:56:07.000+00:00
                     allowGroupDisc: true
                   givexSecurityCode: givexSecurityCode
-                  compCount: 4
+                  compCount: 5
                   itemTotalPrice: 2.8841621266687802
                   addDate: 2000-01-23T04:56:07.000+00:00
-                  groupNumber: 9
-                  totalSavings: 2.3317418552851765
+                  totalSavings: 6.568304668801491
                   grandTotalSavings: 2.674423984487264
-                  itemCount: 8
+                  itemCount: 9
                   eventCode: eventCode
                   logActivity: null
                   sale: true
                   damaged: true
                   orderItemStatusCode: null
-                  totalDiscount: 2.408218941758913
+                  totalDiscount: 6.936593194494838
                   cancelLocation: cancelLocation
                   itemNumber: 6
                   overflowCount: 6
@@ -49159,7 +49143,7 @@ components:
                   orderNumber: 3
                   activateDate: 2000-01-23T04:56:07.000+00:00
                   cancelUserId: cancelUserId
-                  netPrice: 6.568304668801491
+                  netPrice: 2.3317418552851765
                   oldPartnerConfirm: oldPartnerConfirm
                   partnerEvent: true
                   seats:
@@ -49270,14 +49254,14 @@ components:
                         height: 1
                         xcoordinate: 7
                       seatingTemplateCode: seatingTemplateCode
-                      zrotation: 1
+                      zrotation: 3
                       seatNumber: 5
                       sectionDesireability: 4
                       seatType: null
                       priceGrade: priceGrade
                       entranceCode: null
                       rowNumber: rowNumber
-                      xcoordinate: 3
+                      xcoordinate: 1
                     wheelchairOrMotorized: true
                     seatCode: seatCode
                     priceGrade: priceGrade
@@ -49390,14 +49374,14 @@ components:
                         height: 1
                         xcoordinate: 7
                       seatingTemplateCode: seatingTemplateCode
-                      zrotation: 1
+                      zrotation: 3
                       seatNumber: 5
                       sectionDesireability: 4
                       seatType: null
                       priceGrade: priceGrade
                       entranceCode: null
                       rowNumber: rowNumber
-                      xcoordinate: 3
+                      xcoordinate: 1
                     wheelchairOrMotorized: true
                     seatCode: seatCode
                     priceGrade: priceGrade
@@ -49405,18 +49389,17 @@ components:
                     ticketPrintStatus: null
                   transactionChargeItem: true
                   traDevLangCode: traDevLangCode
-                  totalTax: 5.103912736584151
+                  totalTax: 4.180725413706508
                   traDevCount: 7
-                  paidCount: 7
+                  paidCount: 3
                   givexNumber: givexNumber
                   empBenefitCode: null
-                  assignedSeatCount: 7
                   new: true
+                  assignedSeatCount: 4
                   overflowSeats:
                   - eventCode: eventCode
                     itemNumber: 8
                     ticketText: ticketText
-                    seatStatus: null
                     orderNumber: 4
                     orderItem: null
                     ticketStatus: null
@@ -49425,7 +49408,6 @@ components:
                   - eventCode: eventCode
                     itemNumber: 8
                     ticketText: ticketText
-                    seatStatus: null
                     orderNumber: 4
                     orderItem: null
                     ticketStatus: null
@@ -49436,7 +49418,7 @@ components:
                   showDateTime: 2000-01-23T04:56:07.000+00:00
                   seatOverbookCount: 5
                   transFromItem: 5
-                  totalCustomerDiscount: 4.515863748649669
+                  totalCustomerDiscount: 8.81377937009168
                   activeWithOrder: true
                   priceListCode: priceListCode
                   cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -49451,7 +49433,7 @@ components:
                     showStartDate: 2000-01-23T04:56:07.000+00:00
                     eventDescription: eventDescription
                     effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-                  manualDiscountValue: 1.4985931822280574
+                  manualDiscountValue: 4.075306827525243
                   travelPhoneNumber: travelPhoneNumber
                   sendToAccpac: true
                   seatDriverWithGroup: true
@@ -49491,7 +49473,7 @@ components:
                       specialSituationCode: specialSituationCode
                       specialSituationDesc: specialSituationDesc
                     specialSituationCode: specialSituationCode
-                  totalFee: 4.075306827525243
+                  totalFee: 7.964879197514727
                   itemTaxes:
                   - orderItem: null
                     entryDate: 2000-01-23T04:56:07.000+00:00
@@ -49518,12 +49500,12 @@ components:
                 priceValue: 9.965781217890562
                 ssMargin: 9.018348186070783
                 seatDiscountCount: 3
-                listPriceWithDiscounts: 9.739448828157911
-                totalSavings: 8.50835276411088
-                manDiscountDollarAmount: 9.728706165995554
+                listPriceWithDiscounts: 7.338782761819433
+                totalSavings: 3.3182952910080674
+                manDiscountDollarAmount: 5.099298781640682
                 specialDiscountTotalAmount: 6.84685269835264
                 specialDiscountCount: 9
-                totalDiscount: 0.05965928697733491
+                totalDiscount: 9.739448828157911
                 designationCode: null
                 custDiscountTypeCode: null
                 persisted: true
@@ -49543,22 +49525,22 @@ components:
                 seatDiscountTotalAmount: 1.1730742509559433
                 price: 9.369310271410669
                 manDiscountTypeCode: null
-                deltaCount: 7
-                unprintedCount: 5
-                savings: 3.3182952910080674
+                deltaCount: 1
+                unprintedCount: 0
+                savings: 9.728706165995554
                 printedCount: 5
                 specialTypeCode: null
                 new: true
                 compCount: 6
                 orderItem:
                   miscSkuRef: miscSkuRef
-                  seatedCount: 4
+                  seatedCount: 2
                   canDoSteps: true
                   itemGrandTotalPrice: 3.0937452626664474
-                  totalGratuity: 3.8463127686084055
+                  totalGratuity: 7.321091499885957
                   miscSkuDescription: miscSkuDescription
                   manDiscountCode: manDiscountCode
-                  totalDesignationCount: 0
+                  totalDesignationCount: 7
                   printedCount: 6
                   taxType: null
                   order:
@@ -49568,7 +49550,7 @@ components:
                     - null
                     finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
                     companyName: companyName
-                    totalGratuity: 4.863793115215697
+                    totalGratuity: 2.831445253698411
                     deliverDateTime: 2000-01-23T04:56:07.000+00:00
                     activeShowItems:
                     - null
@@ -52018,7 +52000,7 @@ components:
                     grandTotalSaving: 1.2786903972794905
                     sessionPaidAmount: 9.505836306729838
                     changeExistingDiscounts: true
-                    maxItemNumber: 5
+                    maxItemNumber: 9
                     resReqEncText: resReqEncText
                     depositAmount: 3.0205796992916243
                     heldName: heldName
@@ -52035,7 +52017,7 @@ components:
                     mailToPhone: mailToPhone
                     groupName: groupName
                     orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                    groupCount: 6
+                    groupCount: 1
                     contractReceivedDate: 2000-01-23T04:56:07.000+00:00
                     shipMethod: shipMethod
                     invalid: true
@@ -53227,11 +53209,11 @@ components:
                     - null
                     bypassAutoSpecial: true
                     logActivity: null
-                    totalTransactionCharge: 2.924533207692744
+                    totalTransactionCharge: 6.712603870693706
                     refNumber: refNumber
                     sessionRefundAmount: 8.768153453040833
                     emailTicketsProcessed: true
-                    totalDiscount: 9.007961177824221
+                    totalDiscount: 5.499986845135928
                     mailToName: mailToName
                     mailToOrganizationName: mailToOrganizationName
                     contactPhone: contactPhone
@@ -53958,7 +53940,7 @@ components:
                     authorizedUsers: authorizedUsers
                     highCountByOrderItem: 3
                     deliverStatus: deliverStatus
-                    totalTax: 2.831445253698411
+                    totalTax: 8.238101405568635
                     firstShowDate: 2000-01-23T04:56:07.000+00:00
                     ticketBatchAgent: ticketBatchAgent
                     invoiceType: null
@@ -53975,7 +53957,7 @@ components:
                     theaterLocationCode: null
                     latestEventOrderItem: null
                     taxExempt: true
-                    totalPaidAmount: 1.0046985756074744
+                    totalPaidAmount: 6.345503614942988
                     orderTotalPrice: 0.10263654006109402
                     amountPaidWhenOrderLoaded: 2.684056218962324
                     mailToSameAsCustomer: true
@@ -53985,7 +53967,7 @@ components:
                     completedDate: 2000-01-23T04:56:07.000+00:00
                     firstName: firstName
                     inventoryMoved: true
-                    totalCustomerDiscount: 6.345503614942988
+                    totalCustomerDiscount: 1.0046985756074744
                     specialRemoved: true
                     editMode: true
                     rpCustNumber: 8
@@ -53996,9 +53978,8 @@ components:
                     orderDate: 2000-01-23T04:56:07.000+00:00
                     addLocationCode: addLocationCode
                     specialCode: specialCode
-                    activeShowTourItemCount: 2
+                    activeShowTourItemCount: 5
                     readyForPrinting: true
-                    ticketDeliveryMessage: ticketDeliveryMessage
                     cancelDate: 2000-01-23T04:56:07.000+00:00
                     cancelReminderSent: true
                     authUserPhoneNumber: authUserPhoneNumber
@@ -54022,7 +54003,7 @@ components:
                     firstOccurringShowItem: null
                     sendToAccpac: true
                     earliestEventDate: 2000-01-23T04:56:07.000+00:00
-                    allItemsTotalPrice: 1.5743672347582194
+                    allItemsTotalPrice: 2.924533207692744
                     customerNumber: 6
                     sourceCodeComments: sourceCodeComments
                     special:
@@ -54125,8 +54106,8 @@ components:
                       acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
                       custDiscAddonOnly: true
                     finalSale: true
-                    totalFee: 5.499986845135928
-                    dueAmount: 8.569658089905484
+                    dueAmount: 4.863793115215697
+                    totalFee: 2.008994665592807
                     autoApplyDiscounts: true
                     persisted: true
                     presentedByName: presentedByName
@@ -54542,7 +54523,7 @@ components:
                   mealDateTime: 2000-01-23T04:56:07.000+00:00
                   cancelled: true
                   cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-                  allAssignedSeatCount: 7
+                  allAssignedSeatCount: 4
                   skuCode: skuCode
                   zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
                   voucherPrinted: true
@@ -54604,7 +54585,7 @@ components:
                     busSpaces: busSpaces
                     order: null
                   logChanges: true
-                  unprintedCount: 6
+                  unprintedCount: 0
                   free: true
                   event:
                     itemType: null
@@ -54722,19 +54703,18 @@ components:
                     eventStartDate: 2000-01-23T04:56:07.000+00:00
                     allowGroupDisc: true
                   givexSecurityCode: givexSecurityCode
-                  compCount: 4
+                  compCount: 5
                   itemTotalPrice: 2.8841621266687802
                   addDate: 2000-01-23T04:56:07.000+00:00
-                  groupNumber: 9
-                  totalSavings: 2.3317418552851765
+                  totalSavings: 6.568304668801491
                   grandTotalSavings: 2.674423984487264
-                  itemCount: 8
+                  itemCount: 9
                   eventCode: eventCode
                   logActivity: null
                   sale: true
                   damaged: true
                   orderItemStatusCode: null
-                  totalDiscount: 2.408218941758913
+                  totalDiscount: 6.936593194494838
                   cancelLocation: cancelLocation
                   itemNumber: 6
                   overflowCount: 6
@@ -54742,7 +54722,7 @@ components:
                   orderNumber: 3
                   activateDate: 2000-01-23T04:56:07.000+00:00
                   cancelUserId: cancelUserId
-                  netPrice: 6.568304668801491
+                  netPrice: 2.3317418552851765
                   oldPartnerConfirm: oldPartnerConfirm
                   partnerEvent: true
                   seats:
@@ -54853,14 +54833,14 @@ components:
                         height: 1
                         xcoordinate: 7
                       seatingTemplateCode: seatingTemplateCode
-                      zrotation: 1
+                      zrotation: 3
                       seatNumber: 5
                       sectionDesireability: 4
                       seatType: null
                       priceGrade: priceGrade
                       entranceCode: null
                       rowNumber: rowNumber
-                      xcoordinate: 3
+                      xcoordinate: 1
                     wheelchairOrMotorized: true
                     seatCode: seatCode
                     priceGrade: priceGrade
@@ -54973,14 +54953,14 @@ components:
                         height: 1
                         xcoordinate: 7
                       seatingTemplateCode: seatingTemplateCode
-                      zrotation: 1
+                      zrotation: 3
                       seatNumber: 5
                       sectionDesireability: 4
                       seatType: null
                       priceGrade: priceGrade
                       entranceCode: null
                       rowNumber: rowNumber
-                      xcoordinate: 3
+                      xcoordinate: 1
                     wheelchairOrMotorized: true
                     seatCode: seatCode
                     priceGrade: priceGrade
@@ -54988,18 +54968,17 @@ components:
                     ticketPrintStatus: null
                   transactionChargeItem: true
                   traDevLangCode: traDevLangCode
-                  totalTax: 5.103912736584151
+                  totalTax: 4.180725413706508
                   traDevCount: 7
-                  paidCount: 7
+                  paidCount: 3
                   givexNumber: givexNumber
                   empBenefitCode: null
-                  assignedSeatCount: 7
                   new: true
+                  assignedSeatCount: 4
                   overflowSeats:
                   - eventCode: eventCode
                     itemNumber: 8
                     ticketText: ticketText
-                    seatStatus: null
                     orderNumber: 4
                     orderItem: null
                     ticketStatus: null
@@ -55008,7 +54987,6 @@ components:
                   - eventCode: eventCode
                     itemNumber: 8
                     ticketText: ticketText
-                    seatStatus: null
                     orderNumber: 4
                     orderItem: null
                     ticketStatus: null
@@ -55019,7 +54997,7 @@ components:
                   showDateTime: 2000-01-23T04:56:07.000+00:00
                   seatOverbookCount: 5
                   transFromItem: 5
-                  totalCustomerDiscount: 4.515863748649669
+                  totalCustomerDiscount: 8.81377937009168
                   activeWithOrder: true
                   priceListCode: priceListCode
                   cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -55034,7 +55012,7 @@ components:
                     showStartDate: 2000-01-23T04:56:07.000+00:00
                     eventDescription: eventDescription
                     effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-                  manualDiscountValue: 1.4985931822280574
+                  manualDiscountValue: 4.075306827525243
                   travelPhoneNumber: travelPhoneNumber
                   sendToAccpac: true
                   seatDriverWithGroup: true
@@ -55074,7 +55052,7 @@ components:
                       specialSituationCode: specialSituationCode
                       specialSituationDesc: specialSituationDesc
                     specialSituationCode: specialSituationCode
-                  totalFee: 4.075306827525243
+                  totalFee: 7.964879197514727
                   itemTaxes:
                   - orderItem: null
                     entryDate: 2000-01-23T04:56:07.000+00:00
@@ -55101,12 +55079,12 @@ components:
                 priceValue: 9.965781217890562
                 ssMargin: 9.018348186070783
                 seatDiscountCount: 3
-                listPriceWithDiscounts: 9.739448828157911
-                totalSavings: 8.50835276411088
-                manDiscountDollarAmount: 9.728706165995554
+                listPriceWithDiscounts: 7.338782761819433
+                totalSavings: 3.3182952910080674
+                manDiscountDollarAmount: 5.099298781640682
                 specialDiscountTotalAmount: 6.84685269835264
                 specialDiscountCount: 9
-                totalDiscount: 0.05965928697733491
+                totalDiscount: 9.739448828157911
                 designationCode: null
                 custDiscountTypeCode: null
                 persisted: true
@@ -55120,6 +55098,7 @@ components:
             emailAddress: emailAddress
             phoneNumber: phoneNumber
             organizationName: organizationName
+            emailList: true
             websiteCustomerSearchRequest:
               firstName: firstName
               lastName: lastName
@@ -55133,17 +55112,17 @@ components:
                 state: state
               companyName: companyName
               phones:
-              - sequenceNumber: 9
+              - sequenceNumber: 8
                 phoneType: null
                 phoneNumber: phoneNumber
                 deleted: true
                 phoneNote: phoneNote
-              - sequenceNumber: 9
+              - sequenceNumber: 8
                 phoneType: null
                 phoneNumber: phoneNumber
                 deleted: true
                 phoneNote: phoneNote
-              - sequenceNumber: 9
+              - sequenceNumber: 8
                 phoneType: null
                 phoneNumber: phoneNumber
                 deleted: true
@@ -55163,7 +55142,7 @@ components:
               addressLine1: addressLine1
               addressLine2: addressLine2
               state: state
-        seatLockToken: 9
+        seatLockToken: 5
       properties:
         cart:
           $ref: '#/components/schemas/CartRequest'
@@ -55174,7 +55153,11 @@ components:
         seatLockToken:
           format: int64
           type: integer
+        overflowSeatCount:
+          format: int32
+          type: integer
         emailList:
+          deprecated: true
           type: boolean
         sameGroupConfirm:
           type: boolean
@@ -55189,6 +55172,7 @@ components:
         emailAddress: emailAddress
         phoneNumber: phoneNumber
         organizationName: organizationName
+        emailList: true
         websiteCustomerSearchRequest:
           firstName: firstName
           lastName: lastName
@@ -55202,17 +55186,17 @@ components:
             state: state
           companyName: companyName
           phones:
-          - sequenceNumber: 9
+          - sequenceNumber: 8
             phoneType: null
             phoneNumber: phoneNumber
             deleted: true
             phoneNote: phoneNote
-          - sequenceNumber: 9
+          - sequenceNumber: 8
             phoneType: null
             phoneNumber: phoneNumber
             deleted: true
             phoneNote: phoneNote
-          - sequenceNumber: 9
+          - sequenceNumber: 8
             phoneType: null
             phoneNumber: phoneNumber
             deleted: true
@@ -55252,19 +55236,21 @@ components:
           $ref: '#/components/schemas/AddressExtended'
         shippingAddress:
           $ref: '#/components/schemas/AddressExtended'
+        emailList:
+          type: boolean
         websiteCustomerSearchRequest:
           $ref: '#/components/schemas/CreateWebsiteCustomerRequest'
       type: object
     OrderItem:
       example:
         miscSkuRef: miscSkuRef
-        seatedCount: 4
+        seatedCount: 2
         canDoSteps: true
         itemGrandTotalPrice: 3.0937452626664474
-        totalGratuity: 3.8463127686084055
+        totalGratuity: 7.321091499885957
         miscSkuDescription: miscSkuDescription
         manDiscountCode: manDiscountCode
-        totalDesignationCount: 0
+        totalDesignationCount: 7
         printedCount: 6
         taxType: null
         order:
@@ -55274,7 +55260,7 @@ components:
           - null
           finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
           companyName: companyName
-          totalGratuity: 4.863793115215697
+          totalGratuity: 2.831445253698411
           deliverDateTime: 2000-01-23T04:56:07.000+00:00
           activeShowItems:
           - null
@@ -57724,7 +57710,7 @@ components:
           grandTotalSaving: 1.2786903972794905
           sessionPaidAmount: 9.505836306729838
           changeExistingDiscounts: true
-          maxItemNumber: 5
+          maxItemNumber: 9
           resReqEncText: resReqEncText
           depositAmount: 3.0205796992916243
           heldName: heldName
@@ -57741,7 +57727,7 @@ components:
           mailToPhone: mailToPhone
           groupName: groupName
           orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          groupCount: 6
+          groupCount: 1
           contractReceivedDate: 2000-01-23T04:56:07.000+00:00
           shipMethod: shipMethod
           invalid: true
@@ -58933,11 +58919,11 @@ components:
           - null
           bypassAutoSpecial: true
           logActivity: null
-          totalTransactionCharge: 2.924533207692744
+          totalTransactionCharge: 6.712603870693706
           refNumber: refNumber
           sessionRefundAmount: 8.768153453040833
           emailTicketsProcessed: true
-          totalDiscount: 9.007961177824221
+          totalDiscount: 5.499986845135928
           mailToName: mailToName
           mailToOrganizationName: mailToOrganizationName
           contactPhone: contactPhone
@@ -59664,7 +59650,7 @@ components:
           authorizedUsers: authorizedUsers
           highCountByOrderItem: 3
           deliverStatus: deliverStatus
-          totalTax: 2.831445253698411
+          totalTax: 8.238101405568635
           firstShowDate: 2000-01-23T04:56:07.000+00:00
           ticketBatchAgent: ticketBatchAgent
           invoiceType: null
@@ -59681,7 +59667,7 @@ components:
           theaterLocationCode: null
           latestEventOrderItem: null
           taxExempt: true
-          totalPaidAmount: 1.0046985756074744
+          totalPaidAmount: 6.345503614942988
           orderTotalPrice: 0.10263654006109402
           amountPaidWhenOrderLoaded: 2.684056218962324
           mailToSameAsCustomer: true
@@ -59691,7 +59677,7 @@ components:
           completedDate: 2000-01-23T04:56:07.000+00:00
           firstName: firstName
           inventoryMoved: true
-          totalCustomerDiscount: 6.345503614942988
+          totalCustomerDiscount: 1.0046985756074744
           specialRemoved: true
           editMode: true
           rpCustNumber: 8
@@ -59702,9 +59688,8 @@ components:
           orderDate: 2000-01-23T04:56:07.000+00:00
           addLocationCode: addLocationCode
           specialCode: specialCode
-          activeShowTourItemCount: 2
+          activeShowTourItemCount: 5
           readyForPrinting: true
-          ticketDeliveryMessage: ticketDeliveryMessage
           cancelDate: 2000-01-23T04:56:07.000+00:00
           cancelReminderSent: true
           authUserPhoneNumber: authUserPhoneNumber
@@ -59728,7 +59713,7 @@ components:
           firstOccurringShowItem: null
           sendToAccpac: true
           earliestEventDate: 2000-01-23T04:56:07.000+00:00
-          allItemsTotalPrice: 1.5743672347582194
+          allItemsTotalPrice: 2.924533207692744
           customerNumber: 6
           sourceCodeComments: sourceCodeComments
           special:
@@ -59831,8 +59816,8 @@ components:
             acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
             custDiscAddonOnly: true
           finalSale: true
-          totalFee: 5.499986845135928
-          dueAmount: 8.569658089905484
+          dueAmount: 4.863793115215697
+          totalFee: 2.008994665592807
           autoApplyDiscounts: true
           persisted: true
           presentedByName: presentedByName
@@ -60248,7 +60233,7 @@ components:
         mealDateTime: 2000-01-23T04:56:07.000+00:00
         cancelled: true
         cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-        allAssignedSeatCount: 7
+        allAssignedSeatCount: 4
         skuCode: skuCode
         zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
         voucherPrinted: true
@@ -60310,7 +60295,7 @@ components:
           busSpaces: busSpaces
           order: null
         logChanges: true
-        unprintedCount: 6
+        unprintedCount: 0
         free: true
         event:
           itemType: null
@@ -60428,19 +60413,18 @@ components:
           eventStartDate: 2000-01-23T04:56:07.000+00:00
           allowGroupDisc: true
         givexSecurityCode: givexSecurityCode
-        compCount: 4
+        compCount: 5
         itemTotalPrice: 2.8841621266687802
         addDate: 2000-01-23T04:56:07.000+00:00
-        groupNumber: 9
-        totalSavings: 2.3317418552851765
+        totalSavings: 6.568304668801491
         grandTotalSavings: 2.674423984487264
-        itemCount: 8
+        itemCount: 9
         eventCode: eventCode
         logActivity: null
         sale: true
         damaged: true
         orderItemStatusCode: null
-        totalDiscount: 2.408218941758913
+        totalDiscount: 6.936593194494838
         cancelLocation: cancelLocation
         itemNumber: 6
         overflowCount: 6
@@ -60448,7 +60432,7 @@ components:
         orderNumber: 3
         activateDate: 2000-01-23T04:56:07.000+00:00
         cancelUserId: cancelUserId
-        netPrice: 6.568304668801491
+        netPrice: 2.3317418552851765
         oldPartnerConfirm: oldPartnerConfirm
         partnerEvent: true
         seats:
@@ -60559,14 +60543,14 @@ components:
               height: 1
               xcoordinate: 7
             seatingTemplateCode: seatingTemplateCode
-            zrotation: 1
+            zrotation: 3
             seatNumber: 5
             sectionDesireability: 4
             seatType: null
             priceGrade: priceGrade
             entranceCode: null
             rowNumber: rowNumber
-            xcoordinate: 3
+            xcoordinate: 1
           wheelchairOrMotorized: true
           seatCode: seatCode
           priceGrade: priceGrade
@@ -60679,14 +60663,14 @@ components:
               height: 1
               xcoordinate: 7
             seatingTemplateCode: seatingTemplateCode
-            zrotation: 1
+            zrotation: 3
             seatNumber: 5
             sectionDesireability: 4
             seatType: null
             priceGrade: priceGrade
             entranceCode: null
             rowNumber: rowNumber
-            xcoordinate: 3
+            xcoordinate: 1
           wheelchairOrMotorized: true
           seatCode: seatCode
           priceGrade: priceGrade
@@ -60694,18 +60678,17 @@ components:
           ticketPrintStatus: null
         transactionChargeItem: true
         traDevLangCode: traDevLangCode
-        totalTax: 5.103912736584151
+        totalTax: 4.180725413706508
         traDevCount: 7
-        paidCount: 7
+        paidCount: 3
         givexNumber: givexNumber
         empBenefitCode: null
-        assignedSeatCount: 7
         new: true
+        assignedSeatCount: 4
         overflowSeats:
         - eventCode: eventCode
           itemNumber: 8
           ticketText: ticketText
-          seatStatus: null
           orderNumber: 4
           orderItem: null
           ticketStatus: null
@@ -60714,7 +60697,6 @@ components:
         - eventCode: eventCode
           itemNumber: 8
           ticketText: ticketText
-          seatStatus: null
           orderNumber: 4
           orderItem: null
           ticketStatus: null
@@ -60725,7 +60707,7 @@ components:
         showDateTime: 2000-01-23T04:56:07.000+00:00
         seatOverbookCount: 5
         transFromItem: 5
-        totalCustomerDiscount: 4.515863748649669
+        totalCustomerDiscount: 8.81377937009168
         activeWithOrder: true
         priceListCode: priceListCode
         cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -60740,7 +60722,7 @@ components:
           showStartDate: 2000-01-23T04:56:07.000+00:00
           eventDescription: eventDescription
           effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-        manualDiscountValue: 1.4985931822280574
+        manualDiscountValue: 4.075306827525243
         travelPhoneNumber: travelPhoneNumber
         sendToAccpac: true
         seatDriverWithGroup: true
@@ -60780,7 +60762,7 @@ components:
             specialSituationCode: specialSituationCode
             specialSituationDesc: specialSituationDesc
           specialSituationCode: specialSituationCode
-        totalFee: 4.075306827525243
+        totalFee: 7.964879197514727
         itemTaxes:
         - orderItem: null
           entryDate: 2000-01-23T04:56:07.000+00:00
@@ -61039,9 +61021,6 @@ components:
           type: integer
         sendToAccpac:
           type: boolean
-        groupNumber:
-          format: int32
-          type: integer
         persisted:
           type: boolean
         count:
@@ -61052,59 +61031,59 @@ components:
           type: integer
         cancelled:
           type: boolean
-        compCount:
-          format: int32
-          type: integer
-        paidCount:
-          format: int32
-          type: integer
-        seatedCount:
-          format: int32
-          type: integer
-        assignedSeatCount:
-          format: int32
-          type: integer
-        taxType:
-          $ref: '#/components/schemas/TaxType'
-        transactionChargeItem:
+        totalCustomerDiscount:
+          type: number
+        firstOccurringFeeDate:
+          format: date-time
+          type: string
+        new:
           type: boolean
         allAssignedSeatCount:
           format: int32
           type: integer
-        totalDiscount:
+        transactionChargeItem:
+          type: boolean
+        totalFee:
           type: number
-        unprintedCount:
-          format: int32
-          type: integer
+        taxType:
+          $ref: '#/components/schemas/TaxType'
+        totalTax:
+          type: number
         totalGratuity:
           type: number
         totalDesignationCount:
           format: int32
           type: integer
-        totalTax:
+        seatedCount:
+          format: int32
+          type: integer
+        totalDiscount:
           type: number
-        totalCustomerDiscount:
-          type: number
+        paidCount:
+          format: int32
+          type: integer
+        unprintedCount:
+          format: int32
+          type: integer
+        compCount:
+          format: int32
+          type: integer
         zonedEventDateTime:
           format: date-time
           type: string
-        firstOccurringFeeDate:
-          format: date-time
-          type: string
-        totalFee:
+        assignedSeatCount:
+          format: int32
+          type: integer
+        manualDiscountValue:
           type: number
-        new:
-          type: boolean
         grandTotalSavings:
-          type: number
-        totalSavings:
           type: number
         netPrice:
           type: number
+        totalSavings:
+          type: number
         taxable:
           type: boolean
-        manualDiscountValue:
-          type: number
       required:
       - eventCode
       - itemTotalPrice
@@ -61190,22 +61169,22 @@ components:
         seatDiscountTotalAmount: 1.1730742509559433
         price: 9.369310271410669
         manDiscountTypeCode: null
-        deltaCount: 7
-        unprintedCount: 5
-        savings: 3.3182952910080674
+        deltaCount: 1
+        unprintedCount: 0
+        savings: 9.728706165995554
         printedCount: 5
         specialTypeCode: null
         new: true
         compCount: 6
         orderItem:
           miscSkuRef: miscSkuRef
-          seatedCount: 4
+          seatedCount: 2
           canDoSteps: true
           itemGrandTotalPrice: 3.0937452626664474
-          totalGratuity: 3.8463127686084055
+          totalGratuity: 7.321091499885957
           miscSkuDescription: miscSkuDescription
           manDiscountCode: manDiscountCode
-          totalDesignationCount: 0
+          totalDesignationCount: 7
           printedCount: 6
           taxType: null
           order:
@@ -61215,7 +61194,7 @@ components:
             - null
             finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
             companyName: companyName
-            totalGratuity: 4.863793115215697
+            totalGratuity: 2.831445253698411
             deliverDateTime: 2000-01-23T04:56:07.000+00:00
             activeShowItems:
             - null
@@ -63665,7 +63644,7 @@ components:
             grandTotalSaving: 1.2786903972794905
             sessionPaidAmount: 9.505836306729838
             changeExistingDiscounts: true
-            maxItemNumber: 5
+            maxItemNumber: 9
             resReqEncText: resReqEncText
             depositAmount: 3.0205796992916243
             heldName: heldName
@@ -63682,7 +63661,7 @@ components:
             mailToPhone: mailToPhone
             groupName: groupName
             orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            groupCount: 6
+            groupCount: 1
             contractReceivedDate: 2000-01-23T04:56:07.000+00:00
             shipMethod: shipMethod
             invalid: true
@@ -64874,11 +64853,11 @@ components:
             - null
             bypassAutoSpecial: true
             logActivity: null
-            totalTransactionCharge: 2.924533207692744
+            totalTransactionCharge: 6.712603870693706
             refNumber: refNumber
             sessionRefundAmount: 8.768153453040833
             emailTicketsProcessed: true
-            totalDiscount: 9.007961177824221
+            totalDiscount: 5.499986845135928
             mailToName: mailToName
             mailToOrganizationName: mailToOrganizationName
             contactPhone: contactPhone
@@ -65605,7 +65584,7 @@ components:
             authorizedUsers: authorizedUsers
             highCountByOrderItem: 3
             deliverStatus: deliverStatus
-            totalTax: 2.831445253698411
+            totalTax: 8.238101405568635
             firstShowDate: 2000-01-23T04:56:07.000+00:00
             ticketBatchAgent: ticketBatchAgent
             invoiceType: null
@@ -65622,7 +65601,7 @@ components:
             theaterLocationCode: null
             latestEventOrderItem: null
             taxExempt: true
-            totalPaidAmount: 1.0046985756074744
+            totalPaidAmount: 6.345503614942988
             orderTotalPrice: 0.10263654006109402
             amountPaidWhenOrderLoaded: 2.684056218962324
             mailToSameAsCustomer: true
@@ -65632,7 +65611,7 @@ components:
             completedDate: 2000-01-23T04:56:07.000+00:00
             firstName: firstName
             inventoryMoved: true
-            totalCustomerDiscount: 6.345503614942988
+            totalCustomerDiscount: 1.0046985756074744
             specialRemoved: true
             editMode: true
             rpCustNumber: 8
@@ -65643,9 +65622,8 @@ components:
             orderDate: 2000-01-23T04:56:07.000+00:00
             addLocationCode: addLocationCode
             specialCode: specialCode
-            activeShowTourItemCount: 2
+            activeShowTourItemCount: 5
             readyForPrinting: true
-            ticketDeliveryMessage: ticketDeliveryMessage
             cancelDate: 2000-01-23T04:56:07.000+00:00
             cancelReminderSent: true
             authUserPhoneNumber: authUserPhoneNumber
@@ -65669,7 +65647,7 @@ components:
             firstOccurringShowItem: null
             sendToAccpac: true
             earliestEventDate: 2000-01-23T04:56:07.000+00:00
-            allItemsTotalPrice: 1.5743672347582194
+            allItemsTotalPrice: 2.924533207692744
             customerNumber: 6
             sourceCodeComments: sourceCodeComments
             special:
@@ -65772,8 +65750,8 @@ components:
               acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
               custDiscAddonOnly: true
             finalSale: true
-            totalFee: 5.499986845135928
-            dueAmount: 8.569658089905484
+            dueAmount: 4.863793115215697
+            totalFee: 2.008994665592807
             autoApplyDiscounts: true
             persisted: true
             presentedByName: presentedByName
@@ -66189,7 +66167,7 @@ components:
           mealDateTime: 2000-01-23T04:56:07.000+00:00
           cancelled: true
           cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-          allAssignedSeatCount: 7
+          allAssignedSeatCount: 4
           skuCode: skuCode
           zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
           voucherPrinted: true
@@ -66251,7 +66229,7 @@ components:
             busSpaces: busSpaces
             order: null
           logChanges: true
-          unprintedCount: 6
+          unprintedCount: 0
           free: true
           event:
             itemType: null
@@ -66369,19 +66347,18 @@ components:
             eventStartDate: 2000-01-23T04:56:07.000+00:00
             allowGroupDisc: true
           givexSecurityCode: givexSecurityCode
-          compCount: 4
+          compCount: 5
           itemTotalPrice: 2.8841621266687802
           addDate: 2000-01-23T04:56:07.000+00:00
-          groupNumber: 9
-          totalSavings: 2.3317418552851765
+          totalSavings: 6.568304668801491
           grandTotalSavings: 2.674423984487264
-          itemCount: 8
+          itemCount: 9
           eventCode: eventCode
           logActivity: null
           sale: true
           damaged: true
           orderItemStatusCode: null
-          totalDiscount: 2.408218941758913
+          totalDiscount: 6.936593194494838
           cancelLocation: cancelLocation
           itemNumber: 6
           overflowCount: 6
@@ -66389,7 +66366,7 @@ components:
           orderNumber: 3
           activateDate: 2000-01-23T04:56:07.000+00:00
           cancelUserId: cancelUserId
-          netPrice: 6.568304668801491
+          netPrice: 2.3317418552851765
           oldPartnerConfirm: oldPartnerConfirm
           partnerEvent: true
           seats:
@@ -66500,14 +66477,14 @@ components:
                 height: 1
                 xcoordinate: 7
               seatingTemplateCode: seatingTemplateCode
-              zrotation: 1
+              zrotation: 3
               seatNumber: 5
               sectionDesireability: 4
               seatType: null
               priceGrade: priceGrade
               entranceCode: null
               rowNumber: rowNumber
-              xcoordinate: 3
+              xcoordinate: 1
             wheelchairOrMotorized: true
             seatCode: seatCode
             priceGrade: priceGrade
@@ -66620,14 +66597,14 @@ components:
                 height: 1
                 xcoordinate: 7
               seatingTemplateCode: seatingTemplateCode
-              zrotation: 1
+              zrotation: 3
               seatNumber: 5
               sectionDesireability: 4
               seatType: null
               priceGrade: priceGrade
               entranceCode: null
               rowNumber: rowNumber
-              xcoordinate: 3
+              xcoordinate: 1
             wheelchairOrMotorized: true
             seatCode: seatCode
             priceGrade: priceGrade
@@ -66635,18 +66612,17 @@ components:
             ticketPrintStatus: null
           transactionChargeItem: true
           traDevLangCode: traDevLangCode
-          totalTax: 5.103912736584151
+          totalTax: 4.180725413706508
           traDevCount: 7
-          paidCount: 7
+          paidCount: 3
           givexNumber: givexNumber
           empBenefitCode: null
-          assignedSeatCount: 7
           new: true
+          assignedSeatCount: 4
           overflowSeats:
           - eventCode: eventCode
             itemNumber: 8
             ticketText: ticketText
-            seatStatus: null
             orderNumber: 4
             orderItem: null
             ticketStatus: null
@@ -66655,7 +66631,6 @@ components:
           - eventCode: eventCode
             itemNumber: 8
             ticketText: ticketText
-            seatStatus: null
             orderNumber: 4
             orderItem: null
             ticketStatus: null
@@ -66666,7 +66641,7 @@ components:
           showDateTime: 2000-01-23T04:56:07.000+00:00
           seatOverbookCount: 5
           transFromItem: 5
-          totalCustomerDiscount: 4.515863748649669
+          totalCustomerDiscount: 8.81377937009168
           activeWithOrder: true
           priceListCode: priceListCode
           cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -66681,7 +66656,7 @@ components:
             showStartDate: 2000-01-23T04:56:07.000+00:00
             eventDescription: eventDescription
             effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-          manualDiscountValue: 1.4985931822280574
+          manualDiscountValue: 4.075306827525243
           travelPhoneNumber: travelPhoneNumber
           sendToAccpac: true
           seatDriverWithGroup: true
@@ -66721,7 +66696,7 @@ components:
               specialSituationCode: specialSituationCode
               specialSituationDesc: specialSituationDesc
             specialSituationCode: specialSituationCode
-          totalFee: 4.075306827525243
+          totalFee: 7.964879197514727
           itemTaxes:
           - orderItem: null
             entryDate: 2000-01-23T04:56:07.000+00:00
@@ -66748,12 +66723,12 @@ components:
         priceValue: 9.965781217890562
         ssMargin: 9.018348186070783
         seatDiscountCount: 3
-        listPriceWithDiscounts: 9.739448828157911
-        totalSavings: 8.50835276411088
-        manDiscountDollarAmount: 9.728706165995554
+        listPriceWithDiscounts: 7.338782761819433
+        totalSavings: 3.3182952910080674
+        manDiscountDollarAmount: 5.099298781640682
         specialDiscountTotalAmount: 6.84685269835264
         specialDiscountCount: 9
-        totalDiscount: 0.05965928697733491
+        totalDiscount: 9.739448828157911
         designationCode: null
         custDiscountTypeCode: null
         persisted: true
@@ -66829,6 +66804,8 @@ components:
           type: integer
         persisted:
           type: boolean
+        new:
+          type: boolean
         listPriceWithDiscounts:
           type: number
         totalDiscount:
@@ -66840,8 +66817,6 @@ components:
           type: number
         savings:
           type: number
-        new:
-          type: boolean
         totalSavings:
           type: number
       required:
@@ -66871,22 +66846,22 @@ components:
           seatDiscountTotalAmount: 1.1730742509559433
           price: 9.369310271410669
           manDiscountTypeCode: null
-          deltaCount: 7
-          unprintedCount: 5
-          savings: 3.3182952910080674
+          deltaCount: 1
+          unprintedCount: 0
+          savings: 9.728706165995554
           printedCount: 5
           specialTypeCode: null
           new: true
           compCount: 6
           orderItem:
             miscSkuRef: miscSkuRef
-            seatedCount: 4
+            seatedCount: 2
             canDoSteps: true
             itemGrandTotalPrice: 3.0937452626664474
-            totalGratuity: 3.8463127686084055
+            totalGratuity: 7.321091499885957
             miscSkuDescription: miscSkuDescription
             manDiscountCode: manDiscountCode
-            totalDesignationCount: 0
+            totalDesignationCount: 7
             printedCount: 6
             taxType: null
             order:
@@ -66896,7 +66871,7 @@ components:
               - null
               finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
               companyName: companyName
-              totalGratuity: 4.863793115215697
+              totalGratuity: 2.831445253698411
               deliverDateTime: 2000-01-23T04:56:07.000+00:00
               activeShowItems:
               - null
@@ -69346,7 +69321,7 @@ components:
               grandTotalSaving: 1.2786903972794905
               sessionPaidAmount: 9.505836306729838
               changeExistingDiscounts: true
-              maxItemNumber: 5
+              maxItemNumber: 9
               resReqEncText: resReqEncText
               depositAmount: 3.0205796992916243
               heldName: heldName
@@ -69363,7 +69338,7 @@ components:
               mailToPhone: mailToPhone
               groupName: groupName
               orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              groupCount: 6
+              groupCount: 1
               contractReceivedDate: 2000-01-23T04:56:07.000+00:00
               shipMethod: shipMethod
               invalid: true
@@ -70555,11 +70530,11 @@ components:
               - null
               bypassAutoSpecial: true
               logActivity: null
-              totalTransactionCharge: 2.924533207692744
+              totalTransactionCharge: 6.712603870693706
               refNumber: refNumber
               sessionRefundAmount: 8.768153453040833
               emailTicketsProcessed: true
-              totalDiscount: 9.007961177824221
+              totalDiscount: 5.499986845135928
               mailToName: mailToName
               mailToOrganizationName: mailToOrganizationName
               contactPhone: contactPhone
@@ -71286,7 +71261,7 @@ components:
               authorizedUsers: authorizedUsers
               highCountByOrderItem: 3
               deliverStatus: deliverStatus
-              totalTax: 2.831445253698411
+              totalTax: 8.238101405568635
               firstShowDate: 2000-01-23T04:56:07.000+00:00
               ticketBatchAgent: ticketBatchAgent
               invoiceType: null
@@ -71303,7 +71278,7 @@ components:
               theaterLocationCode: null
               latestEventOrderItem: null
               taxExempt: true
-              totalPaidAmount: 1.0046985756074744
+              totalPaidAmount: 6.345503614942988
               orderTotalPrice: 0.10263654006109402
               amountPaidWhenOrderLoaded: 2.684056218962324
               mailToSameAsCustomer: true
@@ -71313,7 +71288,7 @@ components:
               completedDate: 2000-01-23T04:56:07.000+00:00
               firstName: firstName
               inventoryMoved: true
-              totalCustomerDiscount: 6.345503614942988
+              totalCustomerDiscount: 1.0046985756074744
               specialRemoved: true
               editMode: true
               rpCustNumber: 8
@@ -71324,9 +71299,8 @@ components:
               orderDate: 2000-01-23T04:56:07.000+00:00
               addLocationCode: addLocationCode
               specialCode: specialCode
-              activeShowTourItemCount: 2
+              activeShowTourItemCount: 5
               readyForPrinting: true
-              ticketDeliveryMessage: ticketDeliveryMessage
               cancelDate: 2000-01-23T04:56:07.000+00:00
               cancelReminderSent: true
               authUserPhoneNumber: authUserPhoneNumber
@@ -71350,7 +71324,7 @@ components:
               firstOccurringShowItem: null
               sendToAccpac: true
               earliestEventDate: 2000-01-23T04:56:07.000+00:00
-              allItemsTotalPrice: 1.5743672347582194
+              allItemsTotalPrice: 2.924533207692744
               customerNumber: 6
               sourceCodeComments: sourceCodeComments
               special:
@@ -71453,8 +71427,8 @@ components:
                 acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
                 custDiscAddonOnly: true
               finalSale: true
-              totalFee: 5.499986845135928
-              dueAmount: 8.569658089905484
+              dueAmount: 4.863793115215697
+              totalFee: 2.008994665592807
               autoApplyDiscounts: true
               persisted: true
               presentedByName: presentedByName
@@ -71870,7 +71844,7 @@ components:
             mealDateTime: 2000-01-23T04:56:07.000+00:00
             cancelled: true
             cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-            allAssignedSeatCount: 7
+            allAssignedSeatCount: 4
             skuCode: skuCode
             zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
             voucherPrinted: true
@@ -71932,7 +71906,7 @@ components:
               busSpaces: busSpaces
               order: null
             logChanges: true
-            unprintedCount: 6
+            unprintedCount: 0
             free: true
             event:
               itemType: null
@@ -72050,19 +72024,18 @@ components:
               eventStartDate: 2000-01-23T04:56:07.000+00:00
               allowGroupDisc: true
             givexSecurityCode: givexSecurityCode
-            compCount: 4
+            compCount: 5
             itemTotalPrice: 2.8841621266687802
             addDate: 2000-01-23T04:56:07.000+00:00
-            groupNumber: 9
-            totalSavings: 2.3317418552851765
+            totalSavings: 6.568304668801491
             grandTotalSavings: 2.674423984487264
-            itemCount: 8
+            itemCount: 9
             eventCode: eventCode
             logActivity: null
             sale: true
             damaged: true
             orderItemStatusCode: null
-            totalDiscount: 2.408218941758913
+            totalDiscount: 6.936593194494838
             cancelLocation: cancelLocation
             itemNumber: 6
             overflowCount: 6
@@ -72070,7 +72043,7 @@ components:
             orderNumber: 3
             activateDate: 2000-01-23T04:56:07.000+00:00
             cancelUserId: cancelUserId
-            netPrice: 6.568304668801491
+            netPrice: 2.3317418552851765
             oldPartnerConfirm: oldPartnerConfirm
             partnerEvent: true
             seats:
@@ -72181,14 +72154,14 @@ components:
                   height: 1
                   xcoordinate: 7
                 seatingTemplateCode: seatingTemplateCode
-                zrotation: 1
+                zrotation: 3
                 seatNumber: 5
                 sectionDesireability: 4
                 seatType: null
                 priceGrade: priceGrade
                 entranceCode: null
                 rowNumber: rowNumber
-                xcoordinate: 3
+                xcoordinate: 1
               wheelchairOrMotorized: true
               seatCode: seatCode
               priceGrade: priceGrade
@@ -72301,14 +72274,14 @@ components:
                   height: 1
                   xcoordinate: 7
                 seatingTemplateCode: seatingTemplateCode
-                zrotation: 1
+                zrotation: 3
                 seatNumber: 5
                 sectionDesireability: 4
                 seatType: null
                 priceGrade: priceGrade
                 entranceCode: null
                 rowNumber: rowNumber
-                xcoordinate: 3
+                xcoordinate: 1
               wheelchairOrMotorized: true
               seatCode: seatCode
               priceGrade: priceGrade
@@ -72316,18 +72289,17 @@ components:
               ticketPrintStatus: null
             transactionChargeItem: true
             traDevLangCode: traDevLangCode
-            totalTax: 5.103912736584151
+            totalTax: 4.180725413706508
             traDevCount: 7
-            paidCount: 7
+            paidCount: 3
             givexNumber: givexNumber
             empBenefitCode: null
-            assignedSeatCount: 7
             new: true
+            assignedSeatCount: 4
             overflowSeats:
             - eventCode: eventCode
               itemNumber: 8
               ticketText: ticketText
-              seatStatus: null
               orderNumber: 4
               orderItem: null
               ticketStatus: null
@@ -72336,7 +72308,6 @@ components:
             - eventCode: eventCode
               itemNumber: 8
               ticketText: ticketText
-              seatStatus: null
               orderNumber: 4
               orderItem: null
               ticketStatus: null
@@ -72347,7 +72318,7 @@ components:
             showDateTime: 2000-01-23T04:56:07.000+00:00
             seatOverbookCount: 5
             transFromItem: 5
-            totalCustomerDiscount: 4.515863748649669
+            totalCustomerDiscount: 8.81377937009168
             activeWithOrder: true
             priceListCode: priceListCode
             cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -72362,7 +72333,7 @@ components:
               showStartDate: 2000-01-23T04:56:07.000+00:00
               eventDescription: eventDescription
               effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-            manualDiscountValue: 1.4985931822280574
+            manualDiscountValue: 4.075306827525243
             travelPhoneNumber: travelPhoneNumber
             sendToAccpac: true
             seatDriverWithGroup: true
@@ -72402,7 +72373,7 @@ components:
                 specialSituationCode: specialSituationCode
                 specialSituationDesc: specialSituationDesc
               specialSituationCode: specialSituationCode
-            totalFee: 4.075306827525243
+            totalFee: 7.964879197514727
             itemTaxes:
             - orderItem: null
               entryDate: 2000-01-23T04:56:07.000+00:00
@@ -72429,12 +72400,12 @@ components:
           priceValue: 9.965781217890562
           ssMargin: 9.018348186070783
           seatDiscountCount: 3
-          listPriceWithDiscounts: 9.739448828157911
-          totalSavings: 8.50835276411088
-          manDiscountDollarAmount: 9.728706165995554
+          listPriceWithDiscounts: 7.338782761819433
+          totalSavings: 3.3182952910080674
+          manDiscountDollarAmount: 5.099298781640682
           specialDiscountTotalAmount: 6.84685269835264
           specialDiscountCount: 9
-          totalDiscount: 0.05965928697733491
+          totalDiscount: 9.739448828157911
           designationCode: null
           custDiscountTypeCode: null
           persisted: true
@@ -72471,22 +72442,22 @@ components:
             seatDiscountTotalAmount: 1.1730742509559433
             price: 9.369310271410669
             manDiscountTypeCode: null
-            deltaCount: 7
-            unprintedCount: 5
-            savings: 3.3182952910080674
+            deltaCount: 1
+            unprintedCount: 0
+            savings: 9.728706165995554
             printedCount: 5
             specialTypeCode: null
             new: true
             compCount: 6
             orderItem:
               miscSkuRef: miscSkuRef
-              seatedCount: 4
+              seatedCount: 2
               canDoSteps: true
               itemGrandTotalPrice: 3.0937452626664474
-              totalGratuity: 3.8463127686084055
+              totalGratuity: 7.321091499885957
               miscSkuDescription: miscSkuDescription
               manDiscountCode: manDiscountCode
-              totalDesignationCount: 0
+              totalDesignationCount: 7
               printedCount: 6
               taxType: null
               order:
@@ -72496,7 +72467,7 @@ components:
                 - null
                 finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
                 companyName: companyName
-                totalGratuity: 4.863793115215697
+                totalGratuity: 2.831445253698411
                 deliverDateTime: 2000-01-23T04:56:07.000+00:00
                 activeShowItems:
                 - null
@@ -74946,7 +74917,7 @@ components:
                 grandTotalSaving: 1.2786903972794905
                 sessionPaidAmount: 9.505836306729838
                 changeExistingDiscounts: true
-                maxItemNumber: 5
+                maxItemNumber: 9
                 resReqEncText: resReqEncText
                 depositAmount: 3.0205796992916243
                 heldName: heldName
@@ -74963,7 +74934,7 @@ components:
                 mailToPhone: mailToPhone
                 groupName: groupName
                 orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                groupCount: 6
+                groupCount: 1
                 contractReceivedDate: 2000-01-23T04:56:07.000+00:00
                 shipMethod: shipMethod
                 invalid: true
@@ -76155,11 +76126,11 @@ components:
                 - null
                 bypassAutoSpecial: true
                 logActivity: null
-                totalTransactionCharge: 2.924533207692744
+                totalTransactionCharge: 6.712603870693706
                 refNumber: refNumber
                 sessionRefundAmount: 8.768153453040833
                 emailTicketsProcessed: true
-                totalDiscount: 9.007961177824221
+                totalDiscount: 5.499986845135928
                 mailToName: mailToName
                 mailToOrganizationName: mailToOrganizationName
                 contactPhone: contactPhone
@@ -76886,7 +76857,7 @@ components:
                 authorizedUsers: authorizedUsers
                 highCountByOrderItem: 3
                 deliverStatus: deliverStatus
-                totalTax: 2.831445253698411
+                totalTax: 8.238101405568635
                 firstShowDate: 2000-01-23T04:56:07.000+00:00
                 ticketBatchAgent: ticketBatchAgent
                 invoiceType: null
@@ -76903,7 +76874,7 @@ components:
                 theaterLocationCode: null
                 latestEventOrderItem: null
                 taxExempt: true
-                totalPaidAmount: 1.0046985756074744
+                totalPaidAmount: 6.345503614942988
                 orderTotalPrice: 0.10263654006109402
                 amountPaidWhenOrderLoaded: 2.684056218962324
                 mailToSameAsCustomer: true
@@ -76913,7 +76884,7 @@ components:
                 completedDate: 2000-01-23T04:56:07.000+00:00
                 firstName: firstName
                 inventoryMoved: true
-                totalCustomerDiscount: 6.345503614942988
+                totalCustomerDiscount: 1.0046985756074744
                 specialRemoved: true
                 editMode: true
                 rpCustNumber: 8
@@ -76924,9 +76895,8 @@ components:
                 orderDate: 2000-01-23T04:56:07.000+00:00
                 addLocationCode: addLocationCode
                 specialCode: specialCode
-                activeShowTourItemCount: 2
+                activeShowTourItemCount: 5
                 readyForPrinting: true
-                ticketDeliveryMessage: ticketDeliveryMessage
                 cancelDate: 2000-01-23T04:56:07.000+00:00
                 cancelReminderSent: true
                 authUserPhoneNumber: authUserPhoneNumber
@@ -76950,7 +76920,7 @@ components:
                 firstOccurringShowItem: null
                 sendToAccpac: true
                 earliestEventDate: 2000-01-23T04:56:07.000+00:00
-                allItemsTotalPrice: 1.5743672347582194
+                allItemsTotalPrice: 2.924533207692744
                 customerNumber: 6
                 sourceCodeComments: sourceCodeComments
                 special:
@@ -77053,8 +77023,8 @@ components:
                   acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
                   custDiscAddonOnly: true
                 finalSale: true
-                totalFee: 5.499986845135928
-                dueAmount: 8.569658089905484
+                dueAmount: 4.863793115215697
+                totalFee: 2.008994665592807
                 autoApplyDiscounts: true
                 persisted: true
                 presentedByName: presentedByName
@@ -77470,7 +77440,7 @@ components:
               mealDateTime: 2000-01-23T04:56:07.000+00:00
               cancelled: true
               cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-              allAssignedSeatCount: 7
+              allAssignedSeatCount: 4
               skuCode: skuCode
               zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
               voucherPrinted: true
@@ -77532,7 +77502,7 @@ components:
                 busSpaces: busSpaces
                 order: null
               logChanges: true
-              unprintedCount: 6
+              unprintedCount: 0
               free: true
               event:
                 itemType: null
@@ -77650,19 +77620,18 @@ components:
                 eventStartDate: 2000-01-23T04:56:07.000+00:00
                 allowGroupDisc: true
               givexSecurityCode: givexSecurityCode
-              compCount: 4
+              compCount: 5
               itemTotalPrice: 2.8841621266687802
               addDate: 2000-01-23T04:56:07.000+00:00
-              groupNumber: 9
-              totalSavings: 2.3317418552851765
+              totalSavings: 6.568304668801491
               grandTotalSavings: 2.674423984487264
-              itemCount: 8
+              itemCount: 9
               eventCode: eventCode
               logActivity: null
               sale: true
               damaged: true
               orderItemStatusCode: null
-              totalDiscount: 2.408218941758913
+              totalDiscount: 6.936593194494838
               cancelLocation: cancelLocation
               itemNumber: 6
               overflowCount: 6
@@ -77670,7 +77639,7 @@ components:
               orderNumber: 3
               activateDate: 2000-01-23T04:56:07.000+00:00
               cancelUserId: cancelUserId
-              netPrice: 6.568304668801491
+              netPrice: 2.3317418552851765
               oldPartnerConfirm: oldPartnerConfirm
               partnerEvent: true
               seats:
@@ -77781,14 +77750,14 @@ components:
                     height: 1
                     xcoordinate: 7
                   seatingTemplateCode: seatingTemplateCode
-                  zrotation: 1
+                  zrotation: 3
                   seatNumber: 5
                   sectionDesireability: 4
                   seatType: null
                   priceGrade: priceGrade
                   entranceCode: null
                   rowNumber: rowNumber
-                  xcoordinate: 3
+                  xcoordinate: 1
                 wheelchairOrMotorized: true
                 seatCode: seatCode
                 priceGrade: priceGrade
@@ -77901,14 +77870,14 @@ components:
                     height: 1
                     xcoordinate: 7
                   seatingTemplateCode: seatingTemplateCode
-                  zrotation: 1
+                  zrotation: 3
                   seatNumber: 5
                   sectionDesireability: 4
                   seatType: null
                   priceGrade: priceGrade
                   entranceCode: null
                   rowNumber: rowNumber
-                  xcoordinate: 3
+                  xcoordinate: 1
                 wheelchairOrMotorized: true
                 seatCode: seatCode
                 priceGrade: priceGrade
@@ -77916,18 +77885,17 @@ components:
                 ticketPrintStatus: null
               transactionChargeItem: true
               traDevLangCode: traDevLangCode
-              totalTax: 5.103912736584151
+              totalTax: 4.180725413706508
               traDevCount: 7
-              paidCount: 7
+              paidCount: 3
               givexNumber: givexNumber
               empBenefitCode: null
-              assignedSeatCount: 7
               new: true
+              assignedSeatCount: 4
               overflowSeats:
               - eventCode: eventCode
                 itemNumber: 8
                 ticketText: ticketText
-                seatStatus: null
                 orderNumber: 4
                 orderItem: null
                 ticketStatus: null
@@ -77936,7 +77904,6 @@ components:
               - eventCode: eventCode
                 itemNumber: 8
                 ticketText: ticketText
-                seatStatus: null
                 orderNumber: 4
                 orderItem: null
                 ticketStatus: null
@@ -77947,7 +77914,7 @@ components:
               showDateTime: 2000-01-23T04:56:07.000+00:00
               seatOverbookCount: 5
               transFromItem: 5
-              totalCustomerDiscount: 4.515863748649669
+              totalCustomerDiscount: 8.81377937009168
               activeWithOrder: true
               priceListCode: priceListCode
               cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -77962,7 +77929,7 @@ components:
                 showStartDate: 2000-01-23T04:56:07.000+00:00
                 eventDescription: eventDescription
                 effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-              manualDiscountValue: 1.4985931822280574
+              manualDiscountValue: 4.075306827525243
               travelPhoneNumber: travelPhoneNumber
               sendToAccpac: true
               seatDriverWithGroup: true
@@ -78002,7 +77969,7 @@ components:
                   specialSituationCode: specialSituationCode
                   specialSituationDesc: specialSituationDesc
                 specialSituationCode: specialSituationCode
-              totalFee: 4.075306827525243
+              totalFee: 7.964879197514727
               itemTaxes:
               - orderItem: null
                 entryDate: 2000-01-23T04:56:07.000+00:00
@@ -78029,12 +77996,12 @@ components:
             priceValue: 9.965781217890562
             ssMargin: 9.018348186070783
             seatDiscountCount: 3
-            listPriceWithDiscounts: 9.739448828157911
-            totalSavings: 8.50835276411088
-            manDiscountDollarAmount: 9.728706165995554
+            listPriceWithDiscounts: 7.338782761819433
+            totalSavings: 3.3182952910080674
+            manDiscountDollarAmount: 5.099298781640682
             specialDiscountTotalAmount: 6.84685269835264
             specialDiscountCount: 9
-            totalDiscount: 0.05965928697733491
+            totalDiscount: 9.739448828157911
             designationCode: null
             custDiscountTypeCode: null
             persisted: true
@@ -78054,22 +78021,22 @@ components:
             seatDiscountTotalAmount: 1.1730742509559433
             price: 9.369310271410669
             manDiscountTypeCode: null
-            deltaCount: 7
-            unprintedCount: 5
-            savings: 3.3182952910080674
+            deltaCount: 1
+            unprintedCount: 0
+            savings: 9.728706165995554
             printedCount: 5
             specialTypeCode: null
             new: true
             compCount: 6
             orderItem:
               miscSkuRef: miscSkuRef
-              seatedCount: 4
+              seatedCount: 2
               canDoSteps: true
               itemGrandTotalPrice: 3.0937452626664474
-              totalGratuity: 3.8463127686084055
+              totalGratuity: 7.321091499885957
               miscSkuDescription: miscSkuDescription
               manDiscountCode: manDiscountCode
-              totalDesignationCount: 0
+              totalDesignationCount: 7
               printedCount: 6
               taxType: null
               order:
@@ -78079,7 +78046,7 @@ components:
                 - null
                 finalPaymentExtDueDate: 2000-01-23T04:56:07.000+00:00
                 companyName: companyName
-                totalGratuity: 4.863793115215697
+                totalGratuity: 2.831445253698411
                 deliverDateTime: 2000-01-23T04:56:07.000+00:00
                 activeShowItems:
                 - null
@@ -80529,7 +80496,7 @@ components:
                 grandTotalSaving: 1.2786903972794905
                 sessionPaidAmount: 9.505836306729838
                 changeExistingDiscounts: true
-                maxItemNumber: 5
+                maxItemNumber: 9
                 resReqEncText: resReqEncText
                 depositAmount: 3.0205796992916243
                 heldName: heldName
@@ -80546,7 +80513,7 @@ components:
                 mailToPhone: mailToPhone
                 groupName: groupName
                 orderToken: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                groupCount: 6
+                groupCount: 1
                 contractReceivedDate: 2000-01-23T04:56:07.000+00:00
                 shipMethod: shipMethod
                 invalid: true
@@ -81738,11 +81705,11 @@ components:
                 - null
                 bypassAutoSpecial: true
                 logActivity: null
-                totalTransactionCharge: 2.924533207692744
+                totalTransactionCharge: 6.712603870693706
                 refNumber: refNumber
                 sessionRefundAmount: 8.768153453040833
                 emailTicketsProcessed: true
-                totalDiscount: 9.007961177824221
+                totalDiscount: 5.499986845135928
                 mailToName: mailToName
                 mailToOrganizationName: mailToOrganizationName
                 contactPhone: contactPhone
@@ -82469,7 +82436,7 @@ components:
                 authorizedUsers: authorizedUsers
                 highCountByOrderItem: 3
                 deliverStatus: deliverStatus
-                totalTax: 2.831445253698411
+                totalTax: 8.238101405568635
                 firstShowDate: 2000-01-23T04:56:07.000+00:00
                 ticketBatchAgent: ticketBatchAgent
                 invoiceType: null
@@ -82486,7 +82453,7 @@ components:
                 theaterLocationCode: null
                 latestEventOrderItem: null
                 taxExempt: true
-                totalPaidAmount: 1.0046985756074744
+                totalPaidAmount: 6.345503614942988
                 orderTotalPrice: 0.10263654006109402
                 amountPaidWhenOrderLoaded: 2.684056218962324
                 mailToSameAsCustomer: true
@@ -82496,7 +82463,7 @@ components:
                 completedDate: 2000-01-23T04:56:07.000+00:00
                 firstName: firstName
                 inventoryMoved: true
-                totalCustomerDiscount: 6.345503614942988
+                totalCustomerDiscount: 1.0046985756074744
                 specialRemoved: true
                 editMode: true
                 rpCustNumber: 8
@@ -82507,9 +82474,8 @@ components:
                 orderDate: 2000-01-23T04:56:07.000+00:00
                 addLocationCode: addLocationCode
                 specialCode: specialCode
-                activeShowTourItemCount: 2
+                activeShowTourItemCount: 5
                 readyForPrinting: true
-                ticketDeliveryMessage: ticketDeliveryMessage
                 cancelDate: 2000-01-23T04:56:07.000+00:00
                 cancelReminderSent: true
                 authUserPhoneNumber: authUserPhoneNumber
@@ -82533,7 +82499,7 @@ components:
                 firstOccurringShowItem: null
                 sendToAccpac: true
                 earliestEventDate: 2000-01-23T04:56:07.000+00:00
-                allItemsTotalPrice: 1.5743672347582194
+                allItemsTotalPrice: 2.924533207692744
                 customerNumber: 6
                 sourceCodeComments: sourceCodeComments
                 special:
@@ -82636,8 +82602,8 @@ components:
                   acceptOrderEndDate: 2000-01-23T04:56:07.000+00:00
                   custDiscAddonOnly: true
                 finalSale: true
-                totalFee: 5.499986845135928
-                dueAmount: 8.569658089905484
+                dueAmount: 4.863793115215697
+                totalFee: 2.008994665592807
                 autoApplyDiscounts: true
                 persisted: true
                 presentedByName: presentedByName
@@ -83053,7 +83019,7 @@ components:
               mealDateTime: 2000-01-23T04:56:07.000+00:00
               cancelled: true
               cancelConfirmDate: 2000-01-23T04:56:07.000+00:00
-              allAssignedSeatCount: 7
+              allAssignedSeatCount: 4
               skuCode: skuCode
               zonedEventDateTime: 2000-01-23T04:56:07.000+00:00
               voucherPrinted: true
@@ -83115,7 +83081,7 @@ components:
                 busSpaces: busSpaces
                 order: null
               logChanges: true
-              unprintedCount: 6
+              unprintedCount: 0
               free: true
               event:
                 itemType: null
@@ -83233,19 +83199,18 @@ components:
                 eventStartDate: 2000-01-23T04:56:07.000+00:00
                 allowGroupDisc: true
               givexSecurityCode: givexSecurityCode
-              compCount: 4
+              compCount: 5
               itemTotalPrice: 2.8841621266687802
               addDate: 2000-01-23T04:56:07.000+00:00
-              groupNumber: 9
-              totalSavings: 2.3317418552851765
+              totalSavings: 6.568304668801491
               grandTotalSavings: 2.674423984487264
-              itemCount: 8
+              itemCount: 9
               eventCode: eventCode
               logActivity: null
               sale: true
               damaged: true
               orderItemStatusCode: null
-              totalDiscount: 2.408218941758913
+              totalDiscount: 6.936593194494838
               cancelLocation: cancelLocation
               itemNumber: 6
               overflowCount: 6
@@ -83253,7 +83218,7 @@ components:
               orderNumber: 3
               activateDate: 2000-01-23T04:56:07.000+00:00
               cancelUserId: cancelUserId
-              netPrice: 6.568304668801491
+              netPrice: 2.3317418552851765
               oldPartnerConfirm: oldPartnerConfirm
               partnerEvent: true
               seats:
@@ -83364,14 +83329,14 @@ components:
                     height: 1
                     xcoordinate: 7
                   seatingTemplateCode: seatingTemplateCode
-                  zrotation: 1
+                  zrotation: 3
                   seatNumber: 5
                   sectionDesireability: 4
                   seatType: null
                   priceGrade: priceGrade
                   entranceCode: null
                   rowNumber: rowNumber
-                  xcoordinate: 3
+                  xcoordinate: 1
                 wheelchairOrMotorized: true
                 seatCode: seatCode
                 priceGrade: priceGrade
@@ -83484,14 +83449,14 @@ components:
                     height: 1
                     xcoordinate: 7
                   seatingTemplateCode: seatingTemplateCode
-                  zrotation: 1
+                  zrotation: 3
                   seatNumber: 5
                   sectionDesireability: 4
                   seatType: null
                   priceGrade: priceGrade
                   entranceCode: null
                   rowNumber: rowNumber
-                  xcoordinate: 3
+                  xcoordinate: 1
                 wheelchairOrMotorized: true
                 seatCode: seatCode
                 priceGrade: priceGrade
@@ -83499,18 +83464,17 @@ components:
                 ticketPrintStatus: null
               transactionChargeItem: true
               traDevLangCode: traDevLangCode
-              totalTax: 5.103912736584151
+              totalTax: 4.180725413706508
               traDevCount: 7
-              paidCount: 7
+              paidCount: 3
               givexNumber: givexNumber
               empBenefitCode: null
-              assignedSeatCount: 7
               new: true
+              assignedSeatCount: 4
               overflowSeats:
               - eventCode: eventCode
                 itemNumber: 8
                 ticketText: ticketText
-                seatStatus: null
                 orderNumber: 4
                 orderItem: null
                 ticketStatus: null
@@ -83519,7 +83483,6 @@ components:
               - eventCode: eventCode
                 itemNumber: 8
                 ticketText: ticketText
-                seatStatus: null
                 orderNumber: 4
                 orderItem: null
                 ticketStatus: null
@@ -83530,7 +83493,7 @@ components:
               showDateTime: 2000-01-23T04:56:07.000+00:00
               seatOverbookCount: 5
               transFromItem: 5
-              totalCustomerDiscount: 4.515863748649669
+              totalCustomerDiscount: 8.81377937009168
               activeWithOrder: true
               priceListCode: priceListCode
               cancelDate: 2000-01-23T04:56:07.000+00:00
@@ -83545,7 +83508,7 @@ components:
                 showStartDate: 2000-01-23T04:56:07.000+00:00
                 eventDescription: eventDescription
                 effectiveStartDate: 2000-01-23T04:56:07.000+00:00
-              manualDiscountValue: 1.4985931822280574
+              manualDiscountValue: 4.075306827525243
               travelPhoneNumber: travelPhoneNumber
               sendToAccpac: true
               seatDriverWithGroup: true
@@ -83585,7 +83548,7 @@ components:
                   specialSituationCode: specialSituationCode
                   specialSituationDesc: specialSituationDesc
                 specialSituationCode: specialSituationCode
-              totalFee: 4.075306827525243
+              totalFee: 7.964879197514727
               itemTaxes:
               - orderItem: null
                 entryDate: 2000-01-23T04:56:07.000+00:00
@@ -83612,12 +83575,12 @@ components:
             priceValue: 9.965781217890562
             ssMargin: 9.018348186070783
             seatDiscountCount: 3
-            listPriceWithDiscounts: 9.739448828157911
-            totalSavings: 8.50835276411088
-            manDiscountDollarAmount: 9.728706165995554
+            listPriceWithDiscounts: 7.338782761819433
+            totalSavings: 3.3182952910080674
+            manDiscountDollarAmount: 5.099298781640682
             specialDiscountTotalAmount: 6.84685269835264
             specialDiscountCount: 9
-            totalDiscount: 0.05965928697733491
+            totalDiscount: 9.739448828157911
             designationCode: null
             custDiscountTypeCode: null
             persisted: true
@@ -83705,9 +83668,6 @@ components:
           maxLength: 50
           minLength: 0
           type: string
-      required:
-      - method
-      - target
       type: object
     PaperCheckRequest:
       example:
@@ -84438,7 +84398,7 @@ components:
       type: object
     PaymentGiftCardRequest:
       example:
-        amountToCharge: 5.3152834658745505
+        amountToCharge: 9.551762125042277
         cardNumber: cardNumber
       properties:
         amountToCharge:
@@ -84730,9 +84690,9 @@ components:
         applyMoa: true
         storeCreditCard: true
         giftCards:
-        - amountToCharge: 5.3152834658745505
+        - amountToCharge: 9.551762125042277
           cardNumber: cardNumber
-        - amountToCharge: 5.3152834658745505
+        - amountToCharge: 9.551762125042277
           cardNumber: cardNumber
         adyenPaymentRequest:
           dccQuote:
@@ -86477,15 +86437,19 @@ components:
           format: date-time
           type: string
         seatsAvailable:
+          deprecated: true
           format: int32
           type: integer
         seatsBooked:
+          deprecated: true
           format: int32
           type: integer
         seatsBlocked:
+          deprecated: true
           format: int32
           type: integer
         seatsOverflow:
+          deprecated: true
           format: int32
           type: integer
         seatingTemplateCode:
@@ -86504,6 +86468,7 @@ components:
         allowQtoDiscount:
           type: boolean
         custTandcProfileCode:
+          deprecated: true
           maxLength: 20
           minLength: 0
           type: string
@@ -86511,6 +86476,7 @@ components:
           format: int32
           type: integer
         wheelChairCount:
+          deprecated: true
           format: int32
           type: integer
         blackoutUpdateSent:
@@ -86949,14 +86915,14 @@ components:
           height: 1
           xcoordinate: 7
         seatingTemplateCode: seatingTemplateCode
-        zrotation: 1
+        zrotation: 3
         seatNumber: 5
         sectionDesireability: 4
         seatType: null
         priceGrade: priceGrade
         entranceCode: null
         rowNumber: rowNumber
-        xcoordinate: 3
+        xcoordinate: 1
       properties:
         sectionCode:
           maxLength: 10
@@ -87000,13 +86966,13 @@ components:
           $ref: '#/components/schemas/SeatingTemplate'
         section:
           $ref: '#/components/schemas/SeatingTemplateSection'
-        zrotation:
-          format: int32
-          type: integer
         xcoordinate:
           format: int32
           type: integer
         ycoordinate:
+          format: int32
+          type: integer
+        zrotation:
           format: int32
           type: integer
       required:
@@ -87078,7 +87044,6 @@ components:
         eventCode: eventCode
         itemNumber: 8
         ticketText: ticketText
-        seatStatus: null
         orderNumber: 4
         orderItem: null
         ticketStatus: null
@@ -87103,8 +87068,6 @@ components:
           maxLength: 50
           minLength: 0
           type: string
-        seatStatus:
-          $ref: '#/components/schemas/SeatStatus'
         ticketStatus:
           $ref: '#/components/schemas/TicketPrintStatus'
         orderItem:
@@ -87221,14 +87184,14 @@ components:
             height: 1
             xcoordinate: 7
           seatingTemplateCode: seatingTemplateCode
-          zrotation: 1
+          zrotation: 3
           seatNumber: 5
           sectionDesireability: 4
           seatType: null
           priceGrade: priceGrade
           entranceCode: null
           rowNumber: rowNumber
-          xcoordinate: 3
+          xcoordinate: 1
         wheelchairOrMotorized: true
         seatCode: seatCode
         priceGrade: priceGrade
@@ -87275,10 +87238,10 @@ components:
           $ref: '#/components/schemas/OrderItem'
         templateSectionSeat:
           $ref: '#/components/schemas/SeatingTemplateSectionSeat'
-        seatCode:
-          type: string
         wheelchairOrMotorized:
           type: boolean
+        seatCode:
+          type: string
       required:
       - eventCode
       - priceGrade
@@ -87585,11 +87548,11 @@ components:
           type: boolean
         savings:
           type: number
-        validForIndividual:
-          type: boolean
         validForOrderTix:
           type: boolean
         compsSpecial:
+          type: boolean
+        validForIndividual:
           type: boolean
       required:
       - acceptOrderEndDate
@@ -88148,6 +88111,7 @@ components:
     OrderCompleteResponse:
       description: Order complete response
       example:
+        ticketDeliveryMessage: ticketDeliveryMessage
         ticketDeliveryMsg: ticketDeliveryMsg
         paymentAppliedInfo: paymentAppliedInfo
         cart:
@@ -88195,6 +88159,9 @@ components:
         paymentAppliedInfo:
           type: string
         ticketDeliveryMsg:
+          deprecated: true
+          type: string
+        ticketDeliveryMessage:
           type: string
         cart:
           $ref: '#/components/schemas/CartResponse'
@@ -88232,4 +88199,19 @@ components:
           format: int32
           type: integer
       type: object
+  securitySchemes:
+    DEV:
+      description: Authentication to the DEV environment
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://auth-dev.sight-sound.com/auth/realms/sightsoundtheatres/protocol/openid-connect/token
+      type: oauth2
+    PROD:
+      description: Authentication to the PROD environment
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://auth.sight-sound.com/auth/realms/sightsoundtheatres/protocol/openid-connect/token
+      type: oauth2
 

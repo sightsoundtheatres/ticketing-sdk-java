@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -51,7 +51,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * SeatingTemplateSectionSeat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class SeatingTemplateSectionSeat {
   public static final String SERIALIZED_NAME_SECTION_CODE = "sectionCode";
   @SerializedName(SERIALIZED_NAME_SECTION_CODE)
@@ -109,10 +109,6 @@ public class SeatingTemplateSectionSeat {
   @SerializedName(SERIALIZED_NAME_SECTION)
   private SeatingTemplateSection section;
 
-  public static final String SERIALIZED_NAME_ZROTATION = "zrotation";
-  @SerializedName(SERIALIZED_NAME_ZROTATION)
-  private Integer zrotation;
-
   public static final String SERIALIZED_NAME_XCOORDINATE = "xcoordinate";
   @SerializedName(SERIALIZED_NAME_XCOORDINATE)
   private Integer xcoordinate;
@@ -120,6 +116,10 @@ public class SeatingTemplateSectionSeat {
   public static final String SERIALIZED_NAME_YCOORDINATE = "ycoordinate";
   @SerializedName(SERIALIZED_NAME_YCOORDINATE)
   private Integer ycoordinate;
+
+  public static final String SERIALIZED_NAME_ZROTATION = "zrotation";
+  @SerializedName(SERIALIZED_NAME_ZROTATION)
+  private Integer zrotation;
 
   public SeatingTemplateSectionSeat() { 
   }
@@ -446,29 +446,6 @@ public class SeatingTemplateSectionSeat {
   }
 
 
-  public SeatingTemplateSectionSeat zrotation(Integer zrotation) {
-    
-    this.zrotation = zrotation;
-    return this;
-  }
-
-   /**
-   * Get zrotation
-   * @return zrotation
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getZrotation() {
-    return zrotation;
-  }
-
-
-  public void setZrotation(Integer zrotation) {
-    this.zrotation = zrotation;
-  }
-
-
   public SeatingTemplateSectionSeat xcoordinate(Integer xcoordinate) {
     
     this.xcoordinate = xcoordinate;
@@ -515,6 +492,29 @@ public class SeatingTemplateSectionSeat {
   }
 
 
+  public SeatingTemplateSectionSeat zrotation(Integer zrotation) {
+    
+    this.zrotation = zrotation;
+    return this;
+  }
+
+   /**
+   * Get zrotation
+   * @return zrotation
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getZrotation() {
+    return zrotation;
+  }
+
+
+  public void setZrotation(Integer zrotation) {
+    this.zrotation = zrotation;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -539,14 +539,14 @@ public class SeatingTemplateSectionSeat {
         Objects.equals(this.entranceCode, seatingTemplateSectionSeat.entranceCode) &&
         Objects.equals(this.template, seatingTemplateSectionSeat.template) &&
         Objects.equals(this.section, seatingTemplateSectionSeat.section) &&
-        Objects.equals(this.zrotation, seatingTemplateSectionSeat.zrotation) &&
         Objects.equals(this.xcoordinate, seatingTemplateSectionSeat.xcoordinate) &&
-        Objects.equals(this.ycoordinate, seatingTemplateSectionSeat.ycoordinate);
+        Objects.equals(this.ycoordinate, seatingTemplateSectionSeat.ycoordinate) &&
+        Objects.equals(this.zrotation, seatingTemplateSectionSeat.zrotation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sectionCode, rowNumber, seatNumber, priceGrade, seatingTemplateCode, seatType, seatDesireability, sectionDesireability, orderTix, bookingPhase, sectorCode, entranceCode, template, section, zrotation, xcoordinate, ycoordinate);
+    return Objects.hash(sectionCode, rowNumber, seatNumber, priceGrade, seatingTemplateCode, seatType, seatDesireability, sectionDesireability, orderTix, bookingPhase, sectorCode, entranceCode, template, section, xcoordinate, ycoordinate, zrotation);
   }
 
   @Override
@@ -567,9 +567,9 @@ public class SeatingTemplateSectionSeat {
     sb.append("    entranceCode: ").append(toIndentedString(entranceCode)).append("\n");
     sb.append("    template: ").append(toIndentedString(template)).append("\n");
     sb.append("    section: ").append(toIndentedString(section)).append("\n");
-    sb.append("    zrotation: ").append(toIndentedString(zrotation)).append("\n");
     sb.append("    xcoordinate: ").append(toIndentedString(xcoordinate)).append("\n");
     sb.append("    ycoordinate: ").append(toIndentedString(ycoordinate)).append("\n");
+    sb.append("    zrotation: ").append(toIndentedString(zrotation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -606,9 +606,9 @@ public class SeatingTemplateSectionSeat {
     openapiFields.add("entranceCode");
     openapiFields.add("template");
     openapiFields.add("section");
-    openapiFields.add("zrotation");
     openapiFields.add("xcoordinate");
     openapiFields.add("ycoordinate");
+    openapiFields.add("zrotation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -69,7 +69,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Order
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class Order {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -463,49 +463,109 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_ALREADY_LOGGED_ACTIVITY)
   private Boolean alreadyLoggedActivity;
 
-  public static final String SERIALIZED_NAME_TICKET_DELIVERY_MESSAGE = "ticketDeliveryMessage";
-  @SerializedName(SERIALIZED_NAME_TICKET_DELIVERY_MESSAGE)
-  private String ticketDeliveryMessage;
-
   public static final String SERIALIZED_NAME_CANCELLED = "cancelled";
   @SerializedName(SERIALIZED_NAME_CANCELLED)
   private Boolean cancelled;
 
-  public static final String SERIALIZED_NAME_GROUP_COUNT = "groupCount";
-  @SerializedName(SERIALIZED_NAME_GROUP_COUNT)
-  private Integer groupCount;
+  public static final String SERIALIZED_NAME_LAST_OCCURRING_SHOW_TOUR_ITEM = "lastOccurringShowTourItem";
+  @SerializedName(SERIALIZED_NAME_LAST_OCCURRING_SHOW_TOUR_ITEM)
+  private OrderItem lastOccurringShowTourItem;
 
-  public static final String SERIALIZED_NAME_READY_FOR_PRINTING = "readyForPrinting";
-  @SerializedName(SERIALIZED_NAME_READY_FOR_PRINTING)
-  private Boolean readyForPrinting;
+  public static final String SERIALIZED_NAME_TOTAL_TRANSACTION_CHARGE = "totalTransactionCharge";
+  @SerializedName(SERIALIZED_NAME_TOTAL_TRANSACTION_CHARGE)
+  private BigDecimal totalTransactionCharge;
 
-  public static final String SERIALIZED_NAME_ACTIVE_SHOW_ITEMS = "activeShowItems";
-  @SerializedName(SERIALIZED_NAME_ACTIVE_SHOW_ITEMS)
-  private List<OrderItem> activeShowItems = null;
-
-  public static final String SERIALIZED_NAME_MAIL_TO_NAME = "mailToName";
-  @SerializedName(SERIALIZED_NAME_MAIL_TO_NAME)
-  private String mailToName;
-
-  public static final String SERIALIZED_NAME_TOTAL_PAID_AMOUNT = "totalPaidAmount";
-  @SerializedName(SERIALIZED_NAME_TOTAL_PAID_AMOUNT)
-  private BigDecimal totalPaidAmount;
-
-  public static final String SERIALIZED_NAME_INVOICE_COMPANY = "invoiceCompany";
-  @SerializedName(SERIALIZED_NAME_INVOICE_COMPANY)
-  private InvoiceCompany invoiceCompany;
+  public static final String SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT = "totalCustomerDiscount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT)
+  private BigDecimal totalCustomerDiscount;
 
   public static final String SERIALIZED_NAME_HIGH_COUNT_BY_ORDER_ITEM = "highCountByOrderItem";
   @SerializedName(SERIALIZED_NAME_HIGH_COUNT_BY_ORDER_ITEM)
   private Integer highCountByOrderItem;
 
-  public static final String SERIALIZED_NAME_TOTAL_DISCOUNT = "totalDiscount";
-  @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNT)
-  private BigDecimal totalDiscount;
+  public static final String SERIALIZED_NAME_NEW = "new";
+  @SerializedName(SERIALIZED_NAME_NEW)
+  private Boolean _new;
+
+  public static final String SERIALIZED_NAME_FIRST_OCCURRING_SHOW_TOUR_ITEM = "firstOccurringShowTourItem";
+  @SerializedName(SERIALIZED_NAME_FIRST_OCCURRING_SHOW_TOUR_ITEM)
+  private OrderItem firstOccurringShowTourItem;
+
+  public static final String SERIALIZED_NAME_ACTIVE_ORDER_ITEM_LIST = "activeOrderItemList";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_ORDER_ITEM_LIST)
+  private List<OrderItem> activeOrderItemList = null;
+
+  public static final String SERIALIZED_NAME_SEATS_UNDER_ASSIGNED = "seatsUnderAssigned";
+  @SerializedName(SERIALIZED_NAME_SEATS_UNDER_ASSIGNED)
+  private Boolean seatsUnderAssigned;
+
+  public static final String SERIALIZED_NAME_MAX_ITEM_NUMBER = "maxItemNumber";
+  @SerializedName(SERIALIZED_NAME_MAX_ITEM_NUMBER)
+  private Integer maxItemNumber;
+
+  public static final String SERIALIZED_NAME_PAYMENT_PAST = "paymentPast";
+  @SerializedName(SERIALIZED_NAME_PAYMENT_PAST)
+  private Boolean paymentPast;
+
+  public static final String SERIALIZED_NAME_TICKETS_MAILED = "ticketsMailed";
+  @SerializedName(SERIALIZED_NAME_TICKETS_MAILED)
+  private Boolean ticketsMailed;
+
+  public static final String SERIALIZED_NAME_LATEST_EVENT_ORDER_ITEM = "latestEventOrderItem";
+  @SerializedName(SERIALIZED_NAME_LATEST_EVENT_ORDER_ITEM)
+  private OrderItem latestEventOrderItem;
+
+  public static final String SERIALIZED_NAME_EARLIEST_EVENT_DATE = "earliestEventDate";
+  @SerializedName(SERIALIZED_NAME_EARLIEST_EVENT_DATE)
+  private OffsetDateTime earliestEventDate;
+
+  public static final String SERIALIZED_NAME_FIRST_SHOW_DATE = "firstShowDate";
+  @SerializedName(SERIALIZED_NAME_FIRST_SHOW_DATE)
+  private OffsetDateTime firstShowDate;
+
+  public static final String SERIALIZED_NAME_CANCELLED_SHOW_TOUR_ITEM_LIST = "cancelledShowTourItemList";
+  @SerializedName(SERIALIZED_NAME_CANCELLED_SHOW_TOUR_ITEM_LIST)
+  private List<OrderItem> cancelledShowTourItemList = null;
+
+  public static final String SERIALIZED_NAME_GROUP_COUNT = "groupCount";
+  @SerializedName(SERIALIZED_NAME_GROUP_COUNT)
+  private Integer groupCount;
+
+  public static final String SERIALIZED_NAME_CALCULATED_PRICING_LEVEL = "calculatedPricingLevel";
+  @SerializedName(SERIALIZED_NAME_CALCULATED_PRICING_LEVEL)
+  private PricingLevel calculatedPricingLevel;
+
+  public static final String SERIALIZED_NAME_DUE_AMOUNT = "dueAmount";
+  @SerializedName(SERIALIZED_NAME_DUE_AMOUNT)
+  private BigDecimal dueAmount;
+
+  public static final String SERIALIZED_NAME_TOTAL_FEE = "totalFee";
+  @SerializedName(SERIALIZED_NAME_TOTAL_FEE)
+  private BigDecimal totalFee;
+
+  public static final String SERIALIZED_NAME_INVOICE_COMPANY = "invoiceCompany";
+  @SerializedName(SERIALIZED_NAME_INVOICE_COMPANY)
+  private InvoiceCompany invoiceCompany;
+
+  public static final String SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM = "activeShowTourItem";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM)
+  private List<OrderItem> activeShowTourItem = null;
 
   public static final String SERIALIZED_NAME_COMPANY_CODE = "companyCode";
   @SerializedName(SERIALIZED_NAME_COMPANY_CODE)
   private String companyCode;
+
+  public static final String SERIALIZED_NAME_FIRST_OCCURRING_SHOW_ITEM = "firstOccurringShowItem";
+  @SerializedName(SERIALIZED_NAME_FIRST_OCCURRING_SHOW_ITEM)
+  private OrderItem firstOccurringShowItem;
+
+  public static final String SERIALIZED_NAME_FIRST_OCCURRING_TOUR_ITEM = "firstOccurringTourItem";
+  @SerializedName(SERIALIZED_NAME_FIRST_OCCURRING_TOUR_ITEM)
+  private OrderItem firstOccurringTourItem;
+
+  public static final String SERIALIZED_NAME_ACTIVE_WITH_ORDER = "activeWithOrder";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_WITH_ORDER)
+  private List<OrderItem> activeWithOrder = null;
 
   public static final String SERIALIZED_NAME_POST_PAY_PRICING_LEVEL = "postPayPricingLevel";
   @SerializedName(SERIALIZED_NAME_POST_PAY_PRICING_LEVEL)
@@ -515,137 +575,73 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_ALL_ITEMS_TOTAL_PRICE)
   private BigDecimal allItemsTotalPrice;
 
+  public static final String SERIALIZED_NAME_TOTAL_TAX = "totalTax";
+  @SerializedName(SERIALIZED_NAME_TOTAL_TAX)
+  private BigDecimal totalTax;
+
   public static final String SERIALIZED_NAME_TOTAL_GRATUITY = "totalGratuity";
   @SerializedName(SERIALIZED_NAME_TOTAL_GRATUITY)
   private BigDecimal totalGratuity;
 
-  public static final String SERIALIZED_NAME_FIRST_OCCURRING_SHOW_ITEM_WITH_VALID_COUNT = "firstOccurringShowItemWithValidCount";
-  @SerializedName(SERIALIZED_NAME_FIRST_OCCURRING_SHOW_ITEM_WITH_VALID_COUNT)
-  private OrderItem firstOccurringShowItemWithValidCount;
+  public static final String SERIALIZED_NAME_TOTAL_PAID_AMOUNT = "totalPaidAmount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_PAID_AMOUNT)
+  private BigDecimal totalPaidAmount;
 
-  public static final String SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM_COUNT = "activeShowTourItemCount";
-  @SerializedName(SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM_COUNT)
-  private Integer activeShowTourItemCount;
+  public static final String SERIALIZED_NAME_TOTAL_DISCOUNT = "totalDiscount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNT)
+  private BigDecimal totalDiscount;
 
-  public static final String SERIALIZED_NAME_SEATS_OVER_ASSIGNED = "seatsOverAssigned";
-  @SerializedName(SERIALIZED_NAME_SEATS_OVER_ASSIGNED)
-  private Boolean seatsOverAssigned;
+  public static final String SERIALIZED_NAME_READY_FOR_PRINTING = "readyForPrinting";
+  @SerializedName(SERIALIZED_NAME_READY_FOR_PRINTING)
+  private Boolean readyForPrinting;
 
   public static final String SERIALIZED_NAME_GROUP = "group";
   @SerializedName(SERIALIZED_NAME_GROUP)
   private Boolean group;
 
-  public static final String SERIALIZED_NAME_ALL_SEAT_ASSIGNED = "allSeatAssigned";
-  @SerializedName(SERIALIZED_NAME_ALL_SEAT_ASSIGNED)
-  private Boolean allSeatAssigned;
+  public static final String SERIALIZED_NAME_ACTIVE_SHOW_ITEMS = "activeShowItems";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_SHOW_ITEMS)
+  private List<OrderItem> activeShowItems = null;
 
-  public static final String SERIALIZED_NAME_TOTAL_TRANSACTION_CHARGE = "totalTransactionCharge";
-  @SerializedName(SERIALIZED_NAME_TOTAL_TRANSACTION_CHARGE)
-  private BigDecimal totalTransactionCharge;
-
-  public static final String SERIALIZED_NAME_CALCULATED_PRICING_LEVEL = "calculatedPricingLevel";
-  @SerializedName(SERIALIZED_NAME_CALCULATED_PRICING_LEVEL)
-  private PricingLevel calculatedPricingLevel;
-
-  public static final String SERIALIZED_NAME_EARLIEST_EVENT_DATE = "earliestEventDate";
-  @SerializedName(SERIALIZED_NAME_EARLIEST_EVENT_DATE)
-  private OffsetDateTime earliestEventDate;
-
-  public static final String SERIALIZED_NAME_TICKETS_MAILED = "ticketsMailed";
-  @SerializedName(SERIALIZED_NAME_TICKETS_MAILED)
-  private Boolean ticketsMailed;
-
-  public static final String SERIALIZED_NAME_ACTIVE_ORDER_ITEM_LIST = "activeOrderItemList";
-  @SerializedName(SERIALIZED_NAME_ACTIVE_ORDER_ITEM_LIST)
-  private List<OrderItem> activeOrderItemList = null;
-
-  public static final String SERIALIZED_NAME_CANCELLED_SHOW_TOUR_ITEM_LIST = "cancelledShowTourItemList";
-  @SerializedName(SERIALIZED_NAME_CANCELLED_SHOW_TOUR_ITEM_LIST)
-  private List<OrderItem> cancelledShowTourItemList = null;
-
-  public static final String SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM = "activeShowTourItem";
-  @SerializedName(SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM)
-  private List<OrderItem> activeShowTourItem = null;
-
-  public static final String SERIALIZED_NAME_SHOWS_DAYS_SPAN = "showsDaysSpan";
-  @SerializedName(SERIALIZED_NAME_SHOWS_DAYS_SPAN)
-  private Long showsDaysSpan;
-
-  public static final String SERIALIZED_NAME_TOTAL_TAX = "totalTax";
-  @SerializedName(SERIALIZED_NAME_TOTAL_TAX)
-  private BigDecimal totalTax;
-
-  public static final String SERIALIZED_NAME_FIRST_SHOW_DATE = "firstShowDate";
-  @SerializedName(SERIALIZED_NAME_FIRST_SHOW_DATE)
-  private OffsetDateTime firstShowDate;
-
-  public static final String SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT = "totalCustomerDiscount";
-  @SerializedName(SERIALIZED_NAME_TOTAL_CUSTOMER_DISCOUNT)
-  private BigDecimal totalCustomerDiscount;
-
-  public static final String SERIALIZED_NAME_FIRST_OCCURRING_TOUR_ITEM = "firstOccurringTourItem";
-  @SerializedName(SERIALIZED_NAME_FIRST_OCCURRING_TOUR_ITEM)
-  private OrderItem firstOccurringTourItem;
-
-  public static final String SERIALIZED_NAME_FIRST_OCCURRING_SHOW_ITEM = "firstOccurringShowItem";
-  @SerializedName(SERIALIZED_NAME_FIRST_OCCURRING_SHOW_ITEM)
-  private OrderItem firstOccurringShowItem;
+  public static final String SERIALIZED_NAME_MAIL_TO_NAME = "mailToName";
+  @SerializedName(SERIALIZED_NAME_MAIL_TO_NAME)
+  private String mailToName;
 
   public static final String SERIALIZED_NAME_SHIP_METHOD = "shipMethod";
   @SerializedName(SERIALIZED_NAME_SHIP_METHOD)
   private String shipMethod;
 
-  public static final String SERIALIZED_NAME_ACTIVE_WITH_ORDER = "activeWithOrder";
-  @SerializedName(SERIALIZED_NAME_ACTIVE_WITH_ORDER)
-  private List<OrderItem> activeWithOrder = null;
+  public static final String SERIALIZED_NAME_FIRST_OCCURRING_SHOW_ITEM_WITH_VALID_COUNT = "firstOccurringShowItemWithValidCount";
+  @SerializedName(SERIALIZED_NAME_FIRST_OCCURRING_SHOW_ITEM_WITH_VALID_COUNT)
+  private OrderItem firstOccurringShowItemWithValidCount;
 
-  public static final String SERIALIZED_NAME_TOTAL_FEE = "totalFee";
-  @SerializedName(SERIALIZED_NAME_TOTAL_FEE)
-  private BigDecimal totalFee;
+  public static final String SERIALIZED_NAME_SHOWS_DAYS_SPAN = "showsDaysSpan";
+  @SerializedName(SERIALIZED_NAME_SHOWS_DAYS_SPAN)
+  private Long showsDaysSpan;
 
-  public static final String SERIALIZED_NAME_DUE_AMOUNT = "dueAmount";
-  @SerializedName(SERIALIZED_NAME_DUE_AMOUNT)
-  private BigDecimal dueAmount;
+  public static final String SERIALIZED_NAME_ALL_SEAT_ASSIGNED = "allSeatAssigned";
+  @SerializedName(SERIALIZED_NAME_ALL_SEAT_ASSIGNED)
+  private Boolean allSeatAssigned;
 
-  public static final String SERIALIZED_NAME_NEW = "new";
-  @SerializedName(SERIALIZED_NAME_NEW)
-  private Boolean _new;
+  public static final String SERIALIZED_NAME_SEATS_OVER_ASSIGNED = "seatsOverAssigned";
+  @SerializedName(SERIALIZED_NAME_SEATS_OVER_ASSIGNED)
+  private Boolean seatsOverAssigned;
 
-  public static final String SERIALIZED_NAME_MAX_ITEM_NUMBER = "maxItemNumber";
-  @SerializedName(SERIALIZED_NAME_MAX_ITEM_NUMBER)
-  private Integer maxItemNumber;
-
-  public static final String SERIALIZED_NAME_LATEST_EVENT_ORDER_ITEM = "latestEventOrderItem";
-  @SerializedName(SERIALIZED_NAME_LATEST_EVENT_ORDER_ITEM)
-  private OrderItem latestEventOrderItem;
-
-  public static final String SERIALIZED_NAME_LAST_OCCURRING_SHOW_TOUR_ITEM = "lastOccurringShowTourItem";
-  @SerializedName(SERIALIZED_NAME_LAST_OCCURRING_SHOW_TOUR_ITEM)
-  private OrderItem lastOccurringShowTourItem;
-
-  public static final String SERIALIZED_NAME_SEATS_UNDER_ASSIGNED = "seatsUnderAssigned";
-  @SerializedName(SERIALIZED_NAME_SEATS_UNDER_ASSIGNED)
-  private Boolean seatsUnderAssigned;
-
-  public static final String SERIALIZED_NAME_PAYMENT_PAST = "paymentPast";
-  @SerializedName(SERIALIZED_NAME_PAYMENT_PAST)
-  private Boolean paymentPast;
+  public static final String SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM_COUNT = "activeShowTourItemCount";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_SHOW_TOUR_ITEM_COUNT)
+  private Integer activeShowTourItemCount;
 
   public static final String SERIALIZED_NAME_FINAL_PAYMENT_DUE_DAYS = "finalPaymentDueDays";
   @SerializedName(SERIALIZED_NAME_FINAL_PAYMENT_DUE_DAYS)
   private Long finalPaymentDueDays;
 
-  public static final String SERIALIZED_NAME_FIRST_OCCURRING_SHOW_TOUR_ITEM = "firstOccurringShowTourItem";
-  @SerializedName(SERIALIZED_NAME_FIRST_OCCURRING_SHOW_TOUR_ITEM)
-  private OrderItem firstOccurringShowTourItem;
+  public static final String SERIALIZED_NAME_LAST_SHOW_DATE = "lastShowDate";
+  @SerializedName(SERIALIZED_NAME_LAST_SHOW_DATE)
+  private OffsetDateTime lastShowDate;
 
   public static final String SERIALIZED_NAME_ALL_SHOW_TOUR_ITEM = "allShowTourItem";
   @SerializedName(SERIALIZED_NAME_ALL_SHOW_TOUR_ITEM)
   private List<OrderItem> allShowTourItem = null;
-
-  public static final String SERIALIZED_NAME_LAST_SHOW_DATE = "lastShowDate";
-  @SerializedName(SERIALIZED_NAME_LAST_SHOW_DATE)
-  private OffsetDateTime lastShowDate;
 
   public static final String SERIALIZED_NAME_ALL_PARTNER_EVENTS_CONFIRMED = "allPartnerEventsConfirmed";
   @SerializedName(SERIALIZED_NAME_ALL_PARTNER_EVENTS_CONFIRMED)
@@ -2966,29 +2962,6 @@ public class Order {
   }
 
 
-  public Order ticketDeliveryMessage(String ticketDeliveryMessage) {
-    
-    this.ticketDeliveryMessage = ticketDeliveryMessage;
-    return this;
-  }
-
-   /**
-   * Get ticketDeliveryMessage
-   * @return ticketDeliveryMessage
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getTicketDeliveryMessage() {
-    return ticketDeliveryMessage;
-  }
-
-
-  public void setTicketDeliveryMessage(String ticketDeliveryMessage) {
-    this.ticketDeliveryMessage = ticketDeliveryMessage;
-  }
-
-
   public Order cancelled(Boolean cancelled) {
     
     this.cancelled = cancelled;
@@ -3009,6 +2982,367 @@ public class Order {
 
   public void setCancelled(Boolean cancelled) {
     this.cancelled = cancelled;
+  }
+
+
+  public Order lastOccurringShowTourItem(OrderItem lastOccurringShowTourItem) {
+    
+    this.lastOccurringShowTourItem = lastOccurringShowTourItem;
+    return this;
+  }
+
+   /**
+   * Get lastOccurringShowTourItem
+   * @return lastOccurringShowTourItem
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OrderItem getLastOccurringShowTourItem() {
+    return lastOccurringShowTourItem;
+  }
+
+
+  public void setLastOccurringShowTourItem(OrderItem lastOccurringShowTourItem) {
+    this.lastOccurringShowTourItem = lastOccurringShowTourItem;
+  }
+
+
+  public Order totalTransactionCharge(BigDecimal totalTransactionCharge) {
+    
+    this.totalTransactionCharge = totalTransactionCharge;
+    return this;
+  }
+
+   /**
+   * Get totalTransactionCharge
+   * @return totalTransactionCharge
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalTransactionCharge() {
+    return totalTransactionCharge;
+  }
+
+
+  public void setTotalTransactionCharge(BigDecimal totalTransactionCharge) {
+    this.totalTransactionCharge = totalTransactionCharge;
+  }
+
+
+  public Order totalCustomerDiscount(BigDecimal totalCustomerDiscount) {
+    
+    this.totalCustomerDiscount = totalCustomerDiscount;
+    return this;
+  }
+
+   /**
+   * Get totalCustomerDiscount
+   * @return totalCustomerDiscount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalCustomerDiscount() {
+    return totalCustomerDiscount;
+  }
+
+
+  public void setTotalCustomerDiscount(BigDecimal totalCustomerDiscount) {
+    this.totalCustomerDiscount = totalCustomerDiscount;
+  }
+
+
+  public Order highCountByOrderItem(Integer highCountByOrderItem) {
+    
+    this.highCountByOrderItem = highCountByOrderItem;
+    return this;
+  }
+
+   /**
+   * Get highCountByOrderItem
+   * @return highCountByOrderItem
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getHighCountByOrderItem() {
+    return highCountByOrderItem;
+  }
+
+
+  public void setHighCountByOrderItem(Integer highCountByOrderItem) {
+    this.highCountByOrderItem = highCountByOrderItem;
+  }
+
+
+  public Order _new(Boolean _new) {
+    
+    this._new = _new;
+    return this;
+  }
+
+   /**
+   * Get _new
+   * @return _new
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getNew() {
+    return _new;
+  }
+
+
+  public void setNew(Boolean _new) {
+    this._new = _new;
+  }
+
+
+  public Order firstOccurringShowTourItem(OrderItem firstOccurringShowTourItem) {
+    
+    this.firstOccurringShowTourItem = firstOccurringShowTourItem;
+    return this;
+  }
+
+   /**
+   * Get firstOccurringShowTourItem
+   * @return firstOccurringShowTourItem
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OrderItem getFirstOccurringShowTourItem() {
+    return firstOccurringShowTourItem;
+  }
+
+
+  public void setFirstOccurringShowTourItem(OrderItem firstOccurringShowTourItem) {
+    this.firstOccurringShowTourItem = firstOccurringShowTourItem;
+  }
+
+
+  public Order activeOrderItemList(List<OrderItem> activeOrderItemList) {
+    
+    this.activeOrderItemList = activeOrderItemList;
+    return this;
+  }
+
+  public Order addActiveOrderItemListItem(OrderItem activeOrderItemListItem) {
+    if (this.activeOrderItemList == null) {
+      this.activeOrderItemList = new ArrayList<>();
+    }
+    this.activeOrderItemList.add(activeOrderItemListItem);
+    return this;
+  }
+
+   /**
+   * Get activeOrderItemList
+   * @return activeOrderItemList
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<OrderItem> getActiveOrderItemList() {
+    return activeOrderItemList;
+  }
+
+
+  public void setActiveOrderItemList(List<OrderItem> activeOrderItemList) {
+    this.activeOrderItemList = activeOrderItemList;
+  }
+
+
+  public Order seatsUnderAssigned(Boolean seatsUnderAssigned) {
+    
+    this.seatsUnderAssigned = seatsUnderAssigned;
+    return this;
+  }
+
+   /**
+   * Get seatsUnderAssigned
+   * @return seatsUnderAssigned
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getSeatsUnderAssigned() {
+    return seatsUnderAssigned;
+  }
+
+
+  public void setSeatsUnderAssigned(Boolean seatsUnderAssigned) {
+    this.seatsUnderAssigned = seatsUnderAssigned;
+  }
+
+
+  public Order maxItemNumber(Integer maxItemNumber) {
+    
+    this.maxItemNumber = maxItemNumber;
+    return this;
+  }
+
+   /**
+   * Get maxItemNumber
+   * @return maxItemNumber
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getMaxItemNumber() {
+    return maxItemNumber;
+  }
+
+
+  public void setMaxItemNumber(Integer maxItemNumber) {
+    this.maxItemNumber = maxItemNumber;
+  }
+
+
+  public Order paymentPast(Boolean paymentPast) {
+    
+    this.paymentPast = paymentPast;
+    return this;
+  }
+
+   /**
+   * Get paymentPast
+   * @return paymentPast
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getPaymentPast() {
+    return paymentPast;
+  }
+
+
+  public void setPaymentPast(Boolean paymentPast) {
+    this.paymentPast = paymentPast;
+  }
+
+
+  public Order ticketsMailed(Boolean ticketsMailed) {
+    
+    this.ticketsMailed = ticketsMailed;
+    return this;
+  }
+
+   /**
+   * Get ticketsMailed
+   * @return ticketsMailed
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getTicketsMailed() {
+    return ticketsMailed;
+  }
+
+
+  public void setTicketsMailed(Boolean ticketsMailed) {
+    this.ticketsMailed = ticketsMailed;
+  }
+
+
+  public Order latestEventOrderItem(OrderItem latestEventOrderItem) {
+    
+    this.latestEventOrderItem = latestEventOrderItem;
+    return this;
+  }
+
+   /**
+   * Get latestEventOrderItem
+   * @return latestEventOrderItem
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OrderItem getLatestEventOrderItem() {
+    return latestEventOrderItem;
+  }
+
+
+  public void setLatestEventOrderItem(OrderItem latestEventOrderItem) {
+    this.latestEventOrderItem = latestEventOrderItem;
+  }
+
+
+  public Order earliestEventDate(OffsetDateTime earliestEventDate) {
+    
+    this.earliestEventDate = earliestEventDate;
+    return this;
+  }
+
+   /**
+   * Get earliestEventDate
+   * @return earliestEventDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getEarliestEventDate() {
+    return earliestEventDate;
+  }
+
+
+  public void setEarliestEventDate(OffsetDateTime earliestEventDate) {
+    this.earliestEventDate = earliestEventDate;
+  }
+
+
+  public Order firstShowDate(OffsetDateTime firstShowDate) {
+    
+    this.firstShowDate = firstShowDate;
+    return this;
+  }
+
+   /**
+   * Get firstShowDate
+   * @return firstShowDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getFirstShowDate() {
+    return firstShowDate;
+  }
+
+
+  public void setFirstShowDate(OffsetDateTime firstShowDate) {
+    this.firstShowDate = firstShowDate;
+  }
+
+
+  public Order cancelledShowTourItemList(List<OrderItem> cancelledShowTourItemList) {
+    
+    this.cancelledShowTourItemList = cancelledShowTourItemList;
+    return this;
+  }
+
+  public Order addCancelledShowTourItemListItem(OrderItem cancelledShowTourItemListItem) {
+    if (this.cancelledShowTourItemList == null) {
+      this.cancelledShowTourItemList = new ArrayList<>();
+    }
+    this.cancelledShowTourItemList.add(cancelledShowTourItemListItem);
+    return this;
+  }
+
+   /**
+   * Get cancelledShowTourItemList
+   * @return cancelledShowTourItemList
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<OrderItem> getCancelledShowTourItemList() {
+    return cancelledShowTourItemList;
+  }
+
+
+  public void setCancelledShowTourItemList(List<OrderItem> cancelledShowTourItemList) {
+    this.cancelledShowTourItemList = cancelledShowTourItemList;
   }
 
 
@@ -3035,6 +3369,367 @@ public class Order {
   }
 
 
+  public Order calculatedPricingLevel(PricingLevel calculatedPricingLevel) {
+    
+    this.calculatedPricingLevel = calculatedPricingLevel;
+    return this;
+  }
+
+   /**
+   * Get calculatedPricingLevel
+   * @return calculatedPricingLevel
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public PricingLevel getCalculatedPricingLevel() {
+    return calculatedPricingLevel;
+  }
+
+
+  public void setCalculatedPricingLevel(PricingLevel calculatedPricingLevel) {
+    this.calculatedPricingLevel = calculatedPricingLevel;
+  }
+
+
+  public Order dueAmount(BigDecimal dueAmount) {
+    
+    this.dueAmount = dueAmount;
+    return this;
+  }
+
+   /**
+   * Get dueAmount
+   * @return dueAmount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getDueAmount() {
+    return dueAmount;
+  }
+
+
+  public void setDueAmount(BigDecimal dueAmount) {
+    this.dueAmount = dueAmount;
+  }
+
+
+  public Order totalFee(BigDecimal totalFee) {
+    
+    this.totalFee = totalFee;
+    return this;
+  }
+
+   /**
+   * Get totalFee
+   * @return totalFee
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalFee() {
+    return totalFee;
+  }
+
+
+  public void setTotalFee(BigDecimal totalFee) {
+    this.totalFee = totalFee;
+  }
+
+
+  public Order invoiceCompany(InvoiceCompany invoiceCompany) {
+    
+    this.invoiceCompany = invoiceCompany;
+    return this;
+  }
+
+   /**
+   * Get invoiceCompany
+   * @return invoiceCompany
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public InvoiceCompany getInvoiceCompany() {
+    return invoiceCompany;
+  }
+
+
+  public void setInvoiceCompany(InvoiceCompany invoiceCompany) {
+    this.invoiceCompany = invoiceCompany;
+  }
+
+
+  public Order activeShowTourItem(List<OrderItem> activeShowTourItem) {
+    
+    this.activeShowTourItem = activeShowTourItem;
+    return this;
+  }
+
+  public Order addActiveShowTourItemItem(OrderItem activeShowTourItemItem) {
+    if (this.activeShowTourItem == null) {
+      this.activeShowTourItem = new ArrayList<>();
+    }
+    this.activeShowTourItem.add(activeShowTourItemItem);
+    return this;
+  }
+
+   /**
+   * Get activeShowTourItem
+   * @return activeShowTourItem
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<OrderItem> getActiveShowTourItem() {
+    return activeShowTourItem;
+  }
+
+
+  public void setActiveShowTourItem(List<OrderItem> activeShowTourItem) {
+    this.activeShowTourItem = activeShowTourItem;
+  }
+
+
+  public Order companyCode(String companyCode) {
+    
+    this.companyCode = companyCode;
+    return this;
+  }
+
+   /**
+   * Get companyCode
+   * @return companyCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCompanyCode() {
+    return companyCode;
+  }
+
+
+  public void setCompanyCode(String companyCode) {
+    this.companyCode = companyCode;
+  }
+
+
+  public Order firstOccurringShowItem(OrderItem firstOccurringShowItem) {
+    
+    this.firstOccurringShowItem = firstOccurringShowItem;
+    return this;
+  }
+
+   /**
+   * Get firstOccurringShowItem
+   * @return firstOccurringShowItem
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OrderItem getFirstOccurringShowItem() {
+    return firstOccurringShowItem;
+  }
+
+
+  public void setFirstOccurringShowItem(OrderItem firstOccurringShowItem) {
+    this.firstOccurringShowItem = firstOccurringShowItem;
+  }
+
+
+  public Order firstOccurringTourItem(OrderItem firstOccurringTourItem) {
+    
+    this.firstOccurringTourItem = firstOccurringTourItem;
+    return this;
+  }
+
+   /**
+   * Get firstOccurringTourItem
+   * @return firstOccurringTourItem
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OrderItem getFirstOccurringTourItem() {
+    return firstOccurringTourItem;
+  }
+
+
+  public void setFirstOccurringTourItem(OrderItem firstOccurringTourItem) {
+    this.firstOccurringTourItem = firstOccurringTourItem;
+  }
+
+
+  public Order activeWithOrder(List<OrderItem> activeWithOrder) {
+    
+    this.activeWithOrder = activeWithOrder;
+    return this;
+  }
+
+  public Order addActiveWithOrderItem(OrderItem activeWithOrderItem) {
+    if (this.activeWithOrder == null) {
+      this.activeWithOrder = new ArrayList<>();
+    }
+    this.activeWithOrder.add(activeWithOrderItem);
+    return this;
+  }
+
+   /**
+   * Get activeWithOrder
+   * @return activeWithOrder
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<OrderItem> getActiveWithOrder() {
+    return activeWithOrder;
+  }
+
+
+  public void setActiveWithOrder(List<OrderItem> activeWithOrder) {
+    this.activeWithOrder = activeWithOrder;
+  }
+
+
+  public Order postPayPricingLevel(PricingLevel postPayPricingLevel) {
+    
+    this.postPayPricingLevel = postPayPricingLevel;
+    return this;
+  }
+
+   /**
+   * Get postPayPricingLevel
+   * @return postPayPricingLevel
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public PricingLevel getPostPayPricingLevel() {
+    return postPayPricingLevel;
+  }
+
+
+  public void setPostPayPricingLevel(PricingLevel postPayPricingLevel) {
+    this.postPayPricingLevel = postPayPricingLevel;
+  }
+
+
+  public Order allItemsTotalPrice(BigDecimal allItemsTotalPrice) {
+    
+    this.allItemsTotalPrice = allItemsTotalPrice;
+    return this;
+  }
+
+   /**
+   * Get allItemsTotalPrice
+   * @return allItemsTotalPrice
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getAllItemsTotalPrice() {
+    return allItemsTotalPrice;
+  }
+
+
+  public void setAllItemsTotalPrice(BigDecimal allItemsTotalPrice) {
+    this.allItemsTotalPrice = allItemsTotalPrice;
+  }
+
+
+  public Order totalTax(BigDecimal totalTax) {
+    
+    this.totalTax = totalTax;
+    return this;
+  }
+
+   /**
+   * Get totalTax
+   * @return totalTax
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalTax() {
+    return totalTax;
+  }
+
+
+  public void setTotalTax(BigDecimal totalTax) {
+    this.totalTax = totalTax;
+  }
+
+
+  public Order totalGratuity(BigDecimal totalGratuity) {
+    
+    this.totalGratuity = totalGratuity;
+    return this;
+  }
+
+   /**
+   * Get totalGratuity
+   * @return totalGratuity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalGratuity() {
+    return totalGratuity;
+  }
+
+
+  public void setTotalGratuity(BigDecimal totalGratuity) {
+    this.totalGratuity = totalGratuity;
+  }
+
+
+  public Order totalPaidAmount(BigDecimal totalPaidAmount) {
+    
+    this.totalPaidAmount = totalPaidAmount;
+    return this;
+  }
+
+   /**
+   * Get totalPaidAmount
+   * @return totalPaidAmount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalPaidAmount() {
+    return totalPaidAmount;
+  }
+
+
+  public void setTotalPaidAmount(BigDecimal totalPaidAmount) {
+    this.totalPaidAmount = totalPaidAmount;
+  }
+
+
+  public Order totalDiscount(BigDecimal totalDiscount) {
+    
+    this.totalDiscount = totalDiscount;
+    return this;
+  }
+
+   /**
+   * Get totalDiscount
+   * @return totalDiscount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getTotalDiscount() {
+    return totalDiscount;
+  }
+
+
+  public void setTotalDiscount(BigDecimal totalDiscount) {
+    this.totalDiscount = totalDiscount;
+  }
+
+
   public Order readyForPrinting(Boolean readyForPrinting) {
     
     this.readyForPrinting = readyForPrinting;
@@ -3055,6 +3750,29 @@ public class Order {
 
   public void setReadyForPrinting(Boolean readyForPrinting) {
     this.readyForPrinting = readyForPrinting;
+  }
+
+
+  public Order group(Boolean group) {
+    
+    this.group = group;
+    return this;
+  }
+
+   /**
+   * Get group
+   * @return group
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getGroup() {
+    return group;
+  }
+
+
+  public void setGroup(Boolean group) {
+    this.group = group;
   }
 
 
@@ -3112,187 +3830,26 @@ public class Order {
   }
 
 
-  public Order totalPaidAmount(BigDecimal totalPaidAmount) {
+  public Order shipMethod(String shipMethod) {
     
-    this.totalPaidAmount = totalPaidAmount;
+    this.shipMethod = shipMethod;
     return this;
   }
 
    /**
-   * Get totalPaidAmount
-   * @return totalPaidAmount
+   * Get shipMethod
+   * @return shipMethod
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getTotalPaidAmount() {
-    return totalPaidAmount;
+  public String getShipMethod() {
+    return shipMethod;
   }
 
 
-  public void setTotalPaidAmount(BigDecimal totalPaidAmount) {
-    this.totalPaidAmount = totalPaidAmount;
-  }
-
-
-  public Order invoiceCompany(InvoiceCompany invoiceCompany) {
-    
-    this.invoiceCompany = invoiceCompany;
-    return this;
-  }
-
-   /**
-   * Get invoiceCompany
-   * @return invoiceCompany
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public InvoiceCompany getInvoiceCompany() {
-    return invoiceCompany;
-  }
-
-
-  public void setInvoiceCompany(InvoiceCompany invoiceCompany) {
-    this.invoiceCompany = invoiceCompany;
-  }
-
-
-  public Order highCountByOrderItem(Integer highCountByOrderItem) {
-    
-    this.highCountByOrderItem = highCountByOrderItem;
-    return this;
-  }
-
-   /**
-   * Get highCountByOrderItem
-   * @return highCountByOrderItem
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getHighCountByOrderItem() {
-    return highCountByOrderItem;
-  }
-
-
-  public void setHighCountByOrderItem(Integer highCountByOrderItem) {
-    this.highCountByOrderItem = highCountByOrderItem;
-  }
-
-
-  public Order totalDiscount(BigDecimal totalDiscount) {
-    
-    this.totalDiscount = totalDiscount;
-    return this;
-  }
-
-   /**
-   * Get totalDiscount
-   * @return totalDiscount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalDiscount() {
-    return totalDiscount;
-  }
-
-
-  public void setTotalDiscount(BigDecimal totalDiscount) {
-    this.totalDiscount = totalDiscount;
-  }
-
-
-  public Order companyCode(String companyCode) {
-    
-    this.companyCode = companyCode;
-    return this;
-  }
-
-   /**
-   * Get companyCode
-   * @return companyCode
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getCompanyCode() {
-    return companyCode;
-  }
-
-
-  public void setCompanyCode(String companyCode) {
-    this.companyCode = companyCode;
-  }
-
-
-  public Order postPayPricingLevel(PricingLevel postPayPricingLevel) {
-    
-    this.postPayPricingLevel = postPayPricingLevel;
-    return this;
-  }
-
-   /**
-   * Get postPayPricingLevel
-   * @return postPayPricingLevel
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public PricingLevel getPostPayPricingLevel() {
-    return postPayPricingLevel;
-  }
-
-
-  public void setPostPayPricingLevel(PricingLevel postPayPricingLevel) {
-    this.postPayPricingLevel = postPayPricingLevel;
-  }
-
-
-  public Order allItemsTotalPrice(BigDecimal allItemsTotalPrice) {
-    
-    this.allItemsTotalPrice = allItemsTotalPrice;
-    return this;
-  }
-
-   /**
-   * Get allItemsTotalPrice
-   * @return allItemsTotalPrice
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getAllItemsTotalPrice() {
-    return allItemsTotalPrice;
-  }
-
-
-  public void setAllItemsTotalPrice(BigDecimal allItemsTotalPrice) {
-    this.allItemsTotalPrice = allItemsTotalPrice;
-  }
-
-
-  public Order totalGratuity(BigDecimal totalGratuity) {
-    
-    this.totalGratuity = totalGratuity;
-    return this;
-  }
-
-   /**
-   * Get totalGratuity
-   * @return totalGratuity
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalGratuity() {
-    return totalGratuity;
-  }
-
-
-  public void setTotalGratuity(BigDecimal totalGratuity) {
-    this.totalGratuity = totalGratuity;
+  public void setShipMethod(String shipMethod) {
+    this.shipMethod = shipMethod;
   }
 
 
@@ -3319,72 +3876,26 @@ public class Order {
   }
 
 
-  public Order activeShowTourItemCount(Integer activeShowTourItemCount) {
+  public Order showsDaysSpan(Long showsDaysSpan) {
     
-    this.activeShowTourItemCount = activeShowTourItemCount;
+    this.showsDaysSpan = showsDaysSpan;
     return this;
   }
 
    /**
-   * Get activeShowTourItemCount
-   * @return activeShowTourItemCount
+   * Get showsDaysSpan
+   * @return showsDaysSpan
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Integer getActiveShowTourItemCount() {
-    return activeShowTourItemCount;
+  public Long getShowsDaysSpan() {
+    return showsDaysSpan;
   }
 
 
-  public void setActiveShowTourItemCount(Integer activeShowTourItemCount) {
-    this.activeShowTourItemCount = activeShowTourItemCount;
-  }
-
-
-  public Order seatsOverAssigned(Boolean seatsOverAssigned) {
-    
-    this.seatsOverAssigned = seatsOverAssigned;
-    return this;
-  }
-
-   /**
-   * Get seatsOverAssigned
-   * @return seatsOverAssigned
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getSeatsOverAssigned() {
-    return seatsOverAssigned;
-  }
-
-
-  public void setSeatsOverAssigned(Boolean seatsOverAssigned) {
-    this.seatsOverAssigned = seatsOverAssigned;
-  }
-
-
-  public Order group(Boolean group) {
-    
-    this.group = group;
-    return this;
-  }
-
-   /**
-   * Get group
-   * @return group
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getGroup() {
-    return group;
-  }
-
-
-  public void setGroup(Boolean group) {
-    this.group = group;
+  public void setShowsDaysSpan(Long showsDaysSpan) {
+    this.showsDaysSpan = showsDaysSpan;
   }
 
 
@@ -3411,564 +3922,49 @@ public class Order {
   }
 
 
-  public Order totalTransactionCharge(BigDecimal totalTransactionCharge) {
+  public Order seatsOverAssigned(Boolean seatsOverAssigned) {
     
-    this.totalTransactionCharge = totalTransactionCharge;
+    this.seatsOverAssigned = seatsOverAssigned;
     return this;
   }
 
    /**
-   * Get totalTransactionCharge
-   * @return totalTransactionCharge
+   * Get seatsOverAssigned
+   * @return seatsOverAssigned
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getTotalTransactionCharge() {
-    return totalTransactionCharge;
+  public Boolean getSeatsOverAssigned() {
+    return seatsOverAssigned;
   }
 
 
-  public void setTotalTransactionCharge(BigDecimal totalTransactionCharge) {
-    this.totalTransactionCharge = totalTransactionCharge;
+  public void setSeatsOverAssigned(Boolean seatsOverAssigned) {
+    this.seatsOverAssigned = seatsOverAssigned;
   }
 
 
-  public Order calculatedPricingLevel(PricingLevel calculatedPricingLevel) {
+  public Order activeShowTourItemCount(Integer activeShowTourItemCount) {
     
-    this.calculatedPricingLevel = calculatedPricingLevel;
+    this.activeShowTourItemCount = activeShowTourItemCount;
     return this;
   }
 
    /**
-   * Get calculatedPricingLevel
-   * @return calculatedPricingLevel
+   * Get activeShowTourItemCount
+   * @return activeShowTourItemCount
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingLevel getCalculatedPricingLevel() {
-    return calculatedPricingLevel;
+  public Integer getActiveShowTourItemCount() {
+    return activeShowTourItemCount;
   }
 
 
-  public void setCalculatedPricingLevel(PricingLevel calculatedPricingLevel) {
-    this.calculatedPricingLevel = calculatedPricingLevel;
-  }
-
-
-  public Order earliestEventDate(OffsetDateTime earliestEventDate) {
-    
-    this.earliestEventDate = earliestEventDate;
-    return this;
-  }
-
-   /**
-   * Get earliestEventDate
-   * @return earliestEventDate
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getEarliestEventDate() {
-    return earliestEventDate;
-  }
-
-
-  public void setEarliestEventDate(OffsetDateTime earliestEventDate) {
-    this.earliestEventDate = earliestEventDate;
-  }
-
-
-  public Order ticketsMailed(Boolean ticketsMailed) {
-    
-    this.ticketsMailed = ticketsMailed;
-    return this;
-  }
-
-   /**
-   * Get ticketsMailed
-   * @return ticketsMailed
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getTicketsMailed() {
-    return ticketsMailed;
-  }
-
-
-  public void setTicketsMailed(Boolean ticketsMailed) {
-    this.ticketsMailed = ticketsMailed;
-  }
-
-
-  public Order activeOrderItemList(List<OrderItem> activeOrderItemList) {
-    
-    this.activeOrderItemList = activeOrderItemList;
-    return this;
-  }
-
-  public Order addActiveOrderItemListItem(OrderItem activeOrderItemListItem) {
-    if (this.activeOrderItemList == null) {
-      this.activeOrderItemList = new ArrayList<>();
-    }
-    this.activeOrderItemList.add(activeOrderItemListItem);
-    return this;
-  }
-
-   /**
-   * Get activeOrderItemList
-   * @return activeOrderItemList
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<OrderItem> getActiveOrderItemList() {
-    return activeOrderItemList;
-  }
-
-
-  public void setActiveOrderItemList(List<OrderItem> activeOrderItemList) {
-    this.activeOrderItemList = activeOrderItemList;
-  }
-
-
-  public Order cancelledShowTourItemList(List<OrderItem> cancelledShowTourItemList) {
-    
-    this.cancelledShowTourItemList = cancelledShowTourItemList;
-    return this;
-  }
-
-  public Order addCancelledShowTourItemListItem(OrderItem cancelledShowTourItemListItem) {
-    if (this.cancelledShowTourItemList == null) {
-      this.cancelledShowTourItemList = new ArrayList<>();
-    }
-    this.cancelledShowTourItemList.add(cancelledShowTourItemListItem);
-    return this;
-  }
-
-   /**
-   * Get cancelledShowTourItemList
-   * @return cancelledShowTourItemList
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<OrderItem> getCancelledShowTourItemList() {
-    return cancelledShowTourItemList;
-  }
-
-
-  public void setCancelledShowTourItemList(List<OrderItem> cancelledShowTourItemList) {
-    this.cancelledShowTourItemList = cancelledShowTourItemList;
-  }
-
-
-  public Order activeShowTourItem(List<OrderItem> activeShowTourItem) {
-    
-    this.activeShowTourItem = activeShowTourItem;
-    return this;
-  }
-
-  public Order addActiveShowTourItemItem(OrderItem activeShowTourItemItem) {
-    if (this.activeShowTourItem == null) {
-      this.activeShowTourItem = new ArrayList<>();
-    }
-    this.activeShowTourItem.add(activeShowTourItemItem);
-    return this;
-  }
-
-   /**
-   * Get activeShowTourItem
-   * @return activeShowTourItem
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<OrderItem> getActiveShowTourItem() {
-    return activeShowTourItem;
-  }
-
-
-  public void setActiveShowTourItem(List<OrderItem> activeShowTourItem) {
-    this.activeShowTourItem = activeShowTourItem;
-  }
-
-
-  public Order showsDaysSpan(Long showsDaysSpan) {
-    
-    this.showsDaysSpan = showsDaysSpan;
-    return this;
-  }
-
-   /**
-   * Get showsDaysSpan
-   * @return showsDaysSpan
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Long getShowsDaysSpan() {
-    return showsDaysSpan;
-  }
-
-
-  public void setShowsDaysSpan(Long showsDaysSpan) {
-    this.showsDaysSpan = showsDaysSpan;
-  }
-
-
-  public Order totalTax(BigDecimal totalTax) {
-    
-    this.totalTax = totalTax;
-    return this;
-  }
-
-   /**
-   * Get totalTax
-   * @return totalTax
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalTax() {
-    return totalTax;
-  }
-
-
-  public void setTotalTax(BigDecimal totalTax) {
-    this.totalTax = totalTax;
-  }
-
-
-  public Order firstShowDate(OffsetDateTime firstShowDate) {
-    
-    this.firstShowDate = firstShowDate;
-    return this;
-  }
-
-   /**
-   * Get firstShowDate
-   * @return firstShowDate
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getFirstShowDate() {
-    return firstShowDate;
-  }
-
-
-  public void setFirstShowDate(OffsetDateTime firstShowDate) {
-    this.firstShowDate = firstShowDate;
-  }
-
-
-  public Order totalCustomerDiscount(BigDecimal totalCustomerDiscount) {
-    
-    this.totalCustomerDiscount = totalCustomerDiscount;
-    return this;
-  }
-
-   /**
-   * Get totalCustomerDiscount
-   * @return totalCustomerDiscount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalCustomerDiscount() {
-    return totalCustomerDiscount;
-  }
-
-
-  public void setTotalCustomerDiscount(BigDecimal totalCustomerDiscount) {
-    this.totalCustomerDiscount = totalCustomerDiscount;
-  }
-
-
-  public Order firstOccurringTourItem(OrderItem firstOccurringTourItem) {
-    
-    this.firstOccurringTourItem = firstOccurringTourItem;
-    return this;
-  }
-
-   /**
-   * Get firstOccurringTourItem
-   * @return firstOccurringTourItem
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OrderItem getFirstOccurringTourItem() {
-    return firstOccurringTourItem;
-  }
-
-
-  public void setFirstOccurringTourItem(OrderItem firstOccurringTourItem) {
-    this.firstOccurringTourItem = firstOccurringTourItem;
-  }
-
-
-  public Order firstOccurringShowItem(OrderItem firstOccurringShowItem) {
-    
-    this.firstOccurringShowItem = firstOccurringShowItem;
-    return this;
-  }
-
-   /**
-   * Get firstOccurringShowItem
-   * @return firstOccurringShowItem
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OrderItem getFirstOccurringShowItem() {
-    return firstOccurringShowItem;
-  }
-
-
-  public void setFirstOccurringShowItem(OrderItem firstOccurringShowItem) {
-    this.firstOccurringShowItem = firstOccurringShowItem;
-  }
-
-
-  public Order shipMethod(String shipMethod) {
-    
-    this.shipMethod = shipMethod;
-    return this;
-  }
-
-   /**
-   * Get shipMethod
-   * @return shipMethod
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getShipMethod() {
-    return shipMethod;
-  }
-
-
-  public void setShipMethod(String shipMethod) {
-    this.shipMethod = shipMethod;
-  }
-
-
-  public Order activeWithOrder(List<OrderItem> activeWithOrder) {
-    
-    this.activeWithOrder = activeWithOrder;
-    return this;
-  }
-
-  public Order addActiveWithOrderItem(OrderItem activeWithOrderItem) {
-    if (this.activeWithOrder == null) {
-      this.activeWithOrder = new ArrayList<>();
-    }
-    this.activeWithOrder.add(activeWithOrderItem);
-    return this;
-  }
-
-   /**
-   * Get activeWithOrder
-   * @return activeWithOrder
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<OrderItem> getActiveWithOrder() {
-    return activeWithOrder;
-  }
-
-
-  public void setActiveWithOrder(List<OrderItem> activeWithOrder) {
-    this.activeWithOrder = activeWithOrder;
-  }
-
-
-  public Order totalFee(BigDecimal totalFee) {
-    
-    this.totalFee = totalFee;
-    return this;
-  }
-
-   /**
-   * Get totalFee
-   * @return totalFee
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getTotalFee() {
-    return totalFee;
-  }
-
-
-  public void setTotalFee(BigDecimal totalFee) {
-    this.totalFee = totalFee;
-  }
-
-
-  public Order dueAmount(BigDecimal dueAmount) {
-    
-    this.dueAmount = dueAmount;
-    return this;
-  }
-
-   /**
-   * Get dueAmount
-   * @return dueAmount
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getDueAmount() {
-    return dueAmount;
-  }
-
-
-  public void setDueAmount(BigDecimal dueAmount) {
-    this.dueAmount = dueAmount;
-  }
-
-
-  public Order _new(Boolean _new) {
-    
-    this._new = _new;
-    return this;
-  }
-
-   /**
-   * Get _new
-   * @return _new
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getNew() {
-    return _new;
-  }
-
-
-  public void setNew(Boolean _new) {
-    this._new = _new;
-  }
-
-
-  public Order maxItemNumber(Integer maxItemNumber) {
-    
-    this.maxItemNumber = maxItemNumber;
-    return this;
-  }
-
-   /**
-   * Get maxItemNumber
-   * @return maxItemNumber
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getMaxItemNumber() {
-    return maxItemNumber;
-  }
-
-
-  public void setMaxItemNumber(Integer maxItemNumber) {
-    this.maxItemNumber = maxItemNumber;
-  }
-
-
-  public Order latestEventOrderItem(OrderItem latestEventOrderItem) {
-    
-    this.latestEventOrderItem = latestEventOrderItem;
-    return this;
-  }
-
-   /**
-   * Get latestEventOrderItem
-   * @return latestEventOrderItem
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OrderItem getLatestEventOrderItem() {
-    return latestEventOrderItem;
-  }
-
-
-  public void setLatestEventOrderItem(OrderItem latestEventOrderItem) {
-    this.latestEventOrderItem = latestEventOrderItem;
-  }
-
-
-  public Order lastOccurringShowTourItem(OrderItem lastOccurringShowTourItem) {
-    
-    this.lastOccurringShowTourItem = lastOccurringShowTourItem;
-    return this;
-  }
-
-   /**
-   * Get lastOccurringShowTourItem
-   * @return lastOccurringShowTourItem
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OrderItem getLastOccurringShowTourItem() {
-    return lastOccurringShowTourItem;
-  }
-
-
-  public void setLastOccurringShowTourItem(OrderItem lastOccurringShowTourItem) {
-    this.lastOccurringShowTourItem = lastOccurringShowTourItem;
-  }
-
-
-  public Order seatsUnderAssigned(Boolean seatsUnderAssigned) {
-    
-    this.seatsUnderAssigned = seatsUnderAssigned;
-    return this;
-  }
-
-   /**
-   * Get seatsUnderAssigned
-   * @return seatsUnderAssigned
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getSeatsUnderAssigned() {
-    return seatsUnderAssigned;
-  }
-
-
-  public void setSeatsUnderAssigned(Boolean seatsUnderAssigned) {
-    this.seatsUnderAssigned = seatsUnderAssigned;
-  }
-
-
-  public Order paymentPast(Boolean paymentPast) {
-    
-    this.paymentPast = paymentPast;
-    return this;
-  }
-
-   /**
-   * Get paymentPast
-   * @return paymentPast
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getPaymentPast() {
-    return paymentPast;
-  }
-
-
-  public void setPaymentPast(Boolean paymentPast) {
-    this.paymentPast = paymentPast;
+  public void setActiveShowTourItemCount(Integer activeShowTourItemCount) {
+    this.activeShowTourItemCount = activeShowTourItemCount;
   }
 
 
@@ -3995,26 +3991,26 @@ public class Order {
   }
 
 
-  public Order firstOccurringShowTourItem(OrderItem firstOccurringShowTourItem) {
+  public Order lastShowDate(OffsetDateTime lastShowDate) {
     
-    this.firstOccurringShowTourItem = firstOccurringShowTourItem;
+    this.lastShowDate = lastShowDate;
     return this;
   }
 
    /**
-   * Get firstOccurringShowTourItem
-   * @return firstOccurringShowTourItem
+   * Get lastShowDate
+   * @return lastShowDate
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public OrderItem getFirstOccurringShowTourItem() {
-    return firstOccurringShowTourItem;
+  public OffsetDateTime getLastShowDate() {
+    return lastShowDate;
   }
 
 
-  public void setFirstOccurringShowTourItem(OrderItem firstOccurringShowTourItem) {
-    this.firstOccurringShowTourItem = firstOccurringShowTourItem;
+  public void setLastShowDate(OffsetDateTime lastShowDate) {
+    this.lastShowDate = lastShowDate;
   }
 
 
@@ -4046,29 +4042,6 @@ public class Order {
 
   public void setAllShowTourItem(List<OrderItem> allShowTourItem) {
     this.allShowTourItem = allShowTourItem;
-  }
-
-
-  public Order lastShowDate(OffsetDateTime lastShowDate) {
-    
-    this.lastShowDate = lastShowDate;
-    return this;
-  }
-
-   /**
-   * Get lastShowDate
-   * @return lastShowDate
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public OffsetDateTime getLastShowDate() {
-    return lastShowDate;
-  }
-
-
-  public void setLastShowDate(OffsetDateTime lastShowDate) {
-    this.lastShowDate = lastShowDate;
   }
 
 
@@ -4249,52 +4222,51 @@ public class Order {
         Objects.equals(this.logActivity, order.logActivity) &&
         Objects.equals(this.persisted, order.persisted) &&
         Objects.equals(this.alreadyLoggedActivity, order.alreadyLoggedActivity) &&
-        Objects.equals(this.ticketDeliveryMessage, order.ticketDeliveryMessage) &&
         Objects.equals(this.cancelled, order.cancelled) &&
-        Objects.equals(this.groupCount, order.groupCount) &&
-        Objects.equals(this.readyForPrinting, order.readyForPrinting) &&
-        Objects.equals(this.activeShowItems, order.activeShowItems) &&
-        Objects.equals(this.mailToName, order.mailToName) &&
-        Objects.equals(this.totalPaidAmount, order.totalPaidAmount) &&
-        Objects.equals(this.invoiceCompany, order.invoiceCompany) &&
+        Objects.equals(this.lastOccurringShowTourItem, order.lastOccurringShowTourItem) &&
+        Objects.equals(this.totalTransactionCharge, order.totalTransactionCharge) &&
+        Objects.equals(this.totalCustomerDiscount, order.totalCustomerDiscount) &&
         Objects.equals(this.highCountByOrderItem, order.highCountByOrderItem) &&
-        Objects.equals(this.totalDiscount, order.totalDiscount) &&
+        Objects.equals(this._new, order._new) &&
+        Objects.equals(this.firstOccurringShowTourItem, order.firstOccurringShowTourItem) &&
+        Objects.equals(this.activeOrderItemList, order.activeOrderItemList) &&
+        Objects.equals(this.seatsUnderAssigned, order.seatsUnderAssigned) &&
+        Objects.equals(this.maxItemNumber, order.maxItemNumber) &&
+        Objects.equals(this.paymentPast, order.paymentPast) &&
+        Objects.equals(this.ticketsMailed, order.ticketsMailed) &&
+        Objects.equals(this.latestEventOrderItem, order.latestEventOrderItem) &&
+        Objects.equals(this.earliestEventDate, order.earliestEventDate) &&
+        Objects.equals(this.firstShowDate, order.firstShowDate) &&
+        Objects.equals(this.cancelledShowTourItemList, order.cancelledShowTourItemList) &&
+        Objects.equals(this.groupCount, order.groupCount) &&
+        Objects.equals(this.calculatedPricingLevel, order.calculatedPricingLevel) &&
+        Objects.equals(this.dueAmount, order.dueAmount) &&
+        Objects.equals(this.totalFee, order.totalFee) &&
+        Objects.equals(this.invoiceCompany, order.invoiceCompany) &&
+        Objects.equals(this.activeShowTourItem, order.activeShowTourItem) &&
         Objects.equals(this.companyCode, order.companyCode) &&
+        Objects.equals(this.firstOccurringShowItem, order.firstOccurringShowItem) &&
+        Objects.equals(this.firstOccurringTourItem, order.firstOccurringTourItem) &&
+        Objects.equals(this.activeWithOrder, order.activeWithOrder) &&
         Objects.equals(this.postPayPricingLevel, order.postPayPricingLevel) &&
         Objects.equals(this.allItemsTotalPrice, order.allItemsTotalPrice) &&
-        Objects.equals(this.totalGratuity, order.totalGratuity) &&
-        Objects.equals(this.firstOccurringShowItemWithValidCount, order.firstOccurringShowItemWithValidCount) &&
-        Objects.equals(this.activeShowTourItemCount, order.activeShowTourItemCount) &&
-        Objects.equals(this.seatsOverAssigned, order.seatsOverAssigned) &&
-        Objects.equals(this.group, order.group) &&
-        Objects.equals(this.allSeatAssigned, order.allSeatAssigned) &&
-        Objects.equals(this.totalTransactionCharge, order.totalTransactionCharge) &&
-        Objects.equals(this.calculatedPricingLevel, order.calculatedPricingLevel) &&
-        Objects.equals(this.earliestEventDate, order.earliestEventDate) &&
-        Objects.equals(this.ticketsMailed, order.ticketsMailed) &&
-        Objects.equals(this.activeOrderItemList, order.activeOrderItemList) &&
-        Objects.equals(this.cancelledShowTourItemList, order.cancelledShowTourItemList) &&
-        Objects.equals(this.activeShowTourItem, order.activeShowTourItem) &&
-        Objects.equals(this.showsDaysSpan, order.showsDaysSpan) &&
         Objects.equals(this.totalTax, order.totalTax) &&
-        Objects.equals(this.firstShowDate, order.firstShowDate) &&
-        Objects.equals(this.totalCustomerDiscount, order.totalCustomerDiscount) &&
-        Objects.equals(this.firstOccurringTourItem, order.firstOccurringTourItem) &&
-        Objects.equals(this.firstOccurringShowItem, order.firstOccurringShowItem) &&
+        Objects.equals(this.totalGratuity, order.totalGratuity) &&
+        Objects.equals(this.totalPaidAmount, order.totalPaidAmount) &&
+        Objects.equals(this.totalDiscount, order.totalDiscount) &&
+        Objects.equals(this.readyForPrinting, order.readyForPrinting) &&
+        Objects.equals(this.group, order.group) &&
+        Objects.equals(this.activeShowItems, order.activeShowItems) &&
+        Objects.equals(this.mailToName, order.mailToName) &&
         Objects.equals(this.shipMethod, order.shipMethod) &&
-        Objects.equals(this.activeWithOrder, order.activeWithOrder) &&
-        Objects.equals(this.totalFee, order.totalFee) &&
-        Objects.equals(this.dueAmount, order.dueAmount) &&
-        Objects.equals(this._new, order._new) &&
-        Objects.equals(this.maxItemNumber, order.maxItemNumber) &&
-        Objects.equals(this.latestEventOrderItem, order.latestEventOrderItem) &&
-        Objects.equals(this.lastOccurringShowTourItem, order.lastOccurringShowTourItem) &&
-        Objects.equals(this.seatsUnderAssigned, order.seatsUnderAssigned) &&
-        Objects.equals(this.paymentPast, order.paymentPast) &&
+        Objects.equals(this.firstOccurringShowItemWithValidCount, order.firstOccurringShowItemWithValidCount) &&
+        Objects.equals(this.showsDaysSpan, order.showsDaysSpan) &&
+        Objects.equals(this.allSeatAssigned, order.allSeatAssigned) &&
+        Objects.equals(this.seatsOverAssigned, order.seatsOverAssigned) &&
+        Objects.equals(this.activeShowTourItemCount, order.activeShowTourItemCount) &&
         Objects.equals(this.finalPaymentDueDays, order.finalPaymentDueDays) &&
-        Objects.equals(this.firstOccurringShowTourItem, order.firstOccurringShowTourItem) &&
-        Objects.equals(this.allShowTourItem, order.allShowTourItem) &&
         Objects.equals(this.lastShowDate, order.lastShowDate) &&
+        Objects.equals(this.allShowTourItem, order.allShowTourItem) &&
         Objects.equals(this.allPartnerEventsConfirmed, order.allPartnerEventsConfirmed) &&
         Objects.equals(this.grandTotalSaving, order.grandTotalSaving) &&
         Objects.equals(this.autoApplyDiscounts, order.autoApplyDiscounts);
@@ -4302,7 +4274,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderNumber, customerNumber, orderDate, groupName, mailToAddress, specialCode, firstName, lastName, addUserId, finalPaymentDueDate, cancelUserId, cancelDate, contractReceivedDate, addLocationCode, cancelLocationCode, sourceCode, finalPaymentExtDueDate, orderTotalPrice, companyName, status, editUserId, editDate, orderOrigin, printUserId, sourceCodeComments, depositDueAmount, contactFirstName, contactLastName, rpCustNumber, mailToSameAsCustomer, bypassAutoSpecial, orderTypeCode, waiveDepositDue, pricingLevel, tierYear, depositDueDate, theaterLocationCode, depositAmount, cancelReminderSent, emailTicketsProcessed, presentedByName, mailToOrganizationName, mailToPhone, authorizedUsers, resReqEncText, salesRepId, lockShippingDate, lockRefundDate, finalSale, heldName, refNumber, taxExempt, recalculate, slidingScaleDiscount, shipDate, trackingNumber, shipFromLocation, mailToAddressVerified, ticketBatch, ticketBatchAgent, invoiceType, returnOrderNumber, contactPhone, inventoryMoved, invalid, mailOrder, deliverStatus, deliverUserId, deliverDateTime, intlGroup, intlCountryCode, salesConfCode, email, authUserPhoneNumber, completedDate, orderToken, notes, orderItems, customer, watchLists, invoices, groupInfo, payments, special, changeExistingDiscounts, sendToAccpac, sessionPaidAmount, sessionRefundAmount, amountPaidWhenOrderLoaded, editMode, specialAutoApplied, logChanges, specialRemoved, promoCode, discountAutoApplied, logActivity, persisted, alreadyLoggedActivity, ticketDeliveryMessage, cancelled, groupCount, readyForPrinting, activeShowItems, mailToName, totalPaidAmount, invoiceCompany, highCountByOrderItem, totalDiscount, companyCode, postPayPricingLevel, allItemsTotalPrice, totalGratuity, firstOccurringShowItemWithValidCount, activeShowTourItemCount, seatsOverAssigned, group, allSeatAssigned, totalTransactionCharge, calculatedPricingLevel, earliestEventDate, ticketsMailed, activeOrderItemList, cancelledShowTourItemList, activeShowTourItem, showsDaysSpan, totalTax, firstShowDate, totalCustomerDiscount, firstOccurringTourItem, firstOccurringShowItem, shipMethod, activeWithOrder, totalFee, dueAmount, _new, maxItemNumber, latestEventOrderItem, lastOccurringShowTourItem, seatsUnderAssigned, paymentPast, finalPaymentDueDays, firstOccurringShowTourItem, allShowTourItem, lastShowDate, allPartnerEventsConfirmed, grandTotalSaving, autoApplyDiscounts);
+    return Objects.hash(orderNumber, customerNumber, orderDate, groupName, mailToAddress, specialCode, firstName, lastName, addUserId, finalPaymentDueDate, cancelUserId, cancelDate, contractReceivedDate, addLocationCode, cancelLocationCode, sourceCode, finalPaymentExtDueDate, orderTotalPrice, companyName, status, editUserId, editDate, orderOrigin, printUserId, sourceCodeComments, depositDueAmount, contactFirstName, contactLastName, rpCustNumber, mailToSameAsCustomer, bypassAutoSpecial, orderTypeCode, waiveDepositDue, pricingLevel, tierYear, depositDueDate, theaterLocationCode, depositAmount, cancelReminderSent, emailTicketsProcessed, presentedByName, mailToOrganizationName, mailToPhone, authorizedUsers, resReqEncText, salesRepId, lockShippingDate, lockRefundDate, finalSale, heldName, refNumber, taxExempt, recalculate, slidingScaleDiscount, shipDate, trackingNumber, shipFromLocation, mailToAddressVerified, ticketBatch, ticketBatchAgent, invoiceType, returnOrderNumber, contactPhone, inventoryMoved, invalid, mailOrder, deliverStatus, deliverUserId, deliverDateTime, intlGroup, intlCountryCode, salesConfCode, email, authUserPhoneNumber, completedDate, orderToken, notes, orderItems, customer, watchLists, invoices, groupInfo, payments, special, changeExistingDiscounts, sendToAccpac, sessionPaidAmount, sessionRefundAmount, amountPaidWhenOrderLoaded, editMode, specialAutoApplied, logChanges, specialRemoved, promoCode, discountAutoApplied, logActivity, persisted, alreadyLoggedActivity, cancelled, lastOccurringShowTourItem, totalTransactionCharge, totalCustomerDiscount, highCountByOrderItem, _new, firstOccurringShowTourItem, activeOrderItemList, seatsUnderAssigned, maxItemNumber, paymentPast, ticketsMailed, latestEventOrderItem, earliestEventDate, firstShowDate, cancelledShowTourItemList, groupCount, calculatedPricingLevel, dueAmount, totalFee, invoiceCompany, activeShowTourItem, companyCode, firstOccurringShowItem, firstOccurringTourItem, activeWithOrder, postPayPricingLevel, allItemsTotalPrice, totalTax, totalGratuity, totalPaidAmount, totalDiscount, readyForPrinting, group, activeShowItems, mailToName, shipMethod, firstOccurringShowItemWithValidCount, showsDaysSpan, allSeatAssigned, seatsOverAssigned, activeShowTourItemCount, finalPaymentDueDays, lastShowDate, allShowTourItem, allPartnerEventsConfirmed, grandTotalSaving, autoApplyDiscounts);
   }
 
   @Override
@@ -4407,52 +4379,51 @@ public class Order {
     sb.append("    logActivity: ").append(toIndentedString(logActivity)).append("\n");
     sb.append("    persisted: ").append(toIndentedString(persisted)).append("\n");
     sb.append("    alreadyLoggedActivity: ").append(toIndentedString(alreadyLoggedActivity)).append("\n");
-    sb.append("    ticketDeliveryMessage: ").append(toIndentedString(ticketDeliveryMessage)).append("\n");
     sb.append("    cancelled: ").append(toIndentedString(cancelled)).append("\n");
-    sb.append("    groupCount: ").append(toIndentedString(groupCount)).append("\n");
-    sb.append("    readyForPrinting: ").append(toIndentedString(readyForPrinting)).append("\n");
-    sb.append("    activeShowItems: ").append(toIndentedString(activeShowItems)).append("\n");
-    sb.append("    mailToName: ").append(toIndentedString(mailToName)).append("\n");
-    sb.append("    totalPaidAmount: ").append(toIndentedString(totalPaidAmount)).append("\n");
-    sb.append("    invoiceCompany: ").append(toIndentedString(invoiceCompany)).append("\n");
+    sb.append("    lastOccurringShowTourItem: ").append(toIndentedString(lastOccurringShowTourItem)).append("\n");
+    sb.append("    totalTransactionCharge: ").append(toIndentedString(totalTransactionCharge)).append("\n");
+    sb.append("    totalCustomerDiscount: ").append(toIndentedString(totalCustomerDiscount)).append("\n");
     sb.append("    highCountByOrderItem: ").append(toIndentedString(highCountByOrderItem)).append("\n");
-    sb.append("    totalDiscount: ").append(toIndentedString(totalDiscount)).append("\n");
+    sb.append("    _new: ").append(toIndentedString(_new)).append("\n");
+    sb.append("    firstOccurringShowTourItem: ").append(toIndentedString(firstOccurringShowTourItem)).append("\n");
+    sb.append("    activeOrderItemList: ").append(toIndentedString(activeOrderItemList)).append("\n");
+    sb.append("    seatsUnderAssigned: ").append(toIndentedString(seatsUnderAssigned)).append("\n");
+    sb.append("    maxItemNumber: ").append(toIndentedString(maxItemNumber)).append("\n");
+    sb.append("    paymentPast: ").append(toIndentedString(paymentPast)).append("\n");
+    sb.append("    ticketsMailed: ").append(toIndentedString(ticketsMailed)).append("\n");
+    sb.append("    latestEventOrderItem: ").append(toIndentedString(latestEventOrderItem)).append("\n");
+    sb.append("    earliestEventDate: ").append(toIndentedString(earliestEventDate)).append("\n");
+    sb.append("    firstShowDate: ").append(toIndentedString(firstShowDate)).append("\n");
+    sb.append("    cancelledShowTourItemList: ").append(toIndentedString(cancelledShowTourItemList)).append("\n");
+    sb.append("    groupCount: ").append(toIndentedString(groupCount)).append("\n");
+    sb.append("    calculatedPricingLevel: ").append(toIndentedString(calculatedPricingLevel)).append("\n");
+    sb.append("    dueAmount: ").append(toIndentedString(dueAmount)).append("\n");
+    sb.append("    totalFee: ").append(toIndentedString(totalFee)).append("\n");
+    sb.append("    invoiceCompany: ").append(toIndentedString(invoiceCompany)).append("\n");
+    sb.append("    activeShowTourItem: ").append(toIndentedString(activeShowTourItem)).append("\n");
     sb.append("    companyCode: ").append(toIndentedString(companyCode)).append("\n");
+    sb.append("    firstOccurringShowItem: ").append(toIndentedString(firstOccurringShowItem)).append("\n");
+    sb.append("    firstOccurringTourItem: ").append(toIndentedString(firstOccurringTourItem)).append("\n");
+    sb.append("    activeWithOrder: ").append(toIndentedString(activeWithOrder)).append("\n");
     sb.append("    postPayPricingLevel: ").append(toIndentedString(postPayPricingLevel)).append("\n");
     sb.append("    allItemsTotalPrice: ").append(toIndentedString(allItemsTotalPrice)).append("\n");
-    sb.append("    totalGratuity: ").append(toIndentedString(totalGratuity)).append("\n");
-    sb.append("    firstOccurringShowItemWithValidCount: ").append(toIndentedString(firstOccurringShowItemWithValidCount)).append("\n");
-    sb.append("    activeShowTourItemCount: ").append(toIndentedString(activeShowTourItemCount)).append("\n");
-    sb.append("    seatsOverAssigned: ").append(toIndentedString(seatsOverAssigned)).append("\n");
-    sb.append("    group: ").append(toIndentedString(group)).append("\n");
-    sb.append("    allSeatAssigned: ").append(toIndentedString(allSeatAssigned)).append("\n");
-    sb.append("    totalTransactionCharge: ").append(toIndentedString(totalTransactionCharge)).append("\n");
-    sb.append("    calculatedPricingLevel: ").append(toIndentedString(calculatedPricingLevel)).append("\n");
-    sb.append("    earliestEventDate: ").append(toIndentedString(earliestEventDate)).append("\n");
-    sb.append("    ticketsMailed: ").append(toIndentedString(ticketsMailed)).append("\n");
-    sb.append("    activeOrderItemList: ").append(toIndentedString(activeOrderItemList)).append("\n");
-    sb.append("    cancelledShowTourItemList: ").append(toIndentedString(cancelledShowTourItemList)).append("\n");
-    sb.append("    activeShowTourItem: ").append(toIndentedString(activeShowTourItem)).append("\n");
-    sb.append("    showsDaysSpan: ").append(toIndentedString(showsDaysSpan)).append("\n");
     sb.append("    totalTax: ").append(toIndentedString(totalTax)).append("\n");
-    sb.append("    firstShowDate: ").append(toIndentedString(firstShowDate)).append("\n");
-    sb.append("    totalCustomerDiscount: ").append(toIndentedString(totalCustomerDiscount)).append("\n");
-    sb.append("    firstOccurringTourItem: ").append(toIndentedString(firstOccurringTourItem)).append("\n");
-    sb.append("    firstOccurringShowItem: ").append(toIndentedString(firstOccurringShowItem)).append("\n");
+    sb.append("    totalGratuity: ").append(toIndentedString(totalGratuity)).append("\n");
+    sb.append("    totalPaidAmount: ").append(toIndentedString(totalPaidAmount)).append("\n");
+    sb.append("    totalDiscount: ").append(toIndentedString(totalDiscount)).append("\n");
+    sb.append("    readyForPrinting: ").append(toIndentedString(readyForPrinting)).append("\n");
+    sb.append("    group: ").append(toIndentedString(group)).append("\n");
+    sb.append("    activeShowItems: ").append(toIndentedString(activeShowItems)).append("\n");
+    sb.append("    mailToName: ").append(toIndentedString(mailToName)).append("\n");
     sb.append("    shipMethod: ").append(toIndentedString(shipMethod)).append("\n");
-    sb.append("    activeWithOrder: ").append(toIndentedString(activeWithOrder)).append("\n");
-    sb.append("    totalFee: ").append(toIndentedString(totalFee)).append("\n");
-    sb.append("    dueAmount: ").append(toIndentedString(dueAmount)).append("\n");
-    sb.append("    _new: ").append(toIndentedString(_new)).append("\n");
-    sb.append("    maxItemNumber: ").append(toIndentedString(maxItemNumber)).append("\n");
-    sb.append("    latestEventOrderItem: ").append(toIndentedString(latestEventOrderItem)).append("\n");
-    sb.append("    lastOccurringShowTourItem: ").append(toIndentedString(lastOccurringShowTourItem)).append("\n");
-    sb.append("    seatsUnderAssigned: ").append(toIndentedString(seatsUnderAssigned)).append("\n");
-    sb.append("    paymentPast: ").append(toIndentedString(paymentPast)).append("\n");
+    sb.append("    firstOccurringShowItemWithValidCount: ").append(toIndentedString(firstOccurringShowItemWithValidCount)).append("\n");
+    sb.append("    showsDaysSpan: ").append(toIndentedString(showsDaysSpan)).append("\n");
+    sb.append("    allSeatAssigned: ").append(toIndentedString(allSeatAssigned)).append("\n");
+    sb.append("    seatsOverAssigned: ").append(toIndentedString(seatsOverAssigned)).append("\n");
+    sb.append("    activeShowTourItemCount: ").append(toIndentedString(activeShowTourItemCount)).append("\n");
     sb.append("    finalPaymentDueDays: ").append(toIndentedString(finalPaymentDueDays)).append("\n");
-    sb.append("    firstOccurringShowTourItem: ").append(toIndentedString(firstOccurringShowTourItem)).append("\n");
-    sb.append("    allShowTourItem: ").append(toIndentedString(allShowTourItem)).append("\n");
     sb.append("    lastShowDate: ").append(toIndentedString(lastShowDate)).append("\n");
+    sb.append("    allShowTourItem: ").append(toIndentedString(allShowTourItem)).append("\n");
     sb.append("    allPartnerEventsConfirmed: ").append(toIndentedString(allPartnerEventsConfirmed)).append("\n");
     sb.append("    grandTotalSaving: ").append(toIndentedString(grandTotalSaving)).append("\n");
     sb.append("    autoApplyDiscounts: ").append(toIndentedString(autoApplyDiscounts)).append("\n");
@@ -4576,52 +4547,51 @@ public class Order {
     openapiFields.add("logActivity");
     openapiFields.add("persisted");
     openapiFields.add("alreadyLoggedActivity");
-    openapiFields.add("ticketDeliveryMessage");
     openapiFields.add("cancelled");
-    openapiFields.add("groupCount");
-    openapiFields.add("readyForPrinting");
-    openapiFields.add("activeShowItems");
-    openapiFields.add("mailToName");
-    openapiFields.add("totalPaidAmount");
-    openapiFields.add("invoiceCompany");
+    openapiFields.add("lastOccurringShowTourItem");
+    openapiFields.add("totalTransactionCharge");
+    openapiFields.add("totalCustomerDiscount");
     openapiFields.add("highCountByOrderItem");
-    openapiFields.add("totalDiscount");
+    openapiFields.add("new");
+    openapiFields.add("firstOccurringShowTourItem");
+    openapiFields.add("activeOrderItemList");
+    openapiFields.add("seatsUnderAssigned");
+    openapiFields.add("maxItemNumber");
+    openapiFields.add("paymentPast");
+    openapiFields.add("ticketsMailed");
+    openapiFields.add("latestEventOrderItem");
+    openapiFields.add("earliestEventDate");
+    openapiFields.add("firstShowDate");
+    openapiFields.add("cancelledShowTourItemList");
+    openapiFields.add("groupCount");
+    openapiFields.add("calculatedPricingLevel");
+    openapiFields.add("dueAmount");
+    openapiFields.add("totalFee");
+    openapiFields.add("invoiceCompany");
+    openapiFields.add("activeShowTourItem");
     openapiFields.add("companyCode");
+    openapiFields.add("firstOccurringShowItem");
+    openapiFields.add("firstOccurringTourItem");
+    openapiFields.add("activeWithOrder");
     openapiFields.add("postPayPricingLevel");
     openapiFields.add("allItemsTotalPrice");
-    openapiFields.add("totalGratuity");
-    openapiFields.add("firstOccurringShowItemWithValidCount");
-    openapiFields.add("activeShowTourItemCount");
-    openapiFields.add("seatsOverAssigned");
-    openapiFields.add("group");
-    openapiFields.add("allSeatAssigned");
-    openapiFields.add("totalTransactionCharge");
-    openapiFields.add("calculatedPricingLevel");
-    openapiFields.add("earliestEventDate");
-    openapiFields.add("ticketsMailed");
-    openapiFields.add("activeOrderItemList");
-    openapiFields.add("cancelledShowTourItemList");
-    openapiFields.add("activeShowTourItem");
-    openapiFields.add("showsDaysSpan");
     openapiFields.add("totalTax");
-    openapiFields.add("firstShowDate");
-    openapiFields.add("totalCustomerDiscount");
-    openapiFields.add("firstOccurringTourItem");
-    openapiFields.add("firstOccurringShowItem");
+    openapiFields.add("totalGratuity");
+    openapiFields.add("totalPaidAmount");
+    openapiFields.add("totalDiscount");
+    openapiFields.add("readyForPrinting");
+    openapiFields.add("group");
+    openapiFields.add("activeShowItems");
+    openapiFields.add("mailToName");
     openapiFields.add("shipMethod");
-    openapiFields.add("activeWithOrder");
-    openapiFields.add("totalFee");
-    openapiFields.add("dueAmount");
-    openapiFields.add("new");
-    openapiFields.add("maxItemNumber");
-    openapiFields.add("latestEventOrderItem");
-    openapiFields.add("lastOccurringShowTourItem");
-    openapiFields.add("seatsUnderAssigned");
-    openapiFields.add("paymentPast");
+    openapiFields.add("firstOccurringShowItemWithValidCount");
+    openapiFields.add("showsDaysSpan");
+    openapiFields.add("allSeatAssigned");
+    openapiFields.add("seatsOverAssigned");
+    openapiFields.add("activeShowTourItemCount");
     openapiFields.add("finalPaymentDueDays");
-    openapiFields.add("firstOccurringShowTourItem");
-    openapiFields.add("allShowTourItem");
     openapiFields.add("lastShowDate");
+    openapiFields.add("allShowTourItem");
     openapiFields.add("allPartnerEventsConfirmed");
     openapiFields.add("grandTotalSaving");
     openapiFields.add("autoApplyDiscounts");
@@ -4855,30 +4825,13 @@ public class Order {
       if (jsonObj.get("promoCode") != null && !jsonObj.get("promoCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `promoCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("promoCode").toString()));
       }
-      if (jsonObj.get("ticketDeliveryMessage") != null && !jsonObj.get("ticketDeliveryMessage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ticketDeliveryMessage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketDeliveryMessage").toString()));
+      // validate the optional field `lastOccurringShowTourItem`
+      if (jsonObj.getAsJsonObject("lastOccurringShowTourItem") != null) {
+        OrderItem.validateJsonObject(jsonObj.getAsJsonObject("lastOccurringShowTourItem"));
       }
-      JsonArray jsonArrayactiveShowItems = jsonObj.getAsJsonArray("activeShowItems");
-      if (jsonArrayactiveShowItems != null) {
-        // ensure the json data is an array
-        if (!jsonObj.get("activeShowItems").isJsonArray()) {
-          throw new IllegalArgumentException(String.format("Expected the field `activeShowItems` to be an array in the JSON string but got `%s`", jsonObj.get("activeShowItems").toString()));
-        }
-
-        // validate the optional field `activeShowItems` (array)
-        for (int i = 0; i < jsonArrayactiveShowItems.size(); i++) {
-          OrderItem.validateJsonObject(jsonArrayactiveShowItems.get(i).getAsJsonObject());
-        };
-      }
-      if (jsonObj.get("mailToName") != null && !jsonObj.get("mailToName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mailToName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mailToName").toString()));
-      }
-      if (jsonObj.get("companyCode") != null && !jsonObj.get("companyCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `companyCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyCode").toString()));
-      }
-      // validate the optional field `firstOccurringShowItemWithValidCount`
-      if (jsonObj.getAsJsonObject("firstOccurringShowItemWithValidCount") != null) {
-        OrderItem.validateJsonObject(jsonObj.getAsJsonObject("firstOccurringShowItemWithValidCount"));
+      // validate the optional field `firstOccurringShowTourItem`
+      if (jsonObj.getAsJsonObject("firstOccurringShowTourItem") != null) {
+        OrderItem.validateJsonObject(jsonObj.getAsJsonObject("firstOccurringShowTourItem"));
       }
       JsonArray jsonArrayactiveOrderItemList = jsonObj.getAsJsonArray("activeOrderItemList");
       if (jsonArrayactiveOrderItemList != null) {
@@ -4891,6 +4844,10 @@ public class Order {
         for (int i = 0; i < jsonArrayactiveOrderItemList.size(); i++) {
           OrderItem.validateJsonObject(jsonArrayactiveOrderItemList.get(i).getAsJsonObject());
         };
+      }
+      // validate the optional field `latestEventOrderItem`
+      if (jsonObj.getAsJsonObject("latestEventOrderItem") != null) {
+        OrderItem.validateJsonObject(jsonObj.getAsJsonObject("latestEventOrderItem"));
       }
       JsonArray jsonArraycancelledShowTourItemList = jsonObj.getAsJsonArray("cancelledShowTourItemList");
       if (jsonArraycancelledShowTourItemList != null) {
@@ -4916,16 +4873,16 @@ public class Order {
           OrderItem.validateJsonObject(jsonArrayactiveShowTourItem.get(i).getAsJsonObject());
         };
       }
-      // validate the optional field `firstOccurringTourItem`
-      if (jsonObj.getAsJsonObject("firstOccurringTourItem") != null) {
-        OrderItem.validateJsonObject(jsonObj.getAsJsonObject("firstOccurringTourItem"));
+      if (jsonObj.get("companyCode") != null && !jsonObj.get("companyCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `companyCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyCode").toString()));
       }
       // validate the optional field `firstOccurringShowItem`
       if (jsonObj.getAsJsonObject("firstOccurringShowItem") != null) {
         OrderItem.validateJsonObject(jsonObj.getAsJsonObject("firstOccurringShowItem"));
       }
-      if (jsonObj.get("shipMethod") != null && !jsonObj.get("shipMethod").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `shipMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shipMethod").toString()));
+      // validate the optional field `firstOccurringTourItem`
+      if (jsonObj.getAsJsonObject("firstOccurringTourItem") != null) {
+        OrderItem.validateJsonObject(jsonObj.getAsJsonObject("firstOccurringTourItem"));
       }
       JsonArray jsonArrayactiveWithOrder = jsonObj.getAsJsonArray("activeWithOrder");
       if (jsonArrayactiveWithOrder != null) {
@@ -4939,17 +4896,27 @@ public class Order {
           OrderItem.validateJsonObject(jsonArrayactiveWithOrder.get(i).getAsJsonObject());
         };
       }
-      // validate the optional field `latestEventOrderItem`
-      if (jsonObj.getAsJsonObject("latestEventOrderItem") != null) {
-        OrderItem.validateJsonObject(jsonObj.getAsJsonObject("latestEventOrderItem"));
+      JsonArray jsonArrayactiveShowItems = jsonObj.getAsJsonArray("activeShowItems");
+      if (jsonArrayactiveShowItems != null) {
+        // ensure the json data is an array
+        if (!jsonObj.get("activeShowItems").isJsonArray()) {
+          throw new IllegalArgumentException(String.format("Expected the field `activeShowItems` to be an array in the JSON string but got `%s`", jsonObj.get("activeShowItems").toString()));
+        }
+
+        // validate the optional field `activeShowItems` (array)
+        for (int i = 0; i < jsonArrayactiveShowItems.size(); i++) {
+          OrderItem.validateJsonObject(jsonArrayactiveShowItems.get(i).getAsJsonObject());
+        };
       }
-      // validate the optional field `lastOccurringShowTourItem`
-      if (jsonObj.getAsJsonObject("lastOccurringShowTourItem") != null) {
-        OrderItem.validateJsonObject(jsonObj.getAsJsonObject("lastOccurringShowTourItem"));
+      if (jsonObj.get("mailToName") != null && !jsonObj.get("mailToName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mailToName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mailToName").toString()));
       }
-      // validate the optional field `firstOccurringShowTourItem`
-      if (jsonObj.getAsJsonObject("firstOccurringShowTourItem") != null) {
-        OrderItem.validateJsonObject(jsonObj.getAsJsonObject("firstOccurringShowTourItem"));
+      if (jsonObj.get("shipMethod") != null && !jsonObj.get("shipMethod").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shipMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shipMethod").toString()));
+      }
+      // validate the optional field `firstOccurringShowItemWithValidCount`
+      if (jsonObj.getAsJsonObject("firstOccurringShowItemWithValidCount") != null) {
+        OrderItem.validateJsonObject(jsonObj.getAsJsonObject("firstOccurringShowItemWithValidCount"));
       }
       JsonArray jsonArrayallShowTourItem = jsonObj.getAsJsonArray("allShowTourItem");
       if (jsonArrayallShowTourItem != null) {

@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -47,7 +47,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * CheckoutOrder
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class CheckoutOrder {
   public static final String SERIALIZED_NAME_ORDER_DATA = "orderData";
   @SerializedName(SERIALIZED_NAME_ORDER_DATA)

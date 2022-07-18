@@ -96,16 +96,16 @@
 |**orders** | [**List&lt;Order&gt;**](Order.md) |  |  [optional] |
 |**notes** | [**List&lt;Note&gt;**](Note.md) |  |  [optional] |
 |**additionalContacts** | [**List&lt;CustomerContactInfo&gt;**](CustomerContactInfo.md) |  |  [optional] |
-|**organization** | **Boolean** |  |  [optional] |
-|**defaultPhoneNumber** | **String** |  |  [optional] |
-|**employee** | **Boolean** |  |  [optional] |
-|**primaryContact** | [**CustomerContactInfo**](CustomerContactInfo.md) |  |  [optional] |
-|**customerTypeResponse** | **CustomerTypeResponse** |  |  [optional] |
-|**generalConsumer** | **Boolean** |  |  [optional] |
-|**reseller** | **Boolean** |  |  [optional] |
-|**accountFrozen** | **Boolean** |  |  [optional] |
 |**customerNameToDisplay** | **String** |  |  [optional] |
+|**customerTypeResponse** | **CustomerTypeResponse** |  |  [optional] |
+|**defaultPhoneNumber** | **String** |  |  [optional] |
+|**reseller** | **Boolean** |  |  [optional] |
+|**primaryContact** | [**CustomerContactInfo**](CustomerContactInfo.md) |  |  [optional] |
+|**generalConsumer** | **Boolean** |  |  [optional] |
+|**accountFrozen** | **Boolean** |  |  [optional] |
+|**employee** | **Boolean** |  |  [optional] |
 |**addressVerifiedStatus** | **AddressVerifyStatus** |  |  [optional] |
+|**organization** | **Boolean** |  |  [optional] |
 
 
 

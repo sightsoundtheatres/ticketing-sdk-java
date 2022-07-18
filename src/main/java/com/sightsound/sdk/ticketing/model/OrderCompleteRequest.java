@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -50,7 +50,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderCompleteRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class OrderCompleteRequest {
   public static final String SERIALIZED_NAME_CART = "cart";
   @SerializedName(SERIALIZED_NAME_CART)
@@ -67,6 +67,10 @@ public class OrderCompleteRequest {
   public static final String SERIALIZED_NAME_SEAT_LOCK_TOKEN = "seatLockToken";
   @SerializedName(SERIALIZED_NAME_SEAT_LOCK_TOKEN)
   private Long seatLockToken;
+
+  public static final String SERIALIZED_NAME_OVERFLOW_SEAT_COUNT = "overflowSeatCount";
+  @SerializedName(SERIALIZED_NAME_OVERFLOW_SEAT_COUNT)
+  private Integer overflowSeatCount;
 
   public static final String SERIALIZED_NAME_EMAIL_LIST = "emailList";
   @SerializedName(SERIALIZED_NAME_EMAIL_LIST)
@@ -171,6 +175,29 @@ public class OrderCompleteRequest {
   }
 
 
+  public OrderCompleteRequest overflowSeatCount(Integer overflowSeatCount) {
+    
+    this.overflowSeatCount = overflowSeatCount;
+    return this;
+  }
+
+   /**
+   * Get overflowSeatCount
+   * @return overflowSeatCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getOverflowSeatCount() {
+    return overflowSeatCount;
+  }
+
+
+  public void setOverflowSeatCount(Integer overflowSeatCount) {
+    this.overflowSeatCount = overflowSeatCount;
+  }
+
+
   public OrderCompleteRequest emailList(Boolean emailList) {
     
     this.emailList = emailList;
@@ -180,7 +207,9 @@ public class OrderCompleteRequest {
    /**
    * Get emailList
    * @return emailList
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -231,13 +260,14 @@ public class OrderCompleteRequest {
         Objects.equals(this.delivery, orderCompleteRequest.delivery) &&
         Objects.equals(this.payment, orderCompleteRequest.payment) &&
         Objects.equals(this.seatLockToken, orderCompleteRequest.seatLockToken) &&
+        Objects.equals(this.overflowSeatCount, orderCompleteRequest.overflowSeatCount) &&
         Objects.equals(this.emailList, orderCompleteRequest.emailList) &&
         Objects.equals(this.sameGroupConfirm, orderCompleteRequest.sameGroupConfirm);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cart, delivery, payment, seatLockToken, emailList, sameGroupConfirm);
+    return Objects.hash(cart, delivery, payment, seatLockToken, overflowSeatCount, emailList, sameGroupConfirm);
   }
 
   @Override
@@ -248,6 +278,7 @@ public class OrderCompleteRequest {
     sb.append("    delivery: ").append(toIndentedString(delivery)).append("\n");
     sb.append("    payment: ").append(toIndentedString(payment)).append("\n");
     sb.append("    seatLockToken: ").append(toIndentedString(seatLockToken)).append("\n");
+    sb.append("    overflowSeatCount: ").append(toIndentedString(overflowSeatCount)).append("\n");
     sb.append("    emailList: ").append(toIndentedString(emailList)).append("\n");
     sb.append("    sameGroupConfirm: ").append(toIndentedString(sameGroupConfirm)).append("\n");
     sb.append("}");
@@ -276,6 +307,7 @@ public class OrderCompleteRequest {
     openapiFields.add("delivery");
     openapiFields.add("payment");
     openapiFields.add("seatLockToken");
+    openapiFields.add("overflowSeatCount");
     openapiFields.add("emailList");
     openapiFields.add("sameGroupConfirm");
 

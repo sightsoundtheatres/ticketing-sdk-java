@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**method** | **TicketBatch** |  |  |
-|**target** | **String** |  |  |
+|**method** | **TicketBatch** |  |  [optional] |
+|**target** | **String** |  |  [optional] |
 
 
 

@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -51,7 +51,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderItemDetail
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class OrderItemDetail {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -173,6 +173,10 @@ public class OrderItemDetail {
   @SerializedName(SERIALIZED_NAME_PERSISTED)
   private Boolean persisted;
 
+  public static final String SERIALIZED_NAME_NEW = "new";
+  @SerializedName(SERIALIZED_NAME_NEW)
+  private Boolean _new;
+
   public static final String SERIALIZED_NAME_LIST_PRICE_WITH_DISCOUNTS = "listPriceWithDiscounts";
   @SerializedName(SERIALIZED_NAME_LIST_PRICE_WITH_DISCOUNTS)
   private BigDecimal listPriceWithDiscounts;
@@ -192,10 +196,6 @@ public class OrderItemDetail {
   public static final String SERIALIZED_NAME_SAVINGS = "savings";
   @SerializedName(SERIALIZED_NAME_SAVINGS)
   private BigDecimal savings;
-
-  public static final String SERIALIZED_NAME_NEW = "new";
-  @SerializedName(SERIALIZED_NAME_NEW)
-  private Boolean _new;
 
   public static final String SERIALIZED_NAME_TOTAL_SAVINGS = "totalSavings";
   @SerializedName(SERIALIZED_NAME_TOTAL_SAVINGS)
@@ -894,6 +894,29 @@ public class OrderItemDetail {
   }
 
 
+  public OrderItemDetail _new(Boolean _new) {
+    
+    this._new = _new;
+    return this;
+  }
+
+   /**
+   * Get _new
+   * @return _new
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getNew() {
+    return _new;
+  }
+
+
+  public void setNew(Boolean _new) {
+    this._new = _new;
+  }
+
+
   public OrderItemDetail listPriceWithDiscounts(BigDecimal listPriceWithDiscounts) {
     
     this.listPriceWithDiscounts = listPriceWithDiscounts;
@@ -1009,29 +1032,6 @@ public class OrderItemDetail {
   }
 
 
-  public OrderItemDetail _new(Boolean _new) {
-    
-    this._new = _new;
-    return this;
-  }
-
-   /**
-   * Get _new
-   * @return _new
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getNew() {
-    return _new;
-  }
-
-
-  public void setNew(Boolean _new) {
-    this._new = _new;
-  }
-
-
   public OrderItemDetail totalSavings(BigDecimal totalSavings) {
     
     this.totalSavings = totalSavings;
@@ -1095,18 +1095,18 @@ public class OrderItemDetail {
         Objects.equals(this.orderItem, orderItemDetail.orderItem) &&
         Objects.equals(this.deltaCount, orderItemDetail.deltaCount) &&
         Objects.equals(this.persisted, orderItemDetail.persisted) &&
+        Objects.equals(this._new, orderItemDetail._new) &&
         Objects.equals(this.listPriceWithDiscounts, orderItemDetail.listPriceWithDiscounts) &&
         Objects.equals(this.totalDiscount, orderItemDetail.totalDiscount) &&
         Objects.equals(this.unprintedCount, orderItemDetail.unprintedCount) &&
         Objects.equals(this.manDiscountDollarAmount, orderItemDetail.manDiscountDollarAmount) &&
         Objects.equals(this.savings, orderItemDetail.savings) &&
-        Objects.equals(this._new, orderItemDetail._new) &&
         Objects.equals(this.totalSavings, orderItemDetail.totalSavings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderNumber, itemNumber, count, manDiscountCount, specialDiscountCount, designationCode, seatDiscountCount, seatDiscountAmount, custDiscountTypeCode, custDiscountValue, specialTypeCode, specialDiscountValue, manDiscountTypeCode, manDiscountValue, confirmedCount, totalPrice, specialDiscountTotalAmount, manDiscountTotalAmount, seatDiscountTotalAmount, custDiscountTotalAmount, printedCount, priceValue, price, compCount, gratuity, ssMargin, custDiscountCount, orderItem, deltaCount, persisted, listPriceWithDiscounts, totalDiscount, unprintedCount, manDiscountDollarAmount, savings, _new, totalSavings);
+    return Objects.hash(orderNumber, itemNumber, count, manDiscountCount, specialDiscountCount, designationCode, seatDiscountCount, seatDiscountAmount, custDiscountTypeCode, custDiscountValue, specialTypeCode, specialDiscountValue, manDiscountTypeCode, manDiscountValue, confirmedCount, totalPrice, specialDiscountTotalAmount, manDiscountTotalAmount, seatDiscountTotalAmount, custDiscountTotalAmount, printedCount, priceValue, price, compCount, gratuity, ssMargin, custDiscountCount, orderItem, deltaCount, persisted, _new, listPriceWithDiscounts, totalDiscount, unprintedCount, manDiscountDollarAmount, savings, totalSavings);
   }
 
   @Override
@@ -1143,12 +1143,12 @@ public class OrderItemDetail {
     sb.append("    orderItem: ").append(toIndentedString(orderItem)).append("\n");
     sb.append("    deltaCount: ").append(toIndentedString(deltaCount)).append("\n");
     sb.append("    persisted: ").append(toIndentedString(persisted)).append("\n");
+    sb.append("    _new: ").append(toIndentedString(_new)).append("\n");
     sb.append("    listPriceWithDiscounts: ").append(toIndentedString(listPriceWithDiscounts)).append("\n");
     sb.append("    totalDiscount: ").append(toIndentedString(totalDiscount)).append("\n");
     sb.append("    unprintedCount: ").append(toIndentedString(unprintedCount)).append("\n");
     sb.append("    manDiscountDollarAmount: ").append(toIndentedString(manDiscountDollarAmount)).append("\n");
     sb.append("    savings: ").append(toIndentedString(savings)).append("\n");
-    sb.append("    _new: ").append(toIndentedString(_new)).append("\n");
     sb.append("    totalSavings: ").append(toIndentedString(totalSavings)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1202,12 +1202,12 @@ public class OrderItemDetail {
     openapiFields.add("orderItem");
     openapiFields.add("deltaCount");
     openapiFields.add("persisted");
+    openapiFields.add("new");
     openapiFields.add("listPriceWithDiscounts");
     openapiFields.add("totalDiscount");
     openapiFields.add("unprintedCount");
     openapiFields.add("manDiscountDollarAmount");
     openapiFields.add("savings");
-    openapiFields.add("new");
     openapiFields.add("totalSavings");
 
     // a set of required properties/fields (JSON key names)

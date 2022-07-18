@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -50,7 +50,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * OrderCustomerRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class OrderCustomerRequest {
   public static final String SERIALIZED_NAME_FIRST_NAME = "firstName";
   @SerializedName(SERIALIZED_NAME_FIRST_NAME)
@@ -83,6 +83,10 @@ public class OrderCustomerRequest {
   public static final String SERIALIZED_NAME_SHIPPING_ADDRESS = "shippingAddress";
   @SerializedName(SERIALIZED_NAME_SHIPPING_ADDRESS)
   private AddressExtended shippingAddress;
+
+  public static final String SERIALIZED_NAME_EMAIL_LIST = "emailList";
+  @SerializedName(SERIALIZED_NAME_EMAIL_LIST)
+  private Boolean emailList;
 
   public static final String SERIALIZED_NAME_WEBSITE_CUSTOMER_SEARCH_REQUEST = "websiteCustomerSearchRequest";
   @SerializedName(SERIALIZED_NAME_WEBSITE_CUSTOMER_SEARCH_REQUEST)
@@ -275,6 +279,29 @@ public class OrderCustomerRequest {
   }
 
 
+  public OrderCustomerRequest emailList(Boolean emailList) {
+    
+    this.emailList = emailList;
+    return this;
+  }
+
+   /**
+   * Get emailList
+   * @return emailList
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getEmailList() {
+    return emailList;
+  }
+
+
+  public void setEmailList(Boolean emailList) {
+    this.emailList = emailList;
+  }
+
+
   public OrderCustomerRequest websiteCustomerSearchRequest(CreateWebsiteCustomerRequest websiteCustomerSearchRequest) {
     
     this.websiteCustomerSearchRequest = websiteCustomerSearchRequest;
@@ -316,12 +343,13 @@ public class OrderCustomerRequest {
         Objects.equals(this.organizationName, orderCustomerRequest.organizationName) &&
         Objects.equals(this.billingAddress, orderCustomerRequest.billingAddress) &&
         Objects.equals(this.shippingAddress, orderCustomerRequest.shippingAddress) &&
+        Objects.equals(this.emailList, orderCustomerRequest.emailList) &&
         Objects.equals(this.websiteCustomerSearchRequest, orderCustomerRequest.websiteCustomerSearchRequest);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstName, lastName, phoneNumber, phoneType, emailAddress, organizationName, billingAddress, shippingAddress, websiteCustomerSearchRequest);
+    return Objects.hash(firstName, lastName, phoneNumber, phoneType, emailAddress, organizationName, billingAddress, shippingAddress, emailList, websiteCustomerSearchRequest);
   }
 
   @Override
@@ -336,6 +364,7 @@ public class OrderCustomerRequest {
     sb.append("    organizationName: ").append(toIndentedString(organizationName)).append("\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
     sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
+    sb.append("    emailList: ").append(toIndentedString(emailList)).append("\n");
     sb.append("    websiteCustomerSearchRequest: ").append(toIndentedString(websiteCustomerSearchRequest)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -367,6 +396,7 @@ public class OrderCustomerRequest {
     openapiFields.add("organizationName");
     openapiFields.add("billingAddress");
     openapiFields.add("shippingAddress");
+    openapiFields.add("emailList");
     openapiFields.add("websiteCustomerSearchRequest");
 
     // a set of required properties/fields (JSON key names)

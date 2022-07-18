@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -49,7 +49,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Schedule
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class Schedule {
   public static final String SERIALIZED_NAME_EVENT_CODE = "eventCode";
   @SerializedName(SERIALIZED_NAME_EVENT_CODE)
@@ -197,7 +197,9 @@ public class Schedule {
    /**
    * Get seatsAvailable
    * @return seatsAvailable
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -220,7 +222,9 @@ public class Schedule {
    /**
    * Get seatsBooked
    * @return seatsBooked
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -243,7 +247,9 @@ public class Schedule {
    /**
    * Get seatsBlocked
    * @return seatsBlocked
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -266,7 +272,9 @@ public class Schedule {
    /**
    * Get seatsOverflow
    * @return seatsOverflow
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -404,7 +412,9 @@ public class Schedule {
    /**
    * Get custTandcProfileCode
    * @return custTandcProfileCode
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -450,7 +460,9 @@ public class Schedule {
    /**
    * Get wheelChairCount
    * @return wheelChairCount
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 

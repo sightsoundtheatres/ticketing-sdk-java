@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -75,8 +75,7 @@ public class OrderControllerApi {
     }
 
     /**
-     * Build call for completeOrder
-     * @param orderNumber  (required)
+     * Build call for completeNewOrder
      * @param orderCompleteRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -87,7 +86,7 @@ public class OrderControllerApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call completeOrderCall(Long orderNumber, OrderCompleteRequest orderCompleteRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call completeNewOrderCall(OrderCompleteRequest orderCompleteRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -104,8 +103,7 @@ public class OrderControllerApi {
         Object localVarPostBody = orderCompleteRequest;
 
         // create path and map variables
-        String localVarPath = "/order/complete"
-            .replaceAll("\\{" + "orderNumber" + "\\}", localVarApiClient.escapeString(orderNumber.toString()));
+        String localVarPath = "/order/complete";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -129,33 +127,27 @@ public class OrderControllerApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "DEV", "PROD" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call completeOrderValidateBeforeCall(Long orderNumber, OrderCompleteRequest orderCompleteRequest, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'orderNumber' is set
-        if (orderNumber == null) {
-            throw new ApiException("Missing the required parameter 'orderNumber' when calling completeOrder(Async)");
-        }
+    private okhttp3.Call completeNewOrderValidateBeforeCall(OrderCompleteRequest orderCompleteRequest, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'orderCompleteRequest' is set
         if (orderCompleteRequest == null) {
-            throw new ApiException("Missing the required parameter 'orderCompleteRequest' when calling completeOrder(Async)");
+            throw new ApiException("Missing the required parameter 'orderCompleteRequest' when calling completeNewOrder(Async)");
         }
         
 
-        okhttp3.Call localVarCall = completeOrderCall(orderNumber, orderCompleteRequest, _callback);
+        okhttp3.Call localVarCall = completeNewOrderCall(orderCompleteRequest, _callback);
         return localVarCall;
 
     }
 
     /**
      * Complete order
-     * Completes an order. Can be new or existing.
-     * @param orderNumber  (required)
+     * Completes a new order.
      * @param orderCompleteRequest  (required)
      * @return OrderCompleteResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -165,15 +157,14 @@ public class OrderControllerApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public OrderCompleteResponse completeOrder(Long orderNumber, OrderCompleteRequest orderCompleteRequest) throws ApiException {
-        ApiResponse<OrderCompleteResponse> localVarResp = completeOrderWithHttpInfo(orderNumber, orderCompleteRequest);
+    public OrderCompleteResponse completeNewOrder(OrderCompleteRequest orderCompleteRequest) throws ApiException {
+        ApiResponse<OrderCompleteResponse> localVarResp = completeNewOrderWithHttpInfo(orderCompleteRequest);
         return localVarResp.getData();
     }
 
     /**
      * Complete order
-     * Completes an order. Can be new or existing.
-     * @param orderNumber  (required)
+     * Completes a new order.
      * @param orderCompleteRequest  (required)
      * @return ApiResponse&lt;OrderCompleteResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -183,16 +174,15 @@ public class OrderControllerApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OrderCompleteResponse> completeOrderWithHttpInfo(Long orderNumber, OrderCompleteRequest orderCompleteRequest) throws ApiException {
-        okhttp3.Call localVarCall = completeOrderValidateBeforeCall(orderNumber, orderCompleteRequest, null);
+    public ApiResponse<OrderCompleteResponse> completeNewOrderWithHttpInfo(OrderCompleteRequest orderCompleteRequest) throws ApiException {
+        okhttp3.Call localVarCall = completeNewOrderValidateBeforeCall(orderCompleteRequest, null);
         Type localVarReturnType = new TypeToken<OrderCompleteResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Complete order (asynchronously)
-     * Completes an order. Can be new or existing.
-     * @param orderNumber  (required)
+     * Completes a new order.
      * @param orderCompleteRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -203,9 +193,9 @@ public class OrderControllerApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call completeOrderAsync(Long orderNumber, OrderCompleteRequest orderCompleteRequest, final ApiCallback<OrderCompleteResponse> _callback) throws ApiException {
+    public okhttp3.Call completeNewOrderAsync(OrderCompleteRequest orderCompleteRequest, final ApiCallback<OrderCompleteResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = completeOrderValidateBeforeCall(orderNumber, orderCompleteRequest, _callback);
+        okhttp3.Call localVarCall = completeNewOrderValidateBeforeCall(orderCompleteRequest, _callback);
         Type localVarReturnType = new TypeToken<OrderCompleteResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

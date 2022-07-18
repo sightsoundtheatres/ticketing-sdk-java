@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -65,7 +65,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Customer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class Customer {
   public static final String SERIALIZED_NAME_CUSTOMER_NUMBER = "customerNumber";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_NUMBER)
@@ -423,45 +423,45 @@ public class Customer {
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_CONTACTS)
   private List<CustomerContactInfo> additionalContacts = null;
 
-  public static final String SERIALIZED_NAME_ORGANIZATION = "organization";
-  @SerializedName(SERIALIZED_NAME_ORGANIZATION)
-  private Boolean organization;
-
-  public static final String SERIALIZED_NAME_DEFAULT_PHONE_NUMBER = "defaultPhoneNumber";
-  @SerializedName(SERIALIZED_NAME_DEFAULT_PHONE_NUMBER)
-  private String defaultPhoneNumber;
-
-  public static final String SERIALIZED_NAME_EMPLOYEE = "employee";
-  @SerializedName(SERIALIZED_NAME_EMPLOYEE)
-  private Boolean employee;
-
-  public static final String SERIALIZED_NAME_PRIMARY_CONTACT = "primaryContact";
-  @SerializedName(SERIALIZED_NAME_PRIMARY_CONTACT)
-  private CustomerContactInfo primaryContact;
+  public static final String SERIALIZED_NAME_CUSTOMER_NAME_TO_DISPLAY = "customerNameToDisplay";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER_NAME_TO_DISPLAY)
+  private String customerNameToDisplay;
 
   public static final String SERIALIZED_NAME_CUSTOMER_TYPE_RESPONSE = "customerTypeResponse";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_TYPE_RESPONSE)
   private CustomerTypeResponse customerTypeResponse;
 
-  public static final String SERIALIZED_NAME_GENERAL_CONSUMER = "generalConsumer";
-  @SerializedName(SERIALIZED_NAME_GENERAL_CONSUMER)
-  private Boolean generalConsumer;
+  public static final String SERIALIZED_NAME_DEFAULT_PHONE_NUMBER = "defaultPhoneNumber";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_PHONE_NUMBER)
+  private String defaultPhoneNumber;
 
   public static final String SERIALIZED_NAME_RESELLER = "reseller";
   @SerializedName(SERIALIZED_NAME_RESELLER)
   private Boolean reseller;
 
+  public static final String SERIALIZED_NAME_PRIMARY_CONTACT = "primaryContact";
+  @SerializedName(SERIALIZED_NAME_PRIMARY_CONTACT)
+  private CustomerContactInfo primaryContact;
+
+  public static final String SERIALIZED_NAME_GENERAL_CONSUMER = "generalConsumer";
+  @SerializedName(SERIALIZED_NAME_GENERAL_CONSUMER)
+  private Boolean generalConsumer;
+
   public static final String SERIALIZED_NAME_ACCOUNT_FROZEN = "accountFrozen";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_FROZEN)
   private Boolean accountFrozen;
 
-  public static final String SERIALIZED_NAME_CUSTOMER_NAME_TO_DISPLAY = "customerNameToDisplay";
-  @SerializedName(SERIALIZED_NAME_CUSTOMER_NAME_TO_DISPLAY)
-  private String customerNameToDisplay;
+  public static final String SERIALIZED_NAME_EMPLOYEE = "employee";
+  @SerializedName(SERIALIZED_NAME_EMPLOYEE)
+  private Boolean employee;
 
   public static final String SERIALIZED_NAME_ADDRESS_VERIFIED_STATUS = "addressVerifiedStatus";
   @SerializedName(SERIALIZED_NAME_ADDRESS_VERIFIED_STATUS)
   private AddressVerifyStatus addressVerifiedStatus;
+
+  public static final String SERIALIZED_NAME_ORGANIZATION = "organization";
+  @SerializedName(SERIALIZED_NAME_ORGANIZATION)
+  private Boolean organization;
 
   public Customer() { 
   }
@@ -2587,95 +2587,26 @@ public class Customer {
   }
 
 
-  public Customer organization(Boolean organization) {
+  public Customer customerNameToDisplay(String customerNameToDisplay) {
     
-    this.organization = organization;
+    this.customerNameToDisplay = customerNameToDisplay;
     return this;
   }
 
    /**
-   * Get organization
-   * @return organization
+   * Get customerNameToDisplay
+   * @return customerNameToDisplay
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Boolean getOrganization() {
-    return organization;
+  public String getCustomerNameToDisplay() {
+    return customerNameToDisplay;
   }
 
 
-  public void setOrganization(Boolean organization) {
-    this.organization = organization;
-  }
-
-
-  public Customer defaultPhoneNumber(String defaultPhoneNumber) {
-    
-    this.defaultPhoneNumber = defaultPhoneNumber;
-    return this;
-  }
-
-   /**
-   * Get defaultPhoneNumber
-   * @return defaultPhoneNumber
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getDefaultPhoneNumber() {
-    return defaultPhoneNumber;
-  }
-
-
-  public void setDefaultPhoneNumber(String defaultPhoneNumber) {
-    this.defaultPhoneNumber = defaultPhoneNumber;
-  }
-
-
-  public Customer employee(Boolean employee) {
-    
-    this.employee = employee;
-    return this;
-  }
-
-   /**
-   * Get employee
-   * @return employee
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getEmployee() {
-    return employee;
-  }
-
-
-  public void setEmployee(Boolean employee) {
-    this.employee = employee;
-  }
-
-
-  public Customer primaryContact(CustomerContactInfo primaryContact) {
-    
-    this.primaryContact = primaryContact;
-    return this;
-  }
-
-   /**
-   * Get primaryContact
-   * @return primaryContact
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public CustomerContactInfo getPrimaryContact() {
-    return primaryContact;
-  }
-
-
-  public void setPrimaryContact(CustomerContactInfo primaryContact) {
-    this.primaryContact = primaryContact;
+  public void setCustomerNameToDisplay(String customerNameToDisplay) {
+    this.customerNameToDisplay = customerNameToDisplay;
   }
 
 
@@ -2702,26 +2633,26 @@ public class Customer {
   }
 
 
-  public Customer generalConsumer(Boolean generalConsumer) {
+  public Customer defaultPhoneNumber(String defaultPhoneNumber) {
     
-    this.generalConsumer = generalConsumer;
+    this.defaultPhoneNumber = defaultPhoneNumber;
     return this;
   }
 
    /**
-   * Get generalConsumer
-   * @return generalConsumer
+   * Get defaultPhoneNumber
+   * @return defaultPhoneNumber
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Boolean getGeneralConsumer() {
-    return generalConsumer;
+  public String getDefaultPhoneNumber() {
+    return defaultPhoneNumber;
   }
 
 
-  public void setGeneralConsumer(Boolean generalConsumer) {
-    this.generalConsumer = generalConsumer;
+  public void setDefaultPhoneNumber(String defaultPhoneNumber) {
+    this.defaultPhoneNumber = defaultPhoneNumber;
   }
 
 
@@ -2748,6 +2679,52 @@ public class Customer {
   }
 
 
+  public Customer primaryContact(CustomerContactInfo primaryContact) {
+    
+    this.primaryContact = primaryContact;
+    return this;
+  }
+
+   /**
+   * Get primaryContact
+   * @return primaryContact
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CustomerContactInfo getPrimaryContact() {
+    return primaryContact;
+  }
+
+
+  public void setPrimaryContact(CustomerContactInfo primaryContact) {
+    this.primaryContact = primaryContact;
+  }
+
+
+  public Customer generalConsumer(Boolean generalConsumer) {
+    
+    this.generalConsumer = generalConsumer;
+    return this;
+  }
+
+   /**
+   * Get generalConsumer
+   * @return generalConsumer
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getGeneralConsumer() {
+    return generalConsumer;
+  }
+
+
+  public void setGeneralConsumer(Boolean generalConsumer) {
+    this.generalConsumer = generalConsumer;
+  }
+
+
   public Customer accountFrozen(Boolean accountFrozen) {
     
     this.accountFrozen = accountFrozen;
@@ -2771,26 +2748,26 @@ public class Customer {
   }
 
 
-  public Customer customerNameToDisplay(String customerNameToDisplay) {
+  public Customer employee(Boolean employee) {
     
-    this.customerNameToDisplay = customerNameToDisplay;
+    this.employee = employee;
     return this;
   }
 
    /**
-   * Get customerNameToDisplay
-   * @return customerNameToDisplay
+   * Get employee
+   * @return employee
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getCustomerNameToDisplay() {
-    return customerNameToDisplay;
+  public Boolean getEmployee() {
+    return employee;
   }
 
 
-  public void setCustomerNameToDisplay(String customerNameToDisplay) {
-    this.customerNameToDisplay = customerNameToDisplay;
+  public void setEmployee(Boolean employee) {
+    this.employee = employee;
   }
 
 
@@ -2814,6 +2791,29 @@ public class Customer {
 
   public void setAddressVerifiedStatus(AddressVerifyStatus addressVerifiedStatus) {
     this.addressVerifiedStatus = addressVerifiedStatus;
+  }
+
+
+  public Customer organization(Boolean organization) {
+    
+    this.organization = organization;
+    return this;
+  }
+
+   /**
+   * Get organization
+   * @return organization
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getOrganization() {
+    return organization;
+  }
+
+
+  public void setOrganization(Boolean organization) {
+    this.organization = organization;
   }
 
 
@@ -2916,21 +2916,21 @@ public class Customer {
         Objects.equals(this.orders, customer.orders) &&
         Objects.equals(this.notes, customer.notes) &&
         Objects.equals(this.additionalContacts, customer.additionalContacts) &&
-        Objects.equals(this.organization, customer.organization) &&
-        Objects.equals(this.defaultPhoneNumber, customer.defaultPhoneNumber) &&
-        Objects.equals(this.employee, customer.employee) &&
-        Objects.equals(this.primaryContact, customer.primaryContact) &&
-        Objects.equals(this.customerTypeResponse, customer.customerTypeResponse) &&
-        Objects.equals(this.generalConsumer, customer.generalConsumer) &&
-        Objects.equals(this.reseller, customer.reseller) &&
-        Objects.equals(this.accountFrozen, customer.accountFrozen) &&
         Objects.equals(this.customerNameToDisplay, customer.customerNameToDisplay) &&
-        Objects.equals(this.addressVerifiedStatus, customer.addressVerifiedStatus);
+        Objects.equals(this.customerTypeResponse, customer.customerTypeResponse) &&
+        Objects.equals(this.defaultPhoneNumber, customer.defaultPhoneNumber) &&
+        Objects.equals(this.reseller, customer.reseller) &&
+        Objects.equals(this.primaryContact, customer.primaryContact) &&
+        Objects.equals(this.generalConsumer, customer.generalConsumer) &&
+        Objects.equals(this.accountFrozen, customer.accountFrozen) &&
+        Objects.equals(this.employee, customer.employee) &&
+        Objects.equals(this.addressVerifiedStatus, customer.addressVerifiedStatus) &&
+        Objects.equals(this.organization, customer.organization);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerNumber, companyName, firstName, lastName, email, mailingList, comments, corpIdExpirationDate, lastBookingDate, numberBookedCurrYear, numberCanceledCurrYear, numberBookedLastYear, numberCanceledLastYear, numberBookedNextYear, numberCanceledNextYear, addUserId, addDate, active, type, sourceCode, additionalDiscPercent, corpIdNumber, corpAffiliatedCode, sourceCodeComments, emailList, emailStyle, rpOfficeNumber, taxExempt, oldCustTypeCode, callList, textList, address, sysProcessDate, sysStatusCode, sysCheckDate, sysCheckResult, club, title, birthDay, birthMonth, birthYear, press, clubMemberCancelComments, ageRange, clubCancelDate, specialNeeds, addressVerifyDate, custDetail, fitFrozen, fitMaxTickets, fitMaxTicketsEmailSent, addressVerifyFailDate, fitPrepaidThresholdEmail, fitFrozenOverride, passPhrase, extraCompTickets, empNumber, bookUntilDate, checkPayment, emailPaperwork, emailVerifiedDate, church, congregationSize, marketingPartner, immediateSeatAssign, printETicket, slidingScaleDiscount, groupNumber, tier, tour, receptive, employeeExitDate, group, lastShowCode, lastShowDate, lastShowTickets, lastShowOrderNumber, company, uspsAddressError, ticketDelivery, documents, upsAddresses, prices, phones, contacts, customerAttributes, orders, notes, additionalContacts, organization, defaultPhoneNumber, employee, primaryContact, customerTypeResponse, generalConsumer, reseller, accountFrozen, customerNameToDisplay, addressVerifiedStatus);
+    return Objects.hash(customerNumber, companyName, firstName, lastName, email, mailingList, comments, corpIdExpirationDate, lastBookingDate, numberBookedCurrYear, numberCanceledCurrYear, numberBookedLastYear, numberCanceledLastYear, numberBookedNextYear, numberCanceledNextYear, addUserId, addDate, active, type, sourceCode, additionalDiscPercent, corpIdNumber, corpAffiliatedCode, sourceCodeComments, emailList, emailStyle, rpOfficeNumber, taxExempt, oldCustTypeCode, callList, textList, address, sysProcessDate, sysStatusCode, sysCheckDate, sysCheckResult, club, title, birthDay, birthMonth, birthYear, press, clubMemberCancelComments, ageRange, clubCancelDate, specialNeeds, addressVerifyDate, custDetail, fitFrozen, fitMaxTickets, fitMaxTicketsEmailSent, addressVerifyFailDate, fitPrepaidThresholdEmail, fitFrozenOverride, passPhrase, extraCompTickets, empNumber, bookUntilDate, checkPayment, emailPaperwork, emailVerifiedDate, church, congregationSize, marketingPartner, immediateSeatAssign, printETicket, slidingScaleDiscount, groupNumber, tier, tour, receptive, employeeExitDate, group, lastShowCode, lastShowDate, lastShowTickets, lastShowOrderNumber, company, uspsAddressError, ticketDelivery, documents, upsAddresses, prices, phones, contacts, customerAttributes, orders, notes, additionalContacts, customerNameToDisplay, customerTypeResponse, defaultPhoneNumber, reseller, primaryContact, generalConsumer, accountFrozen, employee, addressVerifiedStatus, organization);
   }
 
   @Override
@@ -3026,16 +3026,16 @@ public class Customer {
     sb.append("    orders: ").append(toIndentedString(orders)).append("\n");
     sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    additionalContacts: ").append(toIndentedString(additionalContacts)).append("\n");
-    sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
-    sb.append("    defaultPhoneNumber: ").append(toIndentedString(defaultPhoneNumber)).append("\n");
-    sb.append("    employee: ").append(toIndentedString(employee)).append("\n");
-    sb.append("    primaryContact: ").append(toIndentedString(primaryContact)).append("\n");
-    sb.append("    customerTypeResponse: ").append(toIndentedString(customerTypeResponse)).append("\n");
-    sb.append("    generalConsumer: ").append(toIndentedString(generalConsumer)).append("\n");
-    sb.append("    reseller: ").append(toIndentedString(reseller)).append("\n");
-    sb.append("    accountFrozen: ").append(toIndentedString(accountFrozen)).append("\n");
     sb.append("    customerNameToDisplay: ").append(toIndentedString(customerNameToDisplay)).append("\n");
+    sb.append("    customerTypeResponse: ").append(toIndentedString(customerTypeResponse)).append("\n");
+    sb.append("    defaultPhoneNumber: ").append(toIndentedString(defaultPhoneNumber)).append("\n");
+    sb.append("    reseller: ").append(toIndentedString(reseller)).append("\n");
+    sb.append("    primaryContact: ").append(toIndentedString(primaryContact)).append("\n");
+    sb.append("    generalConsumer: ").append(toIndentedString(generalConsumer)).append("\n");
+    sb.append("    accountFrozen: ").append(toIndentedString(accountFrozen)).append("\n");
+    sb.append("    employee: ").append(toIndentedString(employee)).append("\n");
     sb.append("    addressVerifiedStatus: ").append(toIndentedString(addressVerifiedStatus)).append("\n");
+    sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -3147,16 +3147,16 @@ public class Customer {
     openapiFields.add("orders");
     openapiFields.add("notes");
     openapiFields.add("additionalContacts");
-    openapiFields.add("organization");
-    openapiFields.add("defaultPhoneNumber");
-    openapiFields.add("employee");
-    openapiFields.add("primaryContact");
-    openapiFields.add("customerTypeResponse");
-    openapiFields.add("generalConsumer");
-    openapiFields.add("reseller");
-    openapiFields.add("accountFrozen");
     openapiFields.add("customerNameToDisplay");
+    openapiFields.add("customerTypeResponse");
+    openapiFields.add("defaultPhoneNumber");
+    openapiFields.add("reseller");
+    openapiFields.add("primaryContact");
+    openapiFields.add("generalConsumer");
+    openapiFields.add("accountFrozen");
+    openapiFields.add("employee");
     openapiFields.add("addressVerifiedStatus");
+    openapiFields.add("organization");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -3377,15 +3377,15 @@ public class Customer {
           CustomerContactInfo.validateJsonObject(jsonArrayadditionalContacts.get(i).getAsJsonObject());
         };
       }
+      if (jsonObj.get("customerNameToDisplay") != null && !jsonObj.get("customerNameToDisplay").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customerNameToDisplay` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customerNameToDisplay").toString()));
+      }
       if (jsonObj.get("defaultPhoneNumber") != null && !jsonObj.get("defaultPhoneNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `defaultPhoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("defaultPhoneNumber").toString()));
       }
       // validate the optional field `primaryContact`
       if (jsonObj.getAsJsonObject("primaryContact") != null) {
         CustomerContactInfo.validateJsonObject(jsonObj.getAsJsonObject("primaryContact"));
-      }
-      if (jsonObj.get("customerNameToDisplay") != null && !jsonObj.get("customerNameToDisplay").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customerNameToDisplay` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customerNameToDisplay").toString()));
       }
   }
 

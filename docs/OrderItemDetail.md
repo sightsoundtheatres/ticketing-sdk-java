@@ -37,12 +37,12 @@
 |**orderItem** | [**OrderItem**](OrderItem.md) |  |  [optional] |
 |**deltaCount** | **Integer** |  |  [optional] |
 |**persisted** | **Boolean** |  |  [optional] |
+|**_new** | **Boolean** |  |  [optional] |
 |**listPriceWithDiscounts** | **BigDecimal** |  |  [optional] |
 |**totalDiscount** | **BigDecimal** |  |  [optional] |
 |**unprintedCount** | **Integer** |  |  [optional] |
 |**manDiscountDollarAmount** | **BigDecimal** |  |  [optional] |
 |**savings** | **BigDecimal** |  |  [optional] |
-|**_new** | **Boolean** |  |  [optional] |
 |**totalSavings** | **BigDecimal** |  |  [optional] |
 
 

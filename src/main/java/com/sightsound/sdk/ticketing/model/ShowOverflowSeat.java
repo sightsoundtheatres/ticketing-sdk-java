@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.OrderItem;
-import com.sightsound.sdk.ticketing.model.SeatStatus;
 import com.sightsound.sdk.ticketing.model.TicketPrintStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -51,7 +50,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * ShowOverflowSeat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class ShowOverflowSeat {
   public static final String SERIALIZED_NAME_OVERFLOW_ID = "overflowId";
   @SerializedName(SERIALIZED_NAME_OVERFLOW_ID)
@@ -76,10 +75,6 @@ public class ShowOverflowSeat {
   public static final String SERIALIZED_NAME_TICKET_TEXT = "ticketText";
   @SerializedName(SERIALIZED_NAME_TICKET_TEXT)
   private String ticketText;
-
-  public static final String SERIALIZED_NAME_SEAT_STATUS = "seatStatus";
-  @SerializedName(SERIALIZED_NAME_SEAT_STATUS)
-  private SeatStatus seatStatus;
 
   public static final String SERIALIZED_NAME_TICKET_STATUS = "ticketStatus";
   @SerializedName(SERIALIZED_NAME_TICKET_STATUS)
@@ -230,29 +225,6 @@ public class ShowOverflowSeat {
   }
 
 
-  public ShowOverflowSeat seatStatus(SeatStatus seatStatus) {
-    
-    this.seatStatus = seatStatus;
-    return this;
-  }
-
-   /**
-   * Get seatStatus
-   * @return seatStatus
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public SeatStatus getSeatStatus() {
-    return seatStatus;
-  }
-
-
-  public void setSeatStatus(SeatStatus seatStatus) {
-    this.seatStatus = seatStatus;
-  }
-
-
   public ShowOverflowSeat ticketStatus(TicketPrintStatus ticketStatus) {
     
     this.ticketStatus = ticketStatus;
@@ -315,14 +287,13 @@ public class ShowOverflowSeat {
         Objects.equals(this.orderNumber, showOverflowSeat.orderNumber) &&
         Objects.equals(this.itemNumber, showOverflowSeat.itemNumber) &&
         Objects.equals(this.ticketText, showOverflowSeat.ticketText) &&
-        Objects.equals(this.seatStatus, showOverflowSeat.seatStatus) &&
         Objects.equals(this.ticketStatus, showOverflowSeat.ticketStatus) &&
         Objects.equals(this.orderItem, showOverflowSeat.orderItem);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(overflowId, eventCode, showDateTime, orderNumber, itemNumber, ticketText, seatStatus, ticketStatus, orderItem);
+    return Objects.hash(overflowId, eventCode, showDateTime, orderNumber, itemNumber, ticketText, ticketStatus, orderItem);
   }
 
   @Override
@@ -335,7 +306,6 @@ public class ShowOverflowSeat {
     sb.append("    orderNumber: ").append(toIndentedString(orderNumber)).append("\n");
     sb.append("    itemNumber: ").append(toIndentedString(itemNumber)).append("\n");
     sb.append("    ticketText: ").append(toIndentedString(ticketText)).append("\n");
-    sb.append("    seatStatus: ").append(toIndentedString(seatStatus)).append("\n");
     sb.append("    ticketStatus: ").append(toIndentedString(ticketStatus)).append("\n");
     sb.append("    orderItem: ").append(toIndentedString(orderItem)).append("\n");
     sb.append("}");
@@ -366,7 +336,6 @@ public class ShowOverflowSeat {
     openapiFields.add("orderNumber");
     openapiFields.add("itemNumber");
     openapiFields.add("ticketText");
-    openapiFields.add("seatStatus");
     openapiFields.add("ticketStatus");
     openapiFields.add("orderItem");
 

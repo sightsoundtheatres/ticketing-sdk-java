@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -58,7 +58,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * Special
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class Special {
   public static final String SERIALIZED_NAME_SPECIAL_CODE = "specialCode";
   @SerializedName(SERIALIZED_NAME_SPECIAL_CODE)
@@ -264,10 +264,6 @@ public class Special {
   @SerializedName(SERIALIZED_NAME_SAVINGS)
   private BigDecimal savings;
 
-  public static final String SERIALIZED_NAME_VALID_FOR_INDIVIDUAL = "validForIndividual";
-  @SerializedName(SERIALIZED_NAME_VALID_FOR_INDIVIDUAL)
-  private Boolean validForIndividual;
-
   public static final String SERIALIZED_NAME_VALID_FOR_ORDER_TIX = "validForOrderTix";
   @SerializedName(SERIALIZED_NAME_VALID_FOR_ORDER_TIX)
   private Boolean validForOrderTix;
@@ -275,6 +271,10 @@ public class Special {
   public static final String SERIALIZED_NAME_COMPS_SPECIAL = "compsSpecial";
   @SerializedName(SERIALIZED_NAME_COMPS_SPECIAL)
   private Boolean compsSpecial;
+
+  public static final String SERIALIZED_NAME_VALID_FOR_INDIVIDUAL = "validForIndividual";
+  @SerializedName(SERIALIZED_NAME_VALID_FOR_INDIVIDUAL)
+  private Boolean validForIndividual;
 
   public Special() { 
   }
@@ -1476,29 +1476,6 @@ public class Special {
   }
 
 
-  public Special validForIndividual(Boolean validForIndividual) {
-    
-    this.validForIndividual = validForIndividual;
-    return this;
-  }
-
-   /**
-   * Get validForIndividual
-   * @return validForIndividual
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getValidForIndividual() {
-    return validForIndividual;
-  }
-
-
-  public void setValidForIndividual(Boolean validForIndividual) {
-    this.validForIndividual = validForIndividual;
-  }
-
-
   public Special validForOrderTix(Boolean validForOrderTix) {
     
     this.validForOrderTix = validForOrderTix;
@@ -1542,6 +1519,29 @@ public class Special {
 
   public void setCompsSpecial(Boolean compsSpecial) {
     this.compsSpecial = compsSpecial;
+  }
+
+
+  public Special validForIndividual(Boolean validForIndividual) {
+    
+    this.validForIndividual = validForIndividual;
+    return this;
+  }
+
+   /**
+   * Get validForIndividual
+   * @return validForIndividual
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getValidForIndividual() {
+    return validForIndividual;
+  }
+
+
+  public void setValidForIndividual(Boolean validForIndividual) {
+    this.validForIndividual = validForIndividual;
   }
 
 
@@ -1606,14 +1606,14 @@ public class Special {
         Objects.equals(this.corpAffilCodes, special.corpAffilCodes) &&
         Objects.equals(this.specialAutoApplied, special.specialAutoApplied) &&
         Objects.equals(this.savings, special.savings) &&
-        Objects.equals(this.validForIndividual, special.validForIndividual) &&
         Objects.equals(this.validForOrderTix, special.validForOrderTix) &&
-        Objects.equals(this.compsSpecial, special.compsSpecial);
+        Objects.equals(this.compsSpecial, special.compsSpecial) &&
+        Objects.equals(this.validForIndividual, special.validForIndividual);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(specialCode, longDescription, active, seatsAvailableLimit, numberEventsInCombo, allowCustTypeDisc, acceptOrderStartDate, acceptOrderEndDate, specialTypeCode, custFirstOrder, detailsValueTypeCode, couponLine1, couponLine2, couponLine3, couponLine4, couponLine5, showSpanDays, autoApply, groupMinimum, groupMaximum, finalSale, waiveTrans, heldBatch, allowTier, allowHot, allowFit, allowOrdertix, custDiscAddonOnly, subTypeCode, specialComments, showDayMins, allowEmployee, validateZipCode, allowGroupDisc, waiveDeposit, allowFreeTicket, maxDiscCount, rptColor, rptDescription, rptNotes, rptGroupName, rptDisplayName, allowIndividual, restriction, salesConf, salesConfCat, detail, events, corpAffilCodes, specialAutoApplied, savings, validForIndividual, validForOrderTix, compsSpecial);
+    return Objects.hash(specialCode, longDescription, active, seatsAvailableLimit, numberEventsInCombo, allowCustTypeDisc, acceptOrderStartDate, acceptOrderEndDate, specialTypeCode, custFirstOrder, detailsValueTypeCode, couponLine1, couponLine2, couponLine3, couponLine4, couponLine5, showSpanDays, autoApply, groupMinimum, groupMaximum, finalSale, waiveTrans, heldBatch, allowTier, allowHot, allowFit, allowOrdertix, custDiscAddonOnly, subTypeCode, specialComments, showDayMins, allowEmployee, validateZipCode, allowGroupDisc, waiveDeposit, allowFreeTicket, maxDiscCount, rptColor, rptDescription, rptNotes, rptGroupName, rptDisplayName, allowIndividual, restriction, salesConf, salesConfCat, detail, events, corpAffilCodes, specialAutoApplied, savings, validForOrderTix, compsSpecial, validForIndividual);
   }
 
   @Override
@@ -1671,9 +1671,9 @@ public class Special {
     sb.append("    corpAffilCodes: ").append(toIndentedString(corpAffilCodes)).append("\n");
     sb.append("    specialAutoApplied: ").append(toIndentedString(specialAutoApplied)).append("\n");
     sb.append("    savings: ").append(toIndentedString(savings)).append("\n");
-    sb.append("    validForIndividual: ").append(toIndentedString(validForIndividual)).append("\n");
     sb.append("    validForOrderTix: ").append(toIndentedString(validForOrderTix)).append("\n");
     sb.append("    compsSpecial: ").append(toIndentedString(compsSpecial)).append("\n");
+    sb.append("    validForIndividual: ").append(toIndentedString(validForIndividual)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1747,9 +1747,9 @@ public class Special {
     openapiFields.add("corpAffilCodes");
     openapiFields.add("specialAutoApplied");
     openapiFields.add("savings");
-    openapiFields.add("validForIndividual");
     openapiFields.add("validForOrderTix");
     openapiFields.add("compsSpecial");
+    openapiFields.add("validForIndividual");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

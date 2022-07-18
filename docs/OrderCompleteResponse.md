@@ -10,6 +10,7 @@ Order complete response
 |------------ | ------------- | ------------- | -------------|
 |**paymentAppliedInfo** | **String** |  |  [optional] |
 |**ticketDeliveryMsg** | **String** |  |  [optional] |
+|**ticketDeliveryMessage** | **String** |  |  [optional] |
 |**cart** | [**CartResponse**](CartResponse.md) |  |  [optional] |
 |**eTicketLink** | **String** |  |  [optional] |
 

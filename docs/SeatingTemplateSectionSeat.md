@@ -21,9 +21,9 @@
 |**entranceCode** | **TheaterEntrance** |  |  [optional] |
 |**template** | [**SeatingTemplate**](SeatingTemplate.md) |  |  [optional] |
 |**section** | [**SeatingTemplateSection**](SeatingTemplateSection.md) |  |  [optional] |
-|**zrotation** | **Integer** |  |  [optional] |
 |**xcoordinate** | **Integer** |  |  [optional] |
 |**ycoordinate** | **Integer** |  |  [optional] |
+|**zrotation** | **Integer** |  |  [optional] |
 
 
 

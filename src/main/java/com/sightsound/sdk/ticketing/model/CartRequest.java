@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.sightsound.sdk.ticketing.model.OrderCustomerRequest;
 import com.sightsound.sdk.ticketing.model.OrderItemPriceRequest;
+import com.sightsound.sdk.ticketing.model.OrderTicketDeliveryRequest;
 import com.sightsound.sdk.ticketing.model.TicketBatch;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -52,7 +53,7 @@ import com.sightsound.sdk.ticketing.JSON;
 /**
  * CartRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class CartRequest {
   public static final String SERIALIZED_NAME_ORDER_NUMBER = "orderNumber";
   @SerializedName(SERIALIZED_NAME_ORDER_NUMBER)
@@ -81,6 +82,10 @@ public class CartRequest {
   public static final String SERIALIZED_NAME_TICKET_BATCH = "ticketBatch";
   @SerializedName(SERIALIZED_NAME_TICKET_BATCH)
   private TicketBatch ticketBatch;
+
+  public static final String SERIALIZED_NAME_TICKET_DELIVERY = "ticketDelivery";
+  @SerializedName(SERIALIZED_NAME_TICKET_DELIVERY)
+  private OrderTicketDeliveryRequest ticketDelivery;
 
   public CartRequest() { 
   }
@@ -254,6 +259,29 @@ public class CartRequest {
   }
 
 
+  public CartRequest ticketDelivery(OrderTicketDeliveryRequest ticketDelivery) {
+    
+    this.ticketDelivery = ticketDelivery;
+    return this;
+  }
+
+   /**
+   * Get ticketDelivery
+   * @return ticketDelivery
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OrderTicketDeliveryRequest getTicketDelivery() {
+    return ticketDelivery;
+  }
+
+
+  public void setTicketDelivery(OrderTicketDeliveryRequest ticketDelivery) {
+    this.ticketDelivery = ticketDelivery;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -270,12 +298,13 @@ public class CartRequest {
         Objects.equals(this.referenceNumber, cartRequest.referenceNumber) &&
         Objects.equals(this.items, cartRequest.items) &&
         Objects.equals(this.customer, cartRequest.customer) &&
-        Objects.equals(this.ticketBatch, cartRequest.ticketBatch);
+        Objects.equals(this.ticketBatch, cartRequest.ticketBatch) &&
+        Objects.equals(this.ticketDelivery, cartRequest.ticketDelivery);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderNumber, promoCode, groupName, referenceNumber, items, customer, ticketBatch);
+    return Objects.hash(orderNumber, promoCode, groupName, referenceNumber, items, customer, ticketBatch, ticketDelivery);
   }
 
   @Override
@@ -289,6 +318,7 @@ public class CartRequest {
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
     sb.append("    ticketBatch: ").append(toIndentedString(ticketBatch)).append("\n");
+    sb.append("    ticketDelivery: ").append(toIndentedString(ticketDelivery)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -318,6 +348,7 @@ public class CartRequest {
     openapiFields.add("items");
     openapiFields.add("customer");
     openapiFields.add("ticketBatch");
+    openapiFields.add("ticketDelivery");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -369,6 +400,10 @@ public class CartRequest {
       // validate the optional field `customer`
       if (jsonObj.getAsJsonObject("customer") != null) {
         OrderCustomerRequest.validateJsonObject(jsonObj.getAsJsonObject("customer"));
+      }
+      // validate the optional field `ticketDelivery`
+      if (jsonObj.getAsJsonObject("ticketDelivery") != null) {
+        OrderTicketDeliveryRequest.validateJsonObject(jsonObj.getAsJsonObject("ticketDelivery"));
       }
   }
 

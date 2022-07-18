@@ -11,6 +11,7 @@
 |**delivery** | [**OrderTicketDeliveryRequest**](OrderTicketDeliveryRequest.md) |  |  [optional] |
 |**payment** | [**PaymentRequest**](PaymentRequest.md) |  |  [optional] |
 |**seatLockToken** | **Long** |  |  [optional] |
+|**overflowSeatCount** | **Integer** |  |  [optional] |
 |**emailList** | **Boolean** |  |  [optional] |
 |**sameGroupConfirm** | **Boolean** |  |  [optional] |
 

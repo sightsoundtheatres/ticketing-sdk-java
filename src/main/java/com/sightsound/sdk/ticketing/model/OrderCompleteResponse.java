@@ -1,6 +1,6 @@
 /*
- * Helios
- * Sight & Sound Theatres Ticketing API
+ * Partner Ticketing API
+ * Sight & Sound Theatres Partner Ticketing API
  *
  * The version of the OpenAPI document: 0.0.1-SNAPSHOT
  * Contact: DeveloperTeam@sight-sound.com
@@ -49,7 +49,7 @@ import com.sightsound.sdk.ticketing.JSON;
  * Order complete response
  */
 @ApiModel(description = "Order complete response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-01T17:37:03.061697Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:32:42.242731Z[Etc/UTC]")
 public class OrderCompleteResponse {
   public static final String SERIALIZED_NAME_PAYMENT_APPLIED_INFO = "paymentAppliedInfo";
   @SerializedName(SERIALIZED_NAME_PAYMENT_APPLIED_INFO)
@@ -58,6 +58,10 @@ public class OrderCompleteResponse {
   public static final String SERIALIZED_NAME_TICKET_DELIVERY_MSG = "ticketDeliveryMsg";
   @SerializedName(SERIALIZED_NAME_TICKET_DELIVERY_MSG)
   private String ticketDeliveryMsg;
+
+  public static final String SERIALIZED_NAME_TICKET_DELIVERY_MESSAGE = "ticketDeliveryMessage";
+  @SerializedName(SERIALIZED_NAME_TICKET_DELIVERY_MESSAGE)
+  private String ticketDeliveryMessage;
 
   public static final String SERIALIZED_NAME_CART = "cart";
   @SerializedName(SERIALIZED_NAME_CART)
@@ -102,7 +106,9 @@ public class OrderCompleteResponse {
    /**
    * Get ticketDeliveryMsg
    * @return ticketDeliveryMsg
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -113,6 +119,29 @@ public class OrderCompleteResponse {
 
   public void setTicketDeliveryMsg(String ticketDeliveryMsg) {
     this.ticketDeliveryMsg = ticketDeliveryMsg;
+  }
+
+
+  public OrderCompleteResponse ticketDeliveryMessage(String ticketDeliveryMessage) {
+    
+    this.ticketDeliveryMessage = ticketDeliveryMessage;
+    return this;
+  }
+
+   /**
+   * Get ticketDeliveryMessage
+   * @return ticketDeliveryMessage
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTicketDeliveryMessage() {
+    return ticketDeliveryMessage;
+  }
+
+
+  public void setTicketDeliveryMessage(String ticketDeliveryMessage) {
+    this.ticketDeliveryMessage = ticketDeliveryMessage;
   }
 
 
@@ -174,13 +203,14 @@ public class OrderCompleteResponse {
     OrderCompleteResponse orderCompleteResponse = (OrderCompleteResponse) o;
     return Objects.equals(this.paymentAppliedInfo, orderCompleteResponse.paymentAppliedInfo) &&
         Objects.equals(this.ticketDeliveryMsg, orderCompleteResponse.ticketDeliveryMsg) &&
+        Objects.equals(this.ticketDeliveryMessage, orderCompleteResponse.ticketDeliveryMessage) &&
         Objects.equals(this.cart, orderCompleteResponse.cart) &&
         Objects.equals(this.eTicketLink, orderCompleteResponse.eTicketLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentAppliedInfo, ticketDeliveryMsg, cart, eTicketLink);
+    return Objects.hash(paymentAppliedInfo, ticketDeliveryMsg, ticketDeliveryMessage, cart, eTicketLink);
   }
 
   @Override
@@ -189,6 +219,7 @@ public class OrderCompleteResponse {
     sb.append("class OrderCompleteResponse {\n");
     sb.append("    paymentAppliedInfo: ").append(toIndentedString(paymentAppliedInfo)).append("\n");
     sb.append("    ticketDeliveryMsg: ").append(toIndentedString(ticketDeliveryMsg)).append("\n");
+    sb.append("    ticketDeliveryMessage: ").append(toIndentedString(ticketDeliveryMessage)).append("\n");
     sb.append("    cart: ").append(toIndentedString(cart)).append("\n");
     sb.append("    eTicketLink: ").append(toIndentedString(eTicketLink)).append("\n");
     sb.append("}");
@@ -215,6 +246,7 @@ public class OrderCompleteResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("paymentAppliedInfo");
     openapiFields.add("ticketDeliveryMsg");
+    openapiFields.add("ticketDeliveryMessage");
     openapiFields.add("cart");
     openapiFields.add("eTicketLink");
 
@@ -249,6 +281,9 @@ public class OrderCompleteResponse {
       }
       if (jsonObj.get("ticketDeliveryMsg") != null && !jsonObj.get("ticketDeliveryMsg").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ticketDeliveryMsg` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketDeliveryMsg").toString()));
+      }
+      if (jsonObj.get("ticketDeliveryMessage") != null && !jsonObj.get("ticketDeliveryMessage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ticketDeliveryMessage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ticketDeliveryMessage").toString()));
       }
       // validate the optional field `cart`
       if (jsonObj.getAsJsonObject("cart") != null) {

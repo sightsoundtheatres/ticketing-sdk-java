@@ -1,10 +1,10 @@
 # ticketing-sdk-java
 
-Helios
+Partner Ticketing API
 - API version: 0.0.1-SNAPSHOT
-  - Build date: 2022-07-01T17:37:03.061697Z[Etc/UTC]
+  - Build date: 2022-07-18T19:32:42.242731Z[Etc/UTC]
 
-Sight & Sound Theatres Ticketing API
+Sight & Sound Theatres Partner Ticketing API
 
   For more information, please visit [https://sight-sound.com](https://sight-sound.com)
 
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>com.sightsound</groupId>
+  <groupId>com.sight-sound</groupId>
   <artifactId>ticketing-sdk-java</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <scope>compile</scope>
@@ -57,7 +57,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.sightsound:ticketing-sdk-java:0.0.1-SNAPSHOT"
+     implementation "com.sight-sound:ticketing-sdk-java:0.0.1-SNAPSHOT"
   }
 ```
 
@@ -84,22 +84,30 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.sightsound.sdk.ticketing.ApiClient;
 import com.sightsound.sdk.ticketing.ApiException;
 import com.sightsound.sdk.ticketing.Configuration;
+import com.sightsound.sdk.ticketing.auth.*;
 import com.sightsound.sdk.ticketing.models.*;
 import com.sightsound.sdk.ticketing.api.OrderControllerApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://helios.sight-sound.com");
+    defaultClient.setBasePath("https://dev-helios.sight-sound.com");
+    
+    // Configure OAuth2 access token for authorization: DEV
+    OAuth DEV = (OAuth) defaultClient.getAuthentication("DEV");
+    DEV.setAccessToken("YOUR ACCESS TOKEN");
+
+    // Configure OAuth2 access token for authorization: PROD
+    OAuth PROD = (OAuth) defaultClient.getAuthentication("PROD");
+    PROD.setAccessToken("YOUR ACCESS TOKEN");
 
     OrderControllerApi apiInstance = new OrderControllerApi(defaultClient);
-    Long orderNumber = 56L; // Long | 
     OrderCompleteRequest orderCompleteRequest = new OrderCompleteRequest(); // OrderCompleteRequest | 
     try {
-      OrderCompleteResponse result = apiInstance.completeOrder(orderNumber, orderCompleteRequest);
+      OrderCompleteResponse result = apiInstance.completeNewOrder(orderCompleteRequest);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling OrderControllerApi#completeOrder");
+      System.err.println("Exception when calling OrderControllerApi#completeNewOrder");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -112,11 +120,12 @@ public class Example {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://helios.sight-sound.com*
+All URIs are relative to *https://dev-helios.sight-sound.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*OrderControllerApi* | [**completeOrder**](docs/OrderControllerApi.md#completeOrder) | **POST** /order/complete | Complete order
+*OrderControllerApi* | [**completeNewOrder**](docs/OrderControllerApi.md#completeNewOrder) | **POST** /order/complete | Complete order
+*UtilControllerApi* | [**status**](docs/UtilControllerApi.md#status) | **GET** /system/util/status | 
 
 
 ## Documentation for Models
@@ -280,8 +289,21 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Authorization
 
-All endpoints do not require authorization.
 Authentication schemes defined for the API:
+### DEV
+
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: N/A
+
+### PROD
+
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: N/A
+
 
 ## Recommendation
 

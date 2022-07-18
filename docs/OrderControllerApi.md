@@ -1,19 +1,19 @@
 # OrderControllerApi
 
-All URIs are relative to *https://helios.sight-sound.com*
+All URIs are relative to *https://dev-helios.sight-sound.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**completeOrder**](OrderControllerApi.md#completeOrder) | **POST** /order/complete | Complete order |
+| [**completeNewOrder**](OrderControllerApi.md#completeNewOrder) | **POST** /order/complete | Complete order |
 
 
-<a name="completeOrder"></a>
-# **completeOrder**
-> OrderCompleteResponse completeOrder(orderNumber, orderCompleteRequest)
+<a name="completeNewOrder"></a>
+# **completeNewOrder**
+> OrderCompleteResponse completeNewOrder(orderCompleteRequest)
 
 Complete order
 
-Completes an order. Can be new or existing.
+Completes a new order.
 
 ### Example
 ```java
@@ -21,22 +21,30 @@ Completes an order. Can be new or existing.
 import com.sightsound.sdk.ticketing.ApiClient;
 import com.sightsound.sdk.ticketing.ApiException;
 import com.sightsound.sdk.ticketing.Configuration;
+import com.sightsound.sdk.ticketing.auth.*;
 import com.sightsound.sdk.ticketing.models.*;
 import com.sightsound.sdk.ticketing.api.OrderControllerApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://helios.sight-sound.com");
+    defaultClient.setBasePath("https://dev-helios.sight-sound.com");
+    
+    // Configure OAuth2 access token for authorization: DEV
+    OAuth DEV = (OAuth) defaultClient.getAuthentication("DEV");
+    DEV.setAccessToken("YOUR ACCESS TOKEN");
+
+    // Configure OAuth2 access token for authorization: PROD
+    OAuth PROD = (OAuth) defaultClient.getAuthentication("PROD");
+    PROD.setAccessToken("YOUR ACCESS TOKEN");
 
     OrderControllerApi apiInstance = new OrderControllerApi(defaultClient);
-    Long orderNumber = 56L; // Long | 
     OrderCompleteRequest orderCompleteRequest = new OrderCompleteRequest(); // OrderCompleteRequest | 
     try {
-      OrderCompleteResponse result = apiInstance.completeOrder(orderNumber, orderCompleteRequest);
+      OrderCompleteResponse result = apiInstance.completeNewOrder(orderCompleteRequest);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling OrderControllerApi#completeOrder");
+      System.err.println("Exception when calling OrderControllerApi#completeNewOrder");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -50,7 +58,6 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **orderNumber** | **Long**|  | |
 | **orderCompleteRequest** | [**OrderCompleteRequest**](OrderCompleteRequest.md)|  | |
 
 ### Return type
@@ -59,7 +66,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[DEV](../README.md#DEV), [PROD](../README.md#PROD)
 
 ### HTTP request headers
 

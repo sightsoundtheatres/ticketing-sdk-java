@@ -58,9 +58,9 @@
 |**corpAffilCodes** | [**Set&lt;SpecialType&gt;**](SpecialType.md) |  |  [optional] |
 |**specialAutoApplied** | **Boolean** |  |  [optional] |
 |**savings** | **BigDecimal** |  |  [optional] |
-|**validForIndividual** | **Boolean** |  |  [optional] |
 |**validForOrderTix** | **Boolean** |  |  [optional] |
 |**compsSpecial** | **Boolean** |  |  [optional] |
+|**validForIndividual** | **Boolean** |  |  [optional] |
 
 
 

@@ -15,6 +15,7 @@
 |**organizationName** | **String** |  |  [optional] |
 |**billingAddress** | [**AddressExtended**](AddressExtended.md) |  |  [optional] |
 |**shippingAddress** | [**AddressExtended**](AddressExtended.md) |  |  [optional] |
+|**emailList** | **Boolean** |  |  [optional] |
 |**websiteCustomerSearchRequest** | [**CreateWebsiteCustomerRequest**](CreateWebsiteCustomerRequest.md) |  |  [optional] |
 
 
