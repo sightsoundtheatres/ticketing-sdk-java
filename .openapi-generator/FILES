@@ -350,4 +350,3 @@ src/main/java/com/sightsound/sdk/ticketing/model/TicketPrintStatus.java
 src/main/java/com/sightsound/sdk/ticketing/model/TransactionTypeEnum.java
 src/main/java/com/sightsound/sdk/ticketing/model/TypeEnum.java
 src/main/java/com/sightsound/sdk/ticketing/model/WatchList.java
-src/test/java/com/sightsound/sdk/ticketing/api/UtilControllerApiTest.java

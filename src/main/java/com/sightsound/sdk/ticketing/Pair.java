@@ -13,7 +13,7 @@
 
 package com.sightsound.sdk.ticketing;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T19:37:37.998841Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-18T20:01:03.115466Z[Etc/UTC]")
 public class Pair {
     private String name = "";
     private String value = "";
